@@ -9,5 +9,7 @@ Cette application simule le jeu bomberman.
 **Usage**
 
 Pour lancer l'application :
-java -jar bombermanproject.jar
 
+```bash
+java -jar bombermanproject.jar
+```
