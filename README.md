@@ -1,5 +1,0 @@
-Kévin GALLET
-Charles VANEENOO
-Jeremy MATHIAS
-Pierre HEQUETTE
-Aymerick DUCROQUETZ
