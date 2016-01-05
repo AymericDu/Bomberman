@@ -1,4 +1,4 @@
 /**
- * Main package of the bomberman projectk
+ * Main package for the bomberman game
  */
 package bomberman;
