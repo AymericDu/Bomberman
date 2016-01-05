@@ -1,12 +1,12 @@
-Projet Bomberman
+**Projet Bomberman**
 
 Kevin GALLET / Pierre HEQUETTE / Charles VANEENOO / Jeremy MATHIAS / Aymeric DUCROQUETZ
 
-Introduction
+**Introduction**
 
 Cette application simule le jeu bomberman.
 
-Usage
+**Usage**
 
 Pour lancer l'application :
 java -jar bombermanproject.jar
