@@ -16,13 +16,11 @@ public class Player {
 	protected GameCanvas canvas;
 	protected GameData data;
 	protected Point direction;
-
-
-
-
+	protected int x;
+	protected int y;
 
 	/**
-	 * 
+	 * Constructor of player class, allow to create our player
 	 * @param x initial p of our player
 	 * @param y initial position of our player
 	 */
@@ -36,16 +34,12 @@ public class Player {
 
 	}
 	
-	
-	
-	
 	/**
-	 * 
-	 * @param pos
-	 * @param goal
-	 * @return
+	 * MoveStrategy allow to define the strategy choose by the player 
+	 * @return the choosen strategy
 	 */
-	protected MoveStrategy getMoveStrategy(Point pos, Point goal) {
+	protected MoveStrategy getMoveStrategy() {
 		return new MoveStrategyKeyboard(); 
 	}
+	
 }
