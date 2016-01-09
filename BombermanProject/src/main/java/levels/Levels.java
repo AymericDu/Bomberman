@@ -26,6 +26,29 @@ public class Levels extends GameLevelDefaultImpl {
 	}
 	
 	protected void createWalls(){
+		createLeftAndRightWalls();
+		createTopAndBottomWalls();
+	}
+	
+	protected void createLeftAndRightWalls(){
+		for (int i = 0; i<rows;i++){
+			//add left walls
+			this.universe.addGameEntity(new Wall(data,0,i));
+			//add right walls
+			this.universe.addGameEntity(new Wall(data,0,columns-i));
+		}
+	}
+	
+	protected void createTopAndBottomWalls(){
+		for (int i = 0; i<columns;i++){
+			//add top walls
+			this.universe.addGameEntity(new Wall(data,rows,rows-i));
+			//add  bottom walls
+			this.universe.addGameEntity(new Wall(data,rows,rows-i));
+		}
+	}
+	
+	/*protected void createWalls(){
 		createLeftWalls();
 		createRightWalls();
 		createTopWalls();
@@ -55,6 +78,6 @@ public class Levels extends GameLevelDefaultImpl {
 			this.universe.addGameEntity(new Wall(data,0,rows-i));
 		}
 		
-	}
+	}*/
 
 }
