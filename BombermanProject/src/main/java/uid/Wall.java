@@ -33,6 +33,4 @@ public class Wall implements GameEntity, MoveBlocker, Drawable {
 	public void draw(Graphics g) {
 		this.canvas.drawImage(g, this.img.getImage(), this.pos.x, this.pos.y);
 	}
-	
-
 }
