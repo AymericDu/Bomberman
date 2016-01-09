@@ -24,6 +24,4 @@ public class WallTest {
 	@Test
 	public void test(){
 	}
-	
-	
 }
