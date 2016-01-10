@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import entities.Player;
+
 public class PlayerTest {
 
 	Player myPlayer;

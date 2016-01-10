@@ -1,4 +1,4 @@
-package players;
+package entities;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -7,11 +7,12 @@ import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
+import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.MoveStrategy;
 import gameframework.motion.MoveStrategyKeyboard;
 
-public class Player extends GameMovable {
+public class Player extends GameMovable implements GameEntity{
 	
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int spriteSize;

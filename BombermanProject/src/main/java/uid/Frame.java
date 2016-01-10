@@ -7,7 +7,6 @@ import gameframework.gui.GameWindow;
 
 public class Frame {
 
-	
 	 public Frame(){
 		 GameConfiguration config = new GameConfiguration();
 		 GameData data = new GameData(config);
