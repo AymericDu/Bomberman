@@ -47,37 +47,4 @@ public class Levels extends GameLevelDefaultImpl {
 			this.universe.addGameEntity(new Wall(data,rows,rows-i));
 		}
 	}
-	
-	/*protected void createWalls(){
-		createLeftWalls();
-		createRightWalls();
-		createTopWalls();
-		createBottomWalls();
-	}
-	
-	protected void createLeftWalls(){
-		for (int i = 0; i<rows;i++){
-			this.universe.addGameEntity(new Wall(data,0,i));
-		}
-	}
-	
-	protected void createRightWalls(){
-		for (int i = 0; i<rows;i++){
-			this.universe.addGameEntity(new Wall(data,0,columns-i));
-		}
-	}
-	
-	protected void createTopWalls(){
-		for (int i = 0; i<columns;i++){
-			this.universe.addGameEntity(new Wall(data,rows,rows-i));
-		}
-	}
-	
-	protected void createBottomWalls(){
-		for (int i = 0; i<columns;i++){
-			this.universe.addGameEntity(new Wall(data,0,rows-i));
-		}
-		
-	}*/
-
 }
