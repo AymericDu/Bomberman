@@ -7,7 +7,7 @@ import uid.Wall;
 
 public class Levels extends GameLevelDefaultImpl {
 	
-	protected Player p1,p2;
+	protected Player player1,player2;
 	protected int rows;
 	protected int columns;
 	protected int spriteSize;
@@ -19,17 +19,28 @@ public class Levels extends GameLevelDefaultImpl {
 		this.spriteSize = this.data.getConfiguration().getSpriteSize();
 	}
 	
+	
+	/**
+	 * Initialize the levels
+	 */
 	@Override
 	protected void init() {
-		// TODO Auto-generated method stub
-		
+		this.player1 = new Player(data , 1,1);
+		this.createWalls();
 	}
 	
+	
+	/**
+	 * Creation of all the walls
+	 */
 	protected void createWalls(){
 		createLeftAndRightWalls();
 		createTopAndBottomWalls();
 	}
 	
+	/**
+	 * Creation of left and right walls
+	 */
 	protected void createLeftAndRightWalls(){
 		for (int i = 0; i<rows;i++){
 			//add left walls
@@ -39,6 +50,9 @@ public class Levels extends GameLevelDefaultImpl {
 		}
 	}
 	
+	/**
+	 * Creation of top and bottom walls
+	 */
 	protected void createTopAndBottomWalls(){
 		for (int i = 0; i<columns;i++){
 			//add top walls
