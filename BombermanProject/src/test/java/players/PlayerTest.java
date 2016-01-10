@@ -10,7 +10,7 @@ public class PlayerTest {
 	
 	@Test
 	public void test() {
-		myPlayer = new Player(0,0);
+		myPlayer = new Player(null, 0,0);
 		fail("Not yet implemented");
 	}
 
