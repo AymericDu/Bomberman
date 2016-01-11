@@ -22,7 +22,7 @@ public class WallTest {
 	}
 	
 	@Test
-	public void test(){
+	public void getBoundingBoxTest(){
 		assertNotNull(wallTest.getBoundingBox());
 	}
 }
