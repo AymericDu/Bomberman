@@ -1,4 +1,4 @@
-package players;
+package entities;
 
 import static org.junit.Assert.*;
 
