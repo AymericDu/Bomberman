@@ -11,3 +11,7 @@ Bomb : point ok, pourquoi power ? one shot des bombes ? (Jerem)
 - C'est Charles qui la faite, mais elle est doit etre modifier parce qu'il manque plusieurs extends et la représnetation d'une bombe sur le frame.
     Le power n'est pas (je pense) à voir comme la capacité, mais plus à voir comme le format, la longueur ou bien la largeur de la bombe.
     A voir avec Charles (Kévin)
+
+- Je me suis juste occuper d'initialiser la classe ce matin, il faudra la completer vendredi.
+J'ai crée un power dans le cas ou l'on pourrait augmenter la puissance des bombes si l'on fait plusieurs niveaux, mais c'est vrai que si l'on fait juste un level c'est useless.
+Ce sera des trucs a modifier en effet. (Charles)
