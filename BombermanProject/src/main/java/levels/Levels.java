@@ -24,7 +24,7 @@ public class Levels extends GameLevelDefaultImpl {
 	
 	
 	/**
-	 * Initialize the levels with the players
+	 * Initialize the levels with the players, the walls and the box
 	 */
 	@Override
 	protected void init() {
@@ -33,15 +33,18 @@ public class Levels extends GameLevelDefaultImpl {
 		this.universe.addGameEntity(this.player1);
 		this.universe.addGameEntity(this.player2);
 		this.createWalls();
-		// Initialy we put only 10 boxs
+		// Initialy we put only 10 boxes
 		this.spawnBox(10);
 	}
 	
-	
+	/**
+	 * Creation of boxes in the game space (random place)
+	 */
 	protected void spawnBox(int nbOfBoxInGame) {
 		Random r = new Random();
 		
-		for (int i=0; i<r.nextInt(nbOfBoxInGame);i++){
+		for (int i=0; i<nbOfBoxInGame;i++){
+		//for (int i=0; i<r.nextInt(nbOfBoxInGame);i++){
 			int random_x = r.nextInt(this.data.getConfiguration().getNbColumns());
 			int random_y = r.nextInt(this.data.getConfiguration().getNbRows());
 			
