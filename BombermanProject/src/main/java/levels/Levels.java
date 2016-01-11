@@ -43,8 +43,7 @@ public class Levels extends GameLevelDefaultImpl {
 	protected void spawnBox(int nbOfBoxInGame) {
 		Random r = new Random();
 		
-		for (int i=0; i<nbOfBoxInGame;i++){
-		//for (int i=0; i<r.nextInt(nbOfBoxInGame);i++){
+		for (int i=0; i<r.nextInt(nbOfBoxInGame);i++){
 			int random_x = r.nextInt(this.data.getConfiguration().getNbColumns());
 			int random_y = r.nextInt(this.data.getConfiguration().getNbRows());
 			
