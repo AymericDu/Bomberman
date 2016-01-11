@@ -10,9 +10,9 @@ import gameframework.game.GameData;
 
 public class WallTest {
 	
-	GameConfiguration myGameConfiguration;
-	GameData data;
-	Wall wallTest;
+	protected GameConfiguration myGameConfiguration;
+	protected GameData data;
+	protected Wall wallTest;
 	
 	@Before
 	public void create(){
