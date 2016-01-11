@@ -12,16 +12,17 @@ public class WallTest {
 	
 	GameConfiguration myGameConfiguration;
 	GameData data;
-	Wall myWall;
+	Wall wallTest;
 	
 	@Before
 	public void create(){
 		GameConfiguration myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		GameData data = new GameData(myGameConfiguration);
-		Wall myWall = new Wall(data,20,20);
+		Wall wallTest = new Wall(data,20,20);
 	}
 	
 	@Test
 	public void test(){
+		assertNotNull(wallTest.getBoundingBox());
 	}
 }
