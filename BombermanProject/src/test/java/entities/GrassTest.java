@@ -25,5 +25,4 @@ public class GrassTest {
 	public void getBoundingBoxTest(){
 		assertNotNull(grassTest.getBoundingBox());
 	}
-
 }

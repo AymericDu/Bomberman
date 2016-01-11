@@ -18,11 +18,11 @@ public class BoxTest {
 	public void create(){
 		GameConfiguration myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		GameData data = new GameData(myGameConfiguration);
+		Box boxTest = new Box (data, 3,3);
 	}
 	
 	@Test
 	public void getBoundingBoxTest(){
 		assertNotNull(boxTest.getBoundingBox());
 	}
-
 }
