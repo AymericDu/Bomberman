@@ -21,6 +21,7 @@ public class Player extends GameMovable implements GameEntity{
 	protected Point direction;
 	protected int x;
 	protected int y;
+	protected int life;
 
 	/**
 	 * Constructor of player class, allow to create our player
@@ -34,6 +35,7 @@ public class Player extends GameMovable implements GameEntity{
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage("/resources/finalGifIcons/BombermanBas.gif", canvas), this.spriteSize, 3); //give the gif of bomberman
 		this.direction = new Point(0, 1); // direction of bomberman
 		//this.setLocation(x, y); // start position of bomberman doesn't work .. don't know why
+		this.life=1;
 
 	}
 	
@@ -87,5 +89,44 @@ public class Player extends GameMovable implements GameEntity{
 		}
 	}		
 	
+	/**
+	 * @return the position of our player
+	 */
+	public Point getPosition(){
+		return this.direction;
+	}
 	
+	/**
+	 * drop a bomb in the position of the player
+	 */
+	public void dropBomb(){
+		//A COMPLETER
+	}
+	
+	/**
+	 * 
+	 * @return the life of the Player
+	 */
+	public int getLife(){
+		return this.life;
+	}
+	
+	/**
+	 * remove the life of the player if he is hit by the bomb
+	 * @param player the player who is hit
+	 * @param b a Bomb
+	 */
+	public void isHit(Player player, Bomb b){
+		player.life = player.life- b.getPower();
+	}
+	
+	/**
+	 * @return if the player is dead or not
+	 */
+	public boolean isDeadPlayer(){
+		if (this.life<0){
+			return true;
+		}
+		else return false;
+	}
 }
