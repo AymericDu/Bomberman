@@ -23,7 +23,7 @@ public class Grass implements GameEntity, MoveBlocker, Drawable {
 		this.data = data;
 		this.canvas = data.getCanvas();
 		this.position = new Point(x, y);
-		this.img = new DrawableImage("/images/grass.gif", this.canvas);
+		this.img = new DrawableImage("/images/level1/caisselvl1.gif", this.canvas);
 	}
 
 	@Override
