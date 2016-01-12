@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
+import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.motion.blocking.MoveBlocker;
@@ -22,7 +23,7 @@ public class Grass implements GameEntity, MoveBlocker, Drawable {
 		this.data = data;
 		this.canvas = data.getCanvas();
 		this.position = new Point(x, y);
-		this.img = new DrawableImage("/resources/level1/grass.gif", this.canvas);
+		this.img = new DrawableImage("/images/grass.gif", this.canvas);
 	}
 
 	@Override
@@ -42,5 +43,15 @@ public class Grass implements GameEntity, MoveBlocker, Drawable {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
+	public static void main(String[] args) {
+		GameConfiguration config = new GameConfiguration();
+		GameData data = new GameData(config);
+		
+	      System.out.println("Working Directory = " +
+	              System.getProperty("user.dir"));
+	
+	      Grass g = new Grass(data, 1 ,1);
+	
+	}	
 }
