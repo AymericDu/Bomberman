@@ -5,6 +5,7 @@ Frame : classe GameWindow à utiliser ? (Jerem)
 Grass : pas compris, classe background Image ?(Jerem)
     - La classe Grass permet de représenter l'herbe par terre, je trouve ça moche de mettre juste des carrés vert, donc j'ai pris un gif dispo dans le folder ressources pour la représenter.
     La classe Background Image on l'a pas encore faite. (Kévin)
+    Justement ya deja une classe BackgroundImage dans le framework donc on pourrait se servir de ça je pense ? (Jerem)
 
 Bomb : point ok, pourquoi power ? one shot des bombes ? (Jerem)
 
