@@ -15,7 +15,7 @@ public class BombTest {
 	}
 
 	@Test
-	public void test() {
+	public void getPowerTest() {
 		Bomb b = this.create();
 		assertEquals(2, b.getPower());
 	}
