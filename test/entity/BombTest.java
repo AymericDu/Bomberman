@@ -10,14 +10,15 @@ import gameframework.game.GameData;
 
 public class BombTest {
 
-	protected Bomb b;
+	Bomb b;
+	GameConfiguration myGameConfiguration;
+	GameData data;
 
 	@Before
 	public void create() {
-		GameConfiguration myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
-		GameData data = new GameData(myGameConfiguration);
-		Bomb b = new Bomb(data, 2, new Player(data, 1,1));
- 
+		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
+		data = new GameData(myGameConfiguration);
+		b = new Bomb(data, 2, new Player(data, 1,1));
 	}
 
 	@Test

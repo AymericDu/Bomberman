@@ -14,11 +14,15 @@ public class BoxTest {
 	GameData data;
 	GameConfiguration myGameConfiguration;
 
-	@Test
-	public void getBoundingBoxTest() {
+	@Before
+	public void create() {
 		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
-		boxTest = new Box(data,1,1);
+		boxTest = new Box(data,0,0);
+	}
+	
+	@Test
+	public void getBoundingBoxTest() {
 		assertNotNull(boxTest.getBoundingBox());
 	}
 }
