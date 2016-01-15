@@ -3,6 +3,7 @@ package entity;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.TimerTask;
 
 import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
@@ -11,7 +12,7 @@ import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.motion.blocking.MoveBlocker;
 
-public class BombExplosion implements GameEntity, MoveBlocker, Drawable {
+public class BombExplosion extends TimerTask implements GameEntity, MoveBlocker, Drawable {
 
 	protected GameData data;
 	protected Point position;
@@ -40,6 +41,11 @@ public class BombExplosion implements GameEntity, MoveBlocker, Drawable {
 	@Override
 	public boolean isMovable() {
 		return false;
+	}
+
+	@Override
+	public void run() {
+		//TO-DO
 	}
 
 }
