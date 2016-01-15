@@ -6,7 +6,7 @@ import org.junit.Test;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
-public class LevelsTest {
+public class LevelTest {
 
 	GameConfiguration configuration;
 	GameData data;

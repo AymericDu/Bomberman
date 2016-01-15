@@ -29,7 +29,7 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	@Override
 	protected void init() {
-		this.player1 = new Player(data, 0, 0);
+		this.player1 = new Player(data,1,1);
 		this.player2 = new Player(data, this.data.getConfiguration().getNbColumns() - 1,
 				this.data.getConfiguration().getNbRows() - 1);
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
@@ -45,10 +45,15 @@ public class Level extends GameLevelDefaultImpl {
 	protected void spawnBox(int nbOfBoxInGame) {
 		Random r = new Random();
 
-		for (int i = 0; i < r.nextInt(nbOfBoxInGame); i++) {
-			int random_x = r.nextInt(this.data.getConfiguration().getNbColumns());
-			int random_y = r.nextInt(this.data.getConfiguration().getNbRows());
-
+		for (int i = 0; i < nbOfBoxInGame; i++) {
+			int random_x = 0;
+			int random_y = 0;
+			
+			while ((random_x == 0 || random_y == 0) || (random_x == 1 || random_y == 1)){
+				random_x = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1));
+				random_y = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbRows() - 1));
+			}
+				
 			Box newBox = new Box(data, random_x, random_y);
 			this.universe.addGameEntity(newBox);
 		}
@@ -59,7 +64,7 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	protected void createWalls() {
 		createLeftAndRightWalls();
-		createTopAndBottomWalls();
+		createBottomAndTopWalls();
 	}
 
 	/**
@@ -67,22 +72,22 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	protected void createLeftAndRightWalls() {
 		for (int i = 0; i < rows; i++) {
-			// add left walls
-			this.universe.addGameEntity(new Wall(data, 0, i));
-			// add right walls
-			this.universe.addGameEntity(new Wall(data, 0, columns - i));
+			this.universe.addGameEntity(new Wall(data, 0, i*this.spriteSize));
+		}
+		for (int j = rows;j>0;j--){
+			this.universe.addGameEntity(new Wall(data,this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1),this.spriteSize * j));
 		}
 	}
 
 	/**
-	 * Creation of top and bottom walls
+	 * Creation of bottom and top walls
 	 */
-	protected void createTopAndBottomWalls() {
+	protected void createBottomAndTopWalls() {
 		for (int i = 0; i < columns; i++) {
-			// add top walls
-			this.universe.addGameEntity(new Wall(data, rows, rows - i));
-			// add bottom walls
-			this.universe.addGameEntity(new Wall(data, rows, rows - i));
+			this.universe.addGameEntity(new Wall(data,this.spriteSize * i,this.spriteSize * (this.data.getConfiguration().getNbRows()-1)));
+		}
+		for (int j = columns; j > 0; j--) {
+			this.universe.addGameEntity(new Wall(data, this.spriteSize * j, 0));
 		}
 	}
 }

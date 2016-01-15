@@ -13,6 +13,6 @@ public class BombermanUniverseViewPort extends GameUniverseViewPortDefaultImpl {
 
 		@Override
 		protected URL backgroundImage() {
-			return backgroundImage("/images/level/Grass.png");
+			return backgroundImage("/images/level/Background.png");
 		}
 }
