@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,8 +22,7 @@ public class Player extends GameMovable implements GameEntity {
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
-	protected int x;
-	protected int y;
+	protected Point position;
 	protected boolean isAlive;
 	protected List<Bomb> bombsAvailable = new ArrayList<Bomb>();
 
@@ -43,8 +43,7 @@ public class Player extends GameMovable implements GameEntity {
 
 		this.spriteManager = new SpriteManagerDefaultImpl(
 				new DrawableImage(sprite, canvas), this.spriteSize, 4);
-		this.x = x;
-		this.y = y;
+		this.position = new Point(x,y);
 		this.isAlive = true;
 		this.bombsAvailable.add(new Bomb(this.data, 2, this));
 
@@ -65,13 +64,9 @@ public class Player extends GameMovable implements GameEntity {
 	@Override
 	public Rectangle getBoundingBox() {
 		Rectangle rectangle = new Rectangle(this.spriteSize, this.spriteSize);
-		rectangle.setLocation(position.x * this.spriteSize, position.y * this.spriteSize);
+		rectangle.setLocation((int) this.position.getX()* this.spriteSize, (int) this.position.getY() * this.spriteSize);
 		return rectangle;
 	}
-
-
-
-
 
 	/**
 	 * drop a bomb in the position of the player
@@ -83,7 +78,6 @@ public class Player extends GameMovable implements GameEntity {
 			bombsAvailable.remove(0);
 		}
 	}
-
 
 	/**
 	 * @return true if the player is alive and false if he's dead
@@ -102,6 +96,7 @@ public class Player extends GameMovable implements GameEntity {
 		// TODO Auto-generated method stub
 
 	}
+
 	/**
 	 * do one step of a movement 
 	 */
@@ -109,5 +104,10 @@ public class Player extends GameMovable implements GameEntity {
 	public void oneStepMoveAddedBehavior() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	@Override
+	public boolean isMovable(){
+		return true;
 	}
 }

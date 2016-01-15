@@ -1,8 +1,8 @@
 package entity;
 
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.Rectangle;
+import java.net.URL;
 import java.util.TimerTask;
 
 import gameframework.drawing.Drawable;
@@ -15,40 +15,43 @@ import gameframework.motion.blocking.MoveBlocker;
 public class BombExplosion extends TimerTask implements GameEntity, MoveBlocker, Drawable {
 
 	protected GameData data;
-	protected Point position;
 	protected GameCanvas canvas;
 	protected DrawableImage img;
+	protected Player player;
+	
+	URL url = BombExplosion.class.getResource("/images/level/Explode.png");
 	
 	/**
 	 * create a new BombExplosion
 	 * @param data : GameData who contains informations of the game
 	 */
-	public BombExplosion(GameData data){
+	public BombExplosion(GameData data,Player p){
 		this.data = data;
 		this.canvas = data.getCanvas();
-		this.img = new DrawableImage("/images/level1/explode.gif", this.canvas);
+		this.img = new DrawableImage(url, this.canvas);
+		this.player = p;
 	}
 	
 	/**
-	 * give the bounding box of the explosion
+	 * give the bounding box of the bomb
 	 * @return Rectangle : the bounding box
 	 */
 	@Override
 	public Rectangle getBoundingBox() {
 		Rectangle rectangle = new Rectangle(this.img.getWidth(), this.img.getHeight());
-		rectangle.setLocation(position.x, position.y);
+		rectangle.setLocation((int) player.getPosition().getX(), (int) player.getPosition().getY());
 		return rectangle;
 	}
-
 	/**
-	 * draw the explosion with the Graphics g, the image and the coordinates of it.
+	 * draw the bomb with the Graphics g, the image and the coordinates of the bomb.
 	 * @param g : Graphics
 	 */
 	@Override
 	public void draw(Graphics g) {
-		this.canvas.drawImage(g, this.img.getImage(), this.position.x, this.position.y);		
+		this.canvas.drawImage(g, this.img.getImage(), (int) player.getPosition().getX(),
+				(int) player.getPosition().getY());
 	}
-
+	
 	/**
 	 * return if the bomb is movable or not
 	 * @return boolean : false

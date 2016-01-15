@@ -19,7 +19,7 @@ public class Box implements GameEntity, MoveBlocker, Drawable {
 	protected GameCanvas canvas;
 	protected DrawableImage img;
 
-	URL url = Bomb.class.getResource("/images/level/Box.gif");
+	URL url = Bomb.class.getResource("/images/level/Box.png");
 
 	/**
 	 * create a new Box
@@ -61,7 +61,6 @@ public class Box implements GameEntity, MoveBlocker, Drawable {
 	 */
 	@Override
 	public boolean isMovable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

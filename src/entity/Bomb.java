@@ -22,7 +22,7 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 	protected DrawableImage img;
 	protected int radius;
 	protected Player player;
-	URL url = Bomb.class.getResource("/images/level/Bomb.gif");
+	URL url = Bomb.class.getResource("/images/level/Bomb.png");
 
 	/**
 	 * create a new Bomb
@@ -81,7 +81,7 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 	 * start the Timer (before explosion)
 	 */
 	public void startTimer(){
-		BombExplosion task = new BombExplosion(this.data);
+		BombExplosion task = new BombExplosion(this.data,this.player);
 		timer.schedule(task, 2000);
 	}
 

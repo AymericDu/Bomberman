@@ -18,7 +18,7 @@ public class Wall implements GameEntity, MoveBlocker, Drawable {
 	protected GameCanvas canvas;
 	protected Point pos;
 	
-	URL url = Wall.class.getResource("/images/level/wall.gif");
+	URL url = Wall.class.getResource("/images/level/Wall.png");
 
 	/**
 	 * create a new Wall
@@ -29,7 +29,6 @@ public class Wall implements GameEntity, MoveBlocker, Drawable {
 	 */
 	public Wall(GameData data, int x, int y) {
 		this.canvas = data.getCanvas();
-		Wall.class.getResource("");
 		this.img = new DrawableImage(url,this.canvas);
 		this.pos = new Point(x, y);
 	}
@@ -60,7 +59,6 @@ public class Wall implements GameEntity, MoveBlocker, Drawable {
 	 */
 	@Override
 	public boolean isMovable() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

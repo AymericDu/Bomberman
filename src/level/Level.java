@@ -5,17 +5,18 @@ import java.util.Random;
 import entity.Box;
 import entity.Player;
 import entity.Wall;
+import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
 
-public class Levels extends GameLevelDefaultImpl {
+public class Level extends GameLevelDefaultImpl {
 
 	protected Player player1, player2;
 	protected int rows;
 	protected int columns;
 	protected int spriteSize;
 
-	public Levels(GameData data) {
+	public Level(GameData data) {
 		super(data);
 		this.rows = this.data.getConfiguration().getNbRows();
 		this.columns = this.data.getConfiguration().getNbColumns();
@@ -30,6 +31,7 @@ public class Levels extends GameLevelDefaultImpl {
 		this.player1 = new Player(data, 0, 0);
 		this.player2 = new Player(data, this.data.getConfiguration().getNbColumns() - 1,
 				this.data.getConfiguration().getNbRows() - 1);
+		this.gameBoard = new GameUniverseViewPortDefaultImpl(this.data);
 		this.universe.addGameEntity(this.player1);
 		this.universe.addGameEntity(this.player2);
 		this.createWalls();
