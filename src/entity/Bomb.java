@@ -22,7 +22,7 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 	protected DrawableImage img;
 	protected int radius;
 	protected Player player;
-	URL url = Bomb.class.getResource("/images/level1/Bomb.gif");
+	URL url = Bomb.class.getResource("/images/level/Bomb.gif");
 
 	/**
 	 * create a new Bomb

@@ -19,7 +19,7 @@ public class Box implements GameEntity, MoveBlocker, Drawable {
 	protected GameCanvas canvas;
 	protected DrawableImage img;
 
-	URL url = Bomb.class.getResource("/images/level1/Box.gif");
+	URL url = Bomb.class.getResource("/images/level/Box.gif");
 
 	/**
 	 * create a new Box

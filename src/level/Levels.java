@@ -4,9 +4,9 @@ import java.util.Random;
 
 import entity.Box;
 import entity.Player;
+import entity.Wall;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
-import uid.Wall;
 
 public class Levels extends GameLevelDefaultImpl {
 

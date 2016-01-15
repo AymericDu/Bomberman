@@ -1,8 +1,9 @@
-package uid;
+package entity;
 
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.net.URL;
 
 import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
@@ -16,6 +17,8 @@ public class Wall implements GameEntity, MoveBlocker, Drawable {
 	protected DrawableImage img;
 	protected GameCanvas canvas;
 	protected Point pos;
+	
+	URL url = Wall.class.getResource("/images/level/wall.gif");
 
 	/**
 	 * create a new Wall
@@ -27,7 +30,7 @@ public class Wall implements GameEntity, MoveBlocker, Drawable {
 	public Wall(GameData data, int x, int y) {
 		this.canvas = data.getCanvas();
 		Wall.class.getResource("");
-		this.img = new DrawableImage("/resources/level1/limitelvl1.gif", this.canvas);
+		this.img = new DrawableImage(url,this.canvas);
 		this.pos = new Point(x, y);
 	}
 

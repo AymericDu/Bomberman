@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import entity.Wall;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
-import uid.Wall;
 
 public class WallTest {
 
