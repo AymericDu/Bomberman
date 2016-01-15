@@ -10,22 +10,16 @@ public class LevelsTest {
 
 	GameConfiguration configuration;
 	GameData data;
-	Levels myLevels;
+	Level level;
 
 	@Before
 	public void create() {
-		int nbRows = 20;
-		int nbColumns = 20;
-		int spriteSize = 20;
-		int nbLives = 20;
-		GameConfiguration configuration = new GameConfiguration(nbRows, nbColumns, spriteSize, nbLives);
-		GameData data = new GameData(configuration);
-		Levels myLevels = new Levels(data);
-		myLevels.createWalls();
+		configuration = new GameConfiguration(20,20,20,20);
+		data = new GameData(configuration);
+		level = new Level(data);
 	}
 
-	@Test
-	public void mytest() {
+	public void createWallsTest(){
+		level.createWalls();
 	}
-
 }
