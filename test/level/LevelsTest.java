@@ -19,7 +19,10 @@ public class LevelsTest {
 		level = new Level(data);
 	}
 
+<<<<<<< HEAD
 	@Test
+=======
+>>>>>>> ca82e9f203be472a9daacea2b2b8fc21590ceb62
 	public void createWallsTest(){
 		level.createWalls();
 	}
