@@ -8,6 +8,7 @@ import entity.Wall;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
+import uid.BombermanUniverseViewPort;
 
 public class Level extends GameLevelDefaultImpl {
 
@@ -31,11 +32,10 @@ public class Level extends GameLevelDefaultImpl {
 		this.player1 = new Player(data, 0, 0);
 		this.player2 = new Player(data, this.data.getConfiguration().getNbColumns() - 1,
 				this.data.getConfiguration().getNbRows() - 1);
-		this.gameBoard = new GameUniverseViewPortDefaultImpl(this.data);
+		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		this.universe.addGameEntity(this.player1);
 		this.universe.addGameEntity(this.player2);
 		this.createWalls();
-		// Initialy we put only 10 boxes
 		this.spawnBox(10);
 	}
 
