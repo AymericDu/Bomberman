@@ -9,20 +9,16 @@ import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
 public class BoxTest {
-
-	protected GameConfiguration myGameConfiguration;
-	protected GameData data;
-	protected Box boxTest;
-
-	@Before
-	public void create() {
-		GameConfiguration myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
-		GameData data = new GameData(myGameConfiguration);
-		Box boxTest = new Box(data, 3, 3);
-	}
+	
+	Box boxTest;
+	GameData data;
+	GameConfiguration myGameConfiguration;
 
 	@Test
 	public void getBoundingBoxTest() {
+		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
+		data = new GameData(myGameConfiguration);
+		boxTest = new Box(data,1,1);
 		assertNotNull(boxTest.getBoundingBox());
 	}
 }
