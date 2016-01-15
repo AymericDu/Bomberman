@@ -90,12 +90,18 @@ public class Player extends GameMovable implements GameEntity {
 	}
 
 
+	/**
+	 * draw the player with the Graphics g, the image and the coordinates of him.
+	 * @param g : Graphics
+	 */
 	@Override
 	public void draw(Graphics arg0) {
 		// TODO Auto-generated method stub
 
 	}
-
+	/**
+	 * do one step of a movement 
+	 */
 	@Override
 	public void oneStepMoveAddedBehavior() {
 		// TODO Auto-generated method stub
