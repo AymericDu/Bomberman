@@ -79,8 +79,8 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 	 * start the Timer (before explosion)
 	 */
 	public void startTimer(){
-		//BombExplosion task = new BombExplosion(this.data, this.radius);
-		//timer.schedule(task, 2000);
+		BombExplosion task = new BombExplosion(this.data);
+		timer.schedule(task, 2000);
 	}
 
 	/**
