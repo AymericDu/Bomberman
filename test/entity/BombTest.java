@@ -16,7 +16,7 @@ public class BombTest {
 	public void create() {
 		GameConfiguration myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		GameData data = new GameData(myGameConfiguration);
-		Bomb b = new Bomb(data, 1, 1, 2);
+		Bomb b = new Bomb(data, 2, new Player(data, 1,1));
  
 	}
 
