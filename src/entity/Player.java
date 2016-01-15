@@ -2,6 +2,7 @@ package entity;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +39,10 @@ public class Player extends GameMovable implements GameEntity {
 		this.canvas = data.getCanvas(); // bomberman on the canvas
 		this.spriteSize = data.getConfiguration().getSpriteSize();// size of
 																	// bomberman
+		URL sprite = Player.class.getResource("/images/level/BombermanSprite.png");
+
 		this.spriteManager = new SpriteManagerDefaultImpl(
-				new DrawableImage("/resources/finalGifIcons/BombermanBas.gif", canvas), this.spriteSize, 3);
+				new DrawableImage(sprite, canvas), this.spriteSize, 4);
 		this.x = x;
 		this.y = y;
 		this.isAlive = true;

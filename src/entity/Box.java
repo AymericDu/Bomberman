@@ -3,6 +3,7 @@ package entity;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.net.URL;
 
 import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
@@ -18,11 +19,13 @@ public class Box implements GameEntity, MoveBlocker, Drawable {
 	protected GameCanvas canvas;
 	protected DrawableImage img;
 
+	URL url = Bomb.class.getResource("/images/level1/Box.gif");
+
 	public Box(GameData data, int x, int y) {
 		this.data = data;
 		this.canvas = data.getCanvas();
 		this.position = new Point(x, y);
-		this.img = new DrawableImage("/images/level1/caisselvl1.gif", this.canvas);
+		this.img = new DrawableImage(url, this.canvas);
 	}
 
 	@Override

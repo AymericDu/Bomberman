@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.Timer;
 
 import gameframework.drawing.Drawable;
@@ -21,12 +22,13 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 	protected DrawableImage img;
 	protected int radius;
 	protected Player player;
+	URL url = Bomb.class.getResource("/images/level1/Bomb.gif");
 
 	public Bomb(GameData data, int radius, Player p) {
 		this.data = data;
 		this.canvas = data.getCanvas();
 		this.radius = radius;
-		this.img = new DrawableImage("/images/level1/caisselvl1.gif",this.canvas);
+		this.img = new DrawableImage(url,this.canvas);
 		this.timer = new Timer();
 		this.player = p;
 	}
