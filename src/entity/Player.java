@@ -1,8 +1,9 @@
 package entity;
 
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.List;
 
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
@@ -19,10 +20,10 @@ public class Player extends GameMovable implements GameEntity {
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
-	protected Point direction;
 	protected int x;
 	protected int y;
-	protected int life;
+	protected boolean isAlive;
+	protected List<Bomb> bombsAvailable = new ArrayList<Bomb>();
 
 	/**
 	 * Constructor of player class, allow to create our player
@@ -38,15 +39,11 @@ public class Player extends GameMovable implements GameEntity {
 		this.spriteSize = data.getConfiguration().getSpriteSize();// size of
 																	// bomberman
 		this.spriteManager = new SpriteManagerDefaultImpl(
-				new DrawableImage("/resources/finalGifIcons/BombermanBas.gif", canvas), this.spriteSize, 3); // give
-																												// the
-																												// gif
-																												// of
-																												// bomberman
-		this.direction = new Point(0, 1); // direction of bomberman
-		// this.setLocation(x, y); // start position of bomberman doesn't work
-		// .. don't know why
-		this.life = 1;
+				new DrawableImage("/resources/finalGifIcons/BombermanBas.gif", canvas), this.spriteSize, 3);
+		this.x = x;
+		this.y = y;
+		this.isAlive = true;
+		this.bombsAvailable.add(new Bomb(this.data, 2, this));
 
 	}
 
@@ -69,84 +66,38 @@ public class Player extends GameMovable implements GameEntity {
 		return rectangle;
 	}
 
-	/**
-	 * add sprite change if our player move
-	 **/
-	@Override
-	public void oneStepMoveAddedBehavior() {
-		Point d = this.moveDriver.getSpeedVector(this).getDirection();
-		if (!direction.equals(d)) {
-			// player go right
-			if (d.equals(new Point(1, 0))) {
-				this.spriteManager.setType("right");
-				direction = d;
-				// player go left
-			} else if (d.equals(new Point(-1, 0))) {
-				this.spriteManager.setType("left");
-				direction = d;
-				// player go on top
-			} else if (d.equals(new Point(0, -1))) {
-				this.spriteManager.setType("up");
-				direction = d;
-				// player go on bottom
-			} else if (d.equals(new Point(0, 1))) {
-				this.spriteManager.setType("down");
-				direction = d;
-			}
-		}
-		// player don't move
-		if (!(d.equals(new Point(0, 0)))) {
-			this.spriteManager.increment();
-		}
-	}
 
-	/**
-	 * @return the position of our player
-	 */
-	@Override
-	public Point getPosition() {
-		return this.direction;
-	}
+
+
 
 	/**
 	 * drop a bomb in the position of the player
 	 */
 	public void dropBomb() {
-		// A COMPLETER
+		if (!this.bombsAvailable.isEmpty()) {
+			Bomb bombToDrop = this.bombsAvailable.get(0);
+			// bombToDrop.putBomb(this.x, this.y);
+			bombsAvailable.remove(0);
+		}
 	}
 
-	/**
-	 * 
-	 * @return the life of the Player
-	 */
-	public int getLife() {
-		return this.life;
-	}
 
 	/**
-	 * remove the life of the player if he is hit by the bomb
-	 * 
-	 * @param player
-	 *            the player who is hit
-	 * @param b
-	 *            a Bomb
+	 * @return true if the player is alive and false if he's dead
 	 */
-	public void isHit(Player player, Bomb b) {
-		player.life = player.life - b.getPower();
+	public boolean isAlive() {
+		return isAlive;
 	}
 
-	/**
-	 * @return if the player is dead or not
-	 */
-	public boolean isDeadPlayer() {
-		if (this.life < 0) {
-			return true;
-		} else
-			return false;
-	}
 
 	@Override
 	public void draw(Graphics arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void oneStepMoveAddedBehavior() {
 		// TODO Auto-generated method stub
 
 	}

@@ -1,12 +1,10 @@
 package entity;
 
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
@@ -21,16 +19,16 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 	protected GameData data;
 	protected GameCanvas canvas;
 	protected DrawableImage img;
-	protected Point position;
 	protected int radius;
+	protected Player player;
 
-	public Bomb(GameData data, int x, int y, int radius) {
+	public Bomb(GameData data, int radius, Player p) {
 		this.data = data;
 		this.canvas = data.getCanvas();
-		this.position = new Point(x,y);
 		this.radius = radius;
 		this.img = new DrawableImage("/images/level1/caisselvl1.gif",this.canvas);
 		this.timer = new Timer();
+		this.player = p;
 	}
 
 	public int getRadius() {
@@ -40,13 +38,14 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 	@Override
 	public Rectangle getBoundingBox() {
 		Rectangle rectangle = new Rectangle(this.img.getWidth(), this.img.getHeight());
-		rectangle.setLocation(position.x, position.y);		
+		rectangle.setLocation((int) player.getPosition().getX(), (int) player.getPosition().getY());
 		return rectangle;
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		this.canvas.drawImage(g, this.img.getImage(), this.position.x, this.position.y);
+		this.canvas.drawImage(g, this.img.getImage(), (int) player.getPosition().getX(),
+				(int) player.getPosition().getY());
 	}
 
 	@Override
