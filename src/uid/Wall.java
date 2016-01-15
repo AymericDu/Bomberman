@@ -19,6 +19,7 @@ public class Wall implements GameEntity, MoveBlocker, Drawable {
 
 	public Wall(GameData data, int x, int y) {
 		this.canvas = data.getCanvas();
+		Wall.class.getResource("");
 		this.img = new DrawableImage("/resources/level1/limitelvl1.gif", this.canvas);
 		this.pos = new Point(x, y);
 	}
