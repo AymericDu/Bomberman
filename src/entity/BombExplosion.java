@@ -19,10 +19,9 @@ public class BombExplosion extends TimerTask implements GameEntity, MoveBlocker,
 	protected GameCanvas canvas;
 	protected DrawableImage img;
 	
-	public BombExplosion(GameData data, int x, int y){
+	public BombExplosion(GameData data){
 		this.data = data;
 		this.canvas = data.getCanvas();
-		this.position = new Point(x,y);
 		this.img = new DrawableImage("/images/level1/explode.gif", this.canvas);
 	}
 	
@@ -37,7 +36,8 @@ public class BombExplosion extends TimerTask implements GameEntity, MoveBlocker,
 	public void draw(Graphics g) {
 		this.canvas.drawImage(g, this.img.getImage(), this.position.x, this.position.y);		
 	}
-
+	
+	
 	@Override
 	public boolean isMovable() {
 		return false;
@@ -45,7 +45,7 @@ public class BombExplosion extends TimerTask implements GameEntity, MoveBlocker,
 
 	@Override
 	public void run() {
-		//TO-DO
+		System.out.println("bonjour je m'appel pierre");
 	}
 
 }
