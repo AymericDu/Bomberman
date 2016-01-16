@@ -18,14 +18,16 @@ import gameframework.motion.MoveStrategyKeyboard;
 
 public class Player extends GameMovable implements GameEntity {
 
-	protected SpriteManagerDefaultImpl spriteManager;
+	//protected SpriteManagerDefaultImpl spriteManager;
+	protected DrawableImage img;
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
 	protected Point position;
 	protected boolean isAlive;
 	protected List<Bomb> bombsAvailable = new ArrayList<Bomb>();
-
+	URL url = Player.class.getResource("/images/level/BombermanTest.png");
+	
 	/**
 	 * Constructor of player class, allow to create our player
 	 * 
@@ -36,17 +38,13 @@ public class Player extends GameMovable implements GameEntity {
 	 */
 	public Player(GameData data, int x, int y) {
 		this.data = data;
-		this.canvas = data.getCanvas(); // bomberman on the canvas
-		this.spriteSize = data.getConfiguration().getSpriteSize();// size of
-																	// bomberman
-		URL sprite = Player.class.getResource("/images/level/BombermanSprite.png");
-
-		this.spriteManager = new SpriteManagerDefaultImpl(
-				new DrawableImage(sprite, canvas), this.spriteSize, 4);
+		this.canvas = data.getCanvas(); 
+		this.spriteSize = data.getConfiguration().getSpriteSize();
+		//this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(sprite, canvas), this.spriteSize, 4);
+		this.img = new DrawableImage(url,this.canvas);
 		this.position = new Point(x,y);
 		this.isAlive = true;
 		this.bombsAvailable.add(new Bomb(this.data, 2, this));
-
 	}
 
 	/**
@@ -92,9 +90,8 @@ public class Player extends GameMovable implements GameEntity {
 	 * @param g : Graphics
 	 */
 	@Override
-	public void draw(Graphics arg0) {
-		// TODO Auto-generated method stub
-
+	public void draw(Graphics g) {
+		this.canvas.drawImage(g, this.img.getImage(), this.position.x, this.position.y);
 	}
 
 	/**

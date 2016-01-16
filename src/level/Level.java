@@ -5,7 +5,6 @@ import java.util.Random;
 import entity.Box;
 import entity.Player;
 import entity.Wall;
-import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
 import uid.BombermanUniverseViewPort;
@@ -29,14 +28,13 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	@Override
 	protected void init() {
-		this.player1 = new Player(data,1,1);
-		this.player2 = new Player(data, this.data.getConfiguration().getNbColumns() - 1,
-				this.data.getConfiguration().getNbRows() - 1);
+		this.player1 = new Player(this.data, 1 * this.spriteSize, 1 * this.spriteSize);
+		this.player2 = new Player(this.data, (this.data.getConfiguration().getNbColumns() - 2) * this.spriteSize, (this.data.getConfiguration().getNbRows() - 2) * this.spriteSize);
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
-		this.universe.addGameEntity(this.player1);
-		this.universe.addGameEntity(this.player2);
 		this.createWalls();
 		this.spawnBox(10);
+		this.universe.addGameEntity(this.player1);
+		this.universe.addGameEntity(this.player2);
 	}
 
 	/**
