@@ -13,29 +13,30 @@ import gameframework.gui.GameWindow;
 
 public class Main extends GameDefaultImpl {
 
-	URL url = Main.class.getResource("/sounds/GameSound.wav");
-	AudioClip clip = Applet.newAudioClip(url);
+	protected AudioClip clip;
 
 	public Main(GameData data) {
 		super(data);
+		URL url = Main.class.getResource("/sounds/GameSound.wav");
+		this.clip = Applet.newAudioClip(url);
 		this.data.addLevel(new Level(data));
 		this.startSong();
+		GameWindow windows = new GameWindow("Bomberman", data.getCanvas(), data.getConfiguration());
+		windows.createGUI();
 	}
 
 	public void startSong() {
-		clip.play();
+		this.clip.play();
 	}
 
 	public void stopSong() {
-		clip.stop();
+		this.clip.stop();
 	}
 
 	public static void main(String[] args) {
 		GameConfiguration config = new GameConfiguration(20, 40, 32, 8);
 		GameData data = new GameData(config);
 		Game main = new Main(data);
-		GameWindow windows = new GameWindow("Bomberman", data.getCanvas(), config);
-		windows.createGUI();
 
 		main.start();
 	}

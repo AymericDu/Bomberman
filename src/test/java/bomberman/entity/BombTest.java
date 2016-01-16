@@ -2,6 +2,8 @@ package bomberman.entity;
 
 import static org.junit.Assert.assertEquals;
 
+import java.awt.Point;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +20,7 @@ public class BombTest {
 	public void create() {
 		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
-		b = new Bomb(data, 2, new Player(data, 1, 1));
+		b = new Bomb(data, new Point(0, 0), 2);
 	}
 
 	@Test

@@ -25,7 +25,6 @@ public class Player extends GameMovable implements GameEntity {
 	protected Point position;
 	protected boolean isAlive;
 	protected List<Bomb> bombsAvailable = new ArrayList<Bomb>();
-	URL url = Player.class.getResource("/images/level/BombermanTest.png");
 
 	/**
 	 * Constructor of player class, allow to create our player
@@ -41,10 +40,11 @@ public class Player extends GameMovable implements GameEntity {
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		// this.spriteManager = new SpriteManagerDefaultImpl(new
 		// DrawableImage(sprite, canvas), this.spriteSize, 4);
+		URL url = Player.class.getResource("/images/level/BombermanTest.png");
 		this.img = new DrawableImage(url, this.canvas);
 		this.position = new Point(x, y);
 		this.isAlive = true;
-		this.bombsAvailable.add(new Bomb(this.data, 2, this));
+		this.bombsAvailable.add(new Bomb(this.data, this.getPosition(), 2));
 	}
 
 	/**

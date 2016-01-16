@@ -1,5 +1,6 @@
 package bomberman.level;
 
+import java.awt.Point;
 import java.util.Random;
 
 import bomberman.entity.Box;
@@ -33,7 +34,7 @@ public class Level extends GameLevelDefaultImpl {
 				(this.data.getConfiguration().getNbRows() - 2) * this.spriteSize);
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		this.createWalls();
-		this.spawnBox(10);
+		this.spawnBox(100);
 		this.universe.addGameEntity(this.player1);
 		this.universe.addGameEntity(this.player2);
 	}
@@ -53,7 +54,7 @@ public class Level extends GameLevelDefaultImpl {
 				random_y = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbRows() - 1));
 			}
 
-			Box newBox = new Box(data, random_x, random_y);
+			Box newBox = new Box(data, new Point(random_x, random_y));
 			this.universe.addGameEntity(newBox);
 		}
 	}
@@ -71,11 +72,11 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	protected void createLeftAndRightWalls() {
 		for (int i = 0; i < rows; i++) {
-			this.universe.addGameEntity(new Wall(data, 0, i * this.spriteSize));
+			this.universe.addGameEntity(new Wall(data, new Point(0, i * this.spriteSize)));
 		}
 		for (int j = rows; j > 0; j--) {
-			this.universe.addGameEntity(new Wall(data,
-					this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1), this.spriteSize * j));
+			this.universe.addGameEntity(new Wall(data, new Point(
+					this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1), this.spriteSize * j)));
 		}
 	}
 
@@ -84,11 +85,11 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	protected void createBottomAndTopWalls() {
 		for (int i = 0; i < columns; i++) {
-			this.universe.addGameEntity(new Wall(data, this.spriteSize * i,
-					this.spriteSize * (this.data.getConfiguration().getNbRows() - 1)));
+			this.universe.addGameEntity(new Wall(data,
+					new Point(this.spriteSize * i, this.spriteSize * (this.data.getConfiguration().getNbRows() - 1))));
 		}
 		for (int j = columns; j > 0; j--) {
-			this.universe.addGameEntity(new Wall(data, this.spriteSize * j, 0));
+			this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * j, 0)));
 		}
 	}
 }

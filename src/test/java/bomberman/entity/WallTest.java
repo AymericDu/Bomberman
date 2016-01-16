@@ -2,6 +2,8 @@ package bomberman.entity;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.awt.Point;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,7 +20,7 @@ public class WallTest {
 	public void create() {
 		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
-		wallTest = new Wall(data, 20, 20);
+		wallTest = new Wall(data, new Point(0, 0));
 	}
 
 	@Test
