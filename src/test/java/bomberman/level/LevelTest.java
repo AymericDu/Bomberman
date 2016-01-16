@@ -1,4 +1,4 @@
-package level;
+package bomberman.level;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,13 +14,13 @@ public class LevelTest {
 
 	@Before
 	public void create() {
-		configuration = new GameConfiguration(20,20,20,20);
+		configuration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(configuration);
 		level = new Level(data);
 	}
 
 	@Test
-	public void createWallsTest(){
+	public void createWallsTest() {
 		level.createWalls();
 	}
 }

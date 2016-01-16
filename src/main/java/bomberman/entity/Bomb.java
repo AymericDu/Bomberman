@@ -1,4 +1,4 @@
-package entity;
+package bomberman.entity;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -14,7 +14,7 @@ import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.motion.blocking.MoveBlocker;
 
-public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener {
+public class Bomb implements GameEntity, MoveBlocker, Drawable, ActionListener {
 
 	protected Timer timer;
 	protected GameData data;
@@ -26,22 +26,28 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 
 	/**
 	 * create a new Bomb
-	 * @param data : Gamedata contains informations of the game
-	 * @param x : int the abscissa of the bomb
-	 * @param y : int the ordinate of the bomb
-	 * @param radius : int the radius
+	 * 
+	 * @param data
+	 *            : Gamedata contains informations of the game
+	 * @param x
+	 *            : int the abscissa of the bomb
+	 * @param y
+	 *            : int the ordinate of the bomb
+	 * @param radius
+	 *            : int the radius
 	 */
 	public Bomb(GameData data, int radius, Player p) {
 		this.data = data;
 		this.canvas = data.getCanvas();
 		this.radius = radius;
-		this.img = new DrawableImage(url,this.canvas);
+		this.img = new DrawableImage(url, this.canvas);
 		this.timer = new Timer();
 		this.player = p;
 	}
 
 	/**
 	 * give the radius of the current bomb
+	 * 
 	 * @return int : the radius of the bomb
 	 */
 	public int getRadius() {
@@ -50,6 +56,7 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 
 	/**
 	 * give the bounding box of the bomb
+	 * 
 	 * @return Rectangle : the bounding box
 	 */
 	@Override
@@ -58,9 +65,13 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 		rectangle.setLocation((int) player.getPosition().getX(), (int) player.getPosition().getY());
 		return rectangle;
 	}
+
 	/**
-	 * draw the bomb with the Graphics g, the image and the coordinates of the bomb.
-	 * @param g : Graphics
+	 * draw the bomb with the Graphics g, the image and the coordinates of the
+	 * bomb.
+	 * 
+	 * @param g
+	 *            : Graphics
 	 */
 	@Override
 	public void draw(Graphics g) {
@@ -70,18 +81,19 @@ public class Bomb implements GameEntity,  MoveBlocker, Drawable, ActionListener 
 
 	/**
 	 * return if the bomb is movable or not
+	 * 
 	 * @return boolean : false
 	 */
 	@Override
 	public boolean isMovable() {
 		return false;
 	}
-	
+
 	/**
 	 * start the Timer (before explosion)
 	 */
-	public void startTimer(){
-		BombExplosion task = new BombExplosion(this.data,this.player);
+	public void startTimer() {
+		BombExplosion task = new BombExplosion(this.data, this.player);
 		timer.schedule(task, 2000);
 	}
 

@@ -1,4 +1,4 @@
-package entity;
+package bomberman.entity;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -18,22 +18,25 @@ public class BombExplosion extends TimerTask implements GameEntity, MoveBlocker,
 	protected GameCanvas canvas;
 	protected DrawableImage img;
 	protected Player player;
-	
+
 	URL url = BombExplosion.class.getResource("/images/level/Explode.png");
-	
+
 	/**
 	 * create a new BombExplosion
-	 * @param data : GameData who contains informations of the game
+	 * 
+	 * @param data
+	 *            : GameData who contains informations of the game
 	 */
-	public BombExplosion(GameData data,Player p){
+	public BombExplosion(GameData data, Player p) {
 		this.data = data;
 		this.canvas = data.getCanvas();
 		this.img = new DrawableImage(url, this.canvas);
 		this.player = p;
 	}
-	
+
 	/**
 	 * give the bounding box of the bomb
+	 * 
 	 * @return Rectangle : the bounding box
 	 */
 	@Override
@@ -42,18 +45,23 @@ public class BombExplosion extends TimerTask implements GameEntity, MoveBlocker,
 		rectangle.setLocation((int) player.getPosition().getX(), (int) player.getPosition().getY());
 		return rectangle;
 	}
+
 	/**
-	 * draw the bomb with the Graphics g, the image and the coordinates of the bomb.
-	 * @param g : Graphics
+	 * draw the bomb with the Graphics g, the image and the coordinates of the
+	 * bomb.
+	 * 
+	 * @param g
+	 *            : Graphics
 	 */
 	@Override
 	public void draw(Graphics g) {
 		this.canvas.drawImage(g, this.img.getImage(), (int) player.getPosition().getX(),
 				(int) player.getPosition().getY());
 	}
-	
+
 	/**
 	 * return if the bomb is movable or not
+	 * 
 	 * @return boolean : false
 	 */
 	@Override

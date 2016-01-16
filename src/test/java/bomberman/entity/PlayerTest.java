@@ -1,4 +1,4 @@
-package entity;
+package bomberman.entity;
 
 import static org.junit.Assert.assertNotNull;
 

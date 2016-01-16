@@ -1,6 +1,6 @@
-package entity;
+package bomberman.entity;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,22 +8,21 @@ import org.junit.Test;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
-public class BombTest {
+public class BombExplosionTest {
 
-	Bomb b;
 	GameConfiguration myGameConfiguration;
 	GameData data;
+	BombExplosion bombExplosionTest;
 
 	@Before
 	public void create() {
 		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
-		b = new Bomb(data, 2, new Player(data, 1,1));
+		bombExplosionTest = new BombExplosion(data, new Player(data, 1, 1));
 	}
 
 	@Test
-	public void getRadiusTest() {
-		assertEquals(2, b.getRadius());
+	public void getBoundingBoxTest() {
+		assertNotNull(bombExplosionTest.getBoundingBox());
 	}
-
 }

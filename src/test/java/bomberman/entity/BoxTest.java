@@ -1,7 +1,6 @@
-package entity;
+package bomberman.entity;
 
 import static org.junit.Assert.assertNotNull;
-
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,21 +8,21 @@ import org.junit.Test;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
-public class BombExplosionTest {
+public class BoxTest {
 
-	GameConfiguration myGameConfiguration;
+	Box boxTest;
 	GameData data;
-	BombExplosion bombExplosionTest;
+	GameConfiguration myGameConfiguration;
 
 	@Before
-	public void create(){
+	public void create() {
 		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
-		bombExplosionTest = new BombExplosion(data,new Player(data,1,1));
+		boxTest = new Box(data, 0, 0);
 	}
 
 	@Test
 	public void getBoundingBoxTest() {
-		assertNotNull(bombExplosionTest.getBoundingBox());
+		assertNotNull(boxTest.getBoundingBox());
 	}
 }

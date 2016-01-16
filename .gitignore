@@ -10,4 +10,7 @@ desktop.ini
 *.exe
 
 ## Java
-bin
+/bin/
+
+## Maven
+/target/

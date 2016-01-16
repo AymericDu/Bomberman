@@ -1,4 +1,4 @@
-package entity;
+package bomberman.entity;
 
 import java.awt.Graphics;
 import java.awt.Point;
@@ -23,10 +23,15 @@ public class Box implements GameEntity, MoveBlocker, Drawable {
 
 	/**
 	 * create a new Box
-	 * @param data : Gamedata contains informations of the game
-	 * @param x : int the abscissa of the Box
-	 * @param y : int the ordinate of the Box
-	 * @param radius : int the radius
+	 * 
+	 * @param data
+	 *            : Gamedata contains informations of the game
+	 * @param x
+	 *            : int the abscissa of the Box
+	 * @param y
+	 *            : int the ordinate of the Box
+	 * @param radius
+	 *            : int the radius
 	 */
 	public Box(GameData data, int x, int y) {
 		this.data = data;
@@ -37,6 +42,7 @@ public class Box implements GameEntity, MoveBlocker, Drawable {
 
 	/**
 	 * give the bounding box of the box
+	 * 
 	 * @return Rectangle : the bounding box
 	 */
 	@Override
@@ -47,8 +53,11 @@ public class Box implements GameEntity, MoveBlocker, Drawable {
 	}
 
 	/**
-	 * draw the box with the Graphics g, the image and the coordinates of the box.
-	 * @param g : Graphics
+	 * draw the box with the Graphics g, the image and the coordinates of the
+	 * box.
+	 * 
+	 * @param g
+	 *            : Graphics
 	 */
 	@Override
 	public void draw(Graphics g) {
@@ -57,6 +66,7 @@ public class Box implements GameEntity, MoveBlocker, Drawable {
 
 	/**
 	 * return if the box is movable or not
+	 * 
 	 * @return boolean : false
 	 */
 	@Override
