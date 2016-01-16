@@ -12,12 +12,6 @@ public class BombExplosion extends NoMovableEntity implements ActionListener {
 
 	protected Timer timer;
 
-	/**
-	 * create a new BombExplosion
-	 * 
-	 * @param data
-	 *            : GameData who contains informations of the game
-	 */
 	public BombExplosion(GameData data, Point position) {
 		super(data, position, "/images/level/Explode.png");
 		this.timer = new Timer(1000, this);

@@ -13,19 +13,6 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	protected Timer timer;
 	protected int radius;
 
-
-	/**
-	 * create a new Bomb
-	 * 
-	 * @param data
-	 *            : Gamedata contains informations of the game
-	 * @param x
-	 *            : int the abscissa of the bomb
-	 * @param y
-	 *            : int the ordinate of the bomb
-	 * @param radius
-	 *            : int the radius
-	 */
 	public Bomb(GameData data, Point position, int radius) {
 		super(data, position, "/images/level/Bomb.png");
 		this.radius = radius;
