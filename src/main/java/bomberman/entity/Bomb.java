@@ -20,6 +20,15 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		this.timer.setRepeats(false);
 		this.timer.start();
 	}
+	
+	/**
+	 * Drop a new bomb 
+	 * @param position the position where the bomb is dropped
+	 * @return a new bomb 
+	 */
+	public Bomb dropBomb(Point position){
+		return new Bomb(this.data, position,2);
+	}
 
 	/**
 	 * give the radius of the current bomb
