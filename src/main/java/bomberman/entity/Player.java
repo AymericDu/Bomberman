@@ -73,7 +73,7 @@ public class Player extends GameMovable implements GameEntity {
 	public void dropBomb() {
 		if (!this.bombsAvailable.isEmpty()) {
 			Bomb bombToDrop = this.bombsAvailable.get(0);
-			// bombToDrop.putBomb(this.x, this.y);
+			bombToDrop.dropBomb(this.position);
 			bombsAvailable.remove(0);
 		}
 	}
@@ -83,6 +83,13 @@ public class Player extends GameMovable implements GameEntity {
 	 */
 	public boolean isAlive() {
 		return isAlive;
+	}
+	
+	/**
+	 * This function allows to change isAlive in false. It allow to kill the player.
+	 */
+	public void setIsAlive(){
+		this.isAlive= false;
 	}
 
 	/**
