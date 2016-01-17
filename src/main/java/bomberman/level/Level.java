@@ -58,7 +58,15 @@ public class Level extends GameLevelDefaultImpl {
 			this.universe.addGameEntity(newBox);
 		}
 	}
-
+	
+	/**
+	 * Remove a box
+	 * @param b the box that we would remove
+	 */
+	protected void removeBox(Box b){
+		this.universe.removeGameEntity(b);
+	}
+	
 	/**
 	 * Creation of all the walls
 	 */
