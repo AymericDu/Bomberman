@@ -34,9 +34,9 @@ public class Level extends GameLevelDefaultImpl {
 				(this.data.getConfiguration().getNbRows() - 2) * this.spriteSize);
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		this.createWalls();
-		this.spawnBox(100);
+		//this.spawnBox(100);
 		this.universe.addGameEntity(this.player1);
-		this.universe.addGameEntity(this.player2);
+	//	this.universe.addGameEntity(this.player2);
 	}
 
 	/**
@@ -73,6 +73,7 @@ public class Level extends GameLevelDefaultImpl {
 	protected void createWalls() {
 		createLeftAndRightWalls();
 		createBottomAndTopWalls();
+		createWallsOnBoard();
 	}
 
 	/**
@@ -99,5 +100,30 @@ public class Level extends GameLevelDefaultImpl {
 		for (int j = columns; j > 0; j--) {
 			this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * j, 0)));
 		}
+	}
+	
+	/**
+	 * Creation of on-board walls
+	 */
+	protected void createWallsOnBoard(){
+		int i = 2;
+		while(i<rows){
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 2, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 4, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 6, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 8, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 10, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 12, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 14, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 16, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 16, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 18, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 20, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 22, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 24, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 26, i*this.spriteSize)));
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 28, i*this.spriteSize)));
+				i = i + 2;
+			}
 	}
 }
