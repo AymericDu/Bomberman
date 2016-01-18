@@ -2,6 +2,7 @@ package bomberman.entity;
 
 import static org.junit.Assert.*;
 
+import java.awt.Graphics;
 import java.awt.Point;
 
 import org.junit.Before;
@@ -9,6 +10,8 @@ import org.junit.Test;
 
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
+import gameframework.motion.MoveStrategy;
+import gameframework.motion.MoveStrategyKeyboard;
 
 public class PlayerTest {
 
@@ -34,4 +37,16 @@ public class PlayerTest {
 		playerTest.kill();
 		assertEquals(false, playerTest.getIsAlive());
 	}
+	
+	@Test
+	public void getMoveStrategyTest(){
+		MoveStrategy strategy = new MoveStrategyKeyboard();
+		assertSame(strategy.getClass(),playerTest.getMoveStrategy().getClass());
+	}
+	
+	@Test
+	public void isMovableTest(){
+		assertEquals(true, playerTest.isMovable());
+	}
+	
 }
