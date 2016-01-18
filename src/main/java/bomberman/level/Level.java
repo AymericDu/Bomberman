@@ -109,11 +109,13 @@ public class Level extends GameLevelDefaultImpl {
 		int i = 2;
 		int j = 2;
 		while(i<rows){
-			while(j< columns){
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * j, i*this.spriteSize)));
-				j = j + 2;
+			while (j < columns){
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * j, this.spriteSize * i)));
+				j = j +2;
 			}
+			j =0;
 			i = i +2;
-		}
+			}
+		
 	}
 }
