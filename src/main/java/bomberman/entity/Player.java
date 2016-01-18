@@ -118,18 +118,10 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	}
 	
 	/**
-	 * Change the sprite direction
+	 * @return the sprite manager
 	 */
-	protected void changeSpriteDirection() {
-		if (direction.equals(new Point(1, 0))) {
-			this.spriteManager.setType("right");
-		} else if (direction.equals(new Point(-1, 0))) {
-			this.spriteManager.setType("left");
-		} else if (direction.equals(new Point(0, -1))) {
-			this.spriteManager.setType("up");
-		} else if (direction.equals(new Point(0, 1))) {
-			this.spriteManager.setType("down");
-		}
+	public SpriteManagerDefaultImpl getSpriteManager(){
+		return this.spriteManager;
 	}
 
 	/**
