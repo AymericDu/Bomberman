@@ -2,6 +2,8 @@ package bomberman.uid;
 
 import java.applet.Applet;
 import java.applet.AudioClip;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.net.URL;
 
 import bomberman.level.Level;
@@ -11,7 +13,7 @@ import gameframework.game.GameData;
 import gameframework.game.GameDefaultImpl;
 import gameframework.gui.GameWindow;
 
-public class Main extends GameDefaultImpl {
+public class Main extends GameDefaultImpl implements KeyListener{
 
 	protected AudioClip clip;
 
@@ -20,7 +22,7 @@ public class Main extends GameDefaultImpl {
 		URL url = Main.class.getResource("/sounds/GameSound.wav");
 		this.clip = Applet.newAudioClip(url);
 		this.data.addLevel(new Level(data));
-		//this.startSong();
+		this.startSong();
 		GameWindow windows = new GameWindow("Bomberman", data.getCanvas(), data.getConfiguration());
 		windows.createGUI();
 	}
@@ -33,6 +35,26 @@ public class Main extends GameDefaultImpl {
 		this.clip.stop();
 	}
 
+	// NOTHING TO DO HERE
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	// NOTHING TO DO HERE
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		char key =  e.getKeyChar();
+			if (key == 'm'){
+				this.stopSong();
+			}
+	}
+	
 	public static void main(String[] args) {
 		GameConfiguration config = new GameConfiguration(23, 31, 32, 8);
 		GameData data = new GameData(config);
@@ -40,4 +62,5 @@ public class Main extends GameDefaultImpl {
 
 		main.start();
 	}
+
 }
