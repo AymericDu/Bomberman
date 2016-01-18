@@ -9,6 +9,7 @@ import java.util.List;
 
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
+import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
@@ -19,8 +20,8 @@ import gameframework.motion.MoveStrategyKeyboard8Dir;
 
 public class Player extends GameMovable implements GameEntity {
 
-	// protected SpriteManagerDefaultImpl spriteManager;
-	protected DrawableImage img;
+	protected SpriteManagerDefaultImpl spriteManager;
+	//protected DrawableImage img;
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
@@ -44,11 +45,10 @@ public class Player extends GameMovable implements GameEntity {
 		this.data = data;
 		this.canvas = data.getCanvas();
 		this.spriteSize = data.getConfiguration().getSpriteSize();
-		// this.spriteManager = new SpriteManagerDefaultImpl(new
-		// DrawableImage(sprite, canvas), this.spriteSize, 4);
-		URL url = Player.class.getResource("/images/level/BombermanBas.png");
-		this.img = new DrawableImage(url, this.canvas);
-		
+		URL url = Player.class.getResource("/images/level/BombermanSprite.png");
+//		this.img = new DrawableImage(url, this.canvas);
+		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(url, canvas), this.spriteSize, 5);
+
 		this.isAlive = true;
 		this.bombsAvailable.add(new Bomb(this.data, this.getPosition(), 2));
 
@@ -120,7 +120,7 @@ public class Player extends GameMovable implements GameEntity {
 	 */
 	@Override
 	public void draw(Graphics g) {
-		this.canvas.drawImage(g, this.img.getImage(), this.position.x, this.position.y);
+		this.spriteManager.draw(g, position);
 	}
 
 	/**
