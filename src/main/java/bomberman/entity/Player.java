@@ -88,7 +88,7 @@ public class Player extends GameMovable implements GameEntity {
 	/**
 	 * This function allows to change isAlive in false. It allow to kill the player.
 	 */
-	public void setIsAlive(){
+	public void kill(){
 		this.isAlive= false;
 	}
 
