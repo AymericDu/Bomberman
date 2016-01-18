@@ -3,6 +3,8 @@ package bomberman.entity;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +18,14 @@ import gameframework.motion.GameMovable;
 import gameframework.motion.MoveStrategy;
 import gameframework.motion.MoveStrategyKeyboard;
 
-public class Player extends GameMovable implements GameEntity {
+public class Player extends GameMovable implements GameEntity, KeyListener {
 
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
+	
+	protected Point direction;
 	
 	protected boolean isAlive;
 	protected List<Bomb> bombsAvailable = new ArrayList<Bomb>();
@@ -46,6 +50,8 @@ public class Player extends GameMovable implements GameEntity {
 		this.bombsAvailable.add(new Bomb(this.data, this.getPosition(), 2));
 
 		this.setPosition(position);
+		this.direction = new Point(0, 1);
+		this.initSpriteManager();
 
 		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard(false);
 		keyboard.getSpeedVector().setSpeed(32);
@@ -89,15 +95,41 @@ public class Player extends GameMovable implements GameEntity {
 	/**
 	 * @return true if the player is alive and false if he's dead
 	 */
-	public boolean getIsAlive() {
+	protected boolean getIsAlive() {
 		return isAlive;
 	}
 	
 	/**
 	 * This function allows to change isAlive in false. It allow to kill the player.
 	 */
-	public void kill(){
-		this.isAlive= false;
+	protected void kill(){
+		// TODO Change img
+		this.isAlive=false;
+	}
+	
+	
+	/**
+	 * Initialize the spriteManager with a picture composed by 5 animations
+	 */
+	public void initSpriteManager() {
+		this.spriteManager.setTypes("down", "right", "up", "left", "died");
+		this.spriteManager.setType("down");
+		this.spriteManager.reset();
+	}
+	
+	/**
+	 * Change the sprite direction
+	 */
+	protected void changeSpriteDirection() {
+		if (direction.equals(new Point(1, 0))) {
+			this.spriteManager.setType("right");
+		} else if (direction.equals(new Point(-1, 0))) {
+			this.spriteManager.setType("left");
+		} else if (direction.equals(new Point(0, -1))) {
+			this.spriteManager.setType("up");
+		} else if (direction.equals(new Point(0, 1))) {
+			this.spriteManager.setType("down");
+		}
 	}
 
 	/**
@@ -117,12 +149,65 @@ public class Player extends GameMovable implements GameEntity {
 	 */
 	@Override
 	public void oneStepMoveAddedBehavior() {
-		// TODO Auto-generated method stub
-
+		Point d = this.moveDriver.getSpeedVector(this).getDirection();
+		if (!direction.equals(d)) {
+			if (d.equals(new Point(1, 0))) {
+				this.spriteManager.setType("right");
+				direction = d;
+			} else if (d.equals(new Point(-1, 0))) {
+				this.spriteManager.setType("left");
+				direction = d;
+			} else if (d.equals(new Point(0, -1))) {
+				this.spriteManager.setType("up");
+				direction = d;
+			} else if (d.equals(new Point(0, 1))) {
+				this.spriteManager.setType("down");
+				direction = d;
+			}
+		}
+		if (!(d.equals(new Point(0, 0)))) {
+			this.spriteManager.increment();
+		}
 	}
 
 	@Override
 	public boolean isMovable() {
 		return true;
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * Override keyPressed to know if the player pressed or not space
+	 * @param arg0 the key pressed
+	 */
+	@Override
+	public void keyPressed(KeyEvent arg0) {
+		keyPressed(arg0.getKeyCode());
+	}
+	
+	/**
+	 * Called by keyPressed, make a hit if the previous hit is finished.
+	 * @param keyCode the keyCode give by keyPressed.
+	 */
+	public void keyPressed(int keyCode) {
+			switch (keyCode) {
+			case KeyEvent.VK_SPACE: {
+				this.dropBomb();
+				break;
+			}
+			default:
+				;
+			}
+	}
+	
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
