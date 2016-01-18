@@ -26,8 +26,6 @@ public class Player extends GameMovable implements GameEntity {
 	protected boolean isAlive;
 	protected List<Bomb> bombsAvailable = new ArrayList<Bomb>();
 	
-	protected Point direction;
-	
 
 	/**
 	 * Constructor of player class, allow to create our player
@@ -37,7 +35,7 @@ public class Player extends GameMovable implements GameEntity {
 	 * @param y
 	 *            initial position of our player
 	 */
-	public Player(GameData data, int x, int y) {
+	public Player(GameData data, Point position) {
 		this.data = data;
 		this.canvas = data.getCanvas();
 		this.spriteSize = data.getConfiguration().getSpriteSize();
@@ -47,8 +45,7 @@ public class Player extends GameMovable implements GameEntity {
 		this.isAlive = true;
 		this.bombsAvailable.add(new Bomb(this.data, this.getPosition(), 2));
 
-		this.position = new Point(x, y);
-		this.direction = new Point(0,1);
+		this.setPosition(position);
 
 		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard(false);
 		this.getDriver().setStrategy(keyboard);

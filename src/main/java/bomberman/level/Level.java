@@ -29,9 +29,10 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	@Override
 	protected void init() {
-		this.player1 = new Player(this.data, 1 * this.spriteSize, 1 * this.spriteSize);
-		this.player2 = new Player(this.data, (this.data.getConfiguration().getNbColumns() - 2) * this.spriteSize,
-				(this.data.getConfiguration().getNbRows() - 2) * this.spriteSize);
+		this.player1 = new Player(this.data, new Point(1 * this.spriteSize, 1 * this.spriteSize));
+		this.player2 = new Player(this.data,
+				new Point((this.data.getConfiguration().getNbColumns() - 2) * this.spriteSize,
+				(this.data.getConfiguration().getNbRows() - 2) * this.spriteSize));
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		this.createWalls();
 		//this.spawnBox(100);
