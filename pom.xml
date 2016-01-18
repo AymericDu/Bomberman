@@ -126,6 +126,11 @@
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>fr.univlille1.fil.coo</groupId>
+    	<artifactId>gameframework</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <properties>
