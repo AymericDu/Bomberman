@@ -46,7 +46,7 @@ public class Player extends GameMovable implements GameEntity {
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		// this.spriteManager = new SpriteManagerDefaultImpl(new
 		// DrawableImage(sprite, canvas), this.spriteSize, 4);
-		URL url = Player.class.getResource("/images/level/BombermanTest.png");
+		URL url = Player.class.getResource("/images/level/BombermanBas.png");
 		this.img = new DrawableImage(url, this.canvas);
 		
 		this.isAlive = true;
