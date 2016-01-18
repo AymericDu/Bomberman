@@ -107,23 +107,13 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	protected void createWallsOnBoard(){
 		int i = 2;
+		int j = 2;
 		while(i<rows){
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 2, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 4, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 6, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 8, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 10, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 12, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 14, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 16, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 16, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 18, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 20, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 22, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 24, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 26, i*this.spriteSize)));
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * 28, i*this.spriteSize)));
-				i = i + 2;
+			while(j< columns){
+				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * j, i*this.spriteSize)));
+				j = j + 2;
 			}
+			i = i +2;
+		}
 	}
 }
