@@ -116,6 +116,5 @@ public class Level extends GameLevelDefaultImpl {
 			j =0;
 			i = i +2;
 			}
-		
 	}
 }
