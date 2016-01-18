@@ -89,7 +89,7 @@ public class Player extends GameMovable implements GameEntity {
 	/**
 	 * @return true if the player is alive and false if he's dead
 	 */
-	public boolean isAlive() {
+	public boolean getIsAlive() {
 		return isAlive;
 	}
 	
