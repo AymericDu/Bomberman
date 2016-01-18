@@ -20,7 +20,7 @@ public class Main extends GameDefaultImpl {
 		URL url = Main.class.getResource("/sounds/GameSound.wav");
 		this.clip = Applet.newAudioClip(url);
 		this.data.addLevel(new Level(data));
-		this.startSong();
+		//this.startSong();
 		GameWindow windows = new GameWindow("Bomberman", data.getCanvas(), data.getConfiguration());
 		windows.createGUI();
 	}
@@ -34,7 +34,7 @@ public class Main extends GameDefaultImpl {
 	}
 
 	public static void main(String[] args) {
-		GameConfiguration config = new GameConfiguration(20, 40, 32, 8);
+		GameConfiguration config = new GameConfiguration(23, 31, 32, 8);
 		GameData data = new GameData(config);
 		Game main = new Main(data);
 

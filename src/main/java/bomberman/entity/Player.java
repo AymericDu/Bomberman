@@ -12,8 +12,10 @@ import gameframework.drawing.GameCanvas;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
+import gameframework.motion.GameMovableDriverDefaultImpl;
 import gameframework.motion.MoveStrategy;
 import gameframework.motion.MoveStrategyKeyboard;
+import gameframework.motion.MoveStrategyKeyboard8Dir;
 
 public class Player extends GameMovable implements GameEntity {
 
@@ -22,9 +24,13 @@ public class Player extends GameMovable implements GameEntity {
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
-	protected Point position;
+	
 	protected boolean isAlive;
 	protected List<Bomb> bombsAvailable = new ArrayList<Bomb>();
+	
+	protected Point position;
+	protected Point direction;
+	
 
 	/**
 	 * Constructor of player class, allow to create our player
@@ -42,9 +48,22 @@ public class Player extends GameMovable implements GameEntity {
 		// DrawableImage(sprite, canvas), this.spriteSize, 4);
 		URL url = Player.class.getResource("/images/level/BombermanTest.png");
 		this.img = new DrawableImage(url, this.canvas);
-		this.position = new Point(x, y);
+		
 		this.isAlive = true;
 		this.bombsAvailable.add(new Bomb(this.data, this.getPosition(), 2));
+
+		this.position = new Point(x, y);
+		this.direction = new Point(0,1);
+		
+		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard8Dir();
+		GameMovableDriverDefaultImpl movePlayer = new GameMovableDriverDefaultImpl();
+
+		movePlayer.setStrategy(keyboard);
+		movePlayer.setmoveBlockerChecker(data.getMoveBlockerChecker());
+		this.setDriver(movePlayer);
+		
+		this.data.getCanvas().addKeyListener(keyboard);
+
 	}
 
 	/**
