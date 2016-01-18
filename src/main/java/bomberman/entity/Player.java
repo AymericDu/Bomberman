@@ -13,15 +13,12 @@ import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
-import gameframework.motion.GameMovableDriverDefaultImpl;
 import gameframework.motion.MoveStrategy;
 import gameframework.motion.MoveStrategyKeyboard;
-import gameframework.motion.MoveStrategyKeyboard8Dir;
 
 public class Player extends GameMovable implements GameEntity {
 
 	protected SpriteManagerDefaultImpl spriteManager;
-	//protected DrawableImage img;
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
@@ -29,7 +26,6 @@ public class Player extends GameMovable implements GameEntity {
 	protected boolean isAlive;
 	protected List<Bomb> bombsAvailable = new ArrayList<Bomb>();
 	
-	protected Point position;
 	protected Point direction;
 	
 
@@ -46,7 +42,6 @@ public class Player extends GameMovable implements GameEntity {
 		this.canvas = data.getCanvas();
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		URL url = Player.class.getResource("/images/level/BombermanSprite.png");
-//		this.img = new DrawableImage(url, this.canvas);
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(url, canvas), this.spriteSize, 5);
 
 		this.isAlive = true;
@@ -54,16 +49,12 @@ public class Player extends GameMovable implements GameEntity {
 
 		this.position = new Point(x, y);
 		this.direction = new Point(0,1);
-		
-		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard8Dir();
-		GameMovableDriverDefaultImpl movePlayer = new GameMovableDriverDefaultImpl();
 
-		movePlayer.setStrategy(keyboard);
-		movePlayer.setmoveBlockerChecker(data.getMoveBlockerChecker());
-		this.setDriver(movePlayer);
+		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard(false);
+		this.getDriver().setStrategy(keyboard);
+		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
 		
 		this.data.getCanvas().addKeyListener(keyboard);
-
 	}
 
 	/**
