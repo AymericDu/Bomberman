@@ -26,8 +26,9 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	 * @param position the position where the bomb is dropped
 	 * @return a new bomb 
 	 */
-	public Bomb dropBomb(Point position){
-		return new Bomb(this.data, position,2);
+	public void dropBomb(Point position){
+		Bomb b = new Bomb(this.data, position,2);
+		this.data.getUniverse().addGameEntity(b);
 	}
 
 	/**
@@ -39,12 +40,9 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		return this.radius;
 	}
 
-	/**
-	 * do an explosion when this an specific action is occur (timer be 0)
-	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO remove the classic bomb
-		new BombExplosion(data, this.position);
+		// TODO Auto-generated method stub	
 	}
+
 }
