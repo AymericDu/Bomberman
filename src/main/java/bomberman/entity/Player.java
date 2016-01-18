@@ -48,6 +48,7 @@ public class Player extends GameMovable implements GameEntity {
 		this.setPosition(position);
 
 		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard(false);
+		keyboard.getSpeedVector().setSpeed(32);
 		this.getDriver().setStrategy(keyboard);
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
 		
