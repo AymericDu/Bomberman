@@ -17,6 +17,7 @@ import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.MoveStrategy;
 import gameframework.motion.MoveStrategyKeyboard;
+import gameframework.motion.SpeedVector;
 
 public class Player extends GameMovable implements GameEntity, KeyListener {
 
@@ -92,6 +93,12 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	public Point getDirection(){
 		return this.direction;
 	}
+	
+	public MoveStrategyKeyboard getKeyboard(){
+		return this.getKeyboard();
+	}
+	
+
 	
 	/**
 	 * return the rectangle which represent the game space
@@ -232,4 +239,6 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }
