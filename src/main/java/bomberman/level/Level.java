@@ -56,12 +56,10 @@ public class Level extends GameLevelDefaultImpl {
 			int random_x = 0;
 			int random_y = 0;
 
-			random_x = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1));
-			random_y = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbRows() - 1));
-
-			System.out.printf("1 ---- x : %d , y : %d \n", random_x, random_y);
+			random_x = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbColumns() + 1)) * 2;
+			random_y = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbRows() +1)) * 2;
 			
-			Point p = new Point((int) random_x,(int) random_y);			
+			Point p = new Point(random_x,random_y);			
 
 			if (!this.boardEntities.contains(p)){
 				Box newBox = new Box(data,p);
@@ -69,8 +67,8 @@ public class Level extends GameLevelDefaultImpl {
 				i++;
 			}
 			else{
-				random_x = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1));
-				random_y = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbRows() - 1));
+				random_x = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbColumns() + 1)) * 2;
+				random_y = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbRows() +1)) * 2;
 			}
 		}
 	}
