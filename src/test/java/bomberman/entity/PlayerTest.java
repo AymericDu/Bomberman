@@ -36,6 +36,11 @@ public class PlayerTest{
 	}
 	
 	@Test
+	public void getGameDataTest(){
+		assertEquals(data, playerTest.getGameData());
+	}
+	
+	@Test
 	public void setDirectionTest(){
 		playerTest.setDirection(new Point (3,1));
 		assertEquals(new Point(3,1),playerTest.direction);
