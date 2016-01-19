@@ -17,6 +17,7 @@ import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.MoveStrategy;
 import gameframework.motion.MoveStrategyKeyboard;
+import gameframework.motion.SpeedVector;
 
 public class Player extends GameMovable implements GameEntity, KeyListener {
 
@@ -69,7 +70,36 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	protected MoveStrategy getMoveStrategy() {
 		return new MoveStrategyKeyboard();
 	}
+	
+	/**
+	 * getGameData allows to give the GameData of our player
+	 */
+	public GameData getGameData(){
+		return this.data;
+	}
+	
+	/**
+	 * setDirection allows to change the direction of our player
+	 * @param p the new direction
+	 */
+	public void setDirection(Point p){
+		this.direction=p;
+	}
+	
+	/**
+	 * getDirection return the direction of our player
+	 * @return the direction
+	 */
+	public Point getDirection(){
+		return this.direction;
+	}
+	
+	public MoveStrategyKeyboard getKeyboard(){
+		return this.getKeyboard();
+	}
+	
 
+	
 	/**
 	 * return the rectangle which represent the game space
 	 */
@@ -92,6 +122,13 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		}
 	}
 
+	/**
+	 * add a bomb for the player
+	 */
+	public void addBomb(Bomb b){
+		bombsAvailable.add(b);
+	}
+	
 	/**
 	 * @return true if the player is alive and false if he's dead
 	 */
@@ -202,4 +239,6 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }

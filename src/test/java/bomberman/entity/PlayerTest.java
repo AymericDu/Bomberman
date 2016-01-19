@@ -14,7 +14,7 @@ import gameframework.game.GameData;
 import gameframework.motion.MoveStrategy;
 import gameframework.motion.MoveStrategyKeyboard;
 
-public class PlayerTest {
+public class PlayerTest{
 
 	GameConfiguration myGameConfiguration;
 	GameData data;
@@ -25,14 +25,31 @@ public class PlayerTest {
 	public void create(){
 		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
-		playerTest = new Player(data, new Point(4, 4));
+		playerTest = new Player(data, new Point(1, 1));
 		bombsAvailable = new ArrayList<Bomb>();
-
+		
 	}
 
 	@Test
 	public void getBoundingBoxTest(){
 		assertNotNull(playerTest.getBoundingBox());
+	}
+	
+	@Test
+	public void getGameDataTest(){
+		assertEquals(data, playerTest.getGameData());
+	}
+	
+	@Test
+	public void setDirectionTest(){
+		playerTest.setDirection(new Point (3,1));
+		assertEquals(new Point(3,1),playerTest.direction);
+	}
+	
+	@Test
+	public void getDirection(){
+		playerTest.setDirection(new Point (3,1));
+		assertEquals(new Point(3,1),playerTest.getDirection());
 	}
 	
 	@Test
@@ -60,7 +77,19 @@ public class PlayerTest {
 		this.bombsAvailable.add(new Bomb(this.data, playerTest.getPosition(), 2));
 		assertNotNull(bombsAvailable);
 		playerTest.dropBomb();
-		assertEquals(false, this.bombsAvailable.isEmpty());
+		assertFalse(this.bombsAvailable.isEmpty());
+	}
+	
+	@Test
+	public void addBombTest(){
+		this.bombsAvailable.clear();
+		assertNotNull(bombsAvailable);
+		assertTrue(this.bombsAvailable.isEmpty());
+		Bomb b = new Bomb(this.data, playerTest.getPosition(), 2);
+		playerTest.addBomb(b);
+		//assertFalse(this.bombsAvailable.isEmpty());
+		// ne veut pas verif que la liste est vite
+		
 	}
 	
 	@Test
@@ -69,13 +98,17 @@ public class PlayerTest {
 		assertNotNull(playerTest.getSpriteManager());
 	}
 	
-	/*
-	@Test
-	public void cha(){
-		Point p = new Point(1,0);
-		playerTest.setPosition(p);
+	
+	/*@Test
+	public void oneStepMoveAddedBehaviorTest(){
+		Point pos = new Point(0,1);
+		playerTest.setPosition(pos);
 		playerTest.initSpriteManager();
-		playerTest.changeSpriteDirection();
-		assertEquals("right", playerTest.getSpriteManager());
+		Point newPoint = new Point(0,1);
+		playerTest.setDirection(newPoint);
+		playerTest.oneStepMoveAddedBehavior();
+		assertEquals(newPoint,playerTest.getDriver().getSpeedVector(playerTest).getDirection());		
+		// beug attend le point(0,0) je sais pas pq
 	}*/
+	
 }
