@@ -71,6 +71,13 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	}
 	
 	/**
+	 * getGameData allows to give the GameData of our player
+	 */
+	public GameData getGameData(){
+		return this.data;
+	}
+	
+	/**
 	 * setDirection allows to change the direction of our player
 	 * @param p the new direction
 	 */
