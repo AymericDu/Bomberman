@@ -17,7 +17,6 @@ import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.MoveStrategy;
 import gameframework.motion.MoveStrategyKeyboard;
-import gameframework.motion.SpeedVector;
 
 public class Player extends GameMovable implements GameEntity, KeyListener {
 

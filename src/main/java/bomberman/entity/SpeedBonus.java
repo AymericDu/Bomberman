@@ -3,13 +3,10 @@ package bomberman.entity;
 import java.awt.Point;
 
 import gameframework.game.GameData;
-import gameframework.motion.SpeedVector;
-
-	
 
 public class SpeedBonus extends Bonus {
 	
-		protected int newSpeed;
+	protected int newSpeed;
 		
 	public SpeedBonus(GameData data, Point position, String urlString,int bonusSpeed) {
 		super(data, position, urlString);
@@ -21,5 +18,4 @@ public class SpeedBonus extends Bonus {
 		//player.setSpeedVector(newSpeed);
 		player.getKeyboard().setSpeed(newSpeed);
 	}
-
 }

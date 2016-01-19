@@ -25,8 +25,8 @@ public class SpeedBonusTest {
 	
 	
 	public void effectTest(){
-		assertEquals(player.getSpeedVector(),32);
+		assertEquals(32, player.getSpeedVector());
 		bonus.effect(player);
-		assertEquals(player.getSpeedVector(),100);
+		assertEquals(100, player.getSpeedVector());
 	}
 }
