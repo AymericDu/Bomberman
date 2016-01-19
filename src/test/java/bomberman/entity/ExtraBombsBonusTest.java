@@ -47,4 +47,9 @@ public class ExtraBombsBonusTest {
 	public void getPositionTest(){
 		assertEquals(new Point(1, 1),extraBomb.getPosition());
 	}
+	
+	@Test
+	public void getBoundingBoxTest(){
+		assertNotNull(extraBomb.getBoundingBox());
+	}
 }
