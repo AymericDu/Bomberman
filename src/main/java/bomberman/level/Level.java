@@ -1,6 +1,8 @@
 package bomberman.level;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import bomberman.entity.Box;
@@ -16,12 +18,14 @@ public class Level extends GameLevelDefaultImpl {
 	protected int rows;
 	protected int columns;
 	protected int spriteSize;
+	protected List<Point> boardEntities;
 
 	public Level(GameData data) {
 		super(data);
 		this.rows = this.data.getConfiguration().getNbRows();
 		this.columns = this.data.getConfiguration().getNbColumns();
 		this.spriteSize = this.data.getConfiguration().getSpriteSize();
+		this.boardEntities = new ArrayList<Point>();
 	}
 
 	/**
@@ -29,14 +33,15 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	@Override
 	protected void init() {
-		//this.player1 = new Player(this.data, new Point(1 * this.spriteSize, 1 * this.spriteSize));
+		this.player1 = new Player(this.data, new Point(1 * this.spriteSize, 1 * this.spriteSize));
 		this.player2 = new Player(this.data,
 				new Point((this.data.getConfiguration().getNbColumns() - 2) * this.spriteSize,
 				(this.data.getConfiguration().getNbRows() - 2) * this.spriteSize));
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		this.createWalls();
-		//this.spawnBox(100);
-		//this.universe.addGameEntity(this.player1);
+		this.spawnBox(10);
+		this.estRempliListeASUPPRIMER();
+		this.universe.addGameEntity(this.player1);
 		this.universe.addGameEntity(this.player2);
 	}
 
@@ -45,18 +50,34 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	protected void spawnBox(int nbOfBoxInGame) {
 		Random r = new Random();
+		int i = 0;
 
-		for (int i = 0; i < nbOfBoxInGame; i++) {
+		while(i<nbOfBoxInGame) {
 			int random_x = 0;
 			int random_y = 0;
 
-			while ((random_x == 0 || random_y == 0) || (random_x == 1 || random_y == 1)) {
+			random_x = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1));
+			random_y = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbRows() - 1));
+
+			System.out.printf("1 ---- x : %d , y : %d \n", random_x, random_y);
+			
+			Point p = new Point((int) random_x,(int) random_y);			
+
+			if (!this.boardEntities.contains(p)){
+				Box newBox = new Box(data,p);
+				this.universe.addGameEntity(newBox);
+				i++;
+			}
+			else{
 				random_x = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1));
 				random_y = r.nextInt(this.spriteSize * (this.data.getConfiguration().getNbRows() - 1));
 			}
-
-			Box newBox = new Box(data, new Point(random_x, random_y));
-			this.universe.addGameEntity(newBox);
+		}
+	}
+	
+	public void estRempliListeASUPPRIMER(){
+		for (int i = 0 ; i < this.boardEntities.size();i++){
+			System.out.printf("Point n°%d --- x : %d --- y : %d\n",i,(int) this.boardEntities.get(i).getX(),(int) this.boardEntities.get(i).getY());
 		}
 	}
 	
@@ -82,11 +103,14 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	protected void createLeftAndRightWalls() {
 		for (int i = 0; i < rows; i++) {
-			this.universe.addGameEntity(new Wall(data, new Point(0, i * this.spriteSize)));
+			Point p = new Point(0, i * this.spriteSize);
+			this.universe.addGameEntity(new Wall(data,p));
+			this.boardEntities.add(p);
 		}
 		for (int j = rows; j > 0; j--) {
-			this.universe.addGameEntity(new Wall(data, new Point(
-					this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1), this.spriteSize * j)));
+			Point p = new Point(this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1), this.spriteSize * j);
+			this.universe.addGameEntity(new Wall(data,p));
+			this.boardEntities.add(p);
 		}
 	}
 
@@ -95,11 +119,14 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	protected void createBottomAndTopWalls() {
 		for (int i = 0; i < columns; i++) {
-			this.universe.addGameEntity(new Wall(data,
-					new Point(this.spriteSize * i, this.spriteSize * (this.data.getConfiguration().getNbRows() - 1))));
+			Point p = new Point(this.spriteSize * i, this.spriteSize * (this.data.getConfiguration().getNbRows() - 1));
+			this.universe.addGameEntity(new Wall(data,p));		
+			this.boardEntities.add(p);
 		}
 		for (int j = columns; j > 0; j--) {
-			this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * j, 0)));
+			Point p = new Point(this.spriteSize * j, 0);
+			this.universe.addGameEntity(new Wall(data,p));
+			this.boardEntities.add(p);
 		}
 	}
 	
@@ -111,7 +138,9 @@ public class Level extends GameLevelDefaultImpl {
 		int j = 2;
 		while(i<rows){
 			while (j < columns){
-				this.universe.addGameEntity(new Wall(data, new Point(this.spriteSize * j, this.spriteSize * i)));
+				Point p = new Point(this.spriteSize * j, this.spriteSize * i);
+				this.universe.addGameEntity(new Wall(data, p));
+				this.boardEntities.add(p);
 				j = j +2;
 			}
 			j =0;

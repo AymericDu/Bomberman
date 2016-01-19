@@ -8,6 +8,6 @@ import gameframework.motion.blocking.MoveBlocker;
 public class Box extends NoMovableEntity implements MoveBlocker {
 
 	public Box(GameData data, Point position) {
-		super(data, position, "/images/level/Box.png");
+		super(data, position, "/images/level/Box2.png");
 	}
 }
