@@ -6,3 +6,11 @@ Synchronisé un fork avec la branche master :
 
 https://help.github.com/articles/syncing-a-fork/
 http://www.croes.org/gerald/blog/synchroniser-son-fork-github-avec-le-projet-original/551/
+
+Supprimer un commit envoyé par erreur : 
+
+git status -> vérifier que la branche est propre
+git branch -> vérifier qu'on est sur la bonne branche
+git log -> récupéré l'id du commit avant celui qui merde 
+git reset id_commit --hard
+git push origin master --force
