@@ -17,19 +17,18 @@ public class Level extends GameLevelDefaultImpl {
 	protected Player player1, player2;
 	protected int rows;
 	protected int columns;
-	protected int spriteSize;
 	protected HashSet<Point> occupiedPoints;
 
 	public Level(GameData data) {
 		super(data);
 		this.rows = this.data.getConfiguration().getNbRows();
 		this.columns = this.data.getConfiguration().getNbColumns();
-		this.spriteSize = this.data.getConfiguration().getSpriteSize();
 		this.occupiedPoints = new HashSet<Point>();
 	}
 
 	protected Point createPoint(int columnNumber, int rowNumber) {
-		return new Point(this.spriteSize * columnNumber, this.spriteSize * rowNumber);
+		int spriteSize = this.data.getConfiguration().getSpriteSize();
+		return new Point(spriteSize * columnNumber, spriteSize * rowNumber);
 	}
 
 	/**
