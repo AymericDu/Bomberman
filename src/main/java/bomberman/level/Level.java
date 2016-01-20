@@ -63,10 +63,14 @@ public class Level extends GameLevelDefaultImpl {
 		// Sides of player 1.
 		this.boardEntities.add(new Point(2*this.spriteSize,this.spriteSize));
 		this.boardEntities.add(new Point(this.spriteSize,2*this.spriteSize));
+		this.boardEntities.add(new Point(3*this.spriteSize,this.spriteSize));
+		this.boardEntities.add(new Point(this.spriteSize,3*this.spriteSize));
 		
 		//Sides of player 2.
 		this.boardEntities.add(new Point(this.spriteSize* (this.data.getConfiguration().getNbColumns() - 3), this.spriteSize * (this.data.getConfiguration().getNbRows() - 2)));
 		this.boardEntities.add(new Point(this.spriteSize* (this.data.getConfiguration().getNbColumns() - 2), this.spriteSize * (this.data.getConfiguration().getNbRows() - 3)));
+		this.boardEntities.add(new Point(this.spriteSize* (this.data.getConfiguration().getNbColumns() - 4), this.spriteSize * (this.data.getConfiguration().getNbRows() - 2)));
+		this.boardEntities.add(new Point(this.spriteSize* (this.data.getConfiguration().getNbColumns() - 2), this.spriteSize * (this.data.getConfiguration().getNbRows() - 4)));
 	}
 	/**
 	 * Get every point on the board and fill the lists.
