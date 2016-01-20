@@ -17,10 +17,10 @@ public class Main extends GameDefaultImpl {
 
 	public Main(GameData data) {
 		super(data);
-		URL url = Main.class.getResource("/sounds/GameSound.wav");
+		URL url = Main.class.getResource("/sounds/GameSound2.wav");
 		this.clip = Applet.newAudioClip(url);
 		this.data.addLevel(new Level(data));
-		//this.startSong();
+		this.startSong();
 		GameWindow windows = new GameWindow("Bomberman", data.getCanvas(), data.getConfiguration());
 		windows.createGUI();
 	}
