@@ -24,9 +24,8 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
-	
+	protected int nbOfBombs;
 	protected Point direction;
-	
 	protected boolean isAlive;
 	protected List<Bomb> bonusBombsAvailable = new ArrayList<Bomb>();
 	
@@ -45,7 +44,7 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		URL url = Player.class.getResource("/images/level/BombermanSprite.png");
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(url, canvas), this.spriteSize, 5);
-
+		this.nbOfBombs=1;
 		this.isAlive = true;
 
 		this.setPosition(position);
@@ -108,17 +107,43 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	}
 
 	/**
+	 * returns whether or not the player can drop a normal bomb 
+	 * @return true if the player is allowed to drop a normal bomb
+	 */
+	public boolean canDropNormalBombs(){
+		return this.nbOfBombs > 0;
+	}
+	
+	/**
+	 * set the number of bombs the player has
+	 * @param n the new number of bombs
+	 */
+	public void setNbOfBombs(int n){
+		this.nbOfBombs=n;
+	}
+	
+	/**
+	 * returns the number of bombs of the player
+	 *@return the number of bombs the player can drop
+	 */
+	public int getNbOfBombs(){
+		return this.nbOfBombs;
+	}
+	
+	/**
 	 * drop a bomb in the position of the player
 	 */
 	public void dropBomb() {		
 		if (!this.bonusBombsAvailable.isEmpty()) {
 			Bomb bonusBomb = this.bonusBombsAvailable.get(0);
-			bonusBomb.dropBomb(this.position,bonusBomb);
+			this.data.getUniverse().addGameEntity(bonusBomb);
 			bonusBombsAvailable.remove(0);
 		}
-		else{
+		else if (canDropNormalBombs()){
 			Bomb b = new Bomb(this.data,this.position,2);
-			b.dropBomb(this.position, b);
+			this.data.getUniverse().addGameEntity(b);
+			this.nbOfBombs--;
+			//we need to increase the nbOfBombs when the bomb explodes
 		}
 	}
 
