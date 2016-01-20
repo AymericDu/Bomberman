@@ -44,7 +44,6 @@ public class Level extends GameLevelDefaultImpl {
 		this.protectAreaAtBeginning();
 		this.fillList();
 		this.spawnBox(300);
-		this.test();
 		this.universe.addGameEntity(this.player1);
 		this.universe.addGameEntity(this.player2);
 	}
@@ -88,11 +87,9 @@ public class Level extends GameLevelDefaultImpl {
 			i = i + 1;
 			}
 		
-		for (int k = 0 ; k < this.boardNoEntities.size(); k++){
-			Point p = this.boardNoEntities.get(k);
-			if (this.boardEntities.contains(p)){
-				this.boardNoEntities.remove(p);
-			}
+		for (int k = 0 ; k < this.boardEntities.size(); k++){
+			Point p = this.boardEntities.get(k);
+			this.boardNoEntities.remove(p);
 		}
 	}
 	
@@ -113,18 +110,6 @@ public class Level extends GameLevelDefaultImpl {
 			
 			i++;
 		}		
-	}
-	
-	public void test(){
-		for (int i = 0 ; i<this.rows;i++){
-			Point p = new Point(0,this.spriteSize*i);
-			if (this.boardEntities.contains(p)) {
-				System.out.println("ok");
-			}
-			else{
-				System.out.println("non");
-			}
-		}
 	}
 	
 	/**
