@@ -1,8 +1,7 @@
 package bomberman.level;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Random;
 
 import bomberman.entity.Box;
@@ -10,6 +9,7 @@ import bomberman.entity.Player;
 import bomberman.entity.Wall;
 import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.game.GameData;
+import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
 
 public class Level extends GameLevelDefaultImpl {
@@ -18,16 +18,18 @@ public class Level extends GameLevelDefaultImpl {
 	protected int rows;
 	protected int columns;
 	protected int spriteSize;
-	protected List<Point> boardEntities;
-	protected List<Point> boardNoEntities;
-	
+	protected HashSet<Point> occupiedPoints;
+
 	public Level(GameData data) {
 		super(data);
 		this.rows = this.data.getConfiguration().getNbRows();
 		this.columns = this.data.getConfiguration().getNbColumns();
 		this.spriteSize = this.data.getConfiguration().getSpriteSize();
-		this.boardEntities = new ArrayList<Point>();
-		this.boardNoEntities = new ArrayList<Point>();
+		this.occupiedPoints = new HashSet<Point>();
+	}
+
+	protected Point createPoint(int columnNumber, int rowNumber) {
+		return new Point(this.spriteSize * columnNumber, this.spriteSize * rowNumber);
 	}
 
 	/**
@@ -35,95 +37,38 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	@Override
 	protected void init() {
-		this.player1 = new Player(this.data, new Point(1 * this.spriteSize, 1 * this.spriteSize));
-		this.player2 = new Player(this.data,
-				new Point((this.data.getConfiguration().getNbColumns() - 2) * this.spriteSize,
-				(this.data.getConfiguration().getNbRows() - 2) * this.spriteSize));
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
+		this.player1 = this.createPlayers(1, 1);
+		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2);
 		this.createWalls();
-		this.protectAreaAtBeginning();
-		this.fillList();
-		this.spawnBox(300);
-		this.universe.addGameEntity(this.player1);
-		this.universe.addGameEntity(this.player2);
+		this.spawnBox(40);
 	}
-	
-	/**
-	 * We implement this method to make the board clear.
-	 * That mean that at some point, we can't put boxs.
-	 * For example : at each side where the player spawn because if not, the player wont move.
-	 * 				Where the player spawn, we can't put boxs too.
-	 */
-	protected void protectAreaAtBeginning(){
-		//Positions of players.
-		this.boardEntities.add(new Point(1 * this.spriteSize, 1 * this.spriteSize));
-		this.boardEntities.add(new Point((this.data.getConfiguration().getNbColumns() - 2) * this.spriteSize,
-				(this.data.getConfiguration().getNbRows() - 2) * this.spriteSize));
-		
-		// Sides of player 1.
-		this.boardEntities.add(new Point(2*this.spriteSize,this.spriteSize));
-		this.boardEntities.add(new Point(this.spriteSize,2*this.spriteSize));
-		this.boardEntities.add(new Point(3*this.spriteSize,this.spriteSize));
-		this.boardEntities.add(new Point(this.spriteSize,3*this.spriteSize));
-		
-		//Sides of player 2.
-		this.boardEntities.add(new Point(this.spriteSize* (this.data.getConfiguration().getNbColumns() - 3), this.spriteSize * (this.data.getConfiguration().getNbRows() - 2)));
-		this.boardEntities.add(new Point(this.spriteSize* (this.data.getConfiguration().getNbColumns() - 2), this.spriteSize * (this.data.getConfiguration().getNbRows() - 3)));
-		this.boardEntities.add(new Point(this.spriteSize* (this.data.getConfiguration().getNbColumns() - 4), this.spriteSize * (this.data.getConfiguration().getNbRows() - 2)));
-		this.boardEntities.add(new Point(this.spriteSize* (this.data.getConfiguration().getNbColumns() - 2), this.spriteSize * (this.data.getConfiguration().getNbRows() - 4)));
-	}
-	/**
-	 * Get every point on the board and fill the lists.
-	 * The boardNoEntities list will contains the points where there are no entities
-	 * The boardEntities list will contains the points where there are entities,
-	 * at the beginning, there are only the walls
-	 */
-	protected void fillList(){
-		int i = 0;
-		int j = 0;
-		while(i<this.rows){
-			while (j < this.columns){
-				Point p = new Point(this.spriteSize * j, this.spriteSize * i);
-				this.boardNoEntities.add(p);
-				j=j+1;
+
+	protected Player createPlayers(int columnNumber, int rowNumber) {
+		Point position = this.createPoint(columnNumber, rowNumber);
+		if (this.occupiedPoints.contains(position))
+			throw new IllegalStateException();
+		Player player = new Player(this.data, position);
+		this.universe.addGameEntity(player);
+		this.occupiedPoints.add(position);
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				this.occupiedPoints.add(this.createPoint(columnNumber + i, rowNumber + j));
 			}
-			j = 0;
-			i = i + 1;
-			}
-		
-		for (int k = 0 ; k < this.boardEntities.size(); k++){
-			Point p = this.boardEntities.get(k);
-			this.boardNoEntities.remove(p);
 		}
+		return player;
 	}
-	
-	/**
-	 * Creation of boxes in the game space (random place)
-	 */
-	protected void spawnBox(int nbOfBoxInGame) {
-		Random r = new Random();
-		int i = 0;
-		
-		while (i<nbOfBoxInGame){
-			int k = r.nextInt(this.boardNoEntities.size());
-			Point p = this.boardNoEntities.get(k);
-			
-			this.universe.addGameEntity(new Box(data,p));
-			this.boardNoEntities.remove(p);
-			this.boardEntities.add(p);
-			
-			i++;
-		}		
-	}
-	
+
 	/**
 	 * Remove a box
-	 * @param b the box that we would remove
+	 * 
+	 * @param b
+	 *            the box that we would remove
 	 */
-	protected void removeBox(Box b){
-		this.universe.removeGameEntity(b);
+	protected void removeEntity(GameEntity entity) {
+		this.universe.removeGameEntity(entity);
 	}
-	
+
 	/**
 	 * Creation of all the walls
 	 */
@@ -137,49 +82,65 @@ public class Level extends GameLevelDefaultImpl {
 	 * Creation of left and right walls
 	 */
 	protected void createLeftAndRightWalls() {
-		for (int i = 0; i < rows; i++) {
-			Point p = new Point(0, i * this.spriteSize);
-			this.universe.addGameEntity(new Wall(data,p));
-			this.boardEntities.add(p);
-		}
-		for (int j = rows; j > 0; j--) {
-			Point p = new Point(this.spriteSize * (this.data.getConfiguration().getNbColumns() - 1), this.spriteSize * j);
-			this.universe.addGameEntity(new Wall(data,p));
-			this.boardEntities.add(p);
+		Point point;
+		for (int y = 0; y < this.rows; y++) {
+			for (int x = 0; x < this.columns; x = x + this.columns - 1) {
+				point = this.createPoint(x, y);
+				this.universe.addGameEntity(new Wall(data, point));
+				this.occupiedPoints.add(point);
+			}
 		}
 	}
-	
+
 	/**
 	 * Creation of bottom and top walls
 	 */
 	protected void createBottomAndTopWalls() {
-		for (int i = 0; i < columns; i++) {
-			Point p = new Point(this.spriteSize * i, this.spriteSize * (this.data.getConfiguration().getNbRows() - 1));
-			this.universe.addGameEntity(new Wall(data,p));		
-			this.boardEntities.add(p);
-		}
-		for (int j = columns; j > 0; j--) {
-			Point p = new Point(this.spriteSize * j, 0);
-			this.universe.addGameEntity(new Wall(data,p));
-			this.boardEntities.add(p);
+		Point point;
+		for (int x = 1; x < this.columns - 1; x++) {
+			for (int y = 0; y < this.rows; y = y + this.rows - 1) {
+				point = this.createPoint(x, y);
+				this.universe.addGameEntity(new Wall(data, point));
+				this.occupiedPoints.add(point);
+			}
 		}
 	}
-	
+
 	/**
 	 * Creation of on-board walls
 	 */
-	protected void createWallsOnBoard(){
-		int i = 2;
-		int j = 2;
-		while(i<rows){
-			while (j < columns){
-				Point p = new Point(this.spriteSize * j, this.spriteSize * i);
-				this.universe.addGameEntity(new Wall(data, p));
-				this.boardEntities.add(p);
-				j = j +2;
+	protected void createWallsOnBoard() {
+		Point point;
+		for (int x = 2; x < columns - 2; x = x + 2) {
+			for (int y = 2; y < rows - 2; y = y + 2) {
+				point = this.createPoint(x, y);
+				this.universe.addGameEntity(new Wall(data, point));
+				this.occupiedPoints.add(point);
 			}
-			j =0;
-			i = i +2;
+		}
+	}
+
+	/**
+	 * Creation of boxes in the game space (random place)
+	 * 
+	 * @param probality
+	 *            greater than 0 and less than 100
+	 */
+	protected void spawnBox(int probality) {
+		Random random = new Random();
+		Point point;
+		int randomInt;
+		for (int i = 0; i < this.columns; i++) {
+			for (int j = 0; j < this.rows; j++) {
+				point = this.createPoint(i, j);
+				if (!this.occupiedPoints.contains(point)) {
+					randomInt = random.nextInt(100);
+					if (randomInt < probality) {
+						this.universe.addGameEntity(new Box(data, point));
+						this.occupiedPoints.add(point);
+					}
+				}
 			}
+		}
 	}
 }
