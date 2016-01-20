@@ -26,8 +26,7 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	 * @param position the position where the bomb is dropped
 	 * @return a new bomb 
 	 */
-	public void dropBomb(Point position){
-		Bomb b = new Bomb(this.data, position,2);
+	public void dropBomb(Point position, Bomb b){
 		this.data.getUniverse().addGameEntity(b);
 	}
 

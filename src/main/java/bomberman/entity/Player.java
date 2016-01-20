@@ -28,7 +28,7 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	protected Point direction;
 	
 	protected boolean isAlive;
-	protected List<Bomb> bombsAvailable = new ArrayList<Bomb>();
+	protected List<Bomb> bonusBombsAvailable = new ArrayList<Bomb>();
 	
 
 	/**
@@ -47,7 +47,6 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(url, canvas), this.spriteSize, 5);
 
 		this.isAlive = true;
-		this.bombsAvailable.add(new Bomb(this.data, this.getPosition(), 2));
 
 		this.setPosition(position);
 		this.direction = new Point(0, 1);
@@ -93,6 +92,10 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		return this.direction;
 	}
 	
+	public MoveStrategyKeyboard getKeyboard(){
+		return this.getKeyboard();
+	}
+	
 	/**
 	 * return the rectangle which represent the game space
 	 */
@@ -107,26 +110,23 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	/**
 	 * drop a bomb in the position of the player
 	 */
-	public void dropBomb() {
-		if (!this.bombsAvailable.isEmpty()) {
-			Bomb bombToDrop = this.bombsAvailable.get(0);
-			bombToDrop.dropBomb(this.position);
-			bombsAvailable.remove(0);
+	public void dropBomb() {		
+		if (!this.bonusBombsAvailable.isEmpty()) {
+			Bomb bonusBomb = this.bonusBombsAvailable.get(0);
+			bonusBomb.dropBomb(this.position,bonusBomb);
+			bonusBombsAvailable.remove(0);
+		}
+		else{
+			Bomb b = new Bomb(this.data,this.position,2);
+			b.dropBomb(this.position, b);
 		}
 	}
 
 	/**
 	 * add a bomb for the player
 	 */
-	public void addBomb(Bomb b){
-		bombsAvailable.add(b);
-	}
-	
-	/**
-	 * return the list bombsAvailable 
-	 */
-	public List<Bomb> getBombsAvailable(){
-		return this.bombsAvailable;
+	public void addBonusBomb(Bomb b){
+		bonusBombsAvailable.add(b);
 	}
 	
 	/**
@@ -237,5 +237,8 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
 	}
+
+	
 }
