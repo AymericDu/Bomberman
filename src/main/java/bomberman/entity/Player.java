@@ -6,8 +6,6 @@ import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
@@ -24,12 +22,11 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
-	
+
 	protected Point direction;
-	
+
 	protected boolean isAlive;
-	protected List<Bomb> bonusBombsAvailable = new ArrayList<Bomb>();
-	
+	protected int authorizedBombs;
 
 	/**
 	 * Constructor of player class, allow to create our player
@@ -47,17 +44,19 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(url, canvas), this.spriteSize, 5);
 
 		this.isAlive = true;
+		this.authorizedBombs = 1;
 
 		this.setPosition(position);
 		this.direction = new Point(0, 1);
 		this.initSpriteManager();
 
 		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard(false);
-		keyboard.setSpeed(32);
+		keyboard.setSpeed(this.data.getConfiguration().getSpriteSize());
 		this.getDriver().setStrategy(keyboard);
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
-		
+
 		this.data.getCanvas().addKeyListener(keyboard);
+		this.data.getCanvas().addKeyListener(this);
 	}
 
 	/**
@@ -68,34 +67,37 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	protected MoveStrategy getMoveStrategy() {
 		return new MoveStrategyKeyboard();
 	}
-	
+
 	/**
 	 * getGameData allows to give the GameData of our player
 	 */
-	public GameData getGameData(){
+	public GameData getGameData() {
 		return this.data;
 	}
-	
+
 	/**
 	 * setDirection allows to change the direction of our player
-	 * @param p the new direction
+	 * 
+	 * @param p
+	 *            the new direction
 	 */
-	public void setDirection(Point p){
-		this.direction=p;
+	public void setDirection(Point p) {
+		this.direction = p;
 	}
-	
+
 	/**
 	 * getDirection return the direction of our player
+	 * 
 	 * @return the direction
 	 */
-	public Point getDirection(){
+	public Point getDirection() {
 		return this.direction;
 	}
-	
-	public MoveStrategyKeyboard getKeyboard(){
+
+	public MoveStrategyKeyboard getKeyboard() {
 		return this.getKeyboard();
 	}
-	
+
 	/**
 	 * return the rectangle which represent the game space
 	 */
@@ -110,41 +112,36 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	/**
 	 * drop a bomb in the position of the player
 	 */
-	public void dropBomb() {		
-		if (!this.bonusBombsAvailable.isEmpty()) {
-			Bomb bonusBomb = this.bonusBombsAvailable.get(0);
-			bonusBomb.dropBomb(this.position,bonusBomb);
-			bonusBombsAvailable.remove(0);
-		}
-		else{
-			Bomb b = new Bomb(this.data,this.position,2);
-			b.dropBomb(this.position, b);
+	public void dropBomb() {
+		if (this.authorizedBombs > 0) {
+			this.authorizedBombs--;
+			this.data.getUniverse().addGameEntity(new Bomb(this.data, this.position, 2));
 		}
 	}
 
 	/**
 	 * add a bomb for the player
 	 */
-	public void addBonusBomb(Bomb b){
-		bonusBombsAvailable.add(b);
+	public void addBomb() {
+		this.authorizedBombs++;
 	}
-	
+
 	/**
 	 * @return true if the player is alive and false if he's dead
 	 */
 	protected boolean getIsAlive() {
 		return isAlive;
 	}
-	
+
 	/**
-	 * This function allows to change isAlive in false. It allow to kill the player.
+	 * This function allows to change isAlive in false. It allow to kill the
+	 * player.
 	 */
-	protected void kill(){
+	protected void kill() {
 		// TODO Change img
-		this.isAlive=false;
+		this.isAlive = false;
 	}
-	
-	
+
 	/**
 	 * Initialize the spriteManager with a picture composed by 5 animations
 	 */
@@ -153,11 +150,11 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		this.spriteManager.setType("down");
 		this.spriteManager.reset();
 	}
-	
+
 	/**
 	 * @return the sprite manager
 	 */
-	public SpriteManagerDefaultImpl getSpriteManager(){
+	public SpriteManagerDefaultImpl getSpriteManager() {
 		return this.spriteManager;
 	}
 
@@ -206,39 +203,38 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
 	 * Override keyPressed to know if the player pressed or not space
-	 * @param arg0 the key pressed
+	 * 
+	 * @param event
+	 *            the key pressed
 	 */
 	@Override
-	public void keyPressed(KeyEvent arg0) {
-		keyPressed(arg0.getKeyCode());
-	}
-	
-	/**
-	 * Called by keyPressed, make a hit if the previous hit is finished.
-	 * @param keyCode the keyCode give by keyPressed.
-	 */
-	public void keyPressed(int keyCode) {
-			switch (keyCode) {
-			case KeyEvent.VK_SPACE: {
-				this.dropBomb();
-				break;
-			}
-			default:
-				;
-			}
-	}
-	
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void keyPressed(KeyEvent event) {
+		keyPressed(event.getKeyCode());
 	}
 
-	
+	/**
+	 * Called by keyPressed, make a hit if the previous hit is finished.
+	 * 
+	 * @param keyCode
+	 *            the keyCode give by keyPressed.
+	 */
+	public void keyPressed(int keyCode) {
+		switch (keyCode) {
+		case KeyEvent.VK_SPACE:
+			this.dropBomb();
+			break;
+		default:
+			;
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// nothing to do
+	}
+
 }
