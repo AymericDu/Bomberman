@@ -1,9 +1,10 @@
-package bomberman.entity;
+package bomberman.entity.bonus;
 
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import bomberman.entity.Player;
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameData;

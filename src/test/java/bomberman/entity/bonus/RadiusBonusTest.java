@@ -1,4 +1,4 @@
-package bomberman.entity;
+package bomberman.entity.bonus;
 
 import static org.junit.Assert.*;
 
@@ -9,6 +9,9 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import bomberman.entity.Bomb;
+import bomberman.entity.Player;
+import bomberman.entity.bonus.RadiusBombBonus;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
@@ -19,7 +22,7 @@ public class RadiusBonusTest {
 	Player playerTest;
 	List<Bomb> bombsAvailable;
 	String url;
-	RadiusBonus radiusBomb;
+	RadiusBombBonus radiusBomb;
 	
 	
 	@Before
@@ -29,7 +32,7 @@ public class RadiusBonusTest {
 		playerTest = new Player(data, new Point(1, 1));
 		bombsAvailable = new ArrayList<Bomb>();
 		url = "/images/level/BombermanSprite.png";
-		radiusBomb = new RadiusBonus(this.data, playerTest.getPosition(),url,4);
+		radiusBomb = new RadiusBombBonus(this.data, playerTest.getPosition(),url,4);
 	}
 	
 	@Test

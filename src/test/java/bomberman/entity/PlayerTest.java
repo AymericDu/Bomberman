@@ -1,10 +1,10 @@
 package bomberman.entity;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -70,35 +70,17 @@ public class PlayerTest{
 	
 	@Test
 	public void dropBombTest(){
-		playerTest.dropBomb();
-		assertTrue(playerTest.getBombsAvailable().isEmpty());
-		playerTest.bombsAvailable.add(new Bomb(this.data, playerTest.getPosition(), 2));
-		assertNotNull(playerTest.getBombsAvailable());
-		playerTest.dropBomb();
-		assertTrue(playerTest.getBombsAvailable().isEmpty());
+		// TODO
 	}
 	
 	@Test
 	public void addBombTest(){
-		playerTest.getBombsAvailable().clear();
-		assertNotNull(playerTest.getBombsAvailable());
-		assertTrue(playerTest.getBombsAvailable().isEmpty());
-		Bomb b = new Bomb(this.data, playerTest.getPosition(), 2);
-		playerTest.addBomb(b);
-		assertFalse(playerTest.getBombsAvailable().isEmpty());
-		
+		// TODO
 	}
 	
 	@Test
 	public void getSpriteManagerTest(){
 		playerTest.initSpriteManager();
 		assertNotNull(playerTest.getSpriteManager());
-	}
-	
-	@Test
-	public void getBombsAvailable(){
-		List<Bomb> bombsAvailable = new ArrayList<Bomb>();
-		bombsAvailable.add(new Bomb(playerTest.getGameData(), playerTest.getPosition(), 2));
-		assertSame(bombsAvailable.getClass() ,playerTest.getBombsAvailable().getClass());
 	}
 }

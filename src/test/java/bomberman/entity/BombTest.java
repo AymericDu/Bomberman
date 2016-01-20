@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class BombTest extends NoMovableEntityTest {
+public class BombTest extends NoMovableAndBlockerEntityTest {
 
 	@Override
 	public Bomb createNoMovableEntity() {
