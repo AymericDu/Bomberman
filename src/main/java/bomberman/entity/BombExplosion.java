@@ -12,7 +12,7 @@ import javax.swing.Timer;
 import bomberman.uid.Main;
 import gameframework.game.GameData;
 
-public class BombExplosion extends NoMovableEntity implements ActionListener {
+public class BombExplosion extends NoMovableAndBlockerEntity implements ActionListener {
 
 	protected Timer timer;
 	protected AudioClip clip;

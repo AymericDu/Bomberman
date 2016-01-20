@@ -2,16 +2,14 @@ package bomberman.entity;
 
 import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.net.URL;
 
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
-import gameframework.motion.blocking.MoveBlocker;
 
-public abstract class NoMovableEntity implements GameEntity, MoveBlocker {
+public abstract class NoMovableEntity implements GameEntity {
 
 	protected GameData data;
 	protected GameCanvas canvas;
@@ -21,21 +19,9 @@ public abstract class NoMovableEntity implements GameEntity, MoveBlocker {
 	public NoMovableEntity(GameData data, Point position, String urlString) {
 		this.data = data;
 		this.canvas = data.getCanvas();
-		URL url = NoMovableEntity.class.getResource(urlString);
+		URL url = NoMovableAndBlockerEntity.class.getResource(urlString);
 		this.img = new DrawableImage(url, this.canvas);
 		this.position = position;
-	}
-
-	/**
-	 * give the bounding box of the box
-	 * 
-	 * @return Rectangle : the bounding box
-	 */
-	@Override
-	public Rectangle getBoundingBox() {
-		Rectangle rectangle = new Rectangle(this.img.getWidth(), this.img.getWidth());
-		rectangle.setLocation(this.position);
-		return rectangle;
 	}
 
 	/**
@@ -59,4 +45,5 @@ public abstract class NoMovableEntity implements GameEntity, MoveBlocker {
 	public boolean isMovable() {
 		return false;
 	}
+
 }

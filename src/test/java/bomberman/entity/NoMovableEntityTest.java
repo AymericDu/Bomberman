@@ -20,17 +20,17 @@ public abstract class NoMovableEntityTest {
 	/**
 	 * use the attributes
 	 */
-	public abstract NoMovableEntity createNoMovableEntity();
+	public abstract NoMovableAndBlockerEntity createNoMovableEntity();
 
 	@Test
 	public void noMovableTest() {
-		NoMovableEntity entity = this.createNoMovableEntity();
+		NoMovableAndBlockerEntity entity = this.createNoMovableEntity();
 		assertFalse(entity.isMovable());
 	}
 
 	@Test
 	public void getBoundingBoxTest() {
-		NoMovableEntity entity = this.createNoMovableEntity();
+		NoMovableAndBlockerEntity entity = this.createNoMovableEntity();
 		Rectangle rectangle = entity.getBoundingBox();
 		assertEquals(32, rectangle.getWidth(), 0);
 		assertEquals(32, rectangle.getHeight(), 0);
