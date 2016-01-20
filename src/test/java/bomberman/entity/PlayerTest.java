@@ -3,8 +3,6 @@ package bomberman.entity;
 import static org.junit.Assert.*;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,14 +17,12 @@ public class PlayerTest{
 	GameConfiguration myGameConfiguration;
 	GameData data;
 	Player playerTest;
-	List<Bomb> bombsAvailable;
 	
 	@Before
 	public void create(){
 		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
 		playerTest = new Player(data, new Point(1, 1));
-		bombsAvailable = new ArrayList<Bomb>();
 		
 	}
 
@@ -73,22 +69,21 @@ public class PlayerTest{
 	@Test
 	public void dropBombTest(){
 		playerTest.dropBomb();
-		assertEquals(true, this.bombsAvailable.isEmpty());
-		this.bombsAvailable.add(new Bomb(this.data, playerTest.getPosition(), 2));
-		assertNotNull(bombsAvailable);
+		assertTrue(playerTest.bombsAvailable.isEmpty());
+		playerTest.bombsAvailable.add(new Bomb(this.data, playerTest.getPosition(), 2));
+		assertNotNull(playerTest.bombsAvailable);
 		playerTest.dropBomb();
-		assertFalse(this.bombsAvailable.isEmpty());
+		assertTrue(playerTest.bombsAvailable.isEmpty());
 	}
 	
 	@Test
 	public void addBombTest(){
-		this.bombsAvailable.clear();
-		assertNotNull(bombsAvailable);
-		assertTrue(this.bombsAvailable.isEmpty());
+		playerTest.bombsAvailable.clear();
+		assertNotNull(playerTest.bombsAvailable);
+		assertTrue(playerTest.bombsAvailable.isEmpty());
 		Bomb b = new Bomb(this.data, playerTest.getPosition(), 2);
 		playerTest.addBomb(b);
-		//assertFalse(this.bombsAvailable.isEmpty());
-		// ne veut pas verif que la liste est vite
+		assertFalse(playerTest.bombsAvailable.isEmpty());
 		
 	}
 	

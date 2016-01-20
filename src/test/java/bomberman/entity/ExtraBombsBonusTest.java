@@ -40,7 +40,7 @@ public class ExtraBombsBonusTest {
 	
 	@Test 
 	public void isMovableTest(){
-		assertEquals(false, extraBomb.isMovable());
+		assertFalse(extraBomb.isMovable());
 	}
 	
 	@Test
