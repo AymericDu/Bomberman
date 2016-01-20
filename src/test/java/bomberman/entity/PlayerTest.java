@@ -3,6 +3,8 @@ package bomberman.entity;
 import static org.junit.Assert.*;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +25,7 @@ public class PlayerTest{
 		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
 		playerTest = new Player(data, new Point(1, 1));
-		
+
 	}
 
 	@Test
@@ -69,21 +71,21 @@ public class PlayerTest{
 	@Test
 	public void dropBombTest(){
 		playerTest.dropBomb();
-		assertTrue(playerTest.bombsAvailable.isEmpty());
+		assertTrue(playerTest.getBombsAvailable().isEmpty());
 		playerTest.bombsAvailable.add(new Bomb(this.data, playerTest.getPosition(), 2));
-		assertNotNull(playerTest.bombsAvailable);
+		assertNotNull(playerTest.getBombsAvailable());
 		playerTest.dropBomb();
-		assertTrue(playerTest.bombsAvailable.isEmpty());
+		assertTrue(playerTest.getBombsAvailable().isEmpty());
 	}
 	
 	@Test
 	public void addBombTest(){
-		playerTest.bombsAvailable.clear();
-		assertNotNull(playerTest.bombsAvailable);
-		assertTrue(playerTest.bombsAvailable.isEmpty());
+		playerTest.getBombsAvailable().clear();
+		assertNotNull(playerTest.getBombsAvailable());
+		assertTrue(playerTest.getBombsAvailable().isEmpty());
 		Bomb b = new Bomb(this.data, playerTest.getPosition(), 2);
 		playerTest.addBomb(b);
-		assertFalse(playerTest.bombsAvailable.isEmpty());
+		assertFalse(playerTest.getBombsAvailable().isEmpty());
 		
 	}
 	
@@ -93,17 +95,10 @@ public class PlayerTest{
 		assertNotNull(playerTest.getSpriteManager());
 	}
 	
-	
-	/*@Test
-	public void oneStepMoveAddedBehaviorTest(){
-		Point pos = new Point(0,1);
-		playerTest.setPosition(pos);
-		playerTest.initSpriteManager();
-		Point newPoint = new Point(0,1);
-		playerTest.setDirection(newPoint);
-		playerTest.oneStepMoveAddedBehavior();
-		assertEquals(newPoint,playerTest.getDriver().getSpeedVector(playerTest).getDirection());		
-		// beug attend le point(0,0) je sais pas pq
-	}*/
-	
+	@Test
+	public void getBombsAvailable(){
+		List<Bomb> bombsAvailable = new ArrayList<Bomb>();
+		bombsAvailable.add(new Bomb(playerTest.getGameData(), playerTest.getPosition(), 2));
+		assertSame(bombsAvailable.getClass() ,playerTest.getBombsAvailable().getClass());
+	}
 }

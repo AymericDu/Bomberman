@@ -93,12 +93,6 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		return this.direction;
 	}
 	
-	public MoveStrategyKeyboard getKeyboard(){
-		return this.getKeyboard();
-	}
-	
-
-	
 	/**
 	 * return the rectangle which represent the game space
 	 */
@@ -126,6 +120,13 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	 */
 	public void addBomb(Bomb b){
 		bombsAvailable.add(b);
+	}
+	
+	/**
+	 * return the list bombsAvailable 
+	 */
+	public List<Bomb> getBombsAvailable(){
+		return this.bombsAvailable;
 	}
 	
 	/**
@@ -236,8 +237,5 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
-
-	
 }
