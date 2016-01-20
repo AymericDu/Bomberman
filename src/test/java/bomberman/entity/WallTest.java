@@ -1,6 +1,6 @@
 package bomberman.entity;
 
-public class WallTest extends NoMovableEntityTest {
+public class WallTest extends NoMovableAndBlockerEntityTest {
 
 	@Override
 	public Wall createNoMovableEntity() {
