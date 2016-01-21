@@ -22,12 +22,12 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	protected int spriteSize;
 	protected GameCanvas canvas;
 	protected GameData data;
-
 	protected Point direction;
-
 	protected boolean isAlive;
 	protected int authorizedBombs;
-
+	protected MoveStrategyKeyboard keyboard;
+	protected URL url;
+	
 	/**
 	 * Constructor of player class, allow to create our player
 	 * 
@@ -40,7 +40,7 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		this.data = data;
 		this.canvas = data.getCanvas();
 		this.spriteSize = data.getConfiguration().getSpriteSize();
-		URL url = Player.class.getResource("/images/level/BombermanSprite.png");
+		url = Player.class.getResource("/images/level/BombermanSprite.png");
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(url, canvas), this.spriteSize, 5);
 
 		this.isAlive = true;
@@ -50,7 +50,7 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 		this.direction = new Point(0, 1);
 		this.initSpriteManager();
 
-		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard(false);
+		keyboard = new MoveStrategyKeyboard(false);
 		keyboard.setSpeed(this.data.getConfiguration().getSpriteSize());
 		this.getDriver().setStrategy(keyboard);
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
@@ -93,9 +93,13 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	public Point getDirection() {
 		return this.direction;
 	}
-
+	
+	/**
+	 * getKeyboard return the MoveStrategyKeyboard of our player
+	 * @return the MoveStrategyKeyboard
+	 */
 	public MoveStrategyKeyboard getKeyboard() {
-		return this.getKeyboard();
+		return this.keyboard;
 	}
 
 	/**
