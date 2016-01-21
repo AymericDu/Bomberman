@@ -159,6 +159,8 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	protected void kill() {
 		// TODO Change img
 		this.isAlive = false;
+         this.spriteManager.setType("died");
+         //TODO resurrection
 	}
 
 	/**
