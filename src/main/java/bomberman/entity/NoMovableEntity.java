@@ -45,5 +45,9 @@ public abstract class NoMovableEntity implements GameEntity {
 	public boolean isMovable() {
 		return false;
 	}
+	
+	public Point getPosition(){
+		return this.position;
+	}
 
 }
