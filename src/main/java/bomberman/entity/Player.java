@@ -131,6 +131,21 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	}
 
 	/**
+	 * getAuthorizedBombs allows to have the number of bombs you can drop
+	 * @return the authorizedBombs
+	 */
+	public int getAuthorizedBombs(){
+		return this.authorizedBombs;
+	}
+	
+	/**
+	 * setAuthorizedBombs allows to change the number of authorized bombs
+	 */
+	public void setAuthorizedBombs(int nb){
+		this.authorizedBombs = nb;
+	}
+	
+	/**
 	 * @return true if the player is alive and false if he's dead
 	 */
 	protected boolean getIsAlive() {
