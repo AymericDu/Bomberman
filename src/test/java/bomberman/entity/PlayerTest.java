@@ -53,9 +53,9 @@ public class PlayerTest{
 	
 	@Test
 	public void isAliveTest(){
-		assertEquals(true, playerTest.getIsAlive());
+		assertTrue(playerTest.getIsAlive());
 		playerTest.kill();
-		assertEquals(false, playerTest.getIsAlive());
+		assertFalse(playerTest.getIsAlive());
 	}
 	
 	@Test
