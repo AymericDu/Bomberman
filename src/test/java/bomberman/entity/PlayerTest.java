@@ -1,10 +1,9 @@
 package bomberman.entity;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,12 +24,14 @@ public class PlayerTest{
 		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
 		playerTest = new Player(data, new Point(1, 1));
-
 	}
 
 	@Test
 	public void getBoundingBoxTest(){
-		assertNotNull(playerTest.getBoundingBox());
+		Rectangle rectangle = playerTest.getBoundingBox();
+		assertEquals(20, rectangle.getWidth(), 0);
+		assertEquals(20, rectangle.getHeight(), 0);
+		assertEquals(new Point(20,20), rectangle.getLocation());
 	}
 	
 	@Test
@@ -65,17 +66,31 @@ public class PlayerTest{
 	
 	@Test
 	public void isMovableTest(){
-		assertEquals(true, playerTest.isMovable());
+		assertTrue(playerTest.isMovable());
+	}
+	
+	@Test
+	public void getKeyboardTest(){
+		assertSame(new MoveStrategyKeyboard(false).getClass(),playerTest.getKeyboard().getClass());
 	}
 	
 	@Test
 	public void dropBombTest(){
-		// TODO
+		playerTest.setAuthorizedBombs(10);
+		assertEquals(10 ,playerTest.getAuthorizedBombs());
+		playerTest.dropBomb();
+		assertEquals(9 ,playerTest.getAuthorizedBombs());
+		playerTest.setAuthorizedBombs(0);
+		playerTest.dropBomb();
+		assertEquals(0 ,playerTest.getAuthorizedBombs());
 	}
 	
 	@Test
 	public void addBombTest(){
-		// TODO
+		playerTest.setAuthorizedBombs(0);
+		assertEquals(0 ,playerTest.getAuthorizedBombs());
+		playerTest.addBomb();
+		assertEquals(1 ,playerTest.getAuthorizedBombs());
 	}
 	
 	@Test
