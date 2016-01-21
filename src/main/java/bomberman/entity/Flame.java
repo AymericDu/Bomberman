@@ -12,32 +12,23 @@ import javax.swing.Timer;
 import bomberman.uid.Main;
 import gameframework.game.GameData;
 
-public class BombExplosion extends NoMovableAndBlockerEntity implements ActionListener {
+public class Flame extends NoMovableEntity implements ActionListener {
 
 	protected Timer timer;
-	protected AudioClip clip;
 
-	public BombExplosion(GameData data, Point position) {
-		super(data, position, "/images/level/Explode.png");
+	public Flame(GameData data, Point position,String imageUrl) {
+		super(data, position, imageUrl);
 		this.timer = new Timer(1000, this);
 		this.timer.setRepeats(false);
 		this.timer.start();
-		URL url = Main.class.getResource("/sounds/ExplosionSound.wav");
-		this.clip = Applet.newAudioClip(url);
+		this.data.getUniverse().addGameEntity(this);
 		// TODO kill player and destroy box
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO remove the bomb explosion
-		startSound();
 	}
 	
-	public void startSound(){
-		this.clip.play();
-	}
-	
-	public void stopSong() {
-		this.clip.stop();
-	}
+
 }
