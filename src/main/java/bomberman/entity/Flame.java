@@ -1,15 +1,11 @@
 package bomberman.entity;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
 
 import javax.swing.Timer;
 
-import bomberman.uid.Main;
 import gameframework.game.GameData;
 
 public class Flame extends NoMovableEntity implements ActionListener {
