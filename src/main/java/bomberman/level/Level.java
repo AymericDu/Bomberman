@@ -8,6 +8,7 @@ import bomberman.entity.Box;
 import bomberman.entity.Player;
 import bomberman.entity.Wall;
 import bomberman.uid.BombermanUniverseViewPort;
+import gameframework.drawing.GameUniverseViewPort;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
@@ -141,5 +142,53 @@ public class Level extends GameLevelDefaultImpl {
 				}
 			}
 		}
+	}
+	
+	/**
+	 * getGameBoard return the GameBoard of our game
+	 * @returnthe GameBoard
+	 */
+	public GameUniverseViewPort getGameBoard(){
+		return this.gameBoard;
+	}
+	
+	/**
+	 * getPlayer1 return the player1 of our game
+	 * @return the player1
+	 */
+	public Player getPlayer1(){
+		return this.player1;
+	}
+	
+	/**
+	 * getPlayer2 return the player2 of our game
+	 * @return the player2
+	 */
+	public Player getPlayer2(){
+		return this.player2;
+	}
+	
+	/**
+	 * getColumns return the numbers of columns in the game
+	 * @return the numbers of columns 
+	 */
+	public int getColumns(){
+		return this.columns;
+	}
+	
+	/**
+	 * getRows return the numbers of rows in the game
+	 * @return the numbers of rows
+	 */
+	public int getRows(){
+		return this.rows;
+	}
+	
+	/**
+	 * getGameData return the GameData of our game
+	 * @return the GameData
+	 */
+	public GameData getGameData(){
+		return this.data;
 	}
 }
