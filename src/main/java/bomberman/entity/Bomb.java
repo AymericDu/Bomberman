@@ -42,18 +42,26 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		startSound();
+		flamesCenter();
 		flamesUp();
 		flamesDown();
 		flamesLeft();
 		flamesRight();
 	}
 	
+	private void flamesCenter() {
+		Point center=new Point((int)this.getPosition().getX(),(int)this.getPosition().getY());
+		new Flame(data, center, "/images/level/flameCenter32.png");
+		
+	}
+
+
 	public void flamesUp(){
 		for(int i=1;i<=radius;i++){
 			Point up=new Point((int)this.getPosition().getX(),(int)this.getPosition().getY()-(i*this.data.getConfiguration().getSpriteSize()));
 			//if()
 			//test if the object on the position isn't a wall
-			new Flame(data, up, "/images/level/ExplodeUp.png");
+			new Flame(data, up, "/images/level/flameVertical32.png");
 		}
 	}
 	
@@ -62,7 +70,7 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 			Point down=new Point((int)this.getPosition().getX(),(int)this.getPosition().getY()+(i*this.data.getConfiguration().getSpriteSize()));
 			//if()
 			//test if the object on the position isn't a wall
-			new Flame(data, down, "/images/level/ExplodeDown.png");
+			new Flame(data, down, "/images/level/flameVertical32.png");
 		}
 	}
 
@@ -71,7 +79,7 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 			Point left=new Point((int)this.getPosition().getX()-(i*this.data.getConfiguration().getSpriteSize()),(int)this.getPosition().getY());
 			//if()
 			//test if the object on the position isn't a wall
-			new Flame(data, left, "/images/level/ExplodeLeft.png");
+			new Flame(data, left, "/images/level/flameHorizontal32.png");
 		}
 	}
 	
@@ -80,7 +88,7 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 			Point right=new Point((int)this.getPosition().getX()+(i*this.data.getConfiguration().getSpriteSize()),(int)this.getPosition().getY());
 			//if()
 			//test if the object on the position isn't a wall
-			new Flame(data, right, "/images/level/ExplodeRight.png");
+			new Flame(data, right, "/images/level/flameHorizontal32.png");
 		}
 	}
 	
