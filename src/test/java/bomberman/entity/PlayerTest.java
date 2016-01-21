@@ -3,6 +3,7 @@ package bomberman.entity;
 import static org.junit.Assert.*;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +28,10 @@ public class PlayerTest{
 
 	@Test
 	public void getBoundingBoxTest(){
-		assertNotNull(playerTest.getBoundingBox());
+		Rectangle rectangle = playerTest.getBoundingBox();
+		assertEquals(20, rectangle.getWidth(), 0);
+		assertEquals(20, rectangle.getHeight(), 0);
+		assertEquals(new Point(20,20), rectangle.getLocation());
 	}
 	
 	@Test
