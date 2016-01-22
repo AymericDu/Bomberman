@@ -19,6 +19,10 @@ public class Level extends GameLevelDefaultImpl {
 	protected int columns;
 	protected HashSet<Point> occupiedPoints;
 
+	/**
+	 * Constructor of Level class
+	 * @param data a new gameData
+	 */
 	public Level(GameData data) {
 		super(data);
 		this.rows = this.data.getConfiguration().getNbRows();
@@ -26,6 +30,12 @@ public class Level extends GameLevelDefaultImpl {
 		this.occupiedPoints = new HashSet<Point>();
 	}
 
+	/**
+	 * createPoint allows to create a new point
+	 * @param columnNumber the number of columns
+	 * @param rowNumber the number of rows
+	 * @return a new Point
+	 */
 	protected Point createPoint(int columnNumber, int rowNumber) {
 		int spriteSize = this.data.getConfiguration().getSpriteSize();
 		return new Point(spriteSize * columnNumber, spriteSize * rowNumber);
@@ -44,6 +54,12 @@ public class Level extends GameLevelDefaultImpl {
 		this.spawnBox(40);
 	}
 
+	/**
+	 * createPlayers allows to create a new player
+	 * @param columnNumber the numbers of colums
+	 * @param rowNumber the numbers of rows
+	 * @return a new player
+	 */
 	protected Player createPlayers(int columnNumber, int rowNumber) {
 		Point position = this.createPoint(columnNumber, rowNumber);
 		if (this.occupiedPoints.contains(position))
@@ -136,7 +152,7 @@ public class Level extends GameLevelDefaultImpl {
 	
 	/**
 	 * getGameBoard return the GameBoard of our game
-	 * @returnthe GameBoard
+	 * @return the GameBoard
 	 */
 	public GameUniverseViewPort getGameBoard(){
 		return this.gameBoard;
