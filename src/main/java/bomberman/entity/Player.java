@@ -51,8 +51,8 @@ public class Player extends GameMovable implements GameEntity, KeyListener, Over
 		this.direction = new Point(0, 1);
 		this.initSpriteManager();
 
-		keyboard = new MoveStrategyKeyboard(false);
-		keyboard.setSpeed(this.data.getConfiguration().getSpriteSize());
+		this.keyboard = new MoveStrategyKeyboard(false);
+		this.keyboard.setSpeed(this.data.getConfiguration().getSpriteSize());
 		this.getDriver().setStrategy(keyboard);
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
 
@@ -163,8 +163,8 @@ public class Player extends GameMovable implements GameEntity, KeyListener, Over
 		// TODO Change img
 		this.isAlive = false;
 		this.spriteManager.setType("died");
-		this.data.getUniverse().removeGameEntity(this);
 		this.data.getCanvas().removeKeyListener(this);
+		this.data.getCanvas().removeKeyListener(this.keyboard);
 	}
 
 	/**
