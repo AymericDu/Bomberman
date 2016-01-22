@@ -3,9 +3,9 @@ package bomberman.entity;
 import java.awt.Point;
 
 import gameframework.game.GameData;
-import gameframework.motion.blocking.MoveBlocker;
+import gameframework.motion.overlapping.Overlappable;
 
-public class Box extends NoMovableAndBlockerEntity implements MoveBlocker {
+public class Box extends NoMovableAndBlockerEntity implements Overlappable {
 	
 	/**
 	 * Constructor of Box
@@ -14,5 +14,9 @@ public class Box extends NoMovableAndBlockerEntity implements MoveBlocker {
 	 */
 	public Box(GameData data, Point position) {
 		super(data, position, "/images/level/Box.png");
+	}
+	
+	public void destroy(){
+		this.data.getUniverse().removeGameEntity(this);
 	}
 }
