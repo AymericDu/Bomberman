@@ -17,7 +17,7 @@ public class Main extends GameDefaultImpl {
 
 	public Main(GameData data) {
 		super(data);
-		URL url = Main.class.getResource("/sounds/GameSound2.wav");
+		URL url = Main.class.getResource("/sounds/GameSound.wav");
 		this.clip = Applet.newAudioClip(url);
 		this.data.addLevel(new Level(data));
 		this.startSong();
