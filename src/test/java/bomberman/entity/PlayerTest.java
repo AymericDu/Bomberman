@@ -8,6 +8,7 @@ import java.awt.Rectangle;
 import org.junit.Before;
 import org.junit.Test;
 
+import bomberman.uid.BombermanMoveStrategy;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 import gameframework.motion.MoveStrategy;
@@ -71,7 +72,8 @@ public class PlayerTest{
 	
 	@Test
 	public void getKeyboardTest(){
-		assertSame(new MoveStrategyKeyboard(false).getClass(),playerTest.getKeyboard().getClass());
+		playerTest.setKeyboard(new BombermanMoveStrategy(1,1,1,1,1));
+		assertSame(new BombermanMoveStrategy(1,1,1,1,1).getClass(),playerTest.getKeyboard().getClass());
 	}
 	
 	@Test
