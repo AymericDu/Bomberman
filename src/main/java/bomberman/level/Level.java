@@ -10,7 +10,6 @@ import bomberman.entity.Wall;
 import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.drawing.GameUniverseViewPort;
 import gameframework.game.GameData;
-import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
 
 public class Level extends GameLevelDefaultImpl {
@@ -138,7 +137,7 @@ public class Level extends GameLevelDefaultImpl {
 	
 	/**
 	 * getGameBoard return the GameBoard of our game
-	 * @returnthe GameBoard
+	 * @return the GameBoard
 	 */
 	public GameUniverseViewPort getGameBoard(){
 		return this.gameBoard;
