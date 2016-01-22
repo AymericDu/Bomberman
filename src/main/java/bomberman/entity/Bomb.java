@@ -17,14 +17,16 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	protected Timer timer;
 	protected int radius;
 	protected AudioClip clip;
+	protected Player player;
 
 
-	public Bomb(GameData data, Point position, int radius) {
+	public Bomb(GameData data, Point position, int radius,Player player) {
 		super(data, (Point) position.clone(), "/images/level/Bomb.png");
 		this.radius = radius;
 		this.timer = new Timer(2000, this);
 		this.timer.setRepeats(false);
 		this.timer.start();
+		this.player=player;
 		URL url = Main.class.getResource("/sounds/ExplosionSound.wav");
 		this.clip = Applet.newAudioClip(url);
 	}
@@ -47,6 +49,8 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		flamesDown();
 		flamesLeft();
 		flamesRight();
+		this.data.getUniverse().removeGameEntity(this);
+		this.player.addBomb();
 	}
 	
 	private void flamesCenter() {

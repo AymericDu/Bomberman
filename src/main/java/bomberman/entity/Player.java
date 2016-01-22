@@ -119,7 +119,7 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	public void dropBomb() {
 		if (this.authorizedBombs > 0) {
 			this.authorizedBombs--;
-			this.data.getUniverse().addGameEntity(new Bomb(this.data, this.position, 2));
+			this.data.getUniverse().addGameEntity(new Bomb(this.data, this.position, 2,this));
 		}
 	}
 
@@ -156,11 +156,11 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	 * This function allows to change isAlive in false. It allow to kill the
 	 * player.
 	 */
-	protected void kill() {
+	public void kill() {
 		// TODO Change img
 		this.isAlive = false;
          this.spriteManager.setType("died");
-         //TODO resurrection
+         
 	}
 
 	/**

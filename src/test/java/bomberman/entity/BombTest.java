@@ -8,7 +8,7 @@ public class BombTest extends NoMovableEntityTest {
 
 	@Override
 	public Bomb createNoMovableEntity() {
-		return new Bomb(this.data, this.position, 2);
+		return new Bomb(this.data, this.position, 2,new Player(this.data,this.position));
 	}
 
 	@Test

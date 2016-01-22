@@ -40,6 +40,7 @@ public class Level extends GameLevelDefaultImpl {
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		this.player1 = this.createPlayers(1, 1);
 		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2);
+		this.player1.kill();
 		this.createWalls();
 		this.spawnBox(40);
 	}
@@ -59,15 +60,6 @@ public class Level extends GameLevelDefaultImpl {
 		return player;
 	}
 
-	/**
-	 * Remove a box
-	 * 
-	 * @param b
-	 *            the box that we would remove
-	 */
-	protected void removeEntity(GameEntity entity) {
-		this.universe.removeGameEntity(entity);
-	}
 
 	/**
 	 * Creation of all the walls
