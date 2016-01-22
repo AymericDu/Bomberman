@@ -1,12 +1,14 @@
 package bomberman.level;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Random;
 
 import bomberman.entity.Box;
 import bomberman.entity.Player;
 import bomberman.entity.Wall;
+import bomberman.uid.BombermanMoveStrategy;
 import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.drawing.GameUniverseViewPort;
 import gameframework.game.GameData;
@@ -48,7 +50,11 @@ public class Level extends GameLevelDefaultImpl {
 	protected void init() {
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		this.player1 = this.createPlayers(1, 1);
+		this.player1.setKeyboard(new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S,
+				KeyEvent.VK_Q, KeyEvent.VK_SPACE));
 		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2);
+		this.player2.setKeyboard(new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT,
+				KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_ENTER));
 		this.createWalls();
 		this.spawnBox(40);
 	}

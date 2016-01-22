@@ -3,10 +3,9 @@ package bomberman.entity;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.net.URL;
 
+import bomberman.uid.BombermanMoveStrategy;
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
 import gameframework.drawing.SpriteManagerDefaultImpl;
@@ -14,10 +13,11 @@ import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.MoveStrategy;
+import gameframework.motion.MoveStrategyConfigurableKeyboard;
 import gameframework.motion.MoveStrategyKeyboard;
 import gameframework.motion.overlapping.Overlappable;
 
-public class Player extends GameMovable implements GameEntity, KeyListener, Overlappable {
+public class Player extends GameMovable implements GameEntity, Overlappable {
 
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int spriteSize;
@@ -26,7 +26,7 @@ public class Player extends GameMovable implements GameEntity, KeyListener, Over
 	protected Point direction;
 	protected boolean isAlive;
 	protected int authorizedBombs;
-	protected MoveStrategyKeyboard keyboard;
+	protected BombermanMoveStrategy keyboard;
 	protected URL url;
 	
 	/**
@@ -51,15 +51,18 @@ public class Player extends GameMovable implements GameEntity, KeyListener, Over
 		this.direction = new Point(0, 1);
 		this.initSpriteManager();
 
-		this.keyboard = new MoveStrategyKeyboard(false);
-		this.keyboard.setSpeed(this.data.getConfiguration().getSpriteSize());
-		this.getDriver().setStrategy(keyboard);
+
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
 
-		this.data.getCanvas().addKeyListener(keyboard);
-		this.data.getCanvas().addKeyListener(this);
-
 		this.data.getUniverse().addGameEntity(this);
+	}
+
+	public void setKeyboard(BombermanMoveStrategy keyboard) {
+		this.keyboard = keyboard;
+		this.keyboard.setPlayer(this);
+		this.keyboard.setSpeed(this.data.getConfiguration().getSpriteSize());
+		this.getDriver().setStrategy(keyboard);
+		this.data.getCanvas().addKeyListener(keyboard);
 	}
 
 	/**
@@ -101,7 +104,7 @@ public class Player extends GameMovable implements GameEntity, KeyListener, Over
 	 * getKeyboard return the MoveStrategyKeyboard of our player
 	 * @return the MoveStrategyKeyboard
 	 */
-	public MoveStrategyKeyboard getKeyboard() {
+	public MoveStrategyConfigurableKeyboard getKeyboard() {
 		return this.keyboard;
 	}
 
@@ -163,7 +166,6 @@ public class Player extends GameMovable implements GameEntity, KeyListener, Over
 		// TODO Change img
 		this.isAlive = false;
 		this.spriteManager.setType("died");
-		this.data.getCanvas().removeKeyListener(this);
 		this.data.getCanvas().removeKeyListener(this.keyboard);
 	}
 
@@ -225,41 +227,4 @@ public class Player extends GameMovable implements GameEntity, KeyListener, Over
 	public boolean isMovable() {
 		return true;
 	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-	}
-
-	/**
-	 * Override keyPressed to know if the player pressed or not space
-	 * 
-	 * @param event
-	 *            the key pressed
-	 */
-	@Override
-	public void keyPressed(KeyEvent event) {
-		keyPressed(event.getKeyCode());
-	}
-
-	/**
-	 * Called by keyPressed, make a hit if the previous hit is finished.
-	 * 
-	 * @param keyCode
-	 *            the keyCode give by keyPressed.
-	 */
-	public void keyPressed(int keyCode) {
-		switch (keyCode) {
-		case KeyEvent.VK_SPACE:
-			this.dropBomb();
-			break;
-		default:
-			;
-		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// nothing to do
-	}
-
 }
