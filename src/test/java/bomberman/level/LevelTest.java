@@ -53,9 +53,4 @@ public class LevelTest {
 			IllegalStateException.getMessage();
 		}
 	}
-	
-	@Test
-	public void removeEntityTest(){
-		//TO DO
-	}
 }
