@@ -19,7 +19,13 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	protected AudioClip clip;
 	protected Player player;
 
-
+	/**
+	 * Constructor of the bomb
+	 * @param data : the game data
+	 * @param position : the position of the bomb
+	 * @param radius : the radius of the bomb
+	 * @param player : the player who have the bomb
+	 */
 	public Bomb(GameData data, Point position, int radius,Player player) {
 		super(data, (Point) position.clone(), "/images/level/Bomb.png");
 		this.radius = radius;
@@ -33,7 +39,7 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	
 
 	/**
-	 * give the radius of the current bomb
+	 * Give the radius of the current bomb
 	 * 
 	 * @return int : the radius of the bomb
 	 */
@@ -41,6 +47,9 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		return this.radius;
 	}
 
+	/**
+	 * The action performed when a bomb explode
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		startSound();
@@ -53,13 +62,17 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		this.player.addBomb();
 	}
 	
-	private void flamesCenter() {
+	/**
+	 * Draw the center image for the flame
+	 */
+	public void flamesCenter() {
 		Point center=new Point((int)this.getPosition().getX(),(int)this.getPosition().getY());
 		new Flame(data, center, "/images/level/flameCenter32.png");
-		
 	}
 
-
+	/**
+	 * Draw the up image for the flame
+	 */
 	public void flamesUp(){
 		for(int i=1;i<=radius;i++){
 			Point up=new Point((int)this.getPosition().getX(),(int)this.getPosition().getY()-(i*this.data.getConfiguration().getSpriteSize()));
@@ -69,6 +82,9 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Draw the down image for the flame
+	 */
 	public void flamesDown(){
 		for(int i=1;i<=radius;i++){
 			Point down=new Point((int)this.getPosition().getX(),(int)this.getPosition().getY()+(i*this.data.getConfiguration().getSpriteSize()));
@@ -78,6 +94,9 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		}
 	}
 
+	/**
+	 * Draw the left image for the flame
+	 */
 	public void flamesLeft(){
 		for(int i=1;i<=radius;i++){
 			Point left=new Point((int)this.getPosition().getX()-(i*this.data.getConfiguration().getSpriteSize()),(int)this.getPosition().getY());
@@ -87,6 +106,9 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Draw the right image for the flame
+	 */
 	public void flamesRight(){
 		for(int i=1;i<=radius;i++){
 			Point right=new Point((int)this.getPosition().getX()+(i*this.data.getConfiguration().getSpriteSize()),(int)this.getPosition().getY());
@@ -96,10 +118,16 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		}
 	}
 	
+	/**
+	 * Start the song
+	 */
 	public void startSound(){
 		this.clip.play();
 	}
 	
+	/**
+	 * Stop the song
+	 */
 	public void stopSong() {
 		this.clip.stop();
 	}

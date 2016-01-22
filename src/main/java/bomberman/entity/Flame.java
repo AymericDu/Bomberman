@@ -23,7 +23,6 @@ public class Flame extends NoMovableEntity implements ActionListener {
 		this.timer = new Timer(1000, this);
 		this.timer.setRepeats(false);
 		this.timer.start();
-		this.data.getUniverse().addGameEntity(this);
 		// TODO kill player and destroy box
 	}
 	

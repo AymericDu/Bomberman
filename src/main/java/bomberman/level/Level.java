@@ -65,7 +65,6 @@ public class Level extends GameLevelDefaultImpl {
 		if (this.occupiedPoints.contains(position))
 			throw new IllegalStateException();
 		Player player = new Player(this.data, position);
-		this.universe.addGameEntity(player);
 		this.occupiedPoints.add(position);
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
@@ -93,7 +92,7 @@ public class Level extends GameLevelDefaultImpl {
 		for (int y = 0; y < this.rows; y++) {
 			for (int x = 0; x < this.columns; x = x + this.columns - 1) {
 				point = this.createPoint(x, y);
-				this.universe.addGameEntity(new Wall(data, point));
+				new Wall(data, point);
 				this.occupiedPoints.add(point);
 			}
 		}
@@ -107,7 +106,7 @@ public class Level extends GameLevelDefaultImpl {
 		for (int x = 1; x < this.columns - 1; x++) {
 			for (int y = 0; y < this.rows; y = y + this.rows - 1) {
 				point = this.createPoint(x, y);
-				this.universe.addGameEntity(new Wall(data, point));
+				new Wall(data, point);
 				this.occupiedPoints.add(point);
 			}
 		}
@@ -121,7 +120,7 @@ public class Level extends GameLevelDefaultImpl {
 		for (int x = 2; x < columns - 2; x = x + 2) {
 			for (int y = 2; y < rows - 2; y = y + 2) {
 				point = this.createPoint(x, y);
-				this.universe.addGameEntity(new Wall(data, point));
+				new Wall(data, point);
 				this.occupiedPoints.add(point);
 			}
 		}
@@ -143,7 +142,7 @@ public class Level extends GameLevelDefaultImpl {
 				if (!this.occupiedPoints.contains(point)) {
 					randomInt = random.nextInt(100);
 					if (randomInt < probality) {
-						this.universe.addGameEntity(new Box(data, point));
+						new Box(data, point);
 						this.occupiedPoints.add(point);
 					}
 				}
