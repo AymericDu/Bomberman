@@ -6,6 +6,11 @@ import gameframework.game.GameData;
 
 public class Wall extends NoMovableAndBlockerEntity {
 
+	/**
+	 * Constructor of the wall entity
+	 * @param data : the game data 
+	 * @param position : the position of the entity
+	 */
 	public Wall(GameData data, Point position) {
 		super(data, position, "/images/level/Wall.png");
 	}
