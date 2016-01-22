@@ -164,6 +164,7 @@ public class Player extends GameMovable implements GameEntity, KeyListener, Over
 		this.isAlive = false;
 		this.spriteManager.setType("died");
 		this.data.getUniverse().removeGameEntity(this);
+		this.data.getCanvas().removeKeyListener(this);
 	}
 
 	/**
