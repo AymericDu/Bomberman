@@ -23,8 +23,8 @@ public class Flame extends NoMovableEntity implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO remove the bomb explosion
-	}
+		this.data.getUniverse().removeGameEntity(this);
+		}
 	
 
 }
