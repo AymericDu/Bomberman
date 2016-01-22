@@ -57,6 +57,8 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 
 		this.data.getCanvas().addKeyListener(keyboard);
 		this.data.getCanvas().addKeyListener(this);
+
+		this.data.getUniverse().addGameEntity(this);
 	}
 
 	/**
@@ -119,7 +121,7 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	public void dropBomb() {
 		if (this.authorizedBombs > 0) {
 			this.authorizedBombs--;
-			this.data.getUniverse().addGameEntity(new Bomb(this.data, this.position, 2,this));
+			new Bomb(this.data, this.position, 2, this);
 		}
 	}
 
