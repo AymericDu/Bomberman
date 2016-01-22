@@ -16,6 +16,12 @@ public abstract class NoMovableEntity implements GameEntity {
 	protected DrawableImage img;
 	protected Point position;
 
+	/**
+	 * Constructor of NoMovableEntity
+	 * @param data
+	 * @param position
+	 * @param urlString
+	 */
 	public NoMovableEntity(GameData data, Point position, String urlString) {
 		this.data = data;
 		this.canvas = data.getCanvas();
@@ -25,7 +31,7 @@ public abstract class NoMovableEntity implements GameEntity {
 	}
 
 	/**
-	 * draw the bomb with the Graphics g, the image and the coordinates of the
+	 * Draw the bomb with the Graphics g, the image and the coordinates of the
 	 * bomb.
 	 * 
 	 * @param g
@@ -37,7 +43,7 @@ public abstract class NoMovableEntity implements GameEntity {
 	}
 
 	/**
-	 * return if the bomb is movable or not
+	 * isMovable return if the bomb is movable or not
 	 * 
 	 * @return boolean : false
 	 */

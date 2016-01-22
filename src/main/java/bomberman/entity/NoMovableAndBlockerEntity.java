@@ -8,12 +8,18 @@ import gameframework.motion.blocking.MoveBlocker;
 
 public abstract class NoMovableAndBlockerEntity extends NoMovableEntity implements MoveBlocker {
 
+	/**
+	 * Constructor of NoMovableAndBlockerEntity
+	 * @param data the GameData
+	 * @param position the position NoMovableAndBlockerEntity
+	 * @param urlString the url of the NoMovableAndBlockerEntity
+	 */
 	public NoMovableAndBlockerEntity(GameData data, Point position, String urlString) {
 		super(data, position, urlString);
 	}
 
 	/**
-	 * give the bounding box of the box
+	 * Give the bounding box of the box
 	 * 
 	 * @return Rectangle : the bounding box
 	 */
