@@ -27,29 +27,29 @@ public class LevelTest {
 	}
 
 	@Test
-	public void initTest(){
-		//check if hashmap occupiedPoints is empty before we use the fonction init()
+	public void initTest() {
+		// check if hashmap occupiedPoints is empty before we use the fonction
+		// init()
 		assertTrue(level.occupiedPoints.isEmpty());
 		level.init();
 		assertSame(new BombermanUniverseViewPort(level.getGameData()).getClass(), level.getGameBoard().getClass());
-		assertEquals(new Point(1,1), level.getPlayer1().getPosition());
-		assertEquals(new Point(level.getColumns()-2,level.getRows()-2), level.getPlayer2().getPosition());
+		assertEquals(new Point(1, 1), level.getPlayer1().getPosition());
+		assertEquals(new Point(level.getColumns() - 2, level.getRows() - 2), level.getPlayer2().getPosition());
 		assertFalse(level.occupiedPoints.isEmpty());
 	}
-	
+
 	@Test
-	public void createPlayersTest(){
-		p = level.createPlayers(10,10);
-		assertEquals(new Point(10,10), p.getPosition());
+	public void createPlayersTest() {
+		p = level.createPlayers(10, 10);
+		assertEquals(new Point(10, 10), p.getPosition());
 	}
-	
+
 	@Test
-	public void createPlayersTestException() throws IllegalStateException{
-		try{
-		level.createPlayers(10,10);
-		level.createPlayers(10,10);
-		}
-		catch(Exception IllegalStateException ){
+	public void createPlayersTestException() throws IllegalStateException {
+		try {
+			level.createPlayers(10, 10);
+			level.createPlayers(10, 10);
+		} catch (Exception IllegalStateException) {
 			IllegalStateException.getMessage();
 		}
 	}

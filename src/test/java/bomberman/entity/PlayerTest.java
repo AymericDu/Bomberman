@@ -17,7 +17,7 @@ public class PlayerTest extends EntityTest {
 	public Player createEntity() {
 		return new Player(this.data, this.position);
 	}
-	
+
 	@Override
 	@Test
 	public void getBoundingBoxTest() {
@@ -44,7 +44,7 @@ public class PlayerTest extends EntityTest {
 	}
 
 	@Test
-	public void dropBombTest(){
+	public void dropBombTest() {
 		Player player = this.createEntity();
 		assertEquals(1, player.authorizedBombs);
 		player.dropBomb();
@@ -52,9 +52,9 @@ public class PlayerTest extends EntityTest {
 		player.dropBomb();
 		assertEquals(0, player.authorizedBombs);
 	}
-	
+
 	@Test
-	public void addBombTest(){
+	public void addBombTest() {
 		Player player = this.createEntity();
 		assertEquals(1, player.authorizedBombs);
 		player.addBomb();

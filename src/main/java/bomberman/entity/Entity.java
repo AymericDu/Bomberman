@@ -20,6 +20,7 @@ public abstract class Entity extends GameMovable implements GameEntity, Overlapp
 
 	/**
 	 * Constructor of NoMovableEntity
+	 * 
 	 * @param data
 	 * @param position
 	 * @param urlString

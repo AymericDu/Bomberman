@@ -15,12 +15,12 @@ public abstract class EntityTest {
 
 	protected GameData data = new GameData(new GameConfiguration(20, 20, 20, 20));
 	protected Point position = new Point(0, 0);
-	
+
 	/**
 	 * use the attributes data and position
 	 */
 	public abstract Entity createEntity();
-	
+
 	@Test
 	public void noMovableTest() {
 		Entity entity = this.createEntity();

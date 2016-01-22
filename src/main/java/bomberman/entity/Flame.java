@@ -15,17 +15,21 @@ public class Flame extends Entity implements ActionListener {
 
 	/**
 	 * Constructor of Flame
-	 * @param data the GameData
-	 * @param position of the flame
-	 * @param imageUrl of the flame
+	 * 
+	 * @param data
+	 *            the GameData
+	 * @param position
+	 *            of the flame
+	 * @param imageUrl
+	 *            of the flame
 	 */
-	public Flame(GameData data, Point position,String imageUrl) {
+	public Flame(GameData data, Point position, String imageUrl) {
 		super(data, position, imageUrl);
 		this.timer = new Timer(1000, this);
 		this.timer.setRepeats(false);
 		this.timer.start();
 	}
-	
+
 	/**
 	 * actionPerformed allows to remove the Flame
 	 */

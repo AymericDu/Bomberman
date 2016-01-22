@@ -21,22 +21,26 @@ public class Bomb extends Entity implements ActionListener {
 
 	/**
 	 * Constructor of the bomb
-	 * @param data : the game data
-	 * @param position : the position of the bomb
-	 * @param radius : the radius of the bomb
-	 * @param player : the player who have the bomb
+	 * 
+	 * @param data
+	 *            : the game data
+	 * @param position
+	 *            : the position of the bomb
+	 * @param radius
+	 *            : the radius of the bomb
+	 * @param player
+	 *            : the player who have the bomb
 	 */
-	public Bomb(GameData data, Point position, int radius,Player player) {
+	public Bomb(GameData data, Point position, int radius, Player player) {
 		super(data, (Point) position.clone(), "/images/level/Bomb.png");
 		this.radius = radius;
 		this.timer = new Timer(2000, this);
 		this.timer.setRepeats(false);
 		this.timer.start();
-		this.player=player;
+		this.player = player;
 		URL url = Main.class.getResource("/sounds/ExplosionSound.wav");
 		this.clip = Applet.newAudioClip(url);
 	}
-	
 
 	/**
 	 * Give the radius of the current bomb
@@ -61,35 +65,37 @@ public class Bomb extends Entity implements ActionListener {
 		this.data.getUniverse().removeGameEntity(this);
 		this.player.addBomb();
 	}
-	
+
 	/**
 	 * Draw the center image for the flame
 	 */
 	public void flamesCenter() {
-		Point center=new Point((int)this.getPosition().getX(),(int)this.getPosition().getY());
+		Point center = new Point((int) this.getPosition().getX(), (int) this.getPosition().getY());
 		new Flame(data, center, "/images/level/flameCenter32.png");
 	}
 
 	/**
 	 * Draw the up image for the flame
 	 */
-	public void flamesUp(){
-		for(int i=1;i<=radius;i++){
-			Point up=new Point((int)this.getPosition().getX(),(int)this.getPosition().getY()-(i*this.data.getConfiguration().getSpriteSize()));
-			//if()
-			//test if the object on the position isn't a wall
+	public void flamesUp() {
+		for (int i = 1; i <= radius; i++) {
+			Point up = new Point((int) this.getPosition().getX(),
+					(int) this.getPosition().getY() - (i * this.data.getConfiguration().getSpriteSize()));
+			// if()
+			// test if the object on the position isn't a wall
 			new Flame(data, up, "/images/level/flameVertical32.png");
 		}
 	}
-	
+
 	/**
 	 * Draw the down image for the flame
 	 */
-	public void flamesDown(){
-		for(int i=1;i<=radius;i++){
-			Point down=new Point((int)this.getPosition().getX(),(int)this.getPosition().getY()+(i*this.data.getConfiguration().getSpriteSize()));
-			//if()
-			//test if the object on the position isn't a wall
+	public void flamesDown() {
+		for (int i = 1; i <= radius; i++) {
+			Point down = new Point((int) this.getPosition().getX(),
+					(int) this.getPosition().getY() + (i * this.data.getConfiguration().getSpriteSize()));
+			// if()
+			// test if the object on the position isn't a wall
 			new Flame(data, down, "/images/level/flameVertical32.png");
 		}
 	}
@@ -97,34 +103,37 @@ public class Bomb extends Entity implements ActionListener {
 	/**
 	 * Draw the left image for the flame
 	 */
-	public void flamesLeft(){
-		for(int i=1;i<=radius;i++){
-			Point left=new Point((int)this.getPosition().getX()-(i*this.data.getConfiguration().getSpriteSize()),(int)this.getPosition().getY());
-			//if()
-			//test if the object on the position isn't a wall
+	public void flamesLeft() {
+		for (int i = 1; i <= radius; i++) {
+			Point left = new Point((int) this.getPosition().getX() - (i * this.data.getConfiguration().getSpriteSize()),
+					(int) this.getPosition().getY());
+			// if()
+			// test if the object on the position isn't a wall
 			new Flame(data, left, "/images/level/flameHorizontal32.png");
 		}
 	}
-	
+
 	/**
 	 * Draw the right image for the flame
 	 */
-	public void flamesRight(){
-		for(int i=1;i<=radius;i++){
-			Point right=new Point((int)this.getPosition().getX()+(i*this.data.getConfiguration().getSpriteSize()),(int)this.getPosition().getY());
-			//if()
-			//test if the object on the position isn't a wall
+	public void flamesRight() {
+		for (int i = 1; i <= radius; i++) {
+			Point right = new Point(
+					(int) this.getPosition().getX() + (i * this.data.getConfiguration().getSpriteSize()),
+					(int) this.getPosition().getY());
+			// if()
+			// test if the object on the position isn't a wall
 			new Flame(data, right, "/images/level/flameHorizontal32.png");
 		}
 	}
-	
+
 	/**
 	 * Start the song
 	 */
-	public void startSound(){
+	public void startSound() {
 		this.clip.play();
 	}
-	
+
 	/**
 	 * Stop the song
 	 */

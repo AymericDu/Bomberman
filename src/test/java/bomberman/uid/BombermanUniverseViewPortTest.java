@@ -13,17 +13,16 @@ public class BombermanUniverseViewPortTest {
 	GameConfiguration config;
 	GameData data;
 	BombermanUniverseViewPort bombermanTest;
-	
-	
+
 	@Before
 	public void create() {
-		config = new GameConfiguration(0,0,0,0);
+		config = new GameConfiguration(0, 0, 0, 0);
 		data = new GameData(config);
 		bombermanTest = new BombermanUniverseViewPort(data);
 	}
-	
+
 	@Test
-	public void backgroundImageTest(){
+	public void backgroundImageTest() {
 		assertNotNull(bombermanTest.backgroundImage());
 	}
 

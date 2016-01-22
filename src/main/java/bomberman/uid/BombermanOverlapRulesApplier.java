@@ -10,7 +10,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	public void overlapRule(Player player, Flame flame) {
 		player.kill();
 	}
-	
+
 	public void overlapRule(Box box, Flame flame) {
 		box.destroy();
 	}

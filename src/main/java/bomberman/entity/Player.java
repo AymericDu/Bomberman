@@ -13,7 +13,7 @@ public class Player extends Entity {
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int authorizedBombs;
 	protected BombermanMoveStrategy keyboard;
-	
+
 	/**
 	 * Constructor of player class, allow to create our player
 	 * 

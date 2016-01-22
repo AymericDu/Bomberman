@@ -23,7 +23,9 @@ public class Level extends GameLevelDefaultImpl {
 
 	/**
 	 * Constructor of Level class
-	 * @param data a new gameData
+	 * 
+	 * @param data
+	 *            a new gameData
 	 */
 	public Level(GameData data) {
 		super(data);
@@ -34,8 +36,11 @@ public class Level extends GameLevelDefaultImpl {
 
 	/**
 	 * createPoint allows to create a new point
-	 * @param columnNumber the number of columns
-	 * @param rowNumber the number of rows
+	 * 
+	 * @param columnNumber
+	 *            the number of columns
+	 * @param rowNumber
+	 *            the number of rows
 	 * @return a new Point
 	 */
 	protected Point createPoint(int columnNumber, int rowNumber) {
@@ -50,19 +55,22 @@ public class Level extends GameLevelDefaultImpl {
 	protected void init() {
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		this.player1 = this.createPlayers(1, 1);
-		this.player1.setKeyboard(new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S,
-				KeyEvent.VK_Q, KeyEvent.VK_SPACE));
+		this.player1.setKeyboard(new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S, KeyEvent.VK_Q,
+				KeyEvent.VK_SPACE));
 		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2);
-		this.player2.setKeyboard(new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT,
-				KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_ENTER));
+		this.player2.setKeyboard(new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN,
+				KeyEvent.VK_LEFT, KeyEvent.VK_ENTER));
 		this.createWalls();
 		this.spawnBox(40);
 	}
 
 	/**
 	 * createPlayers allows to create a new player
-	 * @param columnNumber the numbers of colums
-	 * @param rowNumber the numbers of rows
+	 * 
+	 * @param columnNumber
+	 *            the numbers of colums
+	 * @param rowNumber
+	 *            the numbers of rows
 	 * @return a new player
 	 */
 	protected Player createPlayers(int columnNumber, int rowNumber) {
@@ -78,7 +86,6 @@ public class Level extends GameLevelDefaultImpl {
 		}
 		return player;
 	}
-
 
 	/**
 	 * Creation of all the walls
@@ -154,52 +161,58 @@ public class Level extends GameLevelDefaultImpl {
 			}
 		}
 	}
-	
+
 	/**
 	 * getGameBoard return the GameBoard of our game
+	 * 
 	 * @return the GameBoard
 	 */
-	public GameUniverseViewPort getGameBoard(){
+	public GameUniverseViewPort getGameBoard() {
 		return this.gameBoard;
 	}
-	
+
 	/**
 	 * getPlayer1 return the player1 of our game
+	 * 
 	 * @return the player1
 	 */
-	public Player getPlayer1(){
+	public Player getPlayer1() {
 		return this.player1;
 	}
-	
+
 	/**
 	 * getPlayer2 return the player2 of our game
+	 * 
 	 * @return the player2
 	 */
-	public Player getPlayer2(){
+	public Player getPlayer2() {
 		return this.player2;
 	}
-	
+
 	/**
 	 * getColumns return the numbers of columns in the game
-	 * @return the numbers of columns 
+	 * 
+	 * @return the numbers of columns
 	 */
-	public int getColumns(){
+	public int getColumns() {
 		return this.columns;
 	}
-	
+
 	/**
 	 * getRows return the numbers of rows in the game
+	 * 
 	 * @return the numbers of rows
 	 */
-	public int getRows(){
+	public int getRows() {
 		return this.rows;
 	}
-	
+
 	/**
 	 * getGameData return the GameData of our game
+	 * 
 	 * @return the GameData
 	 */
-	public GameData getGameData(){
+	public GameData getGameData() {
 		return this.data;
 	}
 }
