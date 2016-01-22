@@ -18,5 +18,4 @@ public class RadiusBombBonus extends Bonus {
 	public void effect(Player player) {
 		player.addBomb();
 	}
-
 }

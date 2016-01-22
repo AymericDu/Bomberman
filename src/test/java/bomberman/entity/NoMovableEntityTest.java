@@ -15,7 +15,7 @@ public abstract class NoMovableEntityTest {
 	GameConfiguration myGameConfiguration;
 	GameData data;
 	Point position;
-	NoMovableEntity entity;
+	Entity entity;
 	
 	@Before
 	public void create(){
@@ -26,7 +26,7 @@ public abstract class NoMovableEntityTest {
 
 	}
 	
-	public abstract NoMovableEntity createNoMovableEntity();
+	public abstract Entity createNoMovableEntity();
 	
 	@Test
 	public void noMovableTest() {

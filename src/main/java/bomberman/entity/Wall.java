@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import gameframework.game.GameData;
 
-public class Wall extends NoMovableAndBlockerEntity {
+public class Wall extends BlockerEntity {
 
 	/**
 	 * Constructor of the wall entity

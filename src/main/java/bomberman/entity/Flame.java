@@ -8,9 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import gameframework.game.GameData;
-import gameframework.motion.overlapping.Overlappable;
 
-public class Flame extends NoMovableEntity implements ActionListener, Overlappable {
+public class Flame extends Entity implements ActionListener {
 
 	protected Timer timer;
 

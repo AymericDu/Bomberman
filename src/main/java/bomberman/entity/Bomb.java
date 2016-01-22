@@ -12,7 +12,7 @@ import javax.swing.Timer;
 import bomberman.uid.Main;
 import gameframework.game.GameData;
 
-public class Bomb extends NoMovableEntity implements ActionListener {
+public class Bomb extends Entity implements ActionListener {
 
 	protected Timer timer;
 	protected int radius;
@@ -131,5 +131,4 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	public void stopSong() {
 		this.clip.stop();
 	}
-	
 }
