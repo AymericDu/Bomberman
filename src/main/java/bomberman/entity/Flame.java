@@ -24,7 +24,6 @@ public class Flame extends Entity implements ActionListener {
 		this.timer = new Timer(1000, this);
 		this.timer.setRepeats(false);
 		this.timer.start();
-		// TODO kill player and destroy box
 	}
 	
 	/**

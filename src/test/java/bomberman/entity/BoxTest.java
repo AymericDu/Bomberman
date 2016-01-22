@@ -1,6 +1,9 @@
 package bomberman.entity;
 
-public class BoxTest {
+public class BoxTest extends BlockerEntityTest {
 
-	// TODO
+	@Override
+	public Box createEntity() {
+		return new Box(this.data, this.position);
+	}
 }

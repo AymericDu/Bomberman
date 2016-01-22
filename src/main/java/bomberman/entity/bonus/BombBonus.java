@@ -5,13 +5,12 @@ import java.awt.Point;
 import bomberman.entity.Player;
 import gameframework.game.GameData;
 
-public class RadiusBombBonus extends Bonus {
+public class BombBonus extends Bonus {
 
 	protected int newRadius;
 	
-	public RadiusBombBonus(GameData data, Point position, String urlString,int bonusRadius) {
-		super(data,position,urlString);
-		this.newRadius=bonusRadius;
+	public BombBonus(GameData data, Point position) {
+		super(data, position, "/images/level/Bomb.png");
 	}
 	
 	@Override
