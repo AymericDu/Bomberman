@@ -19,7 +19,7 @@ public abstract class NoMovableEntityTest {
 	
 	@Before
 	public void create(){
-		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);;
+		myGameConfiguration = new GameConfiguration(20, 20, 20, 20);
 		data = new GameData(myGameConfiguration);
 		position = new Point(0, 0);
 		entity = this.createNoMovableEntity();
