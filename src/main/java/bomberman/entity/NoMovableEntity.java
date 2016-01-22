@@ -22,6 +22,7 @@ public abstract class NoMovableEntity implements GameEntity {
 		URL url = NoMovableAndBlockerEntity.class.getResource(urlString);
 		this.img = new DrawableImage(url, this.canvas);
 		this.position = position;
+		this.data.getUniverse().addGameEntity(this);
 	}
 
 	/**
