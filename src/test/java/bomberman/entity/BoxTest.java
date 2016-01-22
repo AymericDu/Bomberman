@@ -1,9 +1,6 @@
 package bomberman.entity;
 
-public class BoxTest extends NoMovableAndBlockerEntityTest {
+public class BoxTest {
 
-	@Override
-	public Box createNoMovableEntity() {
-		return new Box(this.data, this.position);
-	}
+	// TODO
 }

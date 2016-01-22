@@ -11,8 +11,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 		player.kill();
 	}
 	
-	public void overlapRule(Flame flame,Box box){
-		System.out.println("boite detruite");
+	public void overlapRule(Box box, Flame flame) {
 		box.destroy();
 	}
 }
