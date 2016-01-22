@@ -1,14 +1,16 @@
 package bomberman.entity;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
 import gameframework.game.GameData;
+import gameframework.motion.overlapping.Overlappable;
 
-public class Flame extends NoMovableEntity implements ActionListener {
+public class Flame extends NoMovableEntity implements ActionListener, Overlappable {
 
 	protected Timer timer;
 
@@ -32,5 +34,12 @@ public class Flame extends NoMovableEntity implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.data.getUniverse().removeGameEntity(this);
+	}
+
+	@Override
+	public Rectangle getBoundingBox() {
+		Rectangle rectangle = new Rectangle(this.img.getWidth(), this.img.getWidth());
+		rectangle.setLocation(this.position);
+		return rectangle;
 	}
 }

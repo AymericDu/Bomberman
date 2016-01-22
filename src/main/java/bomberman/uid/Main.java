@@ -34,7 +34,7 @@ public class Main extends GameDefaultImpl {
 	}
 
 	public static void main(String[] args) {
-		GameConfiguration config = new GameConfiguration(21, 21, 32, 1);
+		GameConfiguration config = new BombermanConfiguration(21, 21, 32, 1);
 		GameData data = new GameData(config);
 		Game main = new Main(data);
 

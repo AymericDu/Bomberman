@@ -15,8 +15,9 @@ import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.MoveStrategy;
 import gameframework.motion.MoveStrategyKeyboard;
+import gameframework.motion.overlapping.Overlappable;
 
-public class Player extends GameMovable implements GameEntity, KeyListener {
+public class Player extends GameMovable implements GameEntity, KeyListener, Overlappable {
 
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int spriteSize;
@@ -161,9 +162,8 @@ public class Player extends GameMovable implements GameEntity, KeyListener {
 	public void kill() {
 		// TODO Change img
 		this.isAlive = false;
-         this.spriteManager.setType("died");
-         this.data.getUniverse().removeGameEntity(this);
-         
+		this.spriteManager.setType("died");
+		this.data.getUniverse().removeGameEntity(this);
 	}
 
 	/**
