@@ -49,7 +49,6 @@ public class Level extends GameLevelDefaultImpl {
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		this.player1 = this.createPlayers(1, 1);
 		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2);
-		this.player1.kill();
 		this.createWalls();
 		this.spawnBox(40);
 	}
