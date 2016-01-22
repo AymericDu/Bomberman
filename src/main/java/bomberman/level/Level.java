@@ -129,10 +129,10 @@ public class Level extends GameLevelDefaultImpl {
 	/**
 	 * Creation of boxes in the game space (random place)
 	 * 
-	 * @param probality
+	 * @param probability
 	 *            greater than 0 and less than 100
 	 */
-	protected void spawnBox(int probality) {
+	protected void spawnBox(int probability) {
 		Random random = new Random();
 		Point point;
 		int randomInt;
@@ -141,7 +141,7 @@ public class Level extends GameLevelDefaultImpl {
 				point = this.createPoint(i, j);
 				if (!this.occupiedPoints.contains(point)) {
 					randomInt = random.nextInt(100);
-					if (randomInt < probality) {
+					if (randomInt < probability) {
 						new Box(data, point);
 						this.occupiedPoints.add(point);
 					}
