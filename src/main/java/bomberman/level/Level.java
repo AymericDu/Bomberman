@@ -42,7 +42,7 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 		this.columns = this.data.getConfiguration().getNbColumns();
 		this.occupiedPoints = new HashSet<Point>();
 		this.random = new Random();
-		this.timer = new Timer(5000, this);
+		this.timer = new Timer(4000, this);
 	}
 
 	/**
@@ -258,12 +258,12 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (!(this.player1.isAlive() && this.player2.isAlive())) {
+			this.timer.stop();
+			this.end();
 			if (this.player1.isAlive())
 				this.player1.killed();
 			if (this.player2.isAlive())
 				this.player2.killed();
-			this.timer.stop();
-			this.end();
 		}
 	}
 }

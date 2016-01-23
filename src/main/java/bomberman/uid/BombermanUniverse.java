@@ -4,7 +4,7 @@ import gameframework.game.GameUniverseDefaultImpl;
 
 public class BombermanUniverse extends GameUniverseDefaultImpl {
 
-	public void removeAllEntities() {
+	public synchronized void removeAllEntities() {
 		this.gameEntities.clear();
 	}
 }
