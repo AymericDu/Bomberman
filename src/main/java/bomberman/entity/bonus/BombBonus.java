@@ -7,8 +7,6 @@ import gameframework.game.GameData;
 
 public class BombBonus extends Bonus {
 
-	protected int newRadius;
-
 	public BombBonus(GameData data, Point position) {
 		super(data, position, "/images/level/bombBonus.png");
 	}
