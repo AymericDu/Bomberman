@@ -1,11 +1,8 @@
 package bomberman.entity;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 import java.awt.event.KeyEvent;
-
 import org.junit.Test;
 
 import bomberman.uid.BombermanMoveStrategy;
