@@ -22,17 +22,23 @@ public abstract class EntityTest {
 	public abstract Entity createEntity();
 
 	@Test
-	public void noMovableTest() {
-		Entity entity = this.createEntity();
-		assertTrue(entity.isMovable());
-	}
-
-	@Test
 	public void getBoundingBoxTest() {
 		Entity entity = this.createEntity();
 		Rectangle rectangle = entity.getBoundingBox();
 		assertEquals(32, rectangle.getWidth(), 0);
 		assertEquals(32, rectangle.getHeight(), 0);
 		assertEquals(this.position, rectangle.getLocation());
+	}
+
+	@Test
+	public void noMovableTest() {
+		Entity entity = this.createEntity();
+		assertTrue(entity.isMovable());
+	}
+
+	@Test
+	public void speedTest() {
+		Entity entity = this.createEntity();
+		assertEquals(0, entity.getSpeedVector().getSpeed());
 	}
 }

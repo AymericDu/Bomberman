@@ -54,4 +54,14 @@ public class PlayerTest extends EntityTest {
 	public void killTest() {
 		// TODO killTest
 	}
+
+	@Test
+	public void speedWithKeyboardTest() {
+		Player player = this.createEntity();
+		BombermanMoveStrategy keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN,
+				KeyEvent.VK_LEFT, KeyEvent.VK_SPACE);
+		assertEquals(0, player.getSpeedVector().getSpeed());
+		player.setKeyboard(keyboard);
+		assertEquals(0, player.getSpeedVector().getSpeed());
+	}
 }
