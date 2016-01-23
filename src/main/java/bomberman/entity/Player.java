@@ -121,4 +121,20 @@ public class Player extends Entity {
 		this.spriteManager.setType("died");
 		this.data.getCanvas().removeKeyListener(this.keyboard);
 	}
+	
+	/**
+	 * getAuthorizedBomb allows to return the numbers of authorized Bomb
+	 * @return the authorized bomb
+	 */
+	public int getAuthorizedBomb(){
+		return this.authorizedBombs;
+	}
+	
+	/**
+	 * getBombsRadius return the bomb radius
+	 * @return the bomb radius
+	 */
+	public int getBombsRadius(){
+		return this.bombRadius;
+	}
 }
