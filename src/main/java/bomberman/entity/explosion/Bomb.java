@@ -45,15 +45,6 @@ public class Bomb extends Entity implements ActionListener {
 	}
 
 	/**
-	 * Give the radius of the current bomb
-	 * 
-	 * @return int : the radius of the bomb
-	 */
-	public int getRadius() {
-		return this.radius;
-	}
-
-	/**
 	 * The action performed when a bomb explode
 	 */
 	@Override

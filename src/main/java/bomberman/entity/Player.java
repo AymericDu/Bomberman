@@ -14,6 +14,7 @@ public class Player extends Entity {
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int authorizedBombs;
 	protected BombermanMoveStrategy keyboard;
+	protected int bombRadius;
 
 	/**
 	 * Constructor of player class, allow to create our player
@@ -83,7 +84,7 @@ public class Player extends Entity {
 	public void dropBomb() {
 		if (this.authorizedBombs > 0) {
 			this.authorizedBombs--;
-			new Bomb(this.data, this.position, 2, this);
+			new Bomb(this.data, this.position, this.bombRadius, this);
 		}
 	}
 
@@ -101,5 +102,9 @@ public class Player extends Entity {
 	public void kill() {
 		this.spriteManager.setType("died");
 		this.data.getCanvas().removeKeyListener(this.keyboard);
+	}
+
+	public void doubleBombRadius() {
+		this.bombRadius *= 2;
 	}
 }
