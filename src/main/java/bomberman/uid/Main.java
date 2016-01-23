@@ -1,10 +1,12 @@
 package bomberman.uid;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
-import java.net.URL;
+import java.io.IOException;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import bomberman.level.Level;
+import gameframework.assets.Sound;
 import gameframework.game.Game;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
@@ -13,24 +15,18 @@ import gameframework.gui.GameWindow;
 
 public class Main extends GameDefaultImpl {
 
-	protected AudioClip clip;
-
 	public Main(GameData data) {
 		super(data);
-		URL url = Main.class.getResource("/sounds/GameSound.wav");
-		this.clip = Applet.newAudioClip(url);
+		try {
+			Sound sound = new Sound("/sounds/GameSound.wav");
+			sound.setLooping(true);
+			sound.play();
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			e.printStackTrace();
+		}
 		this.data.addLevel(new Level(data));
-		this.startSong();
 		GameWindow windows = new GameWindow("Bomberman", data.getCanvas(), data.getConfiguration());
 		windows.createGUI();
-	}
-
-	public void startSong() {
-		this.clip.play();
-	}
-
-	public void stopSong() {
-		this.clip.stop();
 	}
 
 	public static void main(String[] args) {

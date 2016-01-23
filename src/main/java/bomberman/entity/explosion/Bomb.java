@@ -1,24 +1,23 @@
 package bomberman.entity.explosion;
 
-import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
+import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Timer;
 
 import bomberman.entity.Entity;
 import bomberman.entity.Player;
-import bomberman.uid.Main;
+import gameframework.assets.Sound;
 import gameframework.game.GameData;
 
 public class Bomb extends Entity implements ActionListener {
 
 	protected Timer timer;
 	protected int radius;
-	protected AudioClip clip;
 	protected Player player;
 
 	/**
@@ -40,8 +39,6 @@ public class Bomb extends Entity implements ActionListener {
 		this.timer.setRepeats(false);
 		this.timer.start();
 		this.player = player;
-		URL url = Main.class.getResource("/sounds/ExplosionSound.wav");
-		this.clip = Applet.newAudioClip(url);
 	}
 
 	/**
@@ -49,7 +46,17 @@ public class Bomb extends Entity implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		startSound();
+		explode();
+	}
+
+	public void explode() {
+		this.timer.stop();
+		try {
+			Sound sound = new Sound("/sounds/ExplosionSound.wav");
+			sound.play();
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+			e1.printStackTrace();
+		}
 		flamesCenter();
 		flamesUp();
 		flamesDown();
@@ -118,19 +125,5 @@ public class Bomb extends Entity implements ActionListener {
 			// test if the object on the position isn't a wall
 			new Flame(data, right, "/images/explosion/FlameHorizontal.png");
 		}
-	}
-
-	/**
-	 * Start the song
-	 */
-	public void startSound() {
-		this.clip.play();
-	}
-
-	/**
-	 * Stop the song
-	 */
-	public void stopSong() {
-		this.clip.stop();
 	}
 }
