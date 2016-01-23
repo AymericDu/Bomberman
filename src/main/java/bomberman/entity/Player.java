@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import bomberman.entity.explosion.Bomb;
 import bomberman.uid.BombermanMoveStrategy;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;

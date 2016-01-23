@@ -1,4 +1,6 @@
-package bomberman.entity;
+package bomberman.entity.explosion;
+
+import bomberman.entity.EntityTest;
 
 public class FlameTest extends EntityTest {
 

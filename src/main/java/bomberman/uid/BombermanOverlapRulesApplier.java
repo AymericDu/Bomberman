@@ -1,8 +1,8 @@
 package bomberman.uid;
 
-import bomberman.entity.Box;
-import bomberman.entity.Flame;
 import bomberman.entity.Player;
+import bomberman.entity.explosion.Flame;
+import bomberman.entity.separation.Box;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {

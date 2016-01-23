@@ -1,4 +1,4 @@
-package bomberman.entity;
+package bomberman.entity.explosion;
 
 import java.applet.Applet;
 import java.applet.AudioClip;
@@ -9,6 +9,8 @@ import java.net.URL;
 
 import javax.swing.Timer;
 
+import bomberman.entity.Entity;
+import bomberman.entity.Player;
 import bomberman.uid.Main;
 import gameframework.game.GameData;
 

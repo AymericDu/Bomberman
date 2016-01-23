@@ -5,9 +5,9 @@ import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Random;
 
-import bomberman.entity.Box;
 import bomberman.entity.Player;
-import bomberman.entity.Wall;
+import bomberman.entity.separation.Box;
+import bomberman.entity.separation.Wall;
 import bomberman.uid.BombermanMoveStrategy;
 import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.drawing.GameUniverseViewPort;

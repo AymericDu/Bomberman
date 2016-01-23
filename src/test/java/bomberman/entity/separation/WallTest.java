@@ -1,4 +1,6 @@
-package bomberman.entity;
+package bomberman.entity.separation;
+
+import bomberman.entity.BlockerEntityTest;
 
 public class WallTest extends BlockerEntityTest {
 

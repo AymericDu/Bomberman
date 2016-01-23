@@ -1,4 +1,4 @@
-package bomberman.entity;
+package bomberman.entity.explosion;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import bomberman.entity.Entity;
 import gameframework.game.GameData;
 
 public class Flame extends Entity implements ActionListener {

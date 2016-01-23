@@ -1,8 +1,11 @@
-package bomberman.entity;
+package bomberman.entity.explosion;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import bomberman.entity.EntityTest;
+import bomberman.entity.Player;
 
 public class BombTest extends EntityTest {
 

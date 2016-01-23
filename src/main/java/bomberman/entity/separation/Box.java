@@ -1,7 +1,8 @@
-package bomberman.entity;
+package bomberman.entity.separation;
 
 import java.awt.Point;
 
+import bomberman.entity.BlockerEntity;
 import gameframework.game.GameData;
 
 public class Box extends BlockerEntity {
