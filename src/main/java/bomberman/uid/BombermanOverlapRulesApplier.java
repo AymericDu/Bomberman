@@ -10,7 +10,7 @@ import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 
 	public void overlapRule(Player player, Flame flame) {
-		player.kill();
+		player.killed();
 	}
 
 	public void overlapRule(Box box, Flame flame) {

@@ -22,7 +22,7 @@ public class Level extends GameLevelDefaultImpl {
 	protected int rows;
 	protected int columns;
 	protected HashSet<Point> occupiedPoints;
-	private Random random;
+	protected Random random;
 
 	/**
 	 * Constructor of Level class

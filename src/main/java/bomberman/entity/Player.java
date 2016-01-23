@@ -3,13 +3,18 @@ package bomberman.entity;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
 
 import bomberman.entity.explosion.Bomb;
+import bomberman.level.Level;
 import bomberman.uid.BombermanMoveStrategy;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 
-public class Player extends Entity {
+public class Player extends Entity implements ActionListener {
 
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int authorizedBombs;
@@ -117,9 +122,12 @@ public class Player extends Entity {
 	/**
 	 * This function allows to kill the player.
 	 */
-	public void kill() {
+	public void killed() {
 		this.spriteManager.setType("died");
 		this.data.getCanvas().removeKeyListener(this.keyboard);
+		Timer timer = new Timer(2000, this);
+		timer.setRepeats(false);
+		timer.start();
 	}
 	
 	/**
@@ -136,5 +144,10 @@ public class Player extends Entity {
 	 */
 	public int getBombsRadius(){
 		return this.bombRadius;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		((Level) this.data.getLevels().get(0)).end();
 	}
 }
