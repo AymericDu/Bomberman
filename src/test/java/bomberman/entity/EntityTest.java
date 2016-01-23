@@ -13,7 +13,7 @@ import gameframework.game.GameData;
 
 public abstract class EntityTest {
 
-	protected GameData data = new GameData(new GameConfiguration(20, 20, 20, 20));
+	protected GameData data = new GameData(new GameConfiguration(21, 21, 32, 1));
 	protected Point position = new Point(0, 0);
 
 	/**
