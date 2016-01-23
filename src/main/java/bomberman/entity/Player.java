@@ -27,7 +27,7 @@ public class Player extends Entity {
 
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
 
-		this.spriteManager = new SpriteManagerDefaultImpl(this.img, data.getConfiguration().getSpriteSize(), 5);
+		this.spriteManager = new SpriteManagerDefaultImpl(this.image, data.getConfiguration().getSpriteSize(), 5);
 		this.spriteManager.setTypes("down", "right", "up", "left", "died");
 		this.spriteManager.setType("down");
 		this.spriteManager.reset();

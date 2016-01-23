@@ -16,7 +16,7 @@ public abstract class Entity extends GameMovable implements GameEntity, Overlapp
 
 	protected GameData data;
 	protected GameCanvas canvas;
-	protected DrawableImage img;
+	protected DrawableImage image;
 
 	/**
 	 * Constructor of NoMovableEntity
@@ -29,7 +29,7 @@ public abstract class Entity extends GameMovable implements GameEntity, Overlapp
 		this.data = data;
 		this.canvas = data.getCanvas();
 		URL url = BlockerEntity.class.getResource(urlString);
-		this.img = new DrawableImage(url, this.canvas);
+		this.image = new DrawableImage(url, this.canvas);
 		this.position = position;
 		this.data.getUniverse().addGameEntity(this);
 	}
@@ -43,7 +43,7 @@ public abstract class Entity extends GameMovable implements GameEntity, Overlapp
 	 */
 	@Override
 	public void draw(Graphics g) {
-		this.canvas.drawImage(g, this.img.getImage(), this.position.x, this.position.y);
+		this.canvas.drawImage(g, this.image.getImage(), this.position.x, this.position.y);
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public abstract class Entity extends GameMovable implements GameEntity, Overlapp
 	 */
 	@Override
 	public Rectangle getBoundingBox() {
-		Rectangle rectangle = new Rectangle(this.img.getWidth(), this.img.getWidth());
+		Rectangle rectangle = new Rectangle(this.image.getWidth(), this.image.getWidth());
 		rectangle.setLocation(this.position);
 		return rectangle;
 	}

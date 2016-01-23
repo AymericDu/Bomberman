@@ -1,7 +1,6 @@
 package bomberman.entity;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,12 +35,5 @@ public class Flame extends Entity implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.data.getUniverse().removeGameEntity(this);
-	}
-
-	@Override
-	public Rectangle getBoundingBox() {
-		Rectangle rectangle = new Rectangle(this.img.getWidth(), this.img.getWidth());
-		rectangle.setLocation(this.position);
-		return rectangle;
 	}
 }
