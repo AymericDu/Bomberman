@@ -50,9 +50,17 @@ public class PlayerTest extends EntityTest {
 		assertEquals(2, player.authorizedBombs);
 	}
 
+	@Test
+	public void increaseBombRadiusTest(){
+		Player player = this.createEntity();
+		assertEquals(1,player.bombRadius);
+		player.increaseBombRadius();
+		assertEquals(2,player.bombRadius);
+	}
+	
 	// @Test
 	public void killTest() {
-		// TODO killTest
+		//Player player = this.createEntity();
 	}
 
 	@Test
