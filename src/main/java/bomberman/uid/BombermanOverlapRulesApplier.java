@@ -6,6 +6,7 @@ import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.explosion.Bomb;
 import bomberman.entity.explosion.Flame;
 import bomberman.entity.separation.Box;
+import bomberman.entity.separation.Wall;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
@@ -28,5 +29,10 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 
 	public void overlapRule(Player player, BombRadiusBonus bonus) {
 		bonus.effect(player);
+	}
+	
+	public void overlapRule(Wall wall, Flame flame) {
+		this.data.getUniverse().removeGameEntity(flame);
+		//wall.block(flame);
 	}
 }

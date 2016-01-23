@@ -83,7 +83,10 @@ public class Bomb extends Entity implements ActionListener {
 					(int) this.getPosition().getY() - (i * this.data.getConfiguration().getSpriteSize()));
 			// if()
 			// test if the object on the position isn't a wall
-			new Flame(data, up, "/images/explosion/FlameVertical.png");
+			/*Flame f=*/new Flame(data, up, "/images/explosion/FlameVertical.png");
+			//if (f.isBlocked()){
+				//this.data.getUniverse().removeGameEntity(f);
+			//}
 		}
 	}
 

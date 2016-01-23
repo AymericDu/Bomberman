@@ -12,6 +12,7 @@ import gameframework.game.GameData;
 public class Flame extends Entity implements ActionListener {
 
 	protected Timer timer;
+	protected boolean blocked;
 
 	/**
 	 * Constructor of Flame
@@ -26,6 +27,7 @@ public class Flame extends Entity implements ActionListener {
 	public Flame(GameData data, Point position, String imageUrl) {
 		super(data, position, imageUrl);
 		this.timer = new Timer(1000, this);
+		this.blocked=false;
 		this.timer.setRepeats(false);
 		this.timer.start();
 	}
@@ -36,5 +38,13 @@ public class Flame extends Entity implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.data.getUniverse().removeGameEntity(this);
+	}
+	
+	public void setBlocked(boolean bool){
+		this.blocked=bool;
+	}
+	
+	public boolean isBlocked(){
+		return this.blocked;
 	}
 }
