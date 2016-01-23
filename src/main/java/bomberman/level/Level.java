@@ -165,7 +165,7 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 				if (!this.occupiedPoints.contains(point)) {
 					randomInt = this.random.nextInt(100);
 					if (randomInt < probability) {
-						this.spawnBonus(point, 30);
+						this.spawnBonus(point, 15);
 						new Box(data, point);
 						this.occupiedPoints.add(point);
 					}
