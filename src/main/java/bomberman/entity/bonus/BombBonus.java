@@ -17,5 +17,6 @@ public class BombBonus extends Bonus {
 	@Override
 	public void effect(Player player) {
 		player.increaseAuthorizedBomb();
+		super.effect(player);
 	}
 }

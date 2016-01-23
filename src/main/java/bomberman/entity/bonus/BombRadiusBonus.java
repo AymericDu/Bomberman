@@ -15,5 +15,6 @@ public class BombRadiusBonus extends Bonus {
 	@Override
 	public void effect(Player player) {
 		player.increaseBombRadius();
+		super.effect(player);
 	}
 }

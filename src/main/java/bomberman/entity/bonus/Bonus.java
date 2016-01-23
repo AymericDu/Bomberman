@@ -15,5 +15,7 @@ public abstract class Bonus extends Entity {
 	/**
 	 * the bonus' effect
 	 */
-	public abstract void effect(Player player);
+	public void effect(Player player) {
+		this.data.getUniverse().removeGameEntity(this);
+	}
 }
