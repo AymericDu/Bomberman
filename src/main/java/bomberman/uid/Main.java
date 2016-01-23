@@ -24,7 +24,9 @@ public class Main extends GameDefaultImpl {
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 			e.printStackTrace();
 		}
-		this.data.addLevel(new Level(data));
+		for (int i = 0; i < 10; i++) {
+			this.data.addLevel(new Level(data));
+		}
 		GameWindow windows = new GameWindow("Bomberman", data.getCanvas(), data.getConfiguration());
 		windows.createGUI();
 	}

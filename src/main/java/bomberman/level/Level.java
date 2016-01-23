@@ -1,9 +1,13 @@
 package bomberman.level;
 
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Random;
+
+import javax.swing.Timer;
 
 import bomberman.entity.Player;
 import bomberman.entity.bonus.BombBonus;
@@ -11,18 +15,20 @@ import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.separation.Box;
 import bomberman.entity.separation.Wall;
 import bomberman.uid.BombermanMoveStrategy;
+import bomberman.uid.BombermanUniverse;
 import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.drawing.GameUniverseViewPort;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
 
-public class Level extends GameLevelDefaultImpl {
+public class Level extends GameLevelDefaultImpl implements ActionListener {
 
 	protected Player player1, player2;
 	protected int rows;
 	protected int columns;
 	protected HashSet<Point> occupiedPoints;
 	protected Random random;
+	private Timer timer;
 
 	/**
 	 * Constructor of Level class
@@ -36,6 +42,7 @@ public class Level extends GameLevelDefaultImpl {
 		this.columns = this.data.getConfiguration().getNbColumns();
 		this.occupiedPoints = new HashSet<Point>();
 		this.random = new Random();
+		this.timer = new Timer(5000, this);
 	}
 
 	/**
@@ -66,6 +73,7 @@ public class Level extends GameLevelDefaultImpl {
 				KeyEvent.VK_LEFT, KeyEvent.VK_ENTER));
 		this.createWalls();
 		this.spawnBox(40);
+		this.timer.start();
 	}
 
 	/**
@@ -239,5 +247,23 @@ public class Level extends GameLevelDefaultImpl {
 	 */
 	public GameData getGameData() {
 		return this.data;
+	}
+
+	@Override
+	public void end() {
+		((BombermanUniverse) this.data.getUniverse()).removeAllEntities();
+		super.end();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (!(this.player1.isAlive() && this.player2.isAlive())) {
+			if (this.player1.isAlive())
+				this.player1.killed();
+			if (this.player2.isAlive())
+				this.player2.killed();
+			this.timer.stop();
+			this.end();
+		}
 	}
 }
