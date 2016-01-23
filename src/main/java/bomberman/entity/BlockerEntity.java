@@ -22,7 +22,7 @@ public abstract class BlockerEntity extends Entity implements MoveBlocker {
 		super(data, position, urlString);
 	}
 	
-	/*public void block(Flame flame){
+	public void block(Flame flame){
 		flame.setBlocked(true);
-	}*/
+	}
 }

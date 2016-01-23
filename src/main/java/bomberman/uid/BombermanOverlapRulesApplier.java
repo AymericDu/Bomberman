@@ -17,6 +17,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 
 	public void overlapRule(Box box, Flame flame) {
 		box.destroy();
+		box.block(flame);
 	}
 
 	public void overlapRule(Bomb bomb, Flame flame) {
@@ -32,7 +33,6 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 	
 	public void overlapRule(Wall wall, Flame flame) {
-		this.data.getUniverse().removeGameEntity(flame);
-		//wall.block(flame);
+		wall.block(flame);
 	}
 }
