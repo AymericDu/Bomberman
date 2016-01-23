@@ -30,7 +30,7 @@ public class Player extends Entity implements ActionListener {
 	 *            initial position of our player
 	 */
 	public Player(GameData data, Point position) {
-		super(data, position, "/images/level/BombermanSprite.png");
+		super(data, position, "/images/BombermanSprite.png");
 
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
 

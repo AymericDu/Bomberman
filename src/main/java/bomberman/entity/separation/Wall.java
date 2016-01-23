@@ -16,6 +16,6 @@ public class Wall extends BlockerEntity {
 	 *            : the position of the entity
 	 */
 	public Wall(GameData data, Point position) {
-		super(data, position, "/images/level/Wall.png");
+		super(data, position, "/images/separation/Wall.png");
 	}
 }

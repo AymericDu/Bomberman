@@ -34,7 +34,7 @@ public class Bomb extends Entity implements ActionListener {
 	 *            : the player who have the bomb
 	 */
 	public Bomb(GameData data, Point position, int radius, Player player) {
-		super(data, (Point) position.clone(), "/images/level/Bomb.png");
+		super(data, (Point) position.clone(), "/images/explosion/Bomb.png");
 		this.radius = radius;
 		this.timer = new Timer(2000, this);
 		this.timer.setRepeats(false);
@@ -64,7 +64,7 @@ public class Bomb extends Entity implements ActionListener {
 	 */
 	public void flamesCenter() {
 		Point center = new Point((int) this.getPosition().getX(), (int) this.getPosition().getY());
-		new Flame(data, center, "/images/level/flameCenter32.png");
+		new Flame(data, center, "/images/explosion/FlameCenter.png");
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class Bomb extends Entity implements ActionListener {
 					(int) this.getPosition().getY() - (i * this.data.getConfiguration().getSpriteSize()));
 			// if()
 			// test if the object on the position isn't a wall
-			new Flame(data, up, "/images/level/flameVertical32.png");
+			new Flame(data, up, "/images/explosion/FlameVertical.png");
 		}
 	}
 
@@ -89,7 +89,7 @@ public class Bomb extends Entity implements ActionListener {
 					(int) this.getPosition().getY() + (i * this.data.getConfiguration().getSpriteSize()));
 			// if()
 			// test if the object on the position isn't a wall
-			new Flame(data, down, "/images/level/flameVertical32.png");
+			new Flame(data, down, "/images/explosion/FlameVertical.png");
 		}
 	}
 
@@ -102,7 +102,7 @@ public class Bomb extends Entity implements ActionListener {
 					(int) this.getPosition().getY());
 			// if()
 			// test if the object on the position isn't a wall
-			new Flame(data, left, "/images/level/flameHorizontal32.png");
+			new Flame(data, left, "/images/explosion/FlameHorizontal.png");
 		}
 	}
 
@@ -116,7 +116,7 @@ public class Bomb extends Entity implements ActionListener {
 					(int) this.getPosition().getY());
 			// if()
 			// test if the object on the position isn't a wall
-			new Flame(data, right, "/images/level/flameHorizontal32.png");
+			new Flame(data, right, "/images/explosion/FlameHorizontal.png");
 		}
 	}
 

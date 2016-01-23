@@ -16,7 +16,7 @@ public class Box extends BlockerEntity {
 	 *            the position
 	 */
 	public Box(GameData data, Point position) {
-		super(data, position, "/images/level/Box.png");
+		super(data, position, "/images/separation/Box.png");
 	}
 
 	public void destroy() {
