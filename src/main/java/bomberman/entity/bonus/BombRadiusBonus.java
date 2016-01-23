@@ -8,8 +8,7 @@ import gameframework.game.GameData;
 public class BombRadiusBonus extends Bonus {
 
 	public BombRadiusBonus(GameData data, Point position) {
-		super(data, position, "/images/level/Bomb.png");
-		// TODO change image
+		super(data, position, "/images/level/radius.png");
 	}
 
 	@Override

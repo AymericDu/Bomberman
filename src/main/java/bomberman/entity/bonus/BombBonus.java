@@ -10,8 +10,7 @@ public class BombBonus extends Bonus {
 	protected int newRadius;
 
 	public BombBonus(GameData data, Point position) {
-		super(data, position, "/images/level/Bomb.png");
-		// TODO change image
+		super(data, position, "/images/level/bombBonus.png");
 	}
 
 	@Override
