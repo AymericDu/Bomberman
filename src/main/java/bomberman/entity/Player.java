@@ -35,6 +35,7 @@ public class Player extends Entity {
 		this.spriteManager.reset();
 
 		this.authorizedBombs = 1;
+		this.bombRadius = 1;
 	}
 
 	@Override
@@ -91,8 +92,12 @@ public class Player extends Entity {
 	/**
 	 * add a bomb for the player
 	 */
-	public void addBomb() {
+	public void increaseAuthorizedBomb() {
 		this.authorizedBombs++;
+	}
+
+	public void increaseBombRadius() {
+		this.bombRadius++;
 	}
 
 	/**
@@ -102,9 +107,5 @@ public class Player extends Entity {
 	public void kill() {
 		this.spriteManager.setType("died");
 		this.data.getCanvas().removeKeyListener(this.keyboard);
-	}
-
-	public void doubleBombRadius() {
-		this.bombRadius *= 2;
 	}
 }

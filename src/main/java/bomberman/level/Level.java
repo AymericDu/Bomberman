@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Random;
 
 import bomberman.entity.Player;
+import bomberman.entity.bonus.BombBonus;
+import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.separation.Box;
 import bomberman.entity.separation.Wall;
 import bomberman.uid.BombermanMoveStrategy;
@@ -20,6 +22,7 @@ public class Level extends GameLevelDefaultImpl {
 	protected int rows;
 	protected int columns;
 	protected HashSet<Point> occupiedPoints;
+	private Random random;
 
 	/**
 	 * Constructor of Level class
@@ -32,6 +35,7 @@ public class Level extends GameLevelDefaultImpl {
 		this.rows = this.data.getConfiguration().getNbRows();
 		this.columns = this.data.getConfiguration().getNbColumns();
 		this.occupiedPoints = new HashSet<Point>();
+		this.random = new Random();
 	}
 
 	/**
@@ -145,19 +149,34 @@ public class Level extends GameLevelDefaultImpl {
 	 *            greater than 0 and less than 100
 	 */
 	protected void spawnBox(int probability) {
-		Random random = new Random();
 		Point point;
 		int randomInt;
 		for (int i = 0; i < this.columns; i++) {
 			for (int j = 0; j < this.rows; j++) {
 				point = this.createPoint(i, j);
 				if (!this.occupiedPoints.contains(point)) {
-					randomInt = random.nextInt(100);
+					randomInt = this.random.nextInt(100);
 					if (randomInt < probability) {
+						this.spawnBonus(point, 50);
 						new Box(data, point);
 						this.occupiedPoints.add(point);
 					}
 				}
+			}
+		}
+	}
+
+	protected void spawnBonus(Point position, int probability) {
+		int randomInt = this.random.nextInt(100);
+		if (randomInt < probability) {
+			randomInt = this.random.nextInt(2);
+			switch (randomInt) {
+			case 0:
+				new BombRadiusBonus(this.data, position);
+				break;
+			default:
+				new BombBonus(this.data, position);
+				break;
 			}
 		}
 	}

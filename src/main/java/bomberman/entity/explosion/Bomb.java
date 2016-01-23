@@ -56,7 +56,7 @@ public class Bomb extends Entity implements ActionListener {
 		flamesLeft();
 		flamesRight();
 		this.data.getUniverse().removeGameEntity(this);
-		this.player.addBomb();
+		this.player.increaseAuthorizedBomb();
 	}
 
 	/**

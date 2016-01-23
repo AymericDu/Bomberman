@@ -11,10 +11,11 @@ public class BombBonus extends Bonus {
 
 	public BombBonus(GameData data, Point position) {
 		super(data, position, "/images/level/Bomb.png");
+		// TODO change image
 	}
 
 	@Override
 	public void effect(Player player) {
-		player.addBomb();
+		player.increaseAuthorizedBomb();
 	}
 }

@@ -46,7 +46,7 @@ public class PlayerTest extends EntityTest {
 	public void addBombTest() {
 		Player player = this.createEntity();
 		assertEquals(1, player.authorizedBombs);
-		player.addBomb();
+		player.increaseAuthorizedBomb();
 		assertEquals(2, player.authorizedBombs);
 	}
 
