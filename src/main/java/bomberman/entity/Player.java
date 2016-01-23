@@ -37,12 +37,18 @@ public class Player extends Entity {
 		this.authorizedBombs = 1;
 		this.bombRadius = 1;
 	}
-
+	
+	/**
+	 * draw allow to draw a Graphics g in the gameEntity
+	 */
 	@Override
 	public void draw(Graphics g) {
 		this.spriteManager.draw(g, position);
 	}
 
+	/**
+	 * getBoundingBox allows to return a rectangle in the GameEntity
+	 */
 	@Override
 	public Rectangle getBoundingBox() {
 		int spriteSize = data.getConfiguration().getSpriteSize();
@@ -52,7 +58,7 @@ public class Player extends Entity {
 	}
 
 	/**
-	 * do one step of a movement
+	 * Do one step of a movement
 	 */
 	@Override
 	public void oneStepMoveAddedBehavior() {
@@ -71,6 +77,10 @@ public class Player extends Entity {
 		}
 	}
 
+	/**
+	 * Initialize the Keyboard
+	 * @param keyboard
+	 */
 	public void setKeyboard(BombermanMoveStrategy keyboard) {
 		this.keyboard = keyboard;
 		this.keyboard.setPlayer(this);
@@ -80,7 +90,7 @@ public class Player extends Entity {
 	}
 
 	/**
-	 * drop a bomb in the position of the player
+	 * Drop a bomb in the position of the player
 	 */
 	public void dropBomb() {
 		if (this.authorizedBombs > 0) {
@@ -90,19 +100,22 @@ public class Player extends Entity {
 	}
 
 	/**
-	 * add a bomb for the player
+	 * Add a bomb for the player
 	 */
 	public void increaseAuthorizedBomb() {
 		this.authorizedBombs++;
 	}
 
+
+	/**
+	 * Increase the bomb radius for the player
+	 */
 	public void increaseBombRadius() {
 		this.bombRadius++;
 	}
 
 	/**
-	 * This function allows to change isAlive in false. It allow to kill the
-	 * player.
+	 * This function allows to kill the player.
 	 */
 	public void kill() {
 		this.spriteManager.setType("died");

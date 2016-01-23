@@ -166,6 +166,12 @@ public class Level extends GameLevelDefaultImpl {
 		}
 	}
 
+	/**
+	 * Creation of the bonus in the game space (random place)
+	 * @param position 
+	 * @param probability
+	 *  		greater than 0 and less than 100
+	 */
 	protected void spawnBonus(Point position, int probability) {
 		int randomInt = this.random.nextInt(100);
 		if (randomInt < probability) {
