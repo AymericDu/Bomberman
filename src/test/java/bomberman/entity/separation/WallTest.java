@@ -1,6 +1,5 @@
 package bomberman.entity.separation;
 
-import bomberman.entity.NoMovableEntity;
 import bomberman.entity.NoMovableEntityTest;
 
 public class WallTest extends NoMovableEntityTest {
