@@ -13,7 +13,7 @@ import gameframework.game.GameData;
 public class BombRadiusBonusTest extends BonusTest {
 
 	@Override
-	public Bonus createEntity() {
+	public BombRadiusBonus createEntity() {
 		return new BombRadiusBonus(this.data, this.position);
 	}
 	

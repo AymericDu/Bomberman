@@ -7,12 +7,11 @@ import java.awt.Point;
 import org.junit.Before;
 import org.junit.Test;
 
-import bomberman.entity.Player;
+import bomberman.entity.player.Player;
 import bomberman.uid.BombermanMoveStrategy;
 import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
-import gameframework.game.GameLevelDefaultImpl;
 
 public class LevelTest {
 
