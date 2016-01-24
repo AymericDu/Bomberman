@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import bomberman.entity.player.Player;
+import bomberman.uid.BombermanConfiguration;
 import bomberman.uid.BombermanMoveStrategy;
 import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.game.GameConfiguration;
@@ -23,7 +24,7 @@ public class LevelTest {
 
 	@Before
 	public void create() {
-		configuration = new GameConfiguration(20, 20, 1, 1);
+		configuration = new BombermanConfiguration(21, 21, 32, 1);
 		data = new GameData(configuration);
 		level = new Level(data);
 		strategy = new BombermanMoveStrategy(1,1,1,1,1);

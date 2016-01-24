@@ -16,6 +16,12 @@ public class BombermanUniverse extends GameUniverseDefaultImpl {
 	protected int columns;
 	protected Set<Point> wallPoints;
 	protected MoveBlockerChecker blockerWalls;
+	
+	public BombermanUniverse() {
+		super();
+		this.wallPoints = new HashSet<Point>();
+		this.blockerWalls = new MoveBlockerCheckerDefaultImpl();
+	}
 
 	public MoveBlockerChecker getBlockerWalls() {
 		return this.blockerWalls;
@@ -31,8 +37,6 @@ public class BombermanUniverse extends GameUniverseDefaultImpl {
 	protected void createWalls() {
 		this.rows = this.data.getConfiguration().getNbRows();
 		this.columns = this.data.getConfiguration().getNbColumns();
-		this.wallPoints = new HashSet<Point>();
-		this.blockerWalls = new MoveBlockerCheckerDefaultImpl();
 		createLeftAndRightWalls();
 		createBottomAndTopWalls();
 		createWallsOnBoard();

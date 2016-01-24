@@ -7,12 +7,13 @@ import java.awt.Rectangle;
 
 import org.junit.Test;
 
+import bomberman.uid.BombermanConfiguration;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
 public abstract class EntityTest {
 
-	protected GameData data = new GameData(new GameConfiguration(21, 21, 32, 1));
+	protected GameData data = new GameData(new BombermanConfiguration(21, 21, 32, 1));
 	protected Point position = new Point(0, 0);
 
 	/**
