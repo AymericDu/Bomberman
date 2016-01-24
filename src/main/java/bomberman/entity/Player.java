@@ -88,7 +88,6 @@ public class Player extends Entity {
 		this.keyboard.setPlayer(this);
 		this.keyboard.setSpeed(this.data.getConfiguration().getSpriteSize());
 		this.getDriver().setStrategy(keyboard);
-		this.data.getCanvas().addKeyListener(keyboard);
 	}
 
 	/**

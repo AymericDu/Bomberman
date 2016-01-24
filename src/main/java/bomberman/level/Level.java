@@ -4,20 +4,25 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import javax.swing.Timer;
 
 import bomberman.entity.Player;
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
+import bomberman.entity.bonus.Bonus;
 import bomberman.entity.separation.Box;
 import bomberman.uid.BombermanMoveStrategy;
 import bomberman.uid.BombermanUniverse;
 import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.drawing.GameUniverseViewPort;
 import gameframework.game.GameData;
+import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
 
 public class Level extends GameLevelDefaultImpl implements ActionListener {
@@ -25,7 +30,9 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 	protected Player player1, player2;
 	protected int rows;
 	protected int columns;
-	protected HashSet<Point> occupiedPoints;
+	protected Set<Point> occupiedPoints;
+	protected List<GameEntity> gameEntities;
+	protected List<BombermanMoveStrategy> keyboards;
 	protected Random random;
 	private Timer timer;
 
@@ -41,6 +48,8 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 		this.columns = this.data.getConfiguration().getNbColumns();
 		this.occupiedPoints = new HashSet<Point>();
 		this.occupiedPoints.addAll(((BombermanUniverse) this.data.getUniverse()).getOccupiedPoints());
+		this.gameEntities = new ArrayList<GameEntity>();
+		this.keyboards = new ArrayList<BombermanMoveStrategy>();
 		this.random = new Random();
 		this.timer = new Timer(4000, this);
 	}
@@ -64,13 +73,14 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 	 */
 	@Override
 	protected void init() {
+		BombermanMoveStrategy keyboard;
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
-		this.player1 = this.createPlayers(1, 1);
-		this.player1.setKeyboard(new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S, KeyEvent.VK_Q,
-				KeyEvent.VK_SPACE));
-		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2);
-		this.player2.setKeyboard(new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN,
-				KeyEvent.VK_LEFT, KeyEvent.VK_ENTER));
+		keyboard = new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S, KeyEvent.VK_Q,
+				KeyEvent.VK_SPACE);
+		this.player1 = this.createPlayers(1, 1, keyboard);
+		keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT,
+				KeyEvent.VK_ENTER);
+		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2, keyboard);
 		this.spawnBox(40);
 		this.timer.start();
 	}
@@ -84,11 +94,15 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 	 *            the numbers of rows
 	 * @return a new player
 	 */
-	protected Player createPlayers(int columnNumber, int rowNumber) {
+	protected Player createPlayers(int columnNumber, int rowNumber, BombermanMoveStrategy keyboard) {
 		Point position = this.createPoint(columnNumber, rowNumber);
 		if (this.occupiedPoints.contains(position))
 			throw new IllegalStateException();
 		Player player = new Player(this.data, position);
+		player.setKeyboard(keyboard);
+		this.data.getCanvas().addKeyListener(keyboard);
+		this.gameEntities.add(player);
+		this.keyboards.add(keyboard);
 		this.occupiedPoints.add(position);
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
@@ -116,7 +130,7 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 					randomInt = this.random.nextInt(100);
 					if (randomInt < probability) {
 						this.spawnBonus(point, 15);
-						new Box(data, point);
+						this.gameEntities.add(new Box(data, point));
 						this.occupiedPoints.add(point);
 					}
 				}
@@ -134,14 +148,16 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 		int randomInt = this.random.nextInt(100);
 		if (randomInt < probability) {
 			randomInt = this.random.nextInt(2);
+			Bonus bonus;
 			switch (randomInt) {
 			case 0:
-				new BombRadiusBonus(this.data, position);
+				bonus = new BombRadiusBonus(this.data, position);
 				break;
 			default:
-				new BombBonus(this.data, position);
+				bonus = new BombBonus(this.data, position);
 				break;
 			}
+			this.gameEntities.add(bonus);
 		}
 	}
 
@@ -201,8 +217,13 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 
 	@Override
 	public void end() {
-		((BombermanUniverse) this.data.getUniverse()).removeAllEntities();
 		super.end();
+		for (GameEntity gameEntity : this.gameEntities)
+			this.data.getUniverse().removeGameEntity(gameEntity);
+		for (BombermanMoveStrategy keyboard : this.keyboards)
+			this.data.getCanvas().removeKeyListener(keyboard);
+		this.gameEntities.clear();
+		this.keyboards.clear();
 	}
 
 	@Override
