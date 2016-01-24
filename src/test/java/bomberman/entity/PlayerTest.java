@@ -55,9 +55,12 @@ public class PlayerTest extends EntityTest {
 		assertEquals(2,player.bombRadius);
 	}
 	
-	// @Test
+	@Test
 	public void killTest() {
-		//Player player = this.createEntity();
+		Player player = this.createEntity();
+		assertTrue(player.isAlive());
+		player.killed();
+		assertFalse(player.isAlive());
 	}
 
 	@Test
