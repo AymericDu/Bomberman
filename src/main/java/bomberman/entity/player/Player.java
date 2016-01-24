@@ -24,6 +24,10 @@ public class Player extends MovableEntity implements ActionListener {
 	protected boolean isAlive;
 	protected Timer timer;
 
+	protected static final int INIT_AUTHORIZED_BOMBS = 1;
+	protected static final int INIT_BOB_RADIUS = 1;
+	protected static final int AFTER_DEATH_TIME = 2000;
+
 	/**
 	 * Constructor of player class, allow to create our player
 	 * 
@@ -42,11 +46,11 @@ public class Player extends MovableEntity implements ActionListener {
 		this.spriteManager.setType("down");
 		this.spriteManager.reset();
 
-		this.authorizedBombs = 1;
-		this.bombRadius = 1;
+		this.authorizedBombs = Player.INIT_AUTHORIZED_BOMBS;
+		this.bombRadius = Player.INIT_BOB_RADIUS;
 		this.isAlive = true;
 
-		this.timer = new Timer(2000, this);
+		this.timer = new Timer(Player.AFTER_DEATH_TIME, this);
 		this.timer.setRepeats(false);
 	}
 	

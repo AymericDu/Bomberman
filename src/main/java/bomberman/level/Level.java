@@ -34,6 +34,9 @@ public class Level extends GameLevelDefaultImpl {
 
 	public static int numberLevel = 0;
 
+	protected static final int PROBABILITY_BONUS = 20;
+	protected static final int PROBABILITY_BOX = 40;
+
 	/**
 	 * Constructor of Level class
 	 * 
@@ -64,7 +67,7 @@ public class Level extends GameLevelDefaultImpl {
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT,
 				KeyEvent.VK_ENTER);
 		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2, keyboard);
-		this.spawnBox(40);
+		this.spawnBox(Level.PROBABILITY_BOX);
 	}
 
 	/**
@@ -111,7 +114,7 @@ public class Level extends GameLevelDefaultImpl {
 				if (!this.occupiedPoints.contains(point)) {
 					randomInt = this.random.nextInt(100);
 					if (randomInt < probability) {
-						this.spawnBonus(point, 15);
+						this.spawnBonus(point, Level.PROBABILITY_BONUS);
 						this.gameEntities.add(new Box(data, point));
 						this.occupiedPoints.add(point);
 					}
