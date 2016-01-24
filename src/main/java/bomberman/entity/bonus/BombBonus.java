@@ -7,10 +7,20 @@ import gameframework.game.GameData;
 
 public class BombBonus extends Bonus {
 
+	/**
+	 * Constructor of the BombBonus
+	 * @param data the game's data
+	 * @param position the position of the entity
+	 * @param urlString the string representing the path to the entity's image
+	 */
 	public BombBonus(GameData data, Point position) {
 		super(data, position, "/images/bonus/BombBonus.png");
 	}
 
+	
+	/**
+	 * this bonus will increase the number of bomb a player can drop at the same time
+	 */
 	@Override
 	public void effect(Player player) {
 		player.increaseAuthorizedBomb();

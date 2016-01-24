@@ -19,9 +19,9 @@ public class NoMovableEntity implements Entity {
 	/**
 	 * Constructor of NoMovableEntity
 	 * 
-	 * @param data
-	 * @param position
-	 * @param urlString
+	 * @param data the game's data
+	 * @param position the position of the entity
+	 * @param urlString the string representing the path to the entity's image
 	 */
 	public NoMovableEntity(GameData data, Point position, String urlString) {
 		this.data = data;
@@ -56,11 +56,21 @@ public class NoMovableEntity implements Entity {
 		return rectangle;
 	}
 
+	
+	/**
+	 * returns false because by definition a NoMovableEntity cannot move
+	 * @return false
+	 */
 	@Override
 	public boolean isMovable() {
 		return false;
 	}
 
+	
+	/**
+	 * returns the position of the entity
+	 * @return a point representing the position
+	 */
 	@Override
 	public Point getPosition() {
 		return this.position;
