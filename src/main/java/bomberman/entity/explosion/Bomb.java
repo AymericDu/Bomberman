@@ -78,17 +78,10 @@ public class Bomb extends Entity implements ActionListener {
 	 * Draw the up image for the flame
 	 */
 	public void flamesUp() {
-		boolean blocked=false;
-		int i=0;
-		while(i<radius && !blocked){
-			i++;
+		for (int i = 1; i <= this.radius; i++) {
 			Point up = new Point((int) this.getPosition().getX(),
 					(int) this.getPosition().getY() - (i * this.data.getConfiguration().getSpriteSize()));
-			Flame f=new Flame(data, up, "/images/explosion/FlameVertical.png");
-			if (f.isBlocked()){
-				this.data.getUniverse().removeGameEntity(f);
-				blocked=true;
-			}
+			new Flame(data, up, "/images/explosion/FlameVertical.png");
 		}
 	}
 
@@ -96,17 +89,10 @@ public class Bomb extends Entity implements ActionListener {
 	 * Draw the down image for the flame
 	 */
 	public void flamesDown() {
-		boolean blocked=false;
-		int i=0;
-		while(i<radius && !blocked){
-			i++;
+		for (int i = 1; i <= this.radius; i++) {
 			Point down = new Point((int) this.getPosition().getX(),
 					(int) this.getPosition().getY() + (i * this.data.getConfiguration().getSpriteSize()));
-			Flame f=new Flame(data, down, "/images/explosion/FlameVertical.png");
-			if (f.isBlocked()){
-				this.data.getUniverse().removeGameEntity(f);
-				blocked=true;
-			}
+			new Flame(data, down, "/images/explosion/FlameVertical.png");
 		}
 	}
 
@@ -114,17 +100,10 @@ public class Bomb extends Entity implements ActionListener {
 	 * Draw the left image for the flame
 	 */
 	public void flamesLeft() {
-		boolean blocked=false;
-		int i=0;
-		while(i<radius && !blocked){
-			i++;
+		for (int i = 1; i <= this.radius; i++) {
 			Point left = new Point((int) this.getPosition().getX() - (i * this.data.getConfiguration().getSpriteSize()),
 					(int) this.getPosition().getY());
-			Flame f=new Flame(data, left, "/images/explosion/FlameHorizontal.png");
-			if (f.isBlocked()){
-				this.data.getUniverse().removeGameEntity(f);
-				blocked=true;
-			}
+			new Flame(data, left, "/images/explosion/FlameHorizontal.png");
 		}
 	}
 
@@ -132,18 +111,11 @@ public class Bomb extends Entity implements ActionListener {
 	 * Draw the right image for the flame
 	 */
 	public void flamesRight() {
-		boolean blocked=false;
-		int i=0;
-		while(i<radius && !blocked){
-			i++;
+		for (int i = 1; i <= this.radius; i++) {
 			Point right = new Point(
 					(int) this.getPosition().getX() + (i * this.data.getConfiguration().getSpriteSize()),
 					(int) this.getPosition().getY());
-			Flame f=new Flame(data, right, "/images/explosion/FlameHorizontal.png");
-			if (f.isBlocked()){
-				this.data.getUniverse().removeGameEntity(f);
-				blocked=true;
-			}
+			new Flame(data, right, "/images/explosion/FlameHorizontal.png");
 		}
 	}
 }
