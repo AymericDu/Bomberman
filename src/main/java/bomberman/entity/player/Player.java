@@ -5,6 +5,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.Timer;
 
@@ -23,6 +25,7 @@ public class Player extends MovableEntity implements ActionListener {
 	protected int bombRadius;
 	protected boolean isAlive;
 	protected Timer timer;
+	protected Lock lockAuthorizedBomb = new ReentrantLock();
 
 	protected static final int INIT_AUTHORIZED_BOMBS = 1;
 	protected static final int INIT_BOB_RADIUS = 1;
@@ -107,10 +110,17 @@ public class Player extends MovableEntity implements ActionListener {
 	/**
 	 * Drop a bomb in the position of the player
 	 */
+
 	public void dropBomb() {
-		if (this.authorizedBombs > 0) {
-			this.authorizedBombs--;
-			new Bomb(this.data, this.position, this.bombRadius, this);
+		if (this.lockAuthorizedBomb.tryLock()) {
+			try {
+				if (this.authorizedBombs > 0) {
+					this.authorizedBombs--;
+					new Bomb(this.data, this.position, this.bombRadius, this);
+				}
+			} finally {
+				this.lockAuthorizedBomb.unlock();
+			}
 		}
 	}
 
@@ -118,7 +128,13 @@ public class Player extends MovableEntity implements ActionListener {
 	 * Add a bomb for the player
 	 */
 	public void increaseAuthorizedBomb() {
-		this.authorizedBombs++;
+		if (this.lockAuthorizedBomb.tryLock()) {
+			try {
+				this.authorizedBombs++;
+			} finally {
+				this.lockAuthorizedBomb.unlock();
+			}
+		}
 	}
 
 
@@ -137,6 +153,11 @@ public class Player extends MovableEntity implements ActionListener {
 		this.data.getCanvas().removeKeyListener(this.keyboard);
 		this.isAlive = false;
 		this.timer.start();
+		try {
+			this.lockAuthorizedBomb.lockInterruptibly();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
