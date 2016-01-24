@@ -3,6 +3,7 @@ package bomberman.uid;
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.bonus.Bonus;
+import bomberman.entity.bonus.DeathBonus;
 import bomberman.entity.explosion.Bomb;
 import bomberman.entity.explosion.CenterFlame;
 import bomberman.entity.explosion.Flame;
@@ -71,6 +72,10 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 
 	public void overlapRule(Player player, BombRadiusBonus bonus) {
+		this.rule(player, bonus);
+	}
+	
+	public void overlapRule(Player player, DeathBonus bonus) {
 		this.rule(player, bonus);
 	}
 }

@@ -12,6 +12,7 @@ import bomberman.ConstructorPoint;
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.bonus.Bonus;
+import bomberman.entity.bonus.DeathBonus;
 import bomberman.entity.player.Player;
 import bomberman.entity.separation.Box;
 import bomberman.uid.BombermanMoveStrategy;
@@ -132,11 +133,14 @@ public class Level extends GameLevelDefaultImpl {
 	protected void spawnBonus(Point position, int probability) {
 		int randomInt = this.random.nextInt(100);
 		if (randomInt < probability) {
-			randomInt = this.random.nextInt(2);
+			randomInt = this.random.nextInt(3);
 			Bonus bonus;
 			switch (randomInt) {
 			case 0:
 				bonus = new BombRadiusBonus(this.data, position);
+				break;
+			case 1:
+				bonus = new DeathBonus(this.data, position);
 				break;
 			default:
 				bonus = new BombBonus(this.data, position);
