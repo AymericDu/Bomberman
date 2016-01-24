@@ -16,11 +16,6 @@ public class PlayerTest extends EntityTest {
 		return new Player(this.data, this.position);
 	}
 
-	// @Test
-	public void oneStepMoveAddedBehaviorTest() {
-		// oneStepMoveAddedBehaviorTest
-	}
-
 	@Test
 	public void setKeyboardTest() {
 		Player player = this.createEntity();
