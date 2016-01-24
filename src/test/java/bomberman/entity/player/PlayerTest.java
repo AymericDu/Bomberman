@@ -1,10 +1,11 @@
-package bomberman.entity;
+package bomberman.entity.player;
 
 import static org.junit.Assert.*;
 
 import java.awt.event.KeyEvent;
 import org.junit.Test;
 
+import bomberman.entity.EntityTest;
 import bomberman.entity.player.Player;
 import bomberman.uid.BombermanMoveStrategy;
 
