@@ -24,7 +24,7 @@ public class LevelTest {
 
 	@Before
 	public void create() {
-		configuration = new BombermanConfiguration(21, 21, 32, 1);
+		configuration = new BombermanConfiguration(20, 20, 1, 1);
 		data = new GameData(configuration);
 		level = new Level(data);
 		strategy = new BombermanMoveStrategy(1,1,1,1,1);
