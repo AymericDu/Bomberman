@@ -24,6 +24,7 @@ public class Main extends GameDefaultImpl {
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 			e.printStackTrace();
 		}
+		((BombermanUniverse) this.data.getUniverse()).createWalls();
 		for (int i = 0; i < 10; i++) {
 			this.data.addLevel(new Level(data));
 		}

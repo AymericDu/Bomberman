@@ -13,7 +13,6 @@ import bomberman.entity.Player;
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.separation.Box;
-import bomberman.entity.separation.Wall;
 import bomberman.uid.BombermanMoveStrategy;
 import bomberman.uid.BombermanUniverse;
 import bomberman.uid.BombermanUniverseViewPort;
@@ -41,6 +40,7 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 		this.rows = this.data.getConfiguration().getNbRows();
 		this.columns = this.data.getConfiguration().getNbColumns();
 		this.occupiedPoints = new HashSet<Point>();
+		this.occupiedPoints.addAll(((BombermanUniverse) this.data.getUniverse()).getOccupiedPoints());
 		this.random = new Random();
 		this.timer = new Timer(4000, this);
 	}
@@ -71,7 +71,6 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2);
 		this.player2.setKeyboard(new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN,
 				KeyEvent.VK_LEFT, KeyEvent.VK_ENTER));
-		this.createWalls();
 		this.spawnBox(40);
 		this.timer.start();
 	}
@@ -99,56 +98,7 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 		return player;
 	}
 
-	/**
-	 * Creation of all the walls
-	 */
-	protected void createWalls() {
-		createLeftAndRightWalls();
-		createBottomAndTopWalls();
-		createWallsOnBoard();
-	}
 
-	/**
-	 * Creation of left and right walls
-	 */
-	protected void createLeftAndRightWalls() {
-		Point point;
-		for (int y = 0; y < this.rows; y++) {
-			for (int x = 0; x < this.columns; x = x + this.columns - 1) {
-				point = this.createPoint(x, y);
-				new Wall(data, point);
-				this.occupiedPoints.add(point);
-			}
-		}
-	}
-
-	/**
-	 * Creation of bottom and top walls
-	 */
-	protected void createBottomAndTopWalls() {
-		Point point;
-		for (int x = 1; x < this.columns - 1; x++) {
-			for (int y = 0; y < this.rows; y = y + this.rows - 1) {
-				point = this.createPoint(x, y);
-				new Wall(data, point);
-				this.occupiedPoints.add(point);
-			}
-		}
-	}
-
-	/**
-	 * Creation of on-board walls
-	 */
-	protected void createWallsOnBoard() {
-		Point point;
-		for (int x = 2; x < columns - 2; x = x + 2) {
-			for (int y = 2; y < rows - 2; y = y + 2) {
-				point = this.createPoint(x, y);
-				new Wall(data, point);
-				this.occupiedPoints.add(point);
-			}
-		}
-	}
 
 	/**
 	 * Creation of boxes in the game space (random place)
