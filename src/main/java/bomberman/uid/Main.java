@@ -22,7 +22,6 @@ public class Main extends GameDefaultImpl {
 			sound.setLooping(true);
 			sound.play();
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-			e.printStackTrace();
 		}
 		((BombermanUniverse) this.data.getUniverse()).createWalls();
 		for (int i = 0; i < 10; i++) {

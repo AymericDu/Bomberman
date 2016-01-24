@@ -156,7 +156,6 @@ public class Player extends MovableEntity implements ActionListener {
 		try {
 			this.lockAuthorizedBomb.lockInterruptibly();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 	}
 	
