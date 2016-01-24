@@ -1,16 +1,12 @@
 package bomberman.level;
 
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-
-import javax.swing.Timer;
 
 import bomberman.entity.Player;
 import bomberman.entity.bonus.BombBonus;
@@ -25,7 +21,7 @@ import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
 
-public class Level extends GameLevelDefaultImpl implements ActionListener {
+public class Level extends GameLevelDefaultImpl {
 
 	protected Player player1, player2;
 	protected int rows;
@@ -34,7 +30,8 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 	protected List<GameEntity> gameEntities;
 	protected List<BombermanMoveStrategy> keyboards;
 	protected Random random;
-	private Timer timer;
+
+	public static int numberLevel = 0;
 
 	/**
 	 * Constructor of Level class
@@ -51,7 +48,6 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 		this.gameEntities = new ArrayList<GameEntity>();
 		this.keyboards = new ArrayList<BombermanMoveStrategy>();
 		this.random = new Random();
-		this.timer = new Timer(4000, this);
 	}
 
 	/**
@@ -82,7 +78,6 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 				KeyEvent.VK_ENTER);
 		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2, keyboard);
 		this.spawnBox(40);
-		this.timer.start();
 	}
 
 	/**
@@ -224,17 +219,6 @@ public class Level extends GameLevelDefaultImpl implements ActionListener {
 			this.data.getCanvas().removeKeyListener(keyboard);
 		this.gameEntities.clear();
 		this.keyboards.clear();
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (!(this.player1.isAlive() && this.player2.isAlive())) {
-			this.timer.stop();
-			this.end();
-			if (this.player1.isAlive())
-				this.player1.killed();
-			if (this.player2.isAlive())
-				this.player2.killed();
-		}
+		Level.numberLevel++;
 	}
 }

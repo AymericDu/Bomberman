@@ -3,19 +3,25 @@ package bomberman.entity;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
 
 import bomberman.entity.explosion.Bomb;
+import bomberman.level.Level;
 import bomberman.uid.BombermanMoveStrategy;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 
-public class Player extends Entity {
+public class Player extends Entity implements ActionListener {
 
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int authorizedBombs;
 	protected BombermanMoveStrategy keyboard;
 	protected int bombRadius;
-	private boolean isAlive;
+	protected boolean isAlive;
+	protected Timer timer;
 
 	/**
 	 * Constructor of player class, allow to create our player
@@ -38,6 +44,9 @@ public class Player extends Entity {
 		this.authorizedBombs = 1;
 		this.bombRadius = 1;
 		this.isAlive = true;
+
+		this.timer = new Timer(2000, this);
+		this.timer.setRepeats(false);
 	}
 	
 	/**
@@ -122,6 +131,7 @@ public class Player extends Entity {
 		this.spriteManager.setType("died");
 		this.data.getCanvas().removeKeyListener(this.keyboard);
 		this.isAlive = false;
+		this.timer.start();
 	}
 	
 	/**
@@ -142,5 +152,10 @@ public class Player extends Entity {
 
 	public boolean isAlive() {
 		return this.isAlive;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		((Level) this.data.getLevels().get(Level.numberLevel)).end();
 	}
 }
