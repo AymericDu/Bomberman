@@ -70,8 +70,7 @@ public class Bomb extends Entity implements ActionListener {
 	 * Draw the center image for the flame
 	 */
 	public void flamesCenter() {
-		Point center = new Point((int) this.getPosition().getX(), (int) this.getPosition().getY());
-		new Flame(data, center, "/images/explosion/FlameCenter.png");
+		new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameCenter.png", this.position);
 	}
 
 	/**
@@ -79,9 +78,9 @@ public class Bomb extends Entity implements ActionListener {
 	 */
 	public void flamesUp() {
 		for (int i = 1; i <= this.radius; i++) {
-			Point up = new Point((int) this.getPosition().getX(),
-					(int) this.getPosition().getY() - (i * this.data.getConfiguration().getSpriteSize()));
-			new Flame(data, up, "/images/explosion/FlameVertical.png");
+			Point up = new Point(this.getPosition().x,
+					this.getPosition().y - (i * this.data.getConfiguration().getSpriteSize()));
+			new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameVertical.png", up);
 		}
 	}
 
@@ -90,9 +89,9 @@ public class Bomb extends Entity implements ActionListener {
 	 */
 	public void flamesDown() {
 		for (int i = 1; i <= this.radius; i++) {
-			Point down = new Point((int) this.getPosition().getX(),
-					(int) this.getPosition().getY() + (i * this.data.getConfiguration().getSpriteSize()));
-			new Flame(data, down, "/images/explosion/FlameVertical.png");
+			Point down = new Point(this.getPosition().x,
+					this.getPosition().y + (i * this.data.getConfiguration().getSpriteSize()));
+			new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameVertical.png", down);
 		}
 	}
 
@@ -101,9 +100,9 @@ public class Bomb extends Entity implements ActionListener {
 	 */
 	public void flamesLeft() {
 		for (int i = 1; i <= this.radius; i++) {
-			Point left = new Point((int) this.getPosition().getX() - (i * this.data.getConfiguration().getSpriteSize()),
-					(int) this.getPosition().getY());
-			new Flame(data, left, "/images/explosion/FlameHorizontal.png");
+			Point left = new Point(this.getPosition().x - (i * this.data.getConfiguration().getSpriteSize()),
+					this.getPosition().y);
+			new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameHorizontal.png", left);
 		}
 	}
 
@@ -112,10 +111,9 @@ public class Bomb extends Entity implements ActionListener {
 	 */
 	public void flamesRight() {
 		for (int i = 1; i <= this.radius; i++) {
-			Point right = new Point(
-					(int) this.getPosition().getX() + (i * this.data.getConfiguration().getSpriteSize()),
-					(int) this.getPosition().getY());
-			new Flame(data, right, "/images/explosion/FlameHorizontal.png");
+			Point right = new Point(this.getPosition().x + (i * this.data.getConfiguration().getSpriteSize()),
+					this.getPosition().y);
+			new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameHorizontal.png", right);
 		}
 	}
 }
