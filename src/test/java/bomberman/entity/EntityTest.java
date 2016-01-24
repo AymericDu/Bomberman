@@ -34,10 +34,4 @@ public abstract class EntityTest {
 		Entity entity = this.createEntity();
 		assertTrue(entity.isMovable());
 	}
-
-	@Test
-	public void speedTest() {
-		Entity entity = this.createEntity();
-		assertEquals(0, entity.getSpeedVector().getSpeed());
-	}
 }
