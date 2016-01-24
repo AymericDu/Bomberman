@@ -6,12 +6,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import bomberman.entity.Entity;
+import bomberman.entity.MovableEntity;
 import bomberman.uid.BombermanUniverse;
 import gameframework.game.GameData;
 import gameframework.motion.MoveStrategyStraightLine;
 
-public class Flame extends Entity implements ActionListener {
+public class Flame extends MovableEntity implements ActionListener {
 
 	protected Timer timer;
 
@@ -42,5 +42,10 @@ public class Flame extends Entity implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.data.getUniverse().removeGameEntity(this);
+	}
+
+	@Override
+	public void oneStepMoveAddedBehavior() {
+		// nothing to do
 	}
 }

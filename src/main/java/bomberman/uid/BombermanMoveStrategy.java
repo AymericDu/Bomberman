@@ -2,7 +2,7 @@ package bomberman.uid;
 
 import java.awt.Point;
 
-import bomberman.entity.Player;
+import bomberman.entity.player.Player;
 import gameframework.motion.MoveStrategyConfigurableKeyboard;
 
 public class BombermanMoveStrategy extends MoveStrategyConfigurableKeyboard {

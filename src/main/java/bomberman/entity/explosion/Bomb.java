@@ -9,12 +9,12 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Timer;
 
-import bomberman.entity.Entity;
-import bomberman.entity.Player;
+import bomberman.entity.NoMovableEntity;
+import bomberman.entity.player.Player;
 import gameframework.assets.Sound;
 import gameframework.game.GameData;
 
-public class Bomb extends Entity implements ActionListener {
+public class Bomb extends NoMovableEntity implements ActionListener {
 
 	protected Timer timer;
 	protected int radius;

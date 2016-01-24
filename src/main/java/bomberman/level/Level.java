@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import bomberman.entity.Player;
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.bonus.Bonus;
+import bomberman.entity.player.Player;
 import bomberman.entity.separation.Box;
 import bomberman.uid.BombermanMoveStrategy;
 import bomberman.uid.BombermanUniverse;

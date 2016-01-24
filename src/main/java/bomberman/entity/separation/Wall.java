@@ -2,10 +2,11 @@ package bomberman.entity.separation;
 
 import java.awt.Point;
 
-import bomberman.entity.BlockerEntity;
+import bomberman.entity.NoMovableEntity;
 import gameframework.game.GameData;
+import gameframework.motion.blocking.MoveBlocker;
 
-public class Wall extends BlockerEntity {
+public class Wall extends NoMovableEntity implements MoveBlocker {
 
 	/**
 	 * Constructor of the wall entity

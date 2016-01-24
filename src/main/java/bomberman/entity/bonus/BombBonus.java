@@ -2,7 +2,7 @@ package bomberman.entity.bonus;
 
 import java.awt.Point;
 
-import bomberman.entity.Player;
+import bomberman.entity.player.Player;
 import gameframework.game.GameData;
 
 public class BombBonus extends Bonus {

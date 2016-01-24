@@ -1,4 +1,4 @@
-package bomberman.entity;
+package bomberman.entity.player;
 
 import java.awt.Graphics;
 import java.awt.Point;
@@ -8,13 +8,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import bomberman.entity.MovableEntity;
 import bomberman.entity.explosion.Bomb;
 import bomberman.level.Level;
 import bomberman.uid.BombermanMoveStrategy;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 
-public class Player extends Entity implements ActionListener {
+public class Player extends MovableEntity implements ActionListener {
 
 	protected SpriteManagerDefaultImpl spriteManager;
 	protected int authorizedBombs;
