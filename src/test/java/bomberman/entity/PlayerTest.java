@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.awt.event.KeyEvent;
 import org.junit.Test;
 
+import bomberman.entity.player.Player;
 import bomberman.uid.BombermanMoveStrategy;
 
 public class PlayerTest extends EntityTest {

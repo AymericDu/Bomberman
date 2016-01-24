@@ -6,7 +6,7 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-import bomberman.entity.Player;
+import bomberman.entity.player.Player;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 

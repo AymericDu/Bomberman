@@ -4,9 +4,10 @@ import java.awt.Point;
 
 import org.junit.Test;
 
+import bomberman.entity.player.Player;
+
 import static org.junit.Assert.*;
 
-import bomberman.entity.Player;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 

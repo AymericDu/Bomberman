@@ -1,7 +1,7 @@
 package bomberman.entity.explosion;
 
 import bomberman.entity.EntityTest;
-import bomberman.entity.Player;
+import bomberman.entity.player.Player;
 
 public class BombTest extends EntityTest {
 
