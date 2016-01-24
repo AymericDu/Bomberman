@@ -28,10 +28,4 @@ public abstract class EntityTest {
 		assertEquals(32, rectangle.getHeight(), 0);
 		assertEquals(this.position, rectangle.getLocation());
 	}
-
-	@Test
-	public void noMovableTest() {
-		Entity entity = this.createEntity();
-		assertTrue(entity.isMovable());
-	}
 }
