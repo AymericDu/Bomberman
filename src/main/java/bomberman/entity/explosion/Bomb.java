@@ -35,7 +35,7 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	 *            : the player who have the bomb
 	 */
 	public Bomb(GameData data, Point position, int radius, Player player) {
-		super(data, (Point) position.clone(), "/images/explosion/Bomb.png");
+		super(data, position, "/images/explosion/Bomb.png");
 		this.radius = radius;
 		this.timer = new Timer(Bomb.COUNTDOWN_TIME, this);
 		this.timer.setRepeats(false);

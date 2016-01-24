@@ -1,15 +1,19 @@
 package bomberman.entity.player;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.event.KeyEvent;
+
 import org.junit.Test;
 
-import bomberman.entity.EntityTest;
-import bomberman.entity.player.Player;
+import bomberman.entity.MovableEntityTest;
 import bomberman.uid.BombermanMoveStrategy;
 
-public class PlayerTest extends EntityTest {
+public class PlayerTest extends MovableEntityTest {
 
 	@Override
 	public Player createEntity() {
@@ -35,6 +39,16 @@ public class PlayerTest extends EntityTest {
 		player.dropBomb();
 		assertEquals(0, player.authorizedBombs);
 	}
+	
+//	@Test TODO dropBombWhenLockTest
+//	public void dropBombWhenLockTest() {
+//		Player player = this.createEntity();
+//		player.lockAuthorizedBomb.lock();
+//		assertEquals(1, player.authorizedBombs);
+//		player.dropBomb();
+//		assertEquals(1, player.authorizedBombs);
+//		player.lockAuthorizedBomb.unlock();
+//	}
 
 	@Test
 	public void addBombTest() {
@@ -43,13 +57,23 @@ public class PlayerTest extends EntityTest {
 		player.increaseAuthorizedBomb();
 		assertEquals(2, player.authorizedBombs);
 	}
+	
+//	@Test TODO addBombWhenLockTest
+//	public void addBombWhenLockTest() {
+//		Player player = this.createEntity();
+//		player.lockAuthorizedBomb.lock();
+//		assertEquals(1, player.authorizedBombs);
+//		player.increaseAuthorizedBomb();
+//		assertEquals(1, player.authorizedBombs);
+//		player.lockAuthorizedBomb.unlock();
+//	}
 
 	@Test
 	public void increaseBombRadiusTest(){
 		Player player = this.createEntity();
-		assertEquals(1,player.bombRadius);
+		assertEquals(1, player.bombRadius);
 		player.increaseBombRadius();
-		assertEquals(2,player.bombRadius);
+		assertEquals(2, player.bombRadius);
 	}
 	
 	@Test
@@ -57,6 +81,7 @@ public class PlayerTest extends EntityTest {
 		Player player = this.createEntity();
 		assertTrue(player.isAlive());
 		player.killed();
+		player.timer.stop();
 		assertFalse(player.isAlive());
 	}
 

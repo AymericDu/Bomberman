@@ -6,17 +6,18 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-public class VerticalFlameTest extends FlameTest{
+public class VerticalFlameTest extends FlameTest {
 
 	@Override
 	public VerticalFlame createEntity() {
-		return new VerticalFlame(this.data, this.position, 0);
+		VerticalFlame flame = new VerticalFlame(this.data, this.position, 1);
+		flame.timer.stop();
+		return flame;
 	}
 
 	@Test
 	public void createGoalTest() {
-		VerticalFlame v = this.createEntity();
-		assertEquals(new Point(this.position.x,
-				this.position.y + (2 * this.data.getConfiguration().getSpriteSize())) ,v.createGoal(2));
+		VerticalFlame flame = this.createEntity();
+		assertEquals(new Point(0, 64), flame.createGoal(2));
 	}
 }

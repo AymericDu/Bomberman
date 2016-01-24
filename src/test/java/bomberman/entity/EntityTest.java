@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.awt.Point;
 import java.awt.Rectangle;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import bomberman.uid.BombermanConfiguration;
@@ -12,8 +13,14 @@ import gameframework.game.GameData;
 
 public abstract class EntityTest {
 
-	protected GameData data = new GameData(new BombermanConfiguration(21, 21, 32, 1));
-	protected Point position = new Point(0, 0);
+	protected GameData data;
+	protected Point position;
+	
+	@Before
+	public void init() {
+		this.data = new GameData(new BombermanConfiguration(21, 21, 32, 1));
+		this.position = new Point(0, 0);
+	}
 
 	/**
 	 * use the attributes data and position
@@ -27,5 +34,11 @@ public abstract class EntityTest {
 		assertEquals(32, rectangle.getWidth(), 0);
 		assertEquals(32, rectangle.getHeight(), 0);
 		assertEquals(this.position, rectangle.getLocation());
+	}
+	
+	@Test
+	public void getPositionTest() {
+		Entity entity = this.createEntity();
+		assertSame(this.position, entity.getPosition());
 	}
 }

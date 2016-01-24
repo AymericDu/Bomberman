@@ -10,14 +10,15 @@ public class HorizontalFlameTest extends FlameTest {
 
 	@Override
 	public HorizontalFlame createEntity() {
-		return new HorizontalFlame(this.data, this.position,1);
+		HorizontalFlame flame = new HorizontalFlame(this.data, this.position, 1);
+		flame.timer.stop();
+		return flame;
 	}
 
 	@Test
 	public void createGoalTest() {
-		HorizontalFlame v = this.createEntity();
-		assertEquals(new Point(this.position.x+ (2 * this.data.getConfiguration().getSpriteSize()),
-				this.position.y) ,v.createGoal(2));
+		HorizontalFlame flame = this.createEntity();
+		assertEquals(new Point(64 , 0), flame.createGoal(2));
 	}
 
 }

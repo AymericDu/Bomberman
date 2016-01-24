@@ -55,7 +55,6 @@ public class NoMovableEntity implements Entity {
 		rectangle.setLocation(this.position);
 		return rectangle;
 	}
-
 	
 	/**
 	 * returns false because by definition a NoMovableEntity cannot move
@@ -66,7 +65,6 @@ public class NoMovableEntity implements Entity {
 		return false;
 	}
 
-	
 	/**
 	 * returns the position of the entity
 	 * @return a point representing the position

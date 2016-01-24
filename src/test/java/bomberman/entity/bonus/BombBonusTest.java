@@ -1,15 +1,14 @@
 package bomberman.entity.bonus;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import java.awt.Point;
 
 import org.junit.Test;
 
+import bomberman.entity.player.MockPlayer;
 import bomberman.entity.player.Player;
-
-import static org.junit.Assert.*;
-
-import gameframework.game.GameConfiguration;
-import gameframework.game.GameData;
 
 public class BombBonusTest extends BonusTest {
 
@@ -20,12 +19,10 @@ public class BombBonusTest extends BonusTest {
 
 	@Test
 	public void effectTest() {
-		GameConfiguration conf = new GameConfiguration();
-		GameData data = new GameData(conf);
-		Bonus bonus = this.createEntity();
-		Player player = new Player(data, new Point(1,1));
-		assertEquals(1, player.getAuthorizedBomb());
+		BombBonus bonus = this.createEntity();
+		Player player = new MockPlayer(this.data, (Point) this.position.clone());
+		assertFalse(MockPlayer.increaseAuthorizedBomb);
 		bonus.effect(player);
-		assertEquals(2, player.getAuthorizedBomb());
+		assertTrue(MockPlayer.increaseAuthorizedBomb);
 	}
 }

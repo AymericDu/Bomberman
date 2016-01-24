@@ -1,8 +1,8 @@
 package bomberman.entity.bonus;
 
-import bomberman.entity.EntityTest;
+import bomberman.entity.NoMovableEntityTest;
 
-public abstract class BonusTest extends EntityTest {
+public abstract class BonusTest extends NoMovableEntityTest {
 
 	@Override
 	public abstract Bonus createEntity();

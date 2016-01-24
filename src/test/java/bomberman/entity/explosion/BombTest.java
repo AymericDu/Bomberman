@@ -1,12 +1,29 @@
 package bomberman.entity.explosion;
 
-import bomberman.entity.EntityTest;
-import bomberman.entity.player.Player;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-public class BombTest extends EntityTest {
+import java.awt.Point;
+
+import org.junit.Test;
+
+import bomberman.entity.NoMovableEntityTest;
+import bomberman.entity.player.MockPlayer;
+
+public class BombTest extends NoMovableEntityTest {
 
 	@Override
 	public Bomb createEntity() {
-		return new Bomb(this.data, this.position, 2, new Player(this.data, this.position));
+		Bomb bomb = new Bomb(this.data, this.position, 2, new MockPlayer(this.data, (Point) this.position.clone())); 
+		bomb.timer.stop();
+		return bomb;
+	}
+	
+	@Test
+	public void explodeTest() {
+		Bomb bomb = this.createEntity();
+		assertFalse(MockPlayer.increaseAuthorizedBomb);
+		bomb.explode();
+		assertTrue(MockPlayer.increaseAuthorizedBomb);
 	}
 }

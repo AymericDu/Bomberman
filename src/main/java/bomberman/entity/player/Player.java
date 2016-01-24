@@ -25,7 +25,7 @@ public class Player extends MovableEntity implements ActionListener {
 	protected int bombRadius;
 	protected boolean isAlive;
 	protected Timer timer;
-	protected Lock lockAuthorizedBomb = new ReentrantLock();
+	protected Lock lockAuthorizedBomb;
 
 	protected static final int INIT_AUTHORIZED_BOMBS = 1;
 	protected static final int INIT_BOB_RADIUS = 1;
@@ -55,6 +55,7 @@ public class Player extends MovableEntity implements ActionListener {
 
 		this.timer = new Timer(Player.AFTER_DEATH_TIME, this);
 		this.timer.setRepeats(false);
+		this.lockAuthorizedBomb = new ReentrantLock();
 	}
 	
 	/**
@@ -116,7 +117,7 @@ public class Player extends MovableEntity implements ActionListener {
 			try {
 				if (this.authorizedBombs > 0) {
 					this.authorizedBombs--;
-					new Bomb(this.data, this.position, this.bombRadius, this);
+					new Bomb(this.data, (Point) this.position.clone(), this.bombRadius, this);
 				}
 			} finally {
 				this.lockAuthorizedBomb.unlock();
@@ -157,22 +158,6 @@ public class Player extends MovableEntity implements ActionListener {
 			this.lockAuthorizedBomb.lockInterruptibly();
 		} catch (InterruptedException e) {
 		}
-	}
-	
-	/**
-	 * getAuthorizedBomb allows to return the numbers of authorized Bomb
-	 * @return the authorized bomb
-	 */
-	public int getAuthorizedBomb(){
-		return this.authorizedBombs;
-	}
-	
-	/**
-	 * getBombsRadius return the bomb radius
-	 * @return the bomb radius
-	 */
-	public int getBombsRadius(){
-		return this.bombRadius;
 	}
 
 	public boolean isAlive() {

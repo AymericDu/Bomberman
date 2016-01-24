@@ -6,18 +6,18 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-public class CenterFlameTest extends FlameTest{
+public class CenterFlameTest extends FlameTest {
 
 	@Override
 	public CenterFlame createEntity() {
-		return new CenterFlame(this.data, this.position);
+		CenterFlame flame = new CenterFlame(this.data, this.position);
+		flame.timer.stop();
+		return flame;
 	}
 
 	@Test
 	public void createGoalTest() {
-		CenterFlame v = this.createEntity();
-		assertEquals(new Point(this.position.x,
-				this.position.y ) ,v.createGoal(2));
+		CenterFlame flame = this.createEntity();
+		assertEquals(new Point(0, 0), flame.createGoal(2));
 	}
-
 }
