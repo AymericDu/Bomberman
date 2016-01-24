@@ -17,7 +17,7 @@ public class CenterFlameTest extends FlameTest{
 	public void createGoalTest() {
 		CenterFlame v = this.createEntity();
 		assertEquals(new Point(this.position.x,
-				this.position.y + (2 * this.data.getConfiguration().getSpriteSize())) ,v.createGoal(2));
+				this.position.y ) ,v.createGoal(2));
 	}
 
 }

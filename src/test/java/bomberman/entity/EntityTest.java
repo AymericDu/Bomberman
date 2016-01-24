@@ -8,7 +8,6 @@ import java.awt.Rectangle;
 import org.junit.Test;
 
 import bomberman.uid.BombermanConfiguration;
-import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
 public abstract class EntityTest {
