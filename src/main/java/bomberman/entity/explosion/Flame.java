@@ -15,6 +15,8 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 
 	protected Timer timer;
 
+	protected static final int EXPLOSION_TIME = 1000;
+
 	/**
 	 * Constructor of Flame
 	 * 
@@ -32,7 +34,7 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 		this.getDriver().setStrategy(new MoveStrategyStraightLine(position, this.createGoal(moving),
 				this.data.getConfiguration().getSpriteSize()));
 
-		this.timer = new Timer(1000, this);
+		this.timer = new Timer(Flame.EXPLOSION_TIME, this);
 		this.timer.setRepeats(false);
 		this.timer.start();
 	}
