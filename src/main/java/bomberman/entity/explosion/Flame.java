@@ -11,7 +11,7 @@ import bomberman.uid.BombermanUniverse;
 import gameframework.game.GameData;
 import gameframework.motion.MoveStrategyStraightLine;
 
-public class Flame extends MovableEntity implements ActionListener {
+public abstract class Flame extends MovableEntity implements ActionListener {
 
 	protected Timer timer;
 
@@ -25,11 +25,12 @@ public class Flame extends MovableEntity implements ActionListener {
 	 * @param imageUrl
 	 *            of the flame
 	 */
-	public Flame(GameData data, Point position, String imageUrl, Point goal) {
+	public Flame(GameData data, Point position, String imageUrl, int moving) {
 		super(data, position, imageUrl);
 
 		this.getDriver().setmoveBlockerChecker(((BombermanUniverse) this.data.getUniverse()).getBlockerWalls());
-		this.getDriver().setStrategy(new MoveStrategyStraightLine(position, goal, 32));
+		this.getDriver().setStrategy(new MoveStrategyStraightLine(position, this.createGoal(moving),
+				this.data.getConfiguration().getSpriteSize()));
 
 		this.timer = new Timer(1000, this);
 		this.timer.setRepeats(false);
@@ -48,4 +49,6 @@ public class Flame extends MovableEntity implements ActionListener {
 	public void oneStepMoveAddedBehavior() {
 		// nothing to do
 	}
+	
+	public abstract Point createGoal(int moving);
 }

@@ -57,63 +57,15 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
 			e1.printStackTrace();
 		}
-		flamesCenter();
-		flamesUp();
-		flamesDown();
-		flamesLeft();
-		flamesRight();
+		for (int i = -this.radius; i <= this.radius; i++) {
+			if (i == 0) {
+				new CenterFlame(this.data, this.position);
+			} else {
+				new HorizontalFlame(this.data, (Point) this.position.clone(), i);
+				new VerticalFlame(this.data, (Point) this.position.clone(), i);
+			}
+		}
 		this.data.getUniverse().removeGameEntity(this);
 		this.player.increaseAuthorizedBomb();
-	}
-
-	/**
-	 * Draw the center image for the flame
-	 */
-	public void flamesCenter() {
-		new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameCenter.png", this.position);
-	}
-
-	/**
-	 * Draw the up image for the flame
-	 */
-	public void flamesUp() {
-		for (int i = 1; i <= this.radius; i++) {
-			Point up = new Point(this.getPosition().x,
-					this.getPosition().y - (i * this.data.getConfiguration().getSpriteSize()));
-			new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameVertical.png", up);
-		}
-	}
-
-	/**
-	 * Draw the down image for the flame
-	 */
-	public void flamesDown() {
-		for (int i = 1; i <= this.radius; i++) {
-			Point down = new Point(this.getPosition().x,
-					this.getPosition().y + (i * this.data.getConfiguration().getSpriteSize()));
-			new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameVertical.png", down);
-		}
-	}
-
-	/**
-	 * Draw the left image for the flame
-	 */
-	public void flamesLeft() {
-		for (int i = 1; i <= this.radius; i++) {
-			Point left = new Point(this.getPosition().x - (i * this.data.getConfiguration().getSpriteSize()),
-					this.getPosition().y);
-			new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameHorizontal.png", left);
-		}
-	}
-
-	/**
-	 * Draw the right image for the flame
-	 */
-	public void flamesRight() {
-		for (int i = 1; i <= this.radius; i++) {
-			Point right = new Point(this.getPosition().x + (i * this.data.getConfiguration().getSpriteSize()),
-					this.getPosition().y);
-			new Flame(data, (Point) this.position.clone(), "/images/explosion/FlameHorizontal.png", right);
-		}
 	}
 }
