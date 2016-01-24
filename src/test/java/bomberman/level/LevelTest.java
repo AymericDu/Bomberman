@@ -8,9 +8,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import bomberman.entity.Player;
+import bomberman.uid.BombermanMoveStrategy;
 import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
+import gameframework.game.GameLevelDefaultImpl;
 
 public class LevelTest {
 
@@ -18,12 +20,14 @@ public class LevelTest {
 	GameData data;
 	Level level;
 	Player p;
+	BombermanMoveStrategy strategy;
 
 	@Before
 	public void create() {
 		configuration = new GameConfiguration(20, 20, 1, 1);
 		data = new GameData(configuration);
 		level = new Level(data);
+		strategy = new BombermanMoveStrategy(1,1,1,1,1);
 	}
 
 	@Test
@@ -40,15 +44,15 @@ public class LevelTest {
 
 	@Test
 	public void createPlayersTest() {
-		p = level.createPlayers(10, 10);
+		p = level.createPlayers(10, 10, strategy);
 		assertEquals(new Point(10, 10), p.getPosition());
 	}
 
 	@Test
 	public void createPlayersTestException() throws IllegalStateException {
 		try {
-			level.createPlayers(10, 10);
-			level.createPlayers(10, 10);
+			level.createPlayers(10, 10, strategy);
+			level.createPlayers(10, 10, strategy);
 		} catch (Exception IllegalStateException) {
 			IllegalStateException.getMessage();
 		}
