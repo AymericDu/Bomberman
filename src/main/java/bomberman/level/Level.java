@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import bomberman.ConstructorPoint;
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.bonus.Bonus;
@@ -51,20 +52,6 @@ public class Level extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * createPoint allows to create a new point
-	 * 
-	 * @param columnNumber
-	 *            the number of columns
-	 * @param rowNumber
-	 *            the number of rows
-	 * @return a new Point
-	 */
-	protected Point createPoint(int columnNumber, int rowNumber) {
-		int spriteSize = this.data.getConfiguration().getSpriteSize();
-		return new Point(spriteSize * columnNumber, spriteSize * rowNumber);
-	}
-
-	/**
 	 * Initialize the levels with the players, the walls and the box
 	 */
 	@Override
@@ -90,7 +77,7 @@ public class Level extends GameLevelDefaultImpl {
 	 * @return a new player
 	 */
 	protected Player createPlayers(int columnNumber, int rowNumber, BombermanMoveStrategy keyboard) {
-		Point position = this.createPoint(columnNumber, rowNumber);
+		Point position = ConstructorPoint.create(this.data, columnNumber, rowNumber);
 		if (this.occupiedPoints.contains(position))
 			throw new IllegalStateException();
 		Player player = new Player(this.data, position);
@@ -101,7 +88,7 @@ public class Level extends GameLevelDefaultImpl {
 		this.occupiedPoints.add(position);
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
-				this.occupiedPoints.add(this.createPoint(columnNumber + i, rowNumber + j));
+				this.occupiedPoints.add(ConstructorPoint.create(this.data, columnNumber + i, rowNumber + j));
 			}
 		}
 		return player;
@@ -120,7 +107,7 @@ public class Level extends GameLevelDefaultImpl {
 		int randomInt;
 		for (int i = 0; i < this.columns; i++) {
 			for (int j = 0; j < this.rows; j++) {
-				point = this.createPoint(i, j);
+				point = ConstructorPoint.create(this.data, i, j);
 				if (!this.occupiedPoints.contains(point)) {
 					randomInt = this.random.nextInt(100);
 					if (randomInt < probability) {
