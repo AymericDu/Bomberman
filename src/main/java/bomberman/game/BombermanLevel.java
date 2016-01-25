@@ -27,7 +27,8 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	protected Set<Point> occupiedPoints;
 	protected List<GameEntity> gameEntities;
 	protected List<BombermanMoveStrategy> keyboards;
-	protected Random random;
+	
+	protected final Random random = new Random();
 
 	public static int levelNumber = 0;
 
@@ -48,7 +49,6 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		this.occupiedPoints.addAll(((BombermanUniverse) this.data.getUniverse()).getOccupiedPoints());
 		this.gameEntities = new ArrayList<GameEntity>();
 		this.keyboards = new ArrayList<BombermanMoveStrategy>();
-		this.random = new Random();
 	}
 
 	/**

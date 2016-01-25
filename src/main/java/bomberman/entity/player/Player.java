@@ -25,7 +25,8 @@ public class Player extends MovableEntity implements ActionListener {
 	protected int bombRadius;
 	protected boolean isAlive;
 	protected Timer timer;
-	protected Lock lockAuthorizedBomb;
+	
+	protected final Lock lockAuthorizedBomb = new ReentrantLock();
 
 	protected static final int INIT_AUTHORIZED_BOMBS = 1;
 	protected static final int INIT_BOB_RADIUS = 1;
@@ -55,7 +56,6 @@ public class Player extends MovableEntity implements ActionListener {
 
 		this.timer = new Timer(Player.AFTER_DEATH_TIME, this);
 		this.timer.setRepeats(false);
-		this.lockAuthorizedBomb = new ReentrantLock();
 	}
 	
 	/**
