@@ -1,8 +1,6 @@
-package bomberman.uid;
+package bomberman.game;
 
 import gameframework.game.GameConfiguration;
-import gameframework.game.GameUniverse;
-import gameframework.motion.overlapping.OverlapRulesApplier;
 
 public class BombermanConfiguration extends GameConfiguration {
 
@@ -11,12 +9,12 @@ public class BombermanConfiguration extends GameConfiguration {
 	}
 
 	@Override
-	public OverlapRulesApplier createOverlapRulesApplier() {
+	public BombermanOverlapRulesApplier createOverlapRulesApplier() {
 		return new BombermanOverlapRulesApplier();
 	}
 
 	@Override
-	public GameUniverse createUniverse() {
+	public BombermanUniverse createUniverse() {
 		return new BombermanUniverse();
 	}
 }

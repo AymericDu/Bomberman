@@ -1,4 +1,4 @@
-package bomberman.uid;
+package bomberman.game;
 
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;

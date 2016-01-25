@@ -11,7 +11,7 @@ import java.awt.event.KeyEvent;
 import org.junit.Test;
 
 import bomberman.entity.MovableEntityTest;
-import bomberman.uid.BombermanMoveStrategy;
+import bomberman.game.BombermanMoveStrategy;
 
 public class PlayerTest extends MovableEntityTest {
 

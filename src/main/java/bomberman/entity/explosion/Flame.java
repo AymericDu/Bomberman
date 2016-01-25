@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import bomberman.entity.MovableEntity;
-import bomberman.uid.BombermanUniverse;
+import bomberman.game.BombermanUniverse;
 import gameframework.game.GameData;
 import gameframework.motion.MoveStrategyStraightLine;
 

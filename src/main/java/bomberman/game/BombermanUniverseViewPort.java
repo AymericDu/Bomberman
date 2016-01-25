@@ -1,4 +1,4 @@
-package bomberman.uid;
+package bomberman.game;
 
 import java.net.URL;
 

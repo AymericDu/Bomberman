@@ -1,10 +1,9 @@
-package bomberman.uid;
+package bomberman.game;
 
 import java.awt.Point;
 import java.util.HashSet;
 import java.util.Set;
 
-import bomberman.ConstructorPoint;
 import bomberman.entity.separation.Wall;
 import gameframework.game.GameUniverseDefaultImpl;
 import gameframework.motion.blocking.MoveBlockerChecker;

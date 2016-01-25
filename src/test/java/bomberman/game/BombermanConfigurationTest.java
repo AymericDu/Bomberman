@@ -1,9 +1,10 @@
-package bomberman.uid;
+package bomberman.game;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import bomberman.game.BombermanConfiguration;
 import gameframework.game.GameData;
 
 public class BombermanConfigurationTest {

@@ -12,8 +12,8 @@ import javax.swing.Timer;
 
 import bomberman.entity.MovableEntity;
 import bomberman.entity.explosion.Bomb;
-import bomberman.level.Level;
-import bomberman.uid.BombermanMoveStrategy;
+import bomberman.game.BombermanLevel;
+import bomberman.game.BombermanMoveStrategy;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 
@@ -166,6 +166,6 @@ public class Player extends MovableEntity implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		((Level) this.data.getLevels().get(Level.numberLevel)).end();
+		((BombermanLevel) this.data.getLevels().get(BombermanLevel.numberLevel)).end();
 	}
 }

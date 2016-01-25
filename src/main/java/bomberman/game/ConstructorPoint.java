@@ -1,4 +1,4 @@
-package bomberman;
+package bomberman.game;
 
 import java.awt.Point;
 

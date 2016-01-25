@@ -1,10 +1,11 @@
-package bomberman.uid;
+package bomberman.game;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import bomberman.game.BombermanUniverseViewPort;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 

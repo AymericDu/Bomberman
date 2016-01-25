@@ -1,4 +1,4 @@
-package bomberman.level;
+package bomberman.game;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -8,22 +8,18 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import bomberman.ConstructorPoint;
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.bonus.Bonus;
 import bomberman.entity.bonus.DeathBonus;
 import bomberman.entity.player.Player;
 import bomberman.entity.separation.Box;
-import bomberman.uid.BombermanMoveStrategy;
-import bomberman.uid.BombermanUniverse;
-import bomberman.uid.BombermanUniverseViewPort;
 import gameframework.drawing.GameUniverseViewPort;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.game.GameLevelDefaultImpl;
 
-public class Level extends GameLevelDefaultImpl {
+public class BombermanLevel extends GameLevelDefaultImpl {
 
 	protected Player player1, player2;
 	protected int rows;
@@ -44,7 +40,7 @@ public class Level extends GameLevelDefaultImpl {
 	 * @param data
 	 *            a new gameData
 	 */
-	public Level(GameData data) {
+	public BombermanLevel(GameData data) {
 		super(data);
 		this.rows = this.data.getConfiguration().getNbRows();
 		this.columns = this.data.getConfiguration().getNbColumns();
@@ -68,7 +64,7 @@ public class Level extends GameLevelDefaultImpl {
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT,
 				KeyEvent.VK_ENTER);
 		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2, keyboard);
-		this.spawnBox(Level.PROBABILITY_BOX);
+		this.spawnBox(BombermanLevel.PROBABILITY_BOX);
 	}
 
 	/**
@@ -115,7 +111,7 @@ public class Level extends GameLevelDefaultImpl {
 				if (!this.occupiedPoints.contains(point)) {
 					randomInt = this.random.nextInt(100);
 					if (randomInt < probability) {
-						this.spawnBonus(point, Level.PROBABILITY_BONUS);
+						this.spawnBonus(point, BombermanLevel.PROBABILITY_BONUS);
 						this.gameEntities.add(new Box(data, point));
 						this.occupiedPoints.add(point);
 					}
@@ -213,6 +209,6 @@ public class Level extends GameLevelDefaultImpl {
 			this.data.getCanvas().removeKeyListener(keyboard);
 		this.gameEntities.clear();
 		this.keyboards.clear();
-		Level.numberLevel++;
+		BombermanLevel.numberLevel++;
 	}
 }

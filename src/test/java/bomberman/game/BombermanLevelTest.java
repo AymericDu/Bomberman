@@ -1,4 +1,4 @@
-package bomberman.level;
+package bomberman.game;
 
 import static org.junit.Assert.*;
 
@@ -8,17 +8,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import bomberman.entity.player.Player;
-import bomberman.uid.BombermanConfiguration;
-import bomberman.uid.BombermanMoveStrategy;
-import bomberman.uid.BombermanUniverseViewPort;
+import bomberman.game.BombermanConfiguration;
+import bomberman.game.BombermanLevel;
+import bomberman.game.BombermanMoveStrategy;
+import bomberman.game.BombermanUniverseViewPort;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
-public class LevelTest {
+public class BombermanLevelTest {
 
 	GameConfiguration configuration;
 	GameData data;
-	Level level;
+	BombermanLevel level;
 	Player p;
 	BombermanMoveStrategy strategy;
 
@@ -26,7 +27,7 @@ public class LevelTest {
 	public void create() {
 		configuration = new BombermanConfiguration(20, 20, 1, 1);
 		data = new GameData(configuration);
-		level = new Level(data);
+		level = new BombermanLevel(data);
 		strategy = new BombermanMoveStrategy(1,1,1,1,1);
 	}
 
