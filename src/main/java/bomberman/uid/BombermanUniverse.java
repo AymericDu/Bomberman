@@ -12,8 +12,6 @@ import gameframework.motion.blocking.MoveBlockerCheckerDefaultImpl;
 
 public class BombermanUniverse extends GameUniverseDefaultImpl {
 
-	protected int rows;
-	protected int columns;
 	protected Set<Point> wallPoints;
 	protected MoveBlockerChecker blockerWalls;
 	
@@ -34,39 +32,28 @@ public class BombermanUniverse extends GameUniverseDefaultImpl {
 	/**
 	 * Creation of all the walls
 	 */
-	protected void createWalls() {
-		this.rows = this.data.getConfiguration().getNbRows();
-		this.columns = this.data.getConfiguration().getNbColumns();
-		createLeftAndRightWalls();
-		createBottomAndTopWalls();
-		createWallsOnBoard();
+	public void createAllWalls() {
+		this.createWallsOnEdges();
+		this.createWallsOnBoard();
+	}
+	
+	protected void createWall(int columnNumber, int rowNumber) {
+		Point point;
+		point = ConstructorPoint.create(this.data, rowNumber, columnNumber);
+		this.blockerWalls.addMoveBlocker(new Wall(data, point));
+		this.wallPoints.add(point);
 	}
 
-	/**
-	 * Creation of left and right walls
-	 */
-	protected void createLeftAndRightWalls() {
-		Point point;
-		for (int y = 0; y < this.rows; y++) {
-			for (int x = 0; x < this.columns; x = x + this.columns - 1) {
-				point = ConstructorPoint.create(this.data, x, y);
-				this.blockerWalls.addMoveBlocker(new Wall(data, point));
-				this.wallPoints.add(point);
-			}
+	protected void createWallsOnEdges() {
+		int rows = this.data.getConfiguration().getNbRows();
+		int columns = this.data.getConfiguration().getNbColumns();
+		for (int x = 0; x < columns; x++) {
+			this.createWall(0, x);
+			this.createWall(rows - 1, x);
 		}
-	}
-
-	/**
-	 * Creation of bottom and top walls
-	 */
-	protected void createBottomAndTopWalls() {
-		Point point;
-		for (int x = 1; x < this.columns - 1; x++) {
-			for (int y = 0; y < this.rows; y = y + this.rows - 1) {
-				point = ConstructorPoint.create(this.data, x, y);
-				this.blockerWalls.addMoveBlocker(new Wall(data, point));
-				this.wallPoints.add(point);
-			}
+		for (int y = 1; y < rows - 1; y++) {
+			this.createWall(y, 0);
+			this.createWall(y, columns - 1);
 		}
 	}
 
@@ -74,12 +61,11 @@ public class BombermanUniverse extends GameUniverseDefaultImpl {
 	 * Creation of on-board walls
 	 */
 	protected void createWallsOnBoard() {
-		Point point;
+		int rows = this.data.getConfiguration().getNbRows();
+		int columns = this.data.getConfiguration().getNbColumns();
 		for (int x = 2; x < columns - 2; x = x + 2) {
 			for (int y = 2; y < rows - 2; y = y + 2) {
-				point = ConstructorPoint.create(this.data, x, y);
-				this.blockerWalls.addMoveBlocker(new Wall(data, point));
-				this.wallPoints.add(point);
+				createWall(y, x);
 			}
 		}
 	}

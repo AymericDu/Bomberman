@@ -23,7 +23,7 @@ public class Main extends GameDefaultImpl {
 			sound.play();
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
 		}
-		((BombermanUniverse) this.data.getUniverse()).createWalls();
+		((BombermanUniverse) this.data.getUniverse()).createAllWalls();
 		for (int i = 0; i < 10; i++) {
 			this.data.addLevel(new Level(data));
 		}
