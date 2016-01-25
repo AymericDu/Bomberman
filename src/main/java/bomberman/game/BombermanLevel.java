@@ -29,7 +29,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	protected List<BombermanMoveStrategy> keyboards;
 	protected Random random;
 
-	public static int numberLevel = 0;
+	public static int levelNumber = 0;
 
 	protected static final int PROBABILITY_BONUS = 20;
 	protected static final int PROBABILITY_BOX = 40;
@@ -209,6 +209,6 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 			this.data.getCanvas().removeKeyListener(keyboard);
 		this.gameEntities.clear();
 		this.keyboards.clear();
-		BombermanLevel.numberLevel++;
+		BombermanLevel.levelNumber++;
 	}
 }

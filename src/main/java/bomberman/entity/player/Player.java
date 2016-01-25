@@ -166,6 +166,6 @@ public class Player extends MovableEntity implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		((BombermanLevel) this.data.getLevels().get(BombermanLevel.numberLevel)).end();
+		((BombermanLevel) this.data.getLevels().get(BombermanLevel.levelNumber)).end();
 	}
 }
