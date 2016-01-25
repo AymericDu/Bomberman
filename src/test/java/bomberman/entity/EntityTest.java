@@ -1,6 +1,7 @@
 package bomberman.entity;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -8,7 +9,7 @@ import java.awt.Rectangle;
 import org.junit.Before;
 import org.junit.Test;
 
-import bomberman.game.BombermanConfiguration;
+import bomberman.game.MockConfiguration;
 import gameframework.game.GameData;
 
 public abstract class EntityTest {
@@ -18,7 +19,7 @@ public abstract class EntityTest {
 	
 	@Before
 	public void init() {
-		this.data = new GameData(new BombermanConfiguration(21, 21, 32, 1));
+		this.data = new GameData(new MockConfiguration(21, 21, 32, 1));
 		this.position = new Point(0, 0);
 	}
 

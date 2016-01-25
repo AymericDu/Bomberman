@@ -6,9 +6,8 @@ import java.awt.Point;
 
 import org.junit.Test;
 
+import bomberman.entity.player.MockPlayer;
 import bomberman.entity.player.Player;
-import gameframework.game.GameConfiguration;
-import gameframework.game.GameData;
 
 public class DeathBonusTest extends BonusTest {
 
@@ -19,12 +18,10 @@ public class DeathBonusTest extends BonusTest {
 	
 	@Test
 	public void effectTest() {
-		GameConfiguration conf = new GameConfiguration();
-		GameData data = new GameData(conf);
 		Bonus bonus = this.createEntity();
-		Player player = new Player(data, new Point(1,1));
-		assertEquals(true, player.isAlive());
+		Player player = new MockPlayer(this.data, (Point) this.position.clone());
+		assertFalse(MockPlayer.killed);
 		bonus.effect(player);
-		assertEquals(false, player.isAlive());
+		assertTrue(MockPlayer.killed);
 	}
 }

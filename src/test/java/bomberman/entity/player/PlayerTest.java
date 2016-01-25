@@ -90,8 +90,8 @@ public class PlayerTest extends MovableEntityTest {
 		Player player = this.createEntity();
 		BombermanMoveStrategy keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN,
 				KeyEvent.VK_LEFT, KeyEvent.VK_SPACE);
-		assertEquals(0, player.getSpeedVector().getSpeed());
+		assertEquals(0, player.getDriver().getSpeedVector(player).getSpeed());
 		player.setKeyboard(keyboard);
-		assertEquals(0, player.getSpeedVector().getSpeed());
+		assertEquals(32, player.getDriver().getSpeedVector(player).getSpeed());
 	}
 }

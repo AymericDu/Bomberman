@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import bomberman.entity.NoMovableEntityTest;
 import bomberman.entity.player.MockPlayer;
+import bomberman.game.MockUniverse;
 
 public class BombTest extends NoMovableEntityTest {
 
@@ -25,5 +26,13 @@ public class BombTest extends NoMovableEntityTest {
 		assertFalse(MockPlayer.increaseAuthorizedBomb);
 		bomb.explode();
 		assertTrue(MockPlayer.increaseAuthorizedBomb);
+	}
+	
+	@Test
+	public void shouldRemoveBomb() {
+		Bomb bomb = this.createEntity();
+		assertFalse(MockUniverse.removeBomb);
+		bomb.explode();
+		assertTrue(MockUniverse.removeBomb);
 	}
 }
