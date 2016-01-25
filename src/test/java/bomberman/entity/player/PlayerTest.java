@@ -97,4 +97,12 @@ public class PlayerTest extends MovableEntityTest {
 		player.setKeyboard(keyboard);
 		assertEquals(32, player.getDriver().getSpeedVector(player).getSpeed());
 	}
+	
+	@Test
+	public void isAliveTest(){
+		Player player = this.createEntity();
+		assertTrue(player.isAlive);
+		player.killed();
+		assertFalse(player.isAlive);
+	}
 }

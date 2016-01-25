@@ -160,10 +160,17 @@ public class Player extends MovableEntity implements ActionListener {
 		}
 	}
 
+	/**
+	 * isAlive return if our player is alive or not
+	 * @return if our player is alive or not
+	 */
 	public boolean isAlive() {
 		return this.isAlive;
 	}
 
+	/**
+	 * actionPerformed allows to access to the end of game
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		((BombermanLevel) this.data.getLevels().get(BombermanLevel.levelNumber)).end();
