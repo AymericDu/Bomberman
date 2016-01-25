@@ -57,7 +57,7 @@ public class NoMovableEntity implements Entity {
 	}
 	
 	/**
-	 * returns false because by definition a NoMovableEntity cannot move
+	 * isMovable returns false because by definition a NoMovableEntity cannot move
 	 * @return false
 	 */
 	@Override
@@ -66,7 +66,7 @@ public class NoMovableEntity implements Entity {
 	}
 
 	/**
-	 * returns the position of the entity
+	 * getPosition returns the position of the entity
 	 * @return a point representing the position
 	 */
 	@Override

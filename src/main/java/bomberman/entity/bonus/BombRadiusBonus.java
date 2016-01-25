@@ -17,9 +17,8 @@ public class BombRadiusBonus extends Bonus {
 		super(data, position, "/images/bonus/BombRadiusBonus.png");
 	}
 
-	
 	/**
-	 * this bonus will increase the player's bombs' radius by one, until he dies
+	 * This bonus will increase the player's bombs' radius by one, until he dies
 	 */
 	@Override
 	public void effect(Player player) {

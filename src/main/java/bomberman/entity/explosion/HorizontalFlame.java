@@ -6,10 +6,18 @@ import gameframework.game.GameData;
 
 public class HorizontalFlame extends Flame {
 
+	/**
+	 * Constructor of HorizontalFlame
+	 * @param data
+	 * @param position
+	 */
 	public HorizontalFlame(GameData data, Point position, int moving) {
 		super(data, position, "/images/explosion/FlameHorizontal.png", moving);
 	}
 
+	/**
+	 * createGoal allows to create a Point with an int in parameter
+	 */
 	@Override
 	public Point createGoal(int moving) {
 		Point goal = new Point(this.position.x + (moving * this.data.getConfiguration().getSpriteSize()),

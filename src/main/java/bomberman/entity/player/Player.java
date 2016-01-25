@@ -111,7 +111,6 @@ public class Player extends MovableEntity implements ActionListener {
 	/**
 	 * Drop a bomb in the position of the player
 	 */
-
 	public void dropBomb() {
 		if (this.lockAuthorizedBomb.tryLock()) {
 			try {
@@ -137,7 +136,6 @@ public class Player extends MovableEntity implements ActionListener {
 			}
 		}
 	}
-
 
 	/**
 	 * Increase the bomb radius for the player

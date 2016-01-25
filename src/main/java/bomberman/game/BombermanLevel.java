@@ -200,6 +200,9 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		return this.data;
 	}
 
+	/**
+	 * end allows to end the level one time and clear the level
+	 */
 	@Override
 	public void end() {
 		super.end();

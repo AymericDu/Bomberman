@@ -20,6 +20,9 @@ public class Box extends NoMovableEntity implements MoveBlocker {
 		super(data, position, "/images/separation/Box.png");
 	}
 
+	/**
+	 * destroy remove a box in the GameUniverse
+	 */
 	public void destroy() {
 		this.data.getUniverse().removeGameEntity(this);
 	}

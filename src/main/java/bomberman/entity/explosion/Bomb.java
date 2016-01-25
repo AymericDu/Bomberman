@@ -51,6 +51,10 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 		explode();
 	}
 
+	/**
+	 * explode allows to stop the timer and play the song
+	 * it explode the bomb else it shows the flame in the game
+	 */
 	public void explode() {
 		this.timer.stop();
 		try {

@@ -16,10 +16,9 @@ public class BombBonus extends Bonus {
 	public BombBonus(GameData data, Point position) {
 		super(data, position, "/images/bonus/BombBonus.png");
 	}
-
 	
 	/**
-	 * this bonus will increase the number of bomb a player can drop at the same time
+	 * This bonus will increase the number of bomb a player can drop at the same time
 	 */
 	@Override
 	public void effect(Player player) {

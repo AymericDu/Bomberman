@@ -7,7 +7,6 @@ import gameframework.game.GameData;
 
 public class DeathBonus extends Bonus {
 
-	
 	/**
 	 * Constructor of the death bonus
 	 * @param data the game's data
@@ -17,7 +16,6 @@ public class DeathBonus extends Bonus {
 	public DeathBonus(GameData data, Point position) {
 		super(data, position, "/images/bonus/DeathBonus.png");
 	}
-
 	
 	/**
 	 * the bonus will kill whoever pick it(or step on it)

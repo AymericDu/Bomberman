@@ -19,7 +19,7 @@ public abstract class Bonus extends NoMovableEntity {
 	}
 
 	/**
-	 * the bonus' effect when picked up(or stepped on)
+	 * The bonus effect when picked up(or stepped on)
 	 */
 	public void effect(Player player) {
 		this.data.getUniverse().removeGameEntity(this);

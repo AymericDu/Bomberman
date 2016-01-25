@@ -52,5 +52,10 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 		// nothing to do
 	}
 	
+	/**
+	 * createGoal create a Point with an int
+	 * @param moving
+	 * @return a Point
+	 */
 	public abstract Point createGoal(int moving);
 }

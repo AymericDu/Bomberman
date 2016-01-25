@@ -20,7 +20,11 @@ public class Bomberman extends GameDefaultImpl {
 	protected static final int NB_ROWS = 21;
 	protected static final int NB_COLUMNS = 21;
 	protected static final int SPRITE_SIZE = 32;
-
+	
+/**
+ * Constructor of our game Bomberman
+ * @param data our GameData
+ */
 	public Bomberman(GameData data) {
 		super(data);
 		
