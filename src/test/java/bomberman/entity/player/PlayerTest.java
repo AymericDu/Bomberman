@@ -84,6 +84,13 @@ public class PlayerTest extends MovableEntityTest {
 		player.timer.stop();
 		assertFalse(player.isAlive());
 	}
+	
+	@Test
+	public void killTestException() throws InterruptedException{
+		Player player = this.createEntity();
+		Thread.currentThread().interrupt();
+		player.killed();
+	}
 
 	@Test
 	public void speedWithKeyboardTest() {
