@@ -4,7 +4,6 @@ import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.bonus.Bonus;
 import bomberman.entity.bonus.DeathBonus;
-import bomberman.entity.explosion.Bomb;
 import bomberman.entity.explosion.CenterFlame;
 import bomberman.entity.explosion.Flame;
 import bomberman.entity.explosion.HorizontalFlame;
@@ -16,7 +15,7 @@ import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 
 	/**
-	 * rule allow to kill a player when a Flame is on him
+	 * The function rule kills a player when he touches a Flame
 	 * @param player
 	 * @param flame
 	 */
@@ -25,7 +24,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 	
     /**
-     * overlapRule permit to use the function rule with a HorizontalFlame
+     * overlapRule calls the function rule with a HorizontalFlame when a player and a horizontal flame are on the same position
      * @param player
      * @param flame a HorizontalFlame
      */
@@ -34,16 +33,16 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 
 	/**
-	 * overlapRule permit to use the function rule with a VerticalFlame
+	 * overlapRule calls the function rule with a VerticalFlame when a player and a vertical flame are on the same position
 	 * @param player
 	 * @param flame a VerticalFlame
 	 */
 	public void overlapRule(Player player, VerticalFlame flame) {
 		this.rule(player, flame);
 	}
-
+	
 	/**
-	 * overlapRule permit to use the function rule with a CenterFlame
+	 * overlapRule calls the function rule with a centerFlame when a player and a center flame are on the same position
 	 * @param player
 	 * @param flame a CenterFlame
 	 */
@@ -61,7 +60,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 
 	/**
-	 * overlapRule permit to use the function rule with an HorizontalFlame
+	 * overlapRule calls the function rule with an HorizontalFlame when a horizontal flame and a box are on the same position
 	 * @param flame an HorizontalFlame
 	 * @param box
 	 */
@@ -70,7 +69,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 
 	/**
-	 * overlapRule permit to use the function rule with a VerticalFlame
+	 * overlapRule calls the function rule with a VerticalFlame when a vertical flame and a box are on the same position
 	 * @param flame a VerticalFlame
 	 * @param box
 	 */
@@ -79,52 +78,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 
 	/**
-	 * overlapRule permit to use the function rule with a CenterFlame
-	 * @param flame a CenterFlame
-	 * @param box
-	 */
-	public void overlapRule(CenterFlame flame, Box box) {
-		this.rule(flame, box);
-	}
-
-	/**
-	 * rule allows to explode a bomb when a flame is on it 
-	 * @param flame
-	 * @param bomb
-	 */
-	public void rule(Flame flame, Bomb bomb) {
-		bomb.explode();
-	}
-
-	/**
-	 * overlapRule permit to use the function rule with an HorizontalFlame
-	 * @param flame an HorizontalFlame
-	 * @param bomb
-	 */
-	public void overlapRule(HorizontalFlame flame, Bomb bomb) {
-		this.rule(flame, bomb);
-	}
-
-	/**
-	 * overlapRule permit to use the function rule with a VerticalFlame
-	 * @param flame a VerticalFlame
-	 * @param bomb
-	 */
-	public void overlapRule(VerticalFlame flame, Bomb bomb) {
-		this.rule(flame, bomb);
-	}
-
-	/**
-	 * overlapRule permit to use the function rule with a CenterFlame
-	 * @param flame a CenterFlame
-	 * @param bomb
-	 */
-	public void overlapRule(CenterFlame flame, Bomb bomb) {
-		this.rule(flame, bomb);
-	}
-
-	/**
-	 * rule allow to give a bonus to give a bonus to a player 
+	 * rule applies a bonus' effect on a player 
 	 * @param player
 	 * @param bonus
 	 */
@@ -133,7 +87,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 
 	/**
-	 * overlapRule permit to use the function rule with a BombBonus
+	 * when a player walks on a bomb bonus, this function calls the function rule with the bomb bonus in parameter
 	 * @param player
 	 * @param bonus a BombBonus
 	 */
@@ -142,7 +96,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 
 	/**
-	 * overlapRule permit to use the function rule with a BombRadiusBonus
+	 * when a player walks on a bomb radius bonus, this function calls the function rule with the bomb radius bonus in parameter
 	 * @param player
 	 * @param bonus a BombRadiusBonus
 	 */
@@ -151,7 +105,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 	
 	/**
-	 * overlapRule permit to use the function rule with a DeathBonus
+	 * when a player walks on a death bonus, this function calls the function rule with the death bonus in parameter
 	 * @param player
 	 * @param bonus a DeathBonus
 	 */
