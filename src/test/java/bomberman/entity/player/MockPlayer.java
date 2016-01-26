@@ -29,7 +29,7 @@ public class MockPlayer extends Player {
 	}
 	
 	@Override
-	public void killed() {
+	public void kill() {
 		MockPlayer.killed = true;
 	}
 }

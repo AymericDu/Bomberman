@@ -20,7 +20,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	 * @param flame
 	 */
 	public void rule(Player player, Flame flame) {
-		player.killed();
+		player.kill();
 	}
 	
     /**

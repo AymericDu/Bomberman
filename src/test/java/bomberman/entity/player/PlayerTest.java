@@ -76,7 +76,7 @@ public class PlayerTest extends MovableEntityTest {
 	public void killTest() {
 		Player player = this.createEntity();
 		assertTrue(player.isAlive());
-		player.killed();
+		player.kill();
 		player.timer.stop();
 		assertFalse(player.isAlive());
 	}
@@ -85,7 +85,7 @@ public class PlayerTest extends MovableEntityTest {
 	public void killTestException() throws InterruptedException{
 		Player player = this.createEntity();
 		Thread.currentThread().interrupt();
-		player.killed();
+		player.kill();
 	}
 
 	@Test
@@ -102,7 +102,7 @@ public class PlayerTest extends MovableEntityTest {
 	public void isAliveTest(){
 		Player player = this.createEntity();
 		assertTrue(player.isAlive);
-		player.killed();
+		player.kill();
 		assertFalse(player.isAlive);
 	}
 }

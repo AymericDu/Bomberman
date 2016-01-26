@@ -22,7 +22,7 @@ public class DeathBonus extends Bonus {
 	 */
 	@Override
 	public void effect(Player player) {
-		player.killed();
+		player.kill();
 		super.effect(player);
 	}
 }

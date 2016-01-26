@@ -33,12 +33,12 @@ public class Player extends MovableEntity implements ActionListener {
 	protected static final int AFTER_DEATH_TIME = 2000;
 
 	/**
-	 * Constructor of player class, allow to create our player
+	 * Constructor of player, used in method createPlayer of class BombermanLevel
 	 * 
-	 * @param x
-	 *            initial p of our player
-	 * @param y
-	 *            initial position of our player
+	 * @param data
+	 * 			the game's data
+	 * @param position
+	 *            initial position of the player
 	 */
 	public Player(GameData data, Point position) {
 		super(data, position, "/images/BombermanSprite.png");
@@ -59,7 +59,8 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 	
 	/**
-	 * draw allow to draw a Graphics g in the gameEntity
+	 * draws the player
+	 * @param g the graphics
 	 */
 	@Override
 	public void draw(Graphics g) {
@@ -67,7 +68,8 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * getBoundingBox allows to return a rectangle in the GameEntity
+	 * getBoundingBox returns a rectangle which is the same size as the player's
+	 * @return the rectangle
 	 */
 	@Override
 	public Rectangle getBoundingBox() {
@@ -98,8 +100,8 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Initialize the Keyboard
-	 * @param keyboard
+	 * Initialize the move strategy of the player
+	 * @param keyboard the move strategy
 	 */
 	public void setKeyboard(BombermanMoveStrategy keyboard) {
 		this.keyboard = keyboard;
@@ -125,7 +127,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Add a bomb for the player
+	 * increases by 1 the number of bombs that can be on the board at the same time for the player
 	 */
 	public void increaseAuthorizedBomb() {
 		if (this.lockAuthorizedBomb.tryLock()) {
@@ -138,16 +140,16 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Increase the bomb radius for the player
+	 * Increase the radius of the player's bombs by 1
 	 */
 	public void increaseBombRadius() {
 		this.bombRadius++;
 	}
 
 	/**
-	 * This function allows to kill the player.
+	 * This function kills the player.
 	 */
-	public void killed() {
+	public void kill() {
 		this.spriteManager.setType("died");
 		this.data.getCanvas().removeKeyListener(this.keyboard);
 		this.isAlive = false;
@@ -159,15 +161,15 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * isAlive return if our player is alive or not
-	 * @return if our player is alive or not
+	 * isAlive returns true if our player is alive and false if he's dead
+	 * @return true or false
 	 */
 	public boolean isAlive() {
 		return this.isAlive;
 	}
 
 	/**
-	 * actionPerformed allows to access to the end of game
+	 * actionPerformed allows us to access to the end of game
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
