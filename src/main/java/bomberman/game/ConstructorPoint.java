@@ -13,8 +13,8 @@ public class ConstructorPoint {
 	}
 
 	/**
-	 * create allows to create a point 
-	 * @param data
+	 * creates a point using the position given in parameter and the sprite's size
+	 * @param data the game's data
 	 * @param columnNumber 
 	 * @param rowNumber
 	 * @return a Point

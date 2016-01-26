@@ -60,23 +60,25 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S, KeyEvent.VK_Q,
 				KeyEvent.VK_SPACE);
-		this.player1 = this.createPlayers(1, 1, keyboard);
+		this.player1 = this.createPlayer(1, 1, keyboard);
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT,
 				KeyEvent.VK_ENTER);
-		this.player2 = this.createPlayers(this.columns - 2, this.rows - 2, keyboard);
+		this.player2 = this.createPlayer(this.columns - 2, this.rows - 2, keyboard);
 		this.spawnBox(BombermanLevel.PROBABILITY_BOX);
 	}
 
 	/**
-	 * createPlayers allows to create a new player
+	 * createPlayers allows to create a new player at the position in parameter using the movestrategy in parameter
 	 * 
 	 * @param columnNumber
-	 *            the numbers of colums
+	 *            the column representing a coordinate of the position
 	 * @param rowNumber
-	 *            the numbers of rows
+	 *            the row representing a coordinate of the position
+	 * @param keyboard
+	 * 			  the move strategy
 	 * @return a new player
 	 */
-	protected Player createPlayers(int columnNumber, int rowNumber, BombermanMoveStrategy keyboard) {
+	protected Player createPlayer(int columnNumber, int rowNumber, BombermanMoveStrategy keyboard) {
 		Point position = ConstructorPoint.create(this.data, columnNumber, rowNumber);
 		if (this.occupiedPoints.contains(position))
 			throw new IllegalStateException();
@@ -97,10 +99,10 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 
 
 	/**
-	 * Creation of boxes in the game space (random place)
+	 * Creation of boxes in the game (random place)
 	 * 
 	 * @param probability
-	 *            greater than 0 and less than 100
+	 *            the probability of creating a box on a position (0 < probability < 100)
 	 */
 	protected void spawnBox(int probability) {
 		Point point;
@@ -121,7 +123,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creation of the bonus in the game space (random place)
+	 * Creation of the bonus in the game (random place)
 	 * @param position 
 	 * @param probability
 	 *  		greater than 0 and less than 100
@@ -147,7 +149,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * getGameBoard return the GameBoard of our game
+	 * getGameBoard returns the GameBoard of our game
 	 * 
 	 * @return the GameBoard
 	 */
@@ -156,7 +158,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * getPlayer1 return the player1 of our game
+	 * getPlayer1 returns the player1 of our game
 	 * 
 	 * @return the player1
 	 */
@@ -165,7 +167,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * getPlayer2 return the player2 of our game
+	 * getPlayer2 returns the player2 of our game
 	 * 
 	 * @return the player2
 	 */
@@ -174,25 +176,25 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * getColumns return the numbers of columns in the game
+	 * getColumns returns the number of columns in the game
 	 * 
-	 * @return the numbers of columns
+	 * @return the number of columns
 	 */
 	public int getColumns() {
 		return this.columns;
 	}
 
 	/**
-	 * getRows return the numbers of rows in the game
+	 * getRows returns the number of rows in the game
 	 * 
-	 * @return the numbers of rows
+	 * @return the number of rows
 	 */
 	public int getRows() {
 		return this.rows;
 	}
 
 	/**
-	 * getGameData return the GameData of our game
+	 * getGameData returns the GameData of our game
 	 * 
 	 * @return the GameData
 	 */
@@ -201,7 +203,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * end allows to end the level one time and clear the level
+	 * ends the current level and clears the board
 	 */
 	@Override
 	public void end() {

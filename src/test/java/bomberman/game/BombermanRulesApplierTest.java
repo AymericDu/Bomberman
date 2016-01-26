@@ -38,7 +38,7 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 	
 	@Before
 	public void create(){
-		configuration = new BombermanConfiguration(20, 20, 1, 1);
+		configuration = new BombermanConfiguration(20, 20, 1);
 		data = new GameData(configuration);
 		player = new Player(data, new Point(1,1));
 		horizontal = new HorizontalFlame(data, new Point(2,1), 2);

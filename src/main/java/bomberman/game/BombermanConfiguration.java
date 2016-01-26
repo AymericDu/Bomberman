@@ -6,17 +6,16 @@ public class BombermanConfiguration extends GameConfiguration {
 
 	/**
 	 * Constructor of BombermanConfiguration
-	 * @param nbRows
-	 * @param nbColumns
-	 * @param spriteSize
-	 * @param nbLives
+	 * @param nbRows the number of rows in the game
+	 * @param nbColumns the number of columns in the game
+	 * @param spriteSize the sprites' size
 	 */
-	public BombermanConfiguration(int nbRows, int nbColumns, int spriteSize, int nbLives) {
-		super(nbRows, nbColumns, spriteSize, nbLives);
+	public BombermanConfiguration(int nbRows, int nbColumns, int spriteSize) {
+		super(nbRows, nbColumns, spriteSize, 1);
 	}
 
 	/**
-	 * createOverlapRulesApplier return a new BombermanOverlapRulesApplier
+	 * createOverlapRulesApplier creates a new BombermanOverlapRulesApplier
 	 */
 	@Override
 	public BombermanOverlapRulesApplier createOverlapRulesApplier() {
@@ -24,7 +23,7 @@ public class BombermanConfiguration extends GameConfiguration {
 	}
 
 	/**
-	 * BombermanOverlapRulesApplier return a new BombermanUniverse
+	 * BombermanOverlapRulesApplier creates a new BombermanUniverse
 	 */
 	@Override
 	public BombermanUniverse createUniverse() {

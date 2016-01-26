@@ -28,7 +28,7 @@ public class BombermanMoveStrategy extends MoveStrategyConfigurableKeyboard {
 	}
 
 	/**
-	 * setPlayer allows to change Player
+	 * setPlayer allows to change the current Player of the move strategy to a new player in parameter
 	 * @param player
 	 */
 	public void setPlayer(Player player) {
@@ -36,8 +36,9 @@ public class BombermanMoveStrategy extends MoveStrategyConfigurableKeyboard {
 	}
 
 	/**
-	 * keyPressed allows to drop a bomb if keycode is equals
-	 * to the bombKey else it allow to use super.keyPressed(keyCode);
+	 * keyPressed allows the player to drop a bomb if the key code in parameter representing the key pressed is equals
+	 * to the key code of the bomb
+	 * @param keyCode
 	 */
 	@Override
 	protected void keyPressed(int keyCode) {

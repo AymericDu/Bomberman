@@ -18,7 +18,7 @@ public abstract class EntityTest {
 	
 	@Before
 	public void init() {
-		this.data = new GameData(new MockConfiguration(21, 21, 32, 1));
+		this.data = new GameData(new MockConfiguration(21, 21, 32));
 		this.position = new Point(0, 0);
 	}
 

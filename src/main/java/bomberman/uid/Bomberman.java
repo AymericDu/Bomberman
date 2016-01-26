@@ -46,7 +46,7 @@ public class Bomberman extends GameDefaultImpl {
 	}
 
 	public static void main(String[] args) {
-		GameConfiguration config = new BombermanConfiguration(Bomberman.NB_ROWS, Bomberman.NB_COLUMNS, Bomberman.SPRITE_SIZE, 1);
+		GameConfiguration config = new BombermanConfiguration(Bomberman.NB_ROWS, Bomberman.NB_COLUMNS, Bomberman.SPRITE_SIZE);
 		GameData data = new GameData(config);
 		Game main = new Bomberman(data);
 

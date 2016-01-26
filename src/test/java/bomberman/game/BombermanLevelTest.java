@@ -25,7 +25,7 @@ public class BombermanLevelTest {
 
 	@Before
 	public void create() {
-		configuration = new BombermanConfiguration(20, 20, 1, 1);
+		configuration = new BombermanConfiguration(20, 20, 1);
 		data = new GameData(configuration);
 		level = new BombermanLevel(data);
 		strategy = new BombermanMoveStrategy(1,1,1,1,1);
@@ -44,16 +44,16 @@ public class BombermanLevelTest {
 	}
 
 	@Test
-	public void createPlayersTest() {
-		p = level.createPlayers(10, 10, strategy);
+	public void createPlayerTest() {
+		p = level.createPlayer(10, 10, strategy);
 		assertEquals(new Point(10, 10), p.getPosition());
 	}
 
 	@Test
-	public void createPlayersTestException() throws IllegalStateException {
+	public void createPlayerTestException() throws IllegalStateException {
 		try {
-			level.createPlayers(10, 10, strategy);
-			level.createPlayers(10, 10, strategy);
+			level.createPlayer(10, 10, strategy);
+			level.createPlayer(10, 10, strategy);
 		} catch (Exception IllegalStateException) {
 			IllegalStateException.getMessage();
 		}
