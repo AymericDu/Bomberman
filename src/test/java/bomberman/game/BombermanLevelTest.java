@@ -58,4 +58,14 @@ public class BombermanLevelTest {
 			IllegalStateException.getMessage();
 		}
 	}
+	
+	@SuppressWarnings("static-access")
+	@Test
+	public void endTest(){
+		assertEquals(0,level.levelNumber);
+		level.end();
+		assertEquals(1,level.levelNumber);
+	}
+
+
 }
