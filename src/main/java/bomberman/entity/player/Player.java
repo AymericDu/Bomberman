@@ -40,8 +40,8 @@ public class Player extends MovableEntity implements ActionListener {
 	 * @param position
 	 *            initial position of the player
 	 */
-	public Player(GameData data, Point position) {
-		super(data, position, "/images/BombermanSprite.png");
+	public Player(GameData data, Point position, String url) {
+		super(data, position, url);
 
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
 
