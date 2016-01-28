@@ -11,8 +11,8 @@ public class MockPlayer extends Player {
 	public static boolean increaseBombRadius;
 	public static boolean killed;
 
-	public MockPlayer(GameData data, Point position) {
-		super(data, position);
+	public MockPlayer(GameData data, Point position, String url) {
+		super(data, position,url);
 		MockPlayer.increaseAuthorizedBomb = false;
 		MockPlayer.increaseBombRadius = false;
 		MockPlayer.killed = false;

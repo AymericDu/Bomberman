@@ -19,7 +19,7 @@ public class BombRadiusBonusTest extends BonusTest {
 	@Test
 	public void effectTest() {
 		BombRadiusBonus bonus = this.createEntity();
-		Player player = new MockPlayer(this.data, (Point) this.position.clone());
+		Player player = new MockPlayer(this.data, (Point) this.position.clone(), new String("/images/BombermanSpritePlayer1.png"));
 		assertFalse(MockPlayer.increaseBombRadius);
 		bonus.effect(player);
 		assertTrue(MockPlayer.increaseBombRadius);

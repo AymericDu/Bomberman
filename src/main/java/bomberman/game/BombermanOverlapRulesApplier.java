@@ -87,7 +87,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 
 	/**
-	 * when a player walks on a bomb bonus, this function calls the function rule with the bomb bonus in parameter
+	 * When a player walks on a bomb bonus, this function calls the function rule with the bomb bonus in parameter
 	 * @param player
 	 * @param bonus a BombBonus
 	 */
@@ -96,7 +96,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 
 	/**
-	 * when a player walks on a bomb radius bonus, this function calls the function rule with the bomb radius bonus in parameter
+	 * When a player walks on a bomb radius bonus, this function calls the function rule with the bomb radius bonus in parameter
 	 * @param player
 	 * @param bonus a BombRadiusBonus
 	 */
@@ -105,7 +105,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 	
 	/**
-	 * when a player walks on a death bonus, this function calls the function rule with the death bonus in parameter
+	 * When a player walks on a death bonus, this function calls the function rule with the death bonus in parameter
 	 * @param player
 	 * @param bonus a DeathBonus
 	 */

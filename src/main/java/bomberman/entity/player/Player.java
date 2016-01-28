@@ -25,6 +25,7 @@ public class Player extends MovableEntity implements ActionListener {
 	protected int bombRadius;
 	protected boolean isAlive;
 	protected Timer timer;
+	protected String url;
 	
 	protected final Lock lockAuthorizedBomb = new ReentrantLock();
 
@@ -40,8 +41,8 @@ public class Player extends MovableEntity implements ActionListener {
 	 * @param position
 	 *            initial position of the player
 	 */
-	public Player(GameData data, Point position) {
-		super(data, position, "/images/BombermanSprite.png");
+	public Player(GameData data, Point position, String url) {
+		super(data, position, url);
 
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
 
@@ -127,7 +128,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * increases by 1 the number of bombs that can be on the board at the same time for the player
+	 * Increases by 1 the number of bombs that can be on the board at the same time for the player
 	 */
 	public void increaseAuthorizedBomb() {
 		if (this.lockAuthorizedBomb.tryLock()) {
@@ -140,7 +141,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Increase the radius of the player's bombs by 1
+	 * Increases the radius of the player's bombs by 1
 	 */
 	public void increaseBombRadius() {
 		this.bombRadius++;
@@ -166,6 +167,22 @@ public class Player extends MovableEntity implements ActionListener {
 	 */
 	public boolean isAlive() {
 		return this.isAlive;
+	}
+	
+	/**
+	 * getAuthorizedBombs return the authorizedBombs
+	 * @return the authorizedBombs
+	 */
+	public int getAuthorizedBombs(){
+		return this.authorizedBombs;
+	}
+	
+	/**
+	 * getRadius return the bombRadius
+	 * @return the bombRadius
+	 */
+	public int getRadius(){
+		return this.bombRadius;
 	}
 
 	/**

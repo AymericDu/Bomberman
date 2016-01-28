@@ -60,10 +60,10 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S, KeyEvent.VK_Q,
 				KeyEvent.VK_SPACE);
-		this.player1 = this.createPlayer(1, 1, keyboard);
+		this.player1 = this.createPlayer(1, 1, keyboard,"/images/BombermanSpritePlayer1.png");
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT,
 				KeyEvent.VK_ENTER);
-		this.player2 = this.createPlayer(this.columns - 2, this.rows - 2, keyboard);
+		this.player2 = this.createPlayer(this.columns - 2, this.rows - 2, keyboard,"/images/BombermanSpritePlayer2.png");
 		this.spawnBox(BombermanLevel.PROBABILITY_BOX);
 	}
 
@@ -78,11 +78,11 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	 * 			  the move strategy
 	 * @return a new player
 	 */
-	protected Player createPlayer(int columnNumber, int rowNumber, BombermanMoveStrategy keyboard) {
+	protected Player createPlayer(int columnNumber, int rowNumber, BombermanMoveStrategy keyboard,String url) {
 		Point position = ConstructorPoint.create(this.data, columnNumber, rowNumber);
 		if (this.occupiedPoints.contains(position))
 			throw new IllegalStateException();
-		Player player = new Player(this.data, position);
+		Player player = new Player(this.data, position,url);
 		player.setKeyboard(keyboard);
 		this.data.getCanvas().addKeyListener(keyboard);
 		this.gameEntities.add(player);
