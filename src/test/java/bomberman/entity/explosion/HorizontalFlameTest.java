@@ -20,5 +20,4 @@ public class HorizontalFlameTest extends FlameTest {
 		HorizontalFlame flame = this.createEntity();
 		assertEquals(new Point(64 , 0), flame.createGoal(2));
 	}
-
 }

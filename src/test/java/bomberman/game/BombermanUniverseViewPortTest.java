@@ -26,5 +26,4 @@ public class BombermanUniverseViewPortTest {
 	public void backgroundImageTest() {
 		assertNotNull(bombermanTest.backgroundImage());
 	}
-
 }
