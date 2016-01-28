@@ -45,16 +45,16 @@ public class BombermanLevelTest {
 
 	@Test
 	public void createPlayerTest() {
-		p = level.createPlayer(10, 10, strategy);
+		p = level.createPlayer(10, 10, strategy, new String("/images/BombermanSpritePlayer1.png"));
 		assertEquals(new Point(10, 10), p.getPosition());
 	}
 
 	@Test
 	public void createPlayerTestException() throws IllegalStateException {
 		try {
-			level.createPlayer(10, 10, strategy);
-			level.createPlayer(10, 10, strategy);
-		} catch (Exception IllegalStateException) {
+			level.createPlayer(10, 10, strategy, new String("/images/BombermanSpritePlayer1.png"));
+			level.createPlayer(10, 10, strategy, new String("/images/BombermanSpritePlayer1.png"));
+			} catch (Exception IllegalStateException) {
 			IllegalStateException.getMessage();
 		}
 	}
@@ -66,6 +66,4 @@ public class BombermanLevelTest {
 		level.end();
 		assertEquals(1,level.levelNumber);
 	}
-
-
 }

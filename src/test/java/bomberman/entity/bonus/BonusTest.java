@@ -19,7 +19,7 @@ public abstract class BonusTest extends NoMovableEntityTest {
 	public void shouldRemoveBonus() {
 		Bonus bonus = this.createEntity();
 		assertFalse(MockUniverse.removeBonus);
-		bonus.effect(new MockPlayer(this.data, (Point) this.position.clone()));
+		bonus.effect(new MockPlayer(this.data, (Point) this.position.clone(), new String("/images/BombermanSpritePlayer1.png")));
 		assertTrue(MockUniverse.removeBonus);
 	}
 }

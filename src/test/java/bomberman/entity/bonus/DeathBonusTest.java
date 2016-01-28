@@ -19,7 +19,7 @@ public class DeathBonusTest extends BonusTest {
 	@Test
 	public void effectTest() {
 		Bonus bonus = this.createEntity();
-		Player player = new MockPlayer(this.data, (Point) this.position.clone());
+		Player player = new MockPlayer(this.data, (Point) this.position.clone(), new String("/images/BombermanSpritePlayer1.png"));
 		assertFalse(MockPlayer.killed);
 		bonus.effect(player);
 		assertTrue(MockPlayer.killed);

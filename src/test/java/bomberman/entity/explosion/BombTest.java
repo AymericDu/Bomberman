@@ -14,7 +14,7 @@ public class BombTest extends NoMovableEntityTest {
 
 	@Override
 	public Bomb createEntity() {
-		Bomb bomb = new Bomb(this.data, this.position, 2, new MockPlayer(this.data, (Point) this.position.clone())); 
+		Bomb bomb = new Bomb(this.data, this.position, 2, new MockPlayer(this.data, (Point) this.position.clone(), new String("/images/BombermanSpritePlayer1.png"))); 
 		bomb.timer.stop();
 		return bomb;
 	}

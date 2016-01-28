@@ -25,6 +25,7 @@ public class Player extends MovableEntity implements ActionListener {
 	protected int bombRadius;
 	protected boolean isAlive;
 	protected Timer timer;
+	protected String url;
 	
 	protected final Lock lockAuthorizedBomb = new ReentrantLock();
 
@@ -127,7 +128,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * increases by 1 the number of bombs that can be on the board at the same time for the player
+	 * Increases by 1 the number of bombs that can be on the board at the same time for the player
 	 */
 	public void increaseAuthorizedBomb() {
 		if (this.lockAuthorizedBomb.tryLock()) {
@@ -140,7 +141,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Increase the radius of the player's bombs by 1
+	 * Increases the radius of the player's bombs by 1
 	 */
 	public void increaseBombRadius() {
 		this.bombRadius++;

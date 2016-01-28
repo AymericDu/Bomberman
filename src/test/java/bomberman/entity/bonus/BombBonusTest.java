@@ -19,7 +19,7 @@ public class BombBonusTest extends BonusTest {
 	@Test
 	public void effectTest() {
 		BombBonus bonus = this.createEntity();
-		Player player = new MockPlayer(this.data, (Point) this.position.clone());
+		Player player = new MockPlayer(this.data, (Point) this.position.clone(), new String("/images/BombermanSpritePlayer1.png"));
 		assertFalse(MockPlayer.increaseAuthorizedBomb);
 		bonus.effect(player);
 		assertTrue(MockPlayer.increaseAuthorizedBomb);

@@ -13,7 +13,7 @@ public class PlayerTest extends MovableEntityTest {
 
 	@Override
 	public Player createEntity() {
-		return new Player(this.data, this.position);
+		return new Player(this.data, this.position, new String("/images/BombermanSpritePlayer1.png"));
 	}
 
 	@Test

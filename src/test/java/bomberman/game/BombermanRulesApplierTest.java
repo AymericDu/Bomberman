@@ -40,7 +40,7 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 	public void create(){
 		configuration = new BombermanConfiguration(20, 20, 1);
 		data = new GameData(configuration);
-		player = new Player(data, new Point(1,1));
+		player = new Player(data, new Point(1,1), new String("/images/BombermanSpritePlayer1.png"));
 		horizontal = new HorizontalFlame(data, new Point(2,1), 2);
 		vertical = new VerticalFlame(data, new Point(2,1), 2);
 		center = new CenterFlame(data, new Point(2,1));
@@ -107,5 +107,4 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 		bombermanOverlap.overlapRule(player, deathBonus);
 		assertFalse(player.isAlive());
 	}
-	
 }
