@@ -26,7 +26,7 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 	GameData data;
 	Player player;
 	Flame flame;
-	BombermanOverlapRulesApplier b;
+	BombermanOverlapRulesApplier bombermanOverlap;
 	HorizontalFlame horizontal;
 	VerticalFlame vertical;
 	CenterFlame center;
@@ -44,7 +44,7 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 		horizontal = new HorizontalFlame(data, new Point(2,1), 2);
 		vertical = new VerticalFlame(data, new Point(2,1), 2);
 		center = new CenterFlame(data, new Point(2,1));
-		b = configuration.createOverlapRulesApplier();
+		bombermanOverlap = configuration.createOverlapRulesApplier();
 		box = new Box(data, new Point(1,2));
 		bomb =  new Bomb(data, new Point(1,1), 2, player);
 		bombBonus = new BombBonus(data, new Point(1,1));
@@ -55,29 +55,57 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 	@Test
 	public void overlapRuleTestPlayerVsHorizontalFlame(){
 		assertTrue(player.isAlive());
-		b.overlapRule(player, horizontal);
+		bombermanOverlap.overlapRule(player, horizontal);
 		assertFalse(player.isAlive());
 	}
 
 	@Test
 	public void overlapRuleTestPlayerVsVerticalFlame(){
 		assertTrue(player.isAlive());
-		b.overlapRule(player, vertical);
+		bombermanOverlap.overlapRule(player, vertical);
 		assertFalse(player.isAlive());
 	}
 	
 	@Test
 	public void overlapRuleTestPlayerVsCenterFlame(){
 		assertTrue(player.isAlive());
-		b.overlapRule(player, center);
+		bombermanOverlap.overlapRule(player, center);
 		assertFalse(player.isAlive());
 	}
 	
-	//TODO check if the bomb is exploded or not
 	@Test
 	public void overlapRuleTestBoxVsHorizontalFlame(){
-		assertNotNull(box);
-		b.overlapRule(horizontal,box);	
+		assertFalse(MockUniverse.removeBox);
+		bombermanOverlap.overlapRule(horizontal,box);
+		//assertTrue(MockUniverse.removeBox);
+	}
+	
+	@Test
+	public void overlapRuleTestBoxVsVerticalFlame(){
+		assertFalse(MockUniverse.removeBox);
+		bombermanOverlap.overlapRule(vertical,box);
+		//assertTrue(MockUniverse.removeBox);
+	}
+	
+	@Test
+	public void overlapRuleTestPlayerVsBombBonus(){
+		assertEquals( 1,player.getAuthorizedBombs());
+		bombermanOverlap.overlapRule(player, bombBonus);
+		assertEquals( 2,player.getAuthorizedBombs());
+	}
+	
+	@Test
+	public void overlapRuleTestPlayerVsBombRadiusBonus(){
+		assertEquals( 1,player.getRadius());
+		bombermanOverlap.overlapRule(player, bombRadiusBonus);
+		assertEquals( 2,player.getRadius());
+	}
+	
+	@Test
+	public void overlapRuleTestPlayerVsDeathBonus(){
+		assertTrue(player.isAlive());
+		bombermanOverlap.overlapRule(player, deathBonus);
+		assertFalse(player.isAlive());
 	}
 	
 }
