@@ -11,6 +11,10 @@ import bomberman.game.BombermanUniverse;
 import gameframework.game.GameData;
 import gameframework.motion.MoveStrategyStraightLine;
 
+/**
+ * Abstract class which handles all the different flames.
+ *
+ */
 public abstract class Flame extends MovableEntity implements ActionListener {
 
 	protected Timer timer;

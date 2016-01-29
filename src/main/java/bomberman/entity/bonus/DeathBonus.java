@@ -5,6 +5,11 @@ import java.awt.Point;
 import bomberman.entity.player.Player;
 import gameframework.game.GameData;
 
+
+/**
+ * Death bonus, bonus which kill the player when he cross it
+ *
+ */
 public class DeathBonus extends Bonus {
 
 	/**

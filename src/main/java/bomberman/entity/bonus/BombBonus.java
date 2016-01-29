@@ -5,6 +5,10 @@ import java.awt.Point;
 import bomberman.entity.player.Player;
 import gameframework.game.GameData;
 
+/**
+ * class extending bonus, this class represents the bomb bonus which effect is to give another bomb to the player.
+ * 
+ */
 public class BombBonus extends Bonus {
 
 	/**

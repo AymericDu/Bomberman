@@ -6,6 +6,11 @@ import bomberman.entity.NoMovableEntity;
 import bomberman.entity.player.Player;
 import gameframework.game.GameData;
 
+
+/**
+ * abstract class which inherit NoMovableEntity, and define all the bonus.
+ *
+ */
 public abstract class Bonus extends NoMovableEntity {
 
 	/**

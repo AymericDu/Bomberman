@@ -9,6 +9,11 @@ import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameData;
 
+/**
+ * All of the objects which are not movable
+ * 
+ *
+ */
 public class NoMovableEntity implements Entity {
 
 	protected GameData data;
