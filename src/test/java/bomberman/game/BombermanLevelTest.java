@@ -12,6 +12,7 @@ import bomberman.game.BombermanConfiguration;
 import bomberman.game.BombermanLevel;
 import bomberman.game.BombermanMoveStrategy;
 import bomberman.game.BombermanUniverseViewPort;
+import bomberman.uid.Bomberman;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
@@ -64,7 +65,11 @@ public class BombermanLevelTest {
 	public void endTest(){
 		level.init();
 		assertEquals(0,level.levelNumber);
+		assertEquals(0,Bomberman.pointsPlayer1);
+		assertEquals(0,Bomberman.pointsPlayer2);
 		level.end();
 		assertEquals(1,level.levelNumber);
+		assertEquals(1,Bomberman.pointsPlayer1);
+		assertEquals(1,Bomberman.pointsPlayer2);	
 	}
 }
