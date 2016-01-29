@@ -95,7 +95,7 @@ public class PlayerTest extends MovableEntityTest {
 				KeyEvent.VK_LEFT, KeyEvent.VK_SPACE);
 		assertEquals(0, player.getDriver().getSpeedVector(player).getSpeed());
 		player.setKeyboard(keyboard);
-		assertEquals(32, player.getDriver().getSpeedVector(player).getSpeed());
+		assertEquals(16, player.getDriver().getSpeedVector(player).getSpeed());
 	}
 	
 	@Test
