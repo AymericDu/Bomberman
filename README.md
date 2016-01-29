@@ -14,9 +14,9 @@
 
 De base le jeu se lance avec 2 joueurs mais il y a possibilité de jouer à quatres joueurs.
 
-Le joueur 1 : Z-Q-S-D et ... pour poser une bombe  
-Le joueur 2 : Fleches et ... pour poser une bombe  
-Le joueur 3 :   
-Le joueur 4 :  
+Le joueur 1 : Z-S-Q-D et CTRL pour poser une bombe  
+Le joueur 2 : Fleches et ENTRER pour poser une bombe
+Le joueur 3 : I-K-J-L et ESPACE pour poser une bombe     
+Le joueur 4 :  8-5-4-6 du pavé numérique et + pour poser une bombe
 
 
