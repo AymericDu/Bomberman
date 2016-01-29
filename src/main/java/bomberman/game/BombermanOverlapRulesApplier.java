@@ -4,6 +4,7 @@ import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.bonus.Bonus;
 import bomberman.entity.bonus.DeathBonus;
+import bomberman.entity.explosion.Bomb;
 import bomberman.entity.explosion.CenterFlame;
 import bomberman.entity.explosion.Flame;
 import bomberman.entity.explosion.HorizontalFlame;
@@ -112,4 +113,40 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	public void overlapRule(Player player, DeathBonus bonus) {
 		this.rule(player, bonus);
 	}
+	
+	/**
+	-	 * rule allows to explode a bomb when a flame is on it 
+	-	 * @param flame
+	-	 * @param bomb
+	-	 */
+		public void rule(Flame flame, Bomb bomb) {
+			bomb.explode();
+		}
+	
+		/**
+		 * overlapRule permit to use the function rule with an HorizontalFlame
+		 * @param flame an HorizontalFlame
+		 * @param bomb
+		 */
+		public void overlapRule(HorizontalFlame flame, Bomb bomb) {
+			this.rule(flame, bomb);
+		}
+	
+		/**
+		 * overlapRule permit to use the function rule with a VerticalFlame
+		 * @param flame a VerticalFlame
+		 * @param bomb
+		 */
+		public void overlapRule(VerticalFlame flame, Bomb bomb) {
+			this.rule(flame, bomb);
+		}
+	
+		/**
+		 * overlapRule permit to use the function rule with a CenterFlame
+		 * @param flame a CenterFlame
+		 * @param bomb
+		 */
+		public void overlapRule(CenterFlame flame, Bomb bomb) {
+			this.rule(flame, bomb);
+		}
 }
