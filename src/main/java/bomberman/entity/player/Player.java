@@ -160,22 +160,6 @@ public class Player extends MovableEntity implements ActionListener {
 	public boolean isAlive() {
 		return this.isAlive;
 	}
-	
-	/**
-	 * getAuthorizedBombs return the authorizedBombs
-	 * @return the authorizedBombs
-	 */
-	public int getAuthorizedBombs(){
-		return this.authorizedBombs;
-	}
-	
-	/**
-	 * getRadius return the bombRadius
-	 * @return the bombRadius
-	 */
-	public int getRadius(){
-		return this.bombRadius;
-	}
 
 	/**
 	 * actionPerformed allows us to access to the end of game
