@@ -21,7 +21,7 @@ import gameframework.game.GameLevelDefaultImpl;
 
 public class BombermanLevel extends GameLevelDefaultImpl {
 
-	protected Player player1, player2, player3, player4;
+	protected Player player1, player2;
 	protected int rows;
 	protected int columns;
 	protected Set<Point> occupiedPoints;
@@ -59,17 +59,12 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		BombermanMoveStrategy keyboard;
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S, KeyEvent.VK_Q,
-				KeyEvent.VK_CONTROL);
+				KeyEvent.VK_SPACE);
 		this.player1 = this.createPlayer(1, 1, keyboard,"/images/BombermanSpritePlayer1.png");
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT,
 				KeyEvent.VK_ENTER);
 		this.player2 = this.createPlayer(this.columns - 2, this.rows - 2, keyboard,"/images/BombermanSpritePlayer2.png");
-		//keyboard = new BombermanMoveStrategy(KeyEvent.VK_I, KeyEvent.VK_L, KeyEvent.VK_K, KeyEvent.VK_J,
-		//		KeyEvent.VK_SPACE);
-		//this.player3 = this.createPlayer(this.columns - 2, 1, keyboard, "/images/BombermanSpritePlayer3.png");
-		//keyboard = new BombermanMoveStrategy(KeyEvent.VK_NUMPAD8, KeyEvent.VK_NUMPAD6, KeyEvent.VK_NUMPAD5, KeyEvent.VK_NUMPAD4,
-		//		KeyEvent.VK_ADD);
-		//this.player4 = this.createPlayer(1, this.rows - 2,keyboard, "/images/BombermanSpritePlayer4.png");
+		
 		this.spawnBox(BombermanLevel.PROBABILITY_BOX);
 	}
 
