@@ -107,7 +107,7 @@ public class Player extends MovableEntity implements ActionListener {
 	public void setKeyboard(BombermanMoveStrategy keyboard) {
 		this.keyboard = keyboard;
 		this.keyboard.setPlayer(this);
-		this.keyboard.setSpeed(this.data.getConfiguration().getSpriteSize());
+		this.keyboard.setSpeed(this.data.getConfiguration().getSpriteSize()/2);
 		this.getDriver().setStrategy(keyboard);
 	}
 
