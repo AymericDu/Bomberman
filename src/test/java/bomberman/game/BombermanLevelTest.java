@@ -62,6 +62,7 @@ public class BombermanLevelTest {
 	@SuppressWarnings("static-access")
 	@Test
 	public void endTest(){
+		level.init();
 		assertEquals(0,level.levelNumber);
 		level.end();
 		assertEquals(1,level.levelNumber);

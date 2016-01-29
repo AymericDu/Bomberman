@@ -16,3 +16,14 @@ Le jeu se lance avec 2 joueurs.
 
 Le joueur 1 : Z-S-Q-D et SPACE pour poser une bombe  
 Le joueur 2 : Fleches et ENTRER pour poser une bombe
+
+
+TO DO  
+
+test end ->  POP UP 
+refactor -> noMovable et movable 
+supp et gerer GameUniverse et GameviewPort 
+try catch + refactor son 
+Finir commentaires et supp commentaires inutiles
+verif + update UML
+
