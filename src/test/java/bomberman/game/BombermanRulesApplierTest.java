@@ -15,6 +15,7 @@ import bomberman.entity.explosion.CenterFlame;
 import bomberman.entity.explosion.Flame;
 import bomberman.entity.explosion.HorizontalFlame;
 import bomberman.entity.explosion.VerticalFlame;
+import bomberman.entity.player.MockPlayer;
 import bomberman.entity.player.Player;
 import bomberman.entity.separation.Box;
 import gameframework.game.GameData;
@@ -24,7 +25,7 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 
 	BombermanConfiguration configuration;
 	GameData data;
-	Player player;
+	Player mockPlayer;
 	Flame flame;
 	BombermanOverlapRulesApplier bombermanOverlap;
 	HorizontalFlame horizontal;
@@ -40,13 +41,13 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 	public void create(){
 		configuration = new BombermanConfiguration(20, 20, 1);
 		data = new GameData(configuration);
-		player = new Player(data, new Point(1,1), new String("/images/BombermanSpritePlayer1.png"));
+		mockPlayer = new MockPlayer(data, new Point(1,1), "/images/BombermanSpritePlayer1.png");
 		horizontal = new HorizontalFlame(data, new Point(2,1), 2);
 		vertical = new VerticalFlame(data, new Point(2,1), 2);
 		center = new CenterFlame(data, new Point(2,1));
 		bombermanOverlap = configuration.createOverlapRulesApplier();
 		box = new Box(data, new Point(1,2));
-		bomb =  new Bomb(data, new Point(1,1), 2, player);
+		bomb =  new Bomb(data, new Point(1,1), 2, mockPlayer);
 		bombBonus = new BombBonus(data, new Point(1,1));
 		bombRadiusBonus = new BombRadiusBonus(data, new Point(1,1));
 		deathBonus = new DeathBonus(data, new Point(1,1));
@@ -54,26 +55,26 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 	
 	@Test
 	public void overlapRuleTestPlayerVsHorizontalFlame(){
-		assertTrue(player.isAlive());
-		bombermanOverlap.overlapRule(player, horizontal);
-		assertFalse(player.isAlive());
+		assertFalse(MockPlayer.killed);
+		bombermanOverlap.overlapRule(mockPlayer, horizontal);
+		assertTrue(MockPlayer.killed);
 	}
 
 	@Test
 	public void overlapRuleTestPlayerVsVerticalFlame(){
-		assertTrue(player.isAlive());
-		bombermanOverlap.overlapRule(player, vertical);
-		assertFalse(player.isAlive());
+		assertFalse(MockPlayer.killed);
+		bombermanOverlap.overlapRule(mockPlayer, vertical);
+		assertTrue(MockPlayer.killed);
 	}
 	
 	@Test
 	public void overlapRuleTestPlayerVsCenterFlame(){
-		assertTrue(player.isAlive());
-		bombermanOverlap.overlapRule(player, center);
-		assertFalse(player.isAlive());
+		assertFalse(MockPlayer.killed);
+		bombermanOverlap.overlapRule(mockPlayer, center);
+		assertTrue(MockPlayer.killed);
 	}
 	
-	@Test
+	/**@Test
 	public void overlapRuleTestBoxVsHorizontalFlame(){
 		assertFalse(MockUniverse.removeBox);
 		bombermanOverlap.overlapRule(horizontal,box);
@@ -85,26 +86,26 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 		assertFalse(MockUniverse.removeBox);
 		bombermanOverlap.overlapRule(vertical,box);
 		//assertTrue(MockUniverse.removeBox);
-	}
+	}**/
 	
 	@Test
 	public void overlapRuleTestPlayerVsBombBonus(){
-		assertEquals( 1,player.getAuthorizedBombs());
-		bombermanOverlap.overlapRule(player, bombBonus);
-		assertEquals( 2,player.getAuthorizedBombs());
+		assertFalse(MockPlayer.increaseAuthorizedBomb);
+		bombermanOverlap.overlapRule(mockPlayer, bombBonus);
+		assertTrue(MockPlayer.increaseAuthorizedBomb);
 	}
 	
 	@Test
 	public void overlapRuleTestPlayerVsBombRadiusBonus(){
-		assertEquals( 1,player.getRadius());
-		bombermanOverlap.overlapRule(player, bombRadiusBonus);
-		assertEquals( 2,player.getRadius());
+		assertFalse(MockPlayer.increaseBombRadius);
+		bombermanOverlap.overlapRule(mockPlayer, bombRadiusBonus);
+		assertTrue(MockPlayer.increaseBombRadius);
 	}
 	
 	@Test
 	public void overlapRuleTestPlayerVsDeathBonus(){
-		assertTrue(player.isAlive());
-		bombermanOverlap.overlapRule(player, deathBonus);
-		assertFalse(player.isAlive());
+		assertFalse(MockPlayer.killed);
+		bombermanOverlap.overlapRule(mockPlayer, deathBonus);
+		assertTrue(MockPlayer.killed);
 	}
 }
