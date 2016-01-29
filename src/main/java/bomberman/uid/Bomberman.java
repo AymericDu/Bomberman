@@ -28,12 +28,12 @@ public class Bomberman extends GameDefaultImpl {
 	public Bomberman(GameData data) {
 		super(data);
 		
-		try {
-			Sound sound = new Sound("/sounds/GameSound.wav");
-			sound.setLooping(true);
-			sound.play();
-		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-		}
+//		try {
+//			Sound sound = new Sound("/sounds/GameSound.wav");
+//			sound.setLooping(true);
+//			sound.play();
+//		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+//		}
 		
 		((BombermanUniverse) this.data.getUniverse()).createAllWalls();
 		
