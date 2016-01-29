@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+ 	<url>http://maven.apache.org</url>
+  
 	<groupId>fr.univlille1.fil.opd.team5</groupId>
 	<artifactId>bomberman</artifactId>
 	<version>1.0</version>
@@ -16,7 +15,7 @@
 			<artifactId>gameframework</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
+	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -30,11 +29,26 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.build.jacoco.coveredRatio>0.62</project.build.jacoco.coveredRatio>
 	</properties>
-
-	<build>
-	    <plugins>
-	
-	      <plugin>
+  
+	  <build>
+	  <plugins>
+	    <plugin>
+	    <groupId>org.codehaus.mojo</groupId>
+	    <artifactId>exec-maven-plugin</artifactId>
+	    <version>1.2.1</version>
+	    <executions>
+	      <execution>
+	        <goals>
+	          <goal>java</goal>
+	        </goals>
+	      </execution>
+	    </executions>
+	    <configuration>
+	      <mainClass>bomberman.uid.Bomberman</mainClass>
+	    </configuration>
+	  </plugin>
+	  
+	  <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-compiler-plugin</artifactId>
 		<version>3.1</version>
@@ -67,7 +81,7 @@
 	      <plugin>
 		<groupId>org.jacoco</groupId>
 		<artifactId>jacoco-maven-plugin</artifactId>
-		<version>0.7.1.201405082137</version>
+		<version>0.7.5.201505241946</version>
 	        <executions>
 	          <execution>
 	            <id>default-prepare-agent</id>
@@ -106,40 +120,6 @@
 	          </execution>
 	        </executions>
 	      </plugin>
-	
-	    </plugins>
-	    <pluginManagement>
-	      <plugins>
-	  	<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-	  	<plugin>
-	  	  <groupId>org.eclipse.m2e</groupId>
-	  	  <artifactId>lifecycle-mapping</artifactId>
-	  	  <version>1.0.0</version>
-	  	  <configuration>
-	  	    <lifecycleMappingMetadata>
-	  	      <pluginExecutions>
-	  		<pluginExecution>
-	  		  <pluginExecutionFilter>
-	  		    <groupId>org.jacoco</groupId>
-	  		    <artifactId>
-	  		      jacoco-maven-plugin
-	  		    </artifactId>
-	  		    <versionRange>
-	  		      [0.7.1.201405082137,)
-	  		    </versionRange>
-	  		    <goals>
-	  		      <goal>prepare-agent</goal>
-	  		    </goals>
-	  		  </pluginExecutionFilter>
-	  		  <action>
-	  		    <ignore></ignore>
-	  		  </action>
-	  		</pluginExecution>
-	  	      </pluginExecutions>
-	  	    </lifecycleMappingMetadata>
-	  	  </configuration>
-	  	</plugin>
-	      </plugins>
-	    </pluginManagement>
+	   </plugins>
 	</build>
 </project>
