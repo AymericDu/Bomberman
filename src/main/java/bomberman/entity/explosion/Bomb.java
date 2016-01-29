@@ -57,11 +57,11 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	 */
 	public void explode() {
 		this.timer.stop();
-		try {
-			Sound sound = new Sound("/sounds/ExplosionSound.wav");
-			sound.play();
-		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-		}
+//		try {
+//			Sound sound = new Sound("/sounds/ExplosionSound.wav");
+//			sound.play();
+//		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+//		}
 		for (int i = -this.radius; i <= this.radius; i++) {
 			if (i != 0) {
 				new HorizontalFlame(this.data, (Point) this.position.clone(), i);

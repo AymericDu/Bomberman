@@ -33,7 +33,7 @@ public class BombermanLevelTest {
 
 	@Test
 	public void initTest() {
-		// check if hashmap occupiedPoints is empty before we use the fonction
+		// check if hashmap occupiedPoints is empty before we use the function
 		// init()
 		assertTrue(level.occupiedPoints.isEmpty());
 		level.init();
@@ -45,15 +45,15 @@ public class BombermanLevelTest {
 
 	@Test
 	public void createPlayerTest() {
-		p = level.createPlayer(10, 10, strategy, new String("/images/BombermanSpritePlayer1.png"));
+		p = level.createPlayer(10, 10, strategy, "/images/BombermanSpritePlayer1.png");
 		assertEquals(new Point(10, 10), p.getPosition());
 	}
 
 	@Test
 	public void createPlayerTestException() throws IllegalStateException {
 		try {
-			level.createPlayer(10, 10, strategy, new String("/images/BombermanSpritePlayer1.png"));
-			level.createPlayer(10, 10, strategy, new String("/images/BombermanSpritePlayer1.png"));
+			level.createPlayer(10, 10, strategy, "/images/BombermanSpritePlayer1.png");
+			level.createPlayer(10, 10, strategy, "/images/BombermanSpritePlayer1.png");
 			} catch (Exception IllegalStateException) {
 			IllegalStateException.getMessage();
 		}

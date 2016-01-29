@@ -115,14 +115,10 @@ public class Player extends MovableEntity implements ActionListener {
 	 * Drop a bomb in the position of the player
 	 */
 	public void dropBomb() {
-		if (this.lockAuthorizedBomb.tryLock()) {
-			try {
-				if (this.authorizedBombs > 0) {
-					this.authorizedBombs--;
-					new Bomb(this.data, (Point) this.position.clone(), this.bombRadius, this);
-				}
-			} finally {
-				this.lockAuthorizedBomb.unlock();
+		synchronized (this.lockAuthorizedBomb) {
+			if (this.authorizedBombs > 0) {
+				this.authorizedBombs--;
+				new Bomb(this.data, (Point) this.position.clone(), this.bombRadius, this);
 			}
 		}
 	}
@@ -131,12 +127,8 @@ public class Player extends MovableEntity implements ActionListener {
 	 * Increases by 1 the number of bombs that can be on the board at the same time for the player
 	 */
 	public void increaseAuthorizedBomb() {
-		if (this.lockAuthorizedBomb.tryLock()) {
-			try {
-				this.authorizedBombs++;
-			} finally {
-				this.lockAuthorizedBomb.unlock();
-			}
+		synchronized (this.lockAuthorizedBomb) {
+			this.authorizedBombs++;
 		}
 	}
 
