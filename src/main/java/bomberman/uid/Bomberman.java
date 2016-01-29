@@ -1,15 +1,9 @@
 package bomberman.uid;
 
-import java.io.IOException;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JOptionPane;
-
 import bomberman.game.BombermanConfiguration;
 import bomberman.game.BombermanLevel;
+import bomberman.game.BombermanSound;
 import bomberman.game.BombermanUniverse;
-import gameframework.assets.Sound;
 import gameframework.game.Game;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
@@ -32,12 +26,7 @@ public class Bomberman extends GameDefaultImpl {
 	public Bomberman(GameData data) {
 		super(data);
 		
-//		try {
-//			Sound sound = new Sound("/sounds/GameSound.wav");
-//			sound.setLooping(true);
-//			sound.play();
-//		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-//		}
+		BombermanSound.play("/sounds/GameSound.wav");
 		
 		((BombermanUniverse) this.data.getUniverse()).createAllWalls();
 		
