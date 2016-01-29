@@ -10,8 +10,10 @@ import org.junit.Test;
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.bonus.DeathBonus;
+import bomberman.entity.explosion.Bomb;
 import bomberman.entity.explosion.CenterFlame;
 import bomberman.entity.explosion.HorizontalFlame;
+import bomberman.entity.explosion.MockBomb;
 import bomberman.entity.explosion.VerticalFlame;
 import bomberman.entity.player.MockPlayer;
 import bomberman.entity.player.Player;
@@ -27,6 +29,7 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 	BombermanOverlapRulesApplier bombermanOverlap;
 	Player mockPlayer;
 	Box mockBox;
+	Bomb mockBomb;
 	
 	@Before
 	public void create(){
@@ -35,6 +38,7 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 		bombermanOverlap = configuration.createOverlapRulesApplier();		
 		mockPlayer = new MockPlayer(data, new Point(1,1), "/images/BombermanSpritePlayer1.png");
 		mockBox = new MockBox(data, new Point(1,2));
+		mockBomb = new MockBomb(data, new Point(1,1),2, mockPlayer );
 	}
 	
 	@Test
@@ -99,5 +103,29 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 		assertFalse(MockPlayer.killed);
 		bombermanOverlap.overlapRule(mockPlayer, deathBonus);
 		assertTrue(MockPlayer.killed);
+	}
+	
+	@Test
+	public void overlapRuleTestHorizontalFlameVsBomb(){
+		HorizontalFlame horizontal = new HorizontalFlame(data, new Point(2,1), 2);
+		assertFalse(MockBomb.explode);
+		bombermanOverlap.overlapRule(horizontal, mockBomb);
+		assertTrue(MockBomb.explode);
+	}
+	
+	@Test
+	public void overlapRuleTestVerticalFlameVsBomb(){
+		VerticalFlame vertical = new VerticalFlame(data, new Point(2,1), 2);
+		assertFalse(MockBomb.explode);
+		bombermanOverlap.overlapRule(vertical, mockBomb);
+		assertTrue(MockBomb.explode);
+	}
+	
+	@Test
+	public void overlapRuleTestCenterFlameVsBomb(){
+		CenterFlame center = new CenterFlame(data, new Point(2,1));
+		assertFalse(MockBomb.explode);
+		bombermanOverlap.overlapRule(center, mockBomb);
+		assertTrue(MockBomb.explode);
 	}
 }
