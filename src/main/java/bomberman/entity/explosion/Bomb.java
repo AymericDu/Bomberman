@@ -61,7 +61,7 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	public void explode() {
 		this.timer.stop();
 		
-		BombermanSound.play("/sounds/ExplosionSound.wav");
+		BombermanSound.play("/sounds/ExplosionSound.wav", false);
 		
 		for (int i = -this.radius; i <= this.radius; i++) {
 			if (i != 0) {

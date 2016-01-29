@@ -3,7 +3,6 @@ package bomberman.uid;
 import bomberman.game.BombermanConfiguration;
 import bomberman.game.BombermanLevel;
 import bomberman.game.BombermanSound;
-import bomberman.game.BombermanUniverse;
 import gameframework.game.Game;
 import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
@@ -26,10 +25,8 @@ public class Bomberman extends GameDefaultImpl {
 	public Bomberman(GameData data) {
 		super(data);
 		
-		BombermanSound.play("/sounds/GameSound.wav");
-		
-		((BombermanUniverse) this.data.getUniverse()).createAllWalls();
-		
+		BombermanSound.play("/sounds/GameSound.wav", true);
+
 		for (int i = 0; i < 10; i++) {
 			this.data.addLevel(new BombermanLevel(data));
 		}

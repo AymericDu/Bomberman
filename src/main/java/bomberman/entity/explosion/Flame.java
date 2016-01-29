@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import bomberman.entity.MovableEntity;
-import bomberman.game.BombermanUniverse;
+import bomberman.game.BombermanLevel;
 import gameframework.game.GameData;
 import gameframework.motion.MoveStrategyStraightLine;
 
@@ -34,7 +34,7 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	public Flame(GameData data, Point position, String imageUrl, int moving) {
 		super(data, position, imageUrl);
 
-		this.getDriver().setmoveBlockerChecker(((BombermanUniverse) this.data.getUniverse()).getBlockerWalls());
+		this.getDriver().setmoveBlockerChecker(BombermanLevel.walls);
 		this.getDriver().setStrategy(new MoveStrategyStraightLine(position, this.createGoal(moving),
 				this.data.getConfiguration().getSpriteSize()));
 

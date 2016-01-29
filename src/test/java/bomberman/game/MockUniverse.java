@@ -4,8 +4,9 @@ import bomberman.entity.bonus.Bonus;
 import bomberman.entity.explosion.Bomb;
 import bomberman.entity.separation.Box;
 import gameframework.game.GameEntity;
+import gameframework.game.GameUniverseDefaultImpl;
 
-public class MockUniverse extends BombermanUniverse {
+public class MockUniverse extends GameUniverseDefaultImpl {
 	
 	public static boolean removeBonus;
 	public static boolean removeBomb;

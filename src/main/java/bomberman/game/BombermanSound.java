@@ -11,10 +11,10 @@ public class BombermanSound {
 	
 	private BombermanSound() {}
 	
-	public static void play(String path) {
+	public static void play(String path, boolean isLooping) {
 		try {
 			Sound sound = new Sound(path);
-			sound.setLooping(true);
+			sound.setLooping(isLooping);
 			sound.play();
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException | IllegalArgumentException e) {
 			// path wrong or no sound interface

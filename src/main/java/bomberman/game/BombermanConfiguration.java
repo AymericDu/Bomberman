@@ -21,12 +21,4 @@ public class BombermanConfiguration extends GameConfiguration {
 	public BombermanOverlapRulesApplier createOverlapRulesApplier() {
 		return new BombermanOverlapRulesApplier();
 	}
-
-	/**
-	 * BombermanOverlapRulesApplier creates a new BombermanUniverse
-	 */
-	@Override
-	public BombermanUniverse createUniverse() {
-		return new BombermanUniverse();
-	}
 }

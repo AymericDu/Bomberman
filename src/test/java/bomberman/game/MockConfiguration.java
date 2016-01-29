@@ -1,5 +1,7 @@
 package bomberman.game;
 
+import gameframework.game.GameUniverse;
+
 public class MockConfiguration extends BombermanConfiguration {
 
 	public MockConfiguration(int nbRows, int nbColumns, int spriteSize) {
@@ -7,7 +9,7 @@ public class MockConfiguration extends BombermanConfiguration {
 	}
 	
 	@Override
-	public BombermanUniverse createUniverse() {
+	public GameUniverse createUniverse() {
 		return new MockUniverse();
 	}
 }
