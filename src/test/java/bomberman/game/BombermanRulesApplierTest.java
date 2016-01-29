@@ -18,6 +18,7 @@ import bomberman.entity.explosion.VerticalFlame;
 import bomberman.entity.player.MockPlayer;
 import bomberman.entity.player.Player;
 import bomberman.entity.separation.Box;
+import bomberman.entity.separation.MockBox;
 import gameframework.game.GameData;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
@@ -26,12 +27,13 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 	BombermanConfiguration configuration;
 	GameData data;
 	Player mockPlayer;
+	Box mockBox;
+
 	Flame flame;
 	BombermanOverlapRulesApplier bombermanOverlap;
 	HorizontalFlame horizontal;
 	VerticalFlame vertical;
 	CenterFlame center;
-	Box box;
 	Bomb bomb;
 	BombBonus bombBonus;
 	BombRadiusBonus bombRadiusBonus;
@@ -42,15 +44,18 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 		configuration = new BombermanConfiguration(20, 20, 1);
 		data = new GameData(configuration);
 		mockPlayer = new MockPlayer(data, new Point(1,1), "/images/BombermanSpritePlayer1.png");
+		mockBox = new MockBox(data, new Point(1,2));
+		
+		
 		horizontal = new HorizontalFlame(data, new Point(2,1), 2);
 		vertical = new VerticalFlame(data, new Point(2,1), 2);
 		center = new CenterFlame(data, new Point(2,1));
 		bombermanOverlap = configuration.createOverlapRulesApplier();
-		box = new Box(data, new Point(1,2));
 		bomb =  new Bomb(data, new Point(1,1), 2, mockPlayer);
 		bombBonus = new BombBonus(data, new Point(1,1));
 		bombRadiusBonus = new BombRadiusBonus(data, new Point(1,1));
 		deathBonus = new DeathBonus(data, new Point(1,1));
+		
 	}
 	
 	@Test
@@ -74,19 +79,19 @@ public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 		assertTrue(MockPlayer.killed);
 	}
 	
-	/**@Test
+	@Test
 	public void overlapRuleTestBoxVsHorizontalFlame(){
-		assertFalse(MockUniverse.removeBox);
-		bombermanOverlap.overlapRule(horizontal,box);
-		//assertTrue(MockUniverse.removeBox);
+		assertFalse(MockBox.destroy);
+		bombermanOverlap.overlapRule(horizontal,mockBox);
+		assertTrue(MockBox.destroy);
 	}
 	
 	@Test
 	public void overlapRuleTestBoxVsVerticalFlame(){
-		assertFalse(MockUniverse.removeBox);
-		bombermanOverlap.overlapRule(vertical,box);
-		//assertTrue(MockUniverse.removeBox);
-	}**/
+		assertFalse(MockBox.destroy);
+		bombermanOverlap.overlapRule(vertical,mockBox);
+		assertTrue(MockBox.destroy);
+	}
 	
 	@Test
 	public void overlapRuleTestPlayerVsBombBonus(){
