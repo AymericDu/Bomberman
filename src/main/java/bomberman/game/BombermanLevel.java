@@ -8,12 +8,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import javax.swing.JOptionPane;
+
 import bomberman.entity.bonus.BombBonus;
 import bomberman.entity.bonus.BombRadiusBonus;
 import bomberman.entity.bonus.Bonus;
 import bomberman.entity.bonus.DeathBonus;
 import bomberman.entity.player.Player;
 import bomberman.entity.separation.Box;
+import bomberman.uid.Bomberman;
 import gameframework.drawing.GameUniverseViewPort;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
@@ -212,8 +215,13 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	 * ends the current level and clears the board
 	 */
 	@Override
-	public void end() {
+	public synchronized void end() {
 		super.end();
+		if (this.player1.isAlive())
+			Bomberman.pointsPlayer1++;
+		if (this.player2.isAlive())
+			Bomberman.pointsPlayer2++;
+		JOptionPane.showMessageDialog(null, "Player1 "+ Bomberman.pointsPlayer1 + " - " + Bomberman.pointsPlayer2 + " Player2", "Score", JOptionPane.INFORMATION_MESSAGE);
 		for (GameEntity gameEntity : this.gameEntities)
 			this.data.getUniverse().removeGameEntity(gameEntity);
 		for (BombermanMoveStrategy keyboard : this.keyboards)

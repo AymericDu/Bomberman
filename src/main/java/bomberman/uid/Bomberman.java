@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JOptionPane;
 
 import bomberman.game.BombermanConfiguration;
 import bomberman.game.BombermanLevel;
@@ -20,6 +21,9 @@ public class Bomberman extends GameDefaultImpl {
 	protected static final int NB_ROWS = 21;
 	protected static final int NB_COLUMNS = 21;
 	protected static final int SPRITE_SIZE = 32;
+	
+	public static int pointsPlayer1 = 0;
+	public static int pointsPlayer2 = 0;
 	
 /**
  * Constructor of our game Bomberman
