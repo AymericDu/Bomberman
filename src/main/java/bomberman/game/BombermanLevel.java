@@ -50,6 +50,27 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
+	 * ends the current level and clears the board
+	 */
+	@Override
+	public synchronized void end() {
+		super.end();
+		if (this.player1.isAlive())
+			Bomberman.pointsPlayer1++;
+		if (this.player2.isAlive())
+			Bomberman.pointsPlayer2++;
+		JOptionPane.showMessageDialog(null,
+				"Player1 " + Bomberman.pointsPlayer1 + " - " + Bomberman.pointsPlayer2 + " Player2", "Score",
+				JOptionPane.INFORMATION_MESSAGE);
+		// TODO remove all entities
+		for (BombermanMoveStrategy keyboard : this.keyboards)
+			this.data.getCanvas().removeKeyListener(keyboard);
+		this.keyboards.clear();
+		BombermanLevel.walls = new MoveBlockerCheckerDefaultImpl();
+		BombermanLevel.levelNumber++;
+	}
+
+	/**
 	 * Initialize the levels with the players, the walls and the box
 	 */
 	@Override
@@ -76,7 +97,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	 * @param rowNumber
 	 * @return a Point
 	 */
-	public Point create(int columnNumber, int rowNumber) {
+	protected Point createPoint(int columnNumber, int rowNumber) {
 		int spriteSize = this.data.getConfiguration().getSpriteSize();
 		return new Point(spriteSize * columnNumber, spriteSize * rowNumber);
 	}
@@ -93,7 +114,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	 * @return a new player
 	 */
 	protected Player createPlayer(int columnNumber, int rowNumber, BombermanMoveStrategy keyboard,String url) {
-		Point position = this.create(columnNumber, rowNumber);
+		Point position = this.createPoint(columnNumber, rowNumber);
 		if (this.occupiedPoints.contains(position))
 			throw new IllegalStateException();
 		Player player = new Player(this.data, position,url);
@@ -103,7 +124,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		this.occupiedPoints.add(position);
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
-				this.occupiedPoints.add(this.create(columnNumber + i, rowNumber + j));
+				this.occupiedPoints.add(this.createPoint(columnNumber + i, rowNumber + j));
 			}
 		}
 		return player;
@@ -112,7 +133,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	/**
 	 * Creation of all the walls
 	 */
-	public void createAllWalls() {
+	protected void createAllWalls() {
 		this.createWallsOnEdges();
 		this.createWallsOnBoard();
 	}
@@ -125,7 +146,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	 */
 	protected void createWall(int columnNumber, int rowNumber) {
 		Point point;
-		point = this.create(rowNumber, columnNumber);
+		point = this.createPoint(rowNumber, columnNumber);
 		BombermanLevel.walls.addMoveBlocker(new Wall(data, point));
 		this.occupiedPoints.add(point);
 	}
@@ -172,7 +193,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		int randomInt;
 		for (int i = 0; i < columns; i++) {
 			for (int j = 0; j < rows; j++) {
-				point = this.create(i, j);
+				point = this.createPoint(i, j);
 				if (!this.occupiedPoints.contains(point)) {
 					randomInt = this.random.nextInt(100);
 					if (randomInt < probability) {
@@ -243,25 +264,6 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	 */
 	public GameData getGameData() {
 		return this.data;
-	}
-
-	/**
-	 * ends the current level and clears the board
-	 */
-	@Override
-	public synchronized void end() {
-		super.end();
-		if (this.player1.isAlive())
-			Bomberman.pointsPlayer1++;
-		if (this.player2.isAlive())
-			Bomberman.pointsPlayer2++;
-		JOptionPane.showMessageDialog(null, "Player1 "+ Bomberman.pointsPlayer1 + " - " + Bomberman.pointsPlayer2 + " Player2", "Score", JOptionPane.INFORMATION_MESSAGE);
-		// TODO remove all entities
-		for (BombermanMoveStrategy keyboard : this.keyboards)
-			this.data.getCanvas().removeKeyListener(keyboard);
-		this.keyboards.clear();
-		BombermanLevel.walls = new MoveBlockerCheckerDefaultImpl();
-		BombermanLevel.levelNumber++;
 	}
 
 	/**
