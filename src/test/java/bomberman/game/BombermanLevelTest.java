@@ -1,75 +1,136 @@
 package bomberman.game;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import bomberman.entity.player.Player;
-import bomberman.game.BombermanConfiguration;
-import bomberman.game.BombermanLevel;
-import bomberman.game.BombermanMoveStrategy;
-import bomberman.game.BombermanUniverseViewPort;
 import bomberman.uid.Bomberman;
-import gameframework.game.GameConfiguration;
 import gameframework.game.GameData;
 
 public class BombermanLevelTest {
 
-	GameConfiguration configuration;
-	GameData data;
-	BombermanLevel level;
-	Player p;
-	BombermanMoveStrategy strategy;
+	protected GameData data;
+	protected BombermanLevel level;
 
 	@Before
-	public void create() {
-		configuration = new BombermanConfiguration(20, 20, 1);
-		data = new GameData(configuration);
-		level = new BombermanLevel(data);
-		strategy = new BombermanMoveStrategy(1,1,1,1,1);
+	public void init() {
+		this.data = new GameData(new MockConfiguration(21, 21, 32));
+		this.level = new BombermanLevel(this.data);
+	}
+
+	@Test
+	public void endTest() {
+		this.level.init();
+		assertEquals(0, BombermanLevel.levelNumber);
+		assertEquals(0, Bomberman.pointsPlayer1);
+		assertEquals(0, Bomberman.pointsPlayer2);
+		assertTrue(this.data.getUniverse().getGameEntitiesIterator().hasNext());
+		this.level.end();
+		assertEquals(1, BombermanLevel.levelNumber);
+		assertEquals(1, Bomberman.pointsPlayer1);
+		assertEquals(1, Bomberman.pointsPlayer2);
+		// TODO removeAllEntities test
+		// assertFalse(this.data.getUniverse().getGameEntitiesIterator().hasNext());
 	}
 
 	@Test
 	public void initTest() {
-		// check if hashmap occupiedPoints is empty before we use the function
-		// init()
-		assertTrue(level.occupiedPoints.isEmpty());
-		level.init();
-		assertSame(new BombermanUniverseViewPort(level.getGameData()).getClass(), level.getGameBoard().getClass());
-		assertEquals(new Point(1, 1), level.getPlayer1().getPosition());
-		assertEquals(new Point(level.getColumns() - 2, level.getRows() - 2), level.getPlayer2().getPosition());
-		assertFalse(level.occupiedPoints.isEmpty());
+		assertTrue(this.level.occupiedPoints.isEmpty());
+		assertNull(this.level.player1);
+		assertNull(this.level.player2);
+		this.level.init();
+		assertFalse(this.level.occupiedPoints.isEmpty());
+		assertNotNull(this.level.player1);
+		assertNotNull(this.level.player2);
+		assertEquals(this.level.createPoint(1, 1), this.level.player1.getPosition());
+		assertEquals(this.level.createPoint(this.data.getConfiguration().getNbColumns() - 2,
+				this.data.getConfiguration().getNbRows() - 2), this.level.player2.getPosition());
 	}
 
 	@Test
 	public void createPlayerTest() {
-		p = level.createPlayer(10, 10, strategy, "/images/BombermanSpritePlayer1.png");
-		assertEquals(new Point(10, 10), p.getPosition());
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				this.level.occupiedPoints.contains(this.level.createPoint(0 + i, 0 + j));
+			}
+		}
+		Player player = this.level.createPlayer(0, 0, new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT,
+				KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_SPACE), "/images/BombermanSpritePlayer1.png");
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				this.level.occupiedPoints.contains(this.level.createPoint(0 + i, 0 + j));
+			}
+		}
+		assertEquals(this.level.createPoint(0, 0), player.getPosition());
+	}
+
+	@Test(expected=IllegalStateException.class)
+	public void createPlayerTestException() throws IllegalStateException {
+		this.level.occupiedPoints.add(new Point(0, 0));
+		this.level.createPlayer(0, 0, null, "/images/BombermanSpritePlayer1.png");
 	}
 
 	@Test
-	public void createPlayerTestException() throws IllegalStateException {
-		try {
-			level.createPlayer(10, 10, strategy, "/images/BombermanSpritePlayer1.png");
-			level.createPlayer(10, 10, strategy, "/images/BombermanSpritePlayer1.png");
-			} catch (Exception IllegalStateException) {
-			IllegalStateException.getMessage();
-		}
+	public void createPointTest() {
+		Point point;
+		point = this.level.createPoint(0, 0);
+		assertEquals(new Point(0, 0), point);
+		point = this.level.createPoint(1, 1);
+		assertEquals(new Point(32, 32), point);
 	}
-	
-	@SuppressWarnings("static-access")
+
 	@Test
-	public void endTest(){
-		level.init();
-		assertEquals(0,level.levelNumber);
-		assertEquals(0,Bomberman.pointsPlayer1);
-		assertEquals(0,Bomberman.pointsPlayer2);
-		level.end();
-		assertEquals(1,level.levelNumber);
-		assertEquals(1,Bomberman.pointsPlayer1);
-		assertEquals(1,Bomberman.pointsPlayer2);	
+	public void createWallTest() {
+		assertFalse(this.level.occupiedPoints.contains(this.level.createPoint(0, 0)));
+		this.level.createWall(0, 0);
+		assertTrue(this.level.occupiedPoints.contains(this.level.createPoint(0, 0)));
+	}
+
+	@Test
+	public void createAllWallsTest() {
+		assertTrue(this.level.occupiedPoints.isEmpty());
+		this.level.createAllWalls();
+		assertFalse(this.level.occupiedPoints.isEmpty());
+	}
+
+	@Test
+	public void createWallsOnBoardTest() {
+		assertTrue(this.level.occupiedPoints.isEmpty());
+		this.level.createWallsOnBoard();
+		assertFalse(this.level.occupiedPoints.isEmpty());
+	}
+
+	@Test
+	public void createWallsOnEdgesTest() {
+		assertTrue(this.level.occupiedPoints.isEmpty());
+		this.level.createWallsOnEdges();
+		assertFalse(this.level.occupiedPoints.isEmpty());
+	}
+
+	@Test
+	public void spawnBoxTestWithNullProbability() {
+		assertTrue(this.level.occupiedPoints.isEmpty());
+		this.level.spawnBox(0);
+		assertTrue(this.level.occupiedPoints.isEmpty());
+	}
+
+	@Test
+	public void spawnBoxTestWithSureProbability() {
+		assertTrue(this.level.occupiedPoints.isEmpty());
+		this.level.spawnBox(100);
+		for (int i = 0; i < 21; i++) {
+			for (int j = 0; j < 21; j++) {
+				assertTrue(this.level.occupiedPoints.contains(this.level.createPoint(i, j)));
+			}
+		}
 	}
 }

@@ -17,7 +17,6 @@ import bomberman.entity.player.Player;
 import bomberman.entity.separation.Box;
 import bomberman.entity.separation.Wall;
 import bomberman.uid.Bomberman;
-import gameframework.drawing.GameUniverseViewPort;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
 import gameframework.motion.blocking.MoveBlockerChecker;
@@ -77,6 +76,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	protected void init() {
 		int rows = this.data.getConfiguration().getNbRows();
 		int columns = this.data.getConfiguration().getNbColumns();
+
 		BombermanMoveStrategy keyboard;
 		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S, KeyEvent.VK_Q,
@@ -131,14 +131,6 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creation of all the walls
-	 */
-	protected void createAllWalls() {
-		this.createWallsOnEdges();
-		this.createWallsOnBoard();
-	}
-
-	/**
 	 * createWall creates a new Wall in the position give by his parameters
 	 * 
 	 * @param columnNumber
@@ -149,6 +141,14 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		point = this.createPoint(rowNumber, columnNumber);
 		BombermanLevel.walls.addMoveBlocker(new Wall(data, point));
 		this.occupiedPoints.add(point);
+	}
+
+	/**
+	 * Creation of all the walls
+	 */
+	protected void createAllWalls() {
+		this.createWallsOnEdges();
+		this.createWallsOnBoard();
 	}
 
 	/**
@@ -228,59 +228,5 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 				break;
 			}
 		}
-	}
-
-	/**
-	 * getGameBoard returns the GameBoard of our game
-	 * 
-	 * @return the GameBoard
-	 */
-	public GameUniverseViewPort getGameBoard() {
-		return this.gameBoard;
-	}
-
-	/**
-	 * getPlayer1 returns the player1 of our game
-	 * 
-	 * @return the player1
-	 */
-	public Player getPlayer1() {
-		return this.player1;
-	}
-
-	/**
-	 * getPlayer2 returns the player2 of our game
-	 * 
-	 * @return the player2
-	 */
-	public Player getPlayer2() {
-		return this.player2;
-	}
-
-	/**
-	 * getGameData returns the GameData of our game
-	 * 
-	 * @return the GameData
-	 */
-	public GameData getGameData() {
-		return this.data;
-	}
-
-	/**
-	 * getColumns returns the number of columns in the game
-	 * 
-	 * @return the number of columns
-	 */
-	public int getColumns() {
-		return this.data.getConfiguration().getNbColumns();
-	}
-
-	/**
-	 * getRows returns the number of rows in the game
-	 * 
-	 * @return the number of rows
-	 */
-	public int getRows() {
-		return this.data.getConfiguration().getNbRows();
 	}
 }
