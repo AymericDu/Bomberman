@@ -1,6 +1,11 @@
 package bomberman.entity.player;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.event.KeyEvent;
 
@@ -24,6 +29,17 @@ public class PlayerTest extends MovableEntityTest {
 		assertNull(player.keyboard);
 		player.setKeyboard(keyboard);
 		assertSame(keyboard, player.keyboard);
+	}
+
+	@Test
+	public void removeKeyboardTest() {
+		Player player = this.createEntity();
+		BombermanMoveStrategy keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN,
+				KeyEvent.VK_LEFT, KeyEvent.VK_SPACE);
+		player.setKeyboard(keyboard);
+		assertNotNull(player.keyboard);
+		player.removeKeyboard();
+		assertNull(player.keyboard);
 	}
 
 	@Test

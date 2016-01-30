@@ -30,7 +30,7 @@ public class Player extends MovableEntity implements ActionListener {
 	protected final Lock lockAuthorizedBomb = new ReentrantLock();
 
 	protected static final int INIT_AUTHORIZED_BOMBS = 1;
-	protected static final int INIT_BOB_RADIUS = 1;
+	protected static final int INIT_BOMB_RADIUS = 1;
 	protected static final int AFTER_DEATH_TIME = 2000;
 
 	/**
@@ -52,7 +52,7 @@ public class Player extends MovableEntity implements ActionListener {
 		this.spriteManager.reset();
 
 		this.authorizedBombs = Player.INIT_AUTHORIZED_BOMBS;
-		this.bombRadius = Player.INIT_BOB_RADIUS;
+		this.bombRadius = Player.INIT_BOMB_RADIUS;
 		this.isAlive = true;
 
 		this.timer = new Timer(Player.AFTER_DEATH_TIME, this);
@@ -109,6 +109,12 @@ public class Player extends MovableEntity implements ActionListener {
 		this.keyboard.setPlayer(this);
 		this.keyboard.setSpeed(this.data.getConfiguration().getSpriteSize()/2);
 		this.getDriver().setStrategy(keyboard);
+		this.data.getCanvas().addKeyListener(keyboard);
+	}
+
+	public void removeKeyboard() {
+		this.data.getCanvas().removeKeyListener(this.keyboard);
+		this.keyboard = null;
 	}
 
 	/**
@@ -144,7 +150,7 @@ public class Player extends MovableEntity implements ActionListener {
 	 */
 	public void kill() {
 		this.spriteManager.setType("died");
-		this.data.getCanvas().removeKeyListener(this.keyboard);
+		this.removeKeyboard();
 		this.isAlive = false;
 		this.timer.start();
 		try {

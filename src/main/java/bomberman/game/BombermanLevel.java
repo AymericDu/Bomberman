@@ -2,9 +2,7 @@ package bomberman.game;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -26,7 +24,6 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 
 	protected Player player1, player2;
 	protected Set<Point> occupiedPoints;
-	protected List<BombermanMoveStrategy> keyboards;
 	
 	protected final Random random = new Random();
 
@@ -45,7 +42,6 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	public BombermanLevel(GameData data) {
 		super(data);
 		this.occupiedPoints = new HashSet<Point>();
-		this.keyboards = new ArrayList<BombermanMoveStrategy>();
 	}
 
 	/**
@@ -54,17 +50,18 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	@Override
 	public synchronized void end() {
 		super.end();
-		if (this.player1.isAlive())
+		if (this.player1.isAlive()) {
 			Bomberman.pointsPlayer1++;
-		if (this.player2.isAlive())
+			this.player1.removeKeyboard();
+		}
+		if (this.player2.isAlive()) {
 			Bomberman.pointsPlayer2++;
+			this.player2.removeKeyboard();
+		}
 		JOptionPane.showMessageDialog(null,
 				"Player1 " + Bomberman.pointsPlayer1 + " - " + Bomberman.pointsPlayer2 + " Player2", "Score",
 				JOptionPane.INFORMATION_MESSAGE);
 		// TODO remove all entities
-		for (BombermanMoveStrategy keyboard : this.keyboards)
-			this.data.getCanvas().removeKeyListener(keyboard);
-		this.keyboards.clear();
 		BombermanLevel.walls = new MoveBlockerCheckerDefaultImpl();
 		BombermanLevel.levelNumber++;
 	}
@@ -119,8 +116,6 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 			throw new IllegalStateException();
 		Player player = new Player(this.data, position,url);
 		player.setKeyboard(keyboard);
-		this.data.getCanvas().addKeyListener(keyboard);
-		this.keyboards.add(keyboard);
 		this.occupiedPoints.add(position);
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
