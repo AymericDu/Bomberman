@@ -16,6 +16,7 @@ import bomberman.game.BombermanLevel;
 import bomberman.game.BombermanMoveStrategy;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
+import gameframework.motion.GameMovable;
 
 public class Player extends MovableEntity implements ActionListener {
 
@@ -30,7 +31,7 @@ public class Player extends MovableEntity implements ActionListener {
 	protected final Lock lockAuthorizedBomb = new ReentrantLock();
 
 	protected static final int INIT_AUTHORIZED_BOMBS = 1;
-	protected static final int INIT_BOB_RADIUS = 1;
+	protected static final int INIT_BOMB_RADIUS = 1;
 	protected static final int AFTER_DEATH_TIME = 2000;
 
 	/**
@@ -52,7 +53,7 @@ public class Player extends MovableEntity implements ActionListener {
 		this.spriteManager.reset();
 
 		this.authorizedBombs = Player.INIT_AUTHORIZED_BOMBS;
-		this.bombRadius = Player.INIT_BOB_RADIUS;
+		this.bombRadius = Player.INIT_BOMB_RADIUS;
 		this.isAlive = true;
 
 		this.timer = new Timer(Player.AFTER_DEATH_TIME, this);
@@ -85,7 +86,7 @@ public class Player extends MovableEntity implements ActionListener {
 	 */
 	@Override
 	public void oneStepMoveAddedBehavior() {
-		Point direction = this.moveDriver.getSpeedVector(this).getDirection();
+		Point direction = this.getSpeedVector().getDirection();
 		if (direction.equals(new Point(1, 0))) {
 			this.spriteManager.setType("right");
 		} else if (direction.equals(new Point(-1, 0))) {

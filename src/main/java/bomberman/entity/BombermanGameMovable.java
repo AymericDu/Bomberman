@@ -1,6 +1,5 @@
 package bomberman.entity;
 
-import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.net.URL;
@@ -9,35 +8,32 @@ import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
-import gameframework.motion.overlapping.Overlappable;
+import gameframework.motion.GameMovable;
+import gameframework.motion.GameMovableDriver;
+import gameframework.motion.GameMovableDriverDefaultImpl;
 
-public abstract class Entity implements GameEntity, Overlappable {
+public class BombermanGameMovable extends GameMovable {
 
 	protected GameData data;
 	protected GameCanvas canvas;
 	protected DrawableImage image;
 	protected Point position;
 	
-	public Entity(GameData data, Point position, String urlString) {
+	public BombermanGameMovable(){
+		this(new GameMovableDriverDefaultImpl());
+	}
+
+	public BombermanGameMovable(GameMovableDriver driver){
+		moveDriver = driver;
+	}
+	
+	public BombermanGameMovable(GameData data, Point position, String urlString){
 		this.data = data;
 		this.canvas = data.getCanvas();
 		URL url = NoMovableEntity.class.getResource(urlString);
 		this.image = new DrawableImage(url, this.canvas);
 		this.position = position;
-		this.data.getUniverse().addGameEntity(this);
-	}
-	
-	
-	/**
-	 * Draw the bomb with the Graphics g, the image and the coordinates of the
-	 * bomb.
-	 * 
-	 * @param g
-	 *            : Graphics
-	 */
-	@Override
-	public void draw(Graphics g) {
-		this.canvas.drawImage(g, this.image.getImage(), this.position.x, this.position.y);
+		//this.data.getUniverse().addGameEntity((GameEntity) this);
 	}
 	
 	/**
@@ -52,16 +48,10 @@ public abstract class Entity implements GameEntity, Overlappable {
 		return rectangle;
 	}
 	
-	/**
-	 * getPosition returns the position of the entity
-	 * @return a point representing the position
-	 */
 	@Override
-	public Point getPosition() {
-		return this.position;
+	public void oneStepMoveAddedBehavior() {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	public abstract boolean isMovable();
-	
-	
+
 }

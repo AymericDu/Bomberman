@@ -1,58 +1,63 @@
 package bomberman.entity;
 
-import java.awt.Graphics;
 import java.awt.Point;
-import java.awt.Rectangle;
-import java.net.URL;
 
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
 import gameframework.game.GameData;
 import gameframework.motion.GameMovable;
+import gameframework.motion.GameMovableDriver;
+import gameframework.motion.SpeedVector;
 
-public abstract class MovableEntity extends GameMovable implements Entity {
+public class MovableEntity extends Entity {
 
-	protected GameData data;
-	protected GameCanvas canvas;
-	protected DrawableImage image;
+	//protected GameData data;
+	//protected GameCanvas canvas;
+	//protected DrawableImage image;
+	protected GameMovable gameMovable;
 
-	/**
-	 * Constructor of NoMovableEntity
-	 * 
-	 * @param data
-	 * @param position
-	 * @param urlString
-	 */
+	
 	public MovableEntity(GameData data, Point position, String urlString) {
-		this.data = data;
-		this.canvas = data.getCanvas();
-		URL url = MovableEntity.class.getResource(urlString);
-		this.image = new DrawableImage(url, this.canvas);
-		this.position = position;
+		super(data,position,urlString);
+		this.gameMovable=new BombermanGameMovable();
 		this.data.getUniverse().addGameEntity(this);
 	}
-
+	
 	/**
-	 * Draw the bomb with the Graphics g, the image and the coordinates of the
-	 * bomb.
-	 * 
-	 * @param g
-	 *            : Graphics
+	 * isMovable returns true because by definition a MovableEntity can move
+	 * @return true
 	 */
 	@Override
-	public void draw(Graphics g) {
-		this.canvas.drawImage(g, this.image.getImage(), this.position.x, this.position.y);
+	public boolean isMovable() {
+		return true;
+	}
+	
+	public GameMovableDriver getDriver(){
+		return this.gameMovable.getDriver();
+	}
+	
+	public void setDriver(GameMovableDriver driver) {
+		this.gameMovable.setDriver(driver);
+	}
+	
+	public void setPosition(Point p) {
+		this.gameMovable.setPosition(p);
+	}
+	
+	public void setSpeedVector(SpeedVector speedVector) {
+		this.gameMovable.setSpeedVector(speedVector);
 	}
 
-	/**
-	 * Give the bounding box of the box
-	 * 
-	 * @return Rectangle : the bounding box
-	 */
-	@Override
-	public Rectangle getBoundingBox() {
-		Rectangle rectangle = new Rectangle(this.image.getWidth(), this.image.getWidth());
-		rectangle.setLocation(this.position);
-		return rectangle;
+	public SpeedVector getSpeedVector() {
+		return this.gameMovable.getSpeedVector();
 	}
+	
+	public void oneStepMove() {
+		this.gameMovable.oneStepMove();
+	}
+	
+	public void oneStepMoveAddedBehavior(){
+		this.gameMovable.oneStepMoveAddedBehavior();
+	}
+	
 }
