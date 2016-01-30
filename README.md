@@ -20,10 +20,7 @@ Le joueur 2 : Fleches et ENTRER pour poser une bombe
 
 TO DO  
 
-test end ->  POP UP 
-refactor -> noMovable et movable 
-supp et gerer GameUniverse et GameviewPort 
-try catch + refactor son 
-Finir commentaires et supp commentaires inutiles
-verif + update UML
-
+test end ->  POP UP  
+refactor -> noMovable et movable  
+Finir commentaires et supp commentaires inutiles  
+verif + update UML  
