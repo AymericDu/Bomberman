@@ -14,6 +14,7 @@ public class MockBomb extends Bomb {
 		MockBomb.explode = false;
 	}
 
+	@Override
 	public void explode() {
 		MockBomb.explode = true;
 	}
