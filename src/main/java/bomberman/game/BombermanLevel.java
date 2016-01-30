@@ -15,6 +15,7 @@ import bomberman.entity.player.Player;
 import bomberman.entity.separation.Box;
 import bomberman.entity.separation.Wall;
 import bomberman.uid.Bomberman;
+import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
 import gameframework.motion.blocking.MoveBlockerChecker;
@@ -74,8 +75,10 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		int rows = this.data.getConfiguration().getNbRows();
 		int columns = this.data.getConfiguration().getNbColumns();
 
+		this.gameBoard = new GameUniverseViewPortDefaultImpl(this.data);
+		this.gameBoard.setBackgroundImage("/images/Background.png");
+
 		BombermanMoveStrategy keyboard;
-		this.gameBoard = new BombermanUniverseViewPort(this.data);
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S, KeyEvent.VK_Q,
 				KeyEvent.VK_SPACE);
 		this.player1 = this.createPlayer(1, 1, keyboard,"/images/BombermanSpritePlayer1.png");
