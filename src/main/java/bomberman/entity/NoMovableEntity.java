@@ -10,9 +10,7 @@ import gameframework.drawing.GameCanvas;
 import gameframework.game.GameData;
 
 /**
- * All of the objects which are not movable
- * 
- *
+ * This class represents all the objects which are not movable
  */
 public class NoMovableEntity implements Entity {
 
@@ -23,10 +21,12 @@ public class NoMovableEntity implements Entity {
 
 	/**
 	 * Constructor of NoMovableEntity
-	 * 
-	 * @param data the game's data
-	 * @param position the position of the entity
-	 * @param urlString the string representing the path to the entity's image
+	 * @param data 
+	 * 				: the game's data
+	 * @param position 
+	 * 				: the position of this entity
+	 * @param urlString 
+	 * 				: the string representing the path to the entity's image
 	 */
 	public NoMovableEntity(GameData data, Point position, String urlString) {
 		this.data = data;
@@ -38,8 +38,7 @@ public class NoMovableEntity implements Entity {
 	}
 
 	/**
-	 * Draw the bomb with the Graphics g, the image and the coordinates of the
-	 * bomb.
+	 * Draw the bomb with the Graphics g, the image and the coordinates of the bomb.
 	 * 
 	 * @param g
 	 *            : Graphics
@@ -63,6 +62,7 @@ public class NoMovableEntity implements Entity {
 	
 	/**
 	 * isMovable returns false because by definition a NoMovableEntity cannot move
+	 * 
 	 * @return false
 	 */
 	@Override
@@ -72,6 +72,7 @@ public class NoMovableEntity implements Entity {
 
 	/**
 	 * getPosition returns the position of the entity
+	 * 
 	 * @return a point representing the position
 	 */
 	@Override

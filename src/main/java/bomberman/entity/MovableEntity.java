@@ -10,6 +10,9 @@ import gameframework.drawing.GameCanvas;
 import gameframework.game.GameData;
 import gameframework.motion.GameMovable;
 
+/**
+ * This abstract class represents all the movable entities
+ */
 public abstract class MovableEntity extends GameMovable implements Entity {
 
 	protected GameData data;
@@ -20,8 +23,11 @@ public abstract class MovableEntity extends GameMovable implements Entity {
 	 * Constructor of NoMovableEntity
 	 * 
 	 * @param data
+	 * 				: the GameData
 	 * @param position
+	 * 				: the position of this entity
 	 * @param urlString
+	 * 				: the string representing the path to the entity's image
 	 */
 	public MovableEntity(GameData data, Point position, String urlString) {
 		this.data = data;
