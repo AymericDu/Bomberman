@@ -10,7 +10,8 @@ import gameframework.game.GameDefaultImpl;
 import gameframework.gui.GameWindow;
 
 /**
- * Bomberman class permits to play at our game Bomberman
+ * This class allows two players to play Bomberman
+ * Bomberman is the main class of our game
  */
 public class Bomberman extends GameDefaultImpl {
 	
@@ -21,12 +22,6 @@ public class Bomberman extends GameDefaultImpl {
 	public static int pointsPlayer1 = 0;
 	public static int pointsPlayer2 = 0;
 	
-	/**
-	 * Constructor of our game Bomberman
-	 * 
-	 * @param data 
-	 * 				: the GameData
-	 */
 	public Bomberman(GameData data) {
 		super(data);
 		BombermanSound.play("/sounds/GameSound.wav", true);
@@ -39,7 +34,7 @@ public class Bomberman extends GameDefaultImpl {
 	}
 
 	/**
-	 * launch the game Bomberman
+	 * launches the game Bomberman
 	*/
 	public static void main(String[] args) {
 		GameConfiguration config = new BombermanConfiguration(Bomberman.NB_ROWS, Bomberman.NB_COLUMNS, Bomberman.SPRITE_SIZE);
