@@ -11,6 +11,7 @@ public class MockBomb extends Bomb {
 	
 	public MockBomb(GameData data, Point position, int radius, Player player) {
 		super(data, position, radius, player);
+		this.timer.stop();
 		MockBomb.explode = false;
 	}
 
