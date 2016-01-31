@@ -23,7 +23,7 @@ import bomberman.entity.separation.MockBox;
 import gameframework.game.GameData;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
-public class BombermanRulesApplierTest extends OverlapRulesApplierDefaultImpl{
+public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefaultImpl{
 
 	protected GameData data;
 	protected BombermanOverlapRulesApplier bombermanOverlapRules;
