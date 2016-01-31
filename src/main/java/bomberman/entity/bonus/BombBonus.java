@@ -26,6 +26,8 @@ public class BombBonus extends Bonus {
 	
 	/**
 	 * This bonus will increase the number of bomb our player can drop at the same time
+	 * @param player 
+	 * 				: the player which will benefit of the bonus
 	 */
 	@Override
 	public void effect(Player player) {

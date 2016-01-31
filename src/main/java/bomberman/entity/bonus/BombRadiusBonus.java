@@ -24,6 +24,8 @@ public class BombRadiusBonus extends Bonus {
 
 	/**
 	 * This bonus will increase the player's bombs radius by one
+	 * @param player 
+	 * 				: the player which will benefit of the bonus
 	 */
 	@Override
 	public void effect(Player player) {
