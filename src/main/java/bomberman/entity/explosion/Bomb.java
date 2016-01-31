@@ -11,11 +11,9 @@ import bomberman.entity.player.Player;
 import bomberman.game.BombermanSound;
 import gameframework.game.GameData;
 
-
 /**
- * class representing the object bomb which is a NoMovableEntity.
+ * Class representing the object bomb which is a NoMovableEntity.
  * The bomb is dropped by a player and explodes after 2 seconds causing the creation of flames in various directions.
- * 
  */
 public class Bomb extends NoMovableEntity implements ActionListener {
 

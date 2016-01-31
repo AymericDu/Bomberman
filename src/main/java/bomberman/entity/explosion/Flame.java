@@ -13,7 +13,6 @@ import gameframework.motion.MoveStrategyStraightLine;
 
 /**
  * Abstract class which handles all the different flames.
- *
  */
 public abstract class Flame extends MovableEntity implements ActionListener {
 
@@ -25,11 +24,11 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	 * Constructor of Flame
 	 * 
 	 * @param data
-	 *            the GameData
+	 *            : the GameData
 	 * @param position
-	 *            of the flame
+	 *            : the position of the flame
 	 * @param imageUrl
-	 *            of the flame
+	 *            : the string representing the path to the flame's image
 	 */
 	public Flame(GameData data, Point position, String imageUrl, int moving) {
 		super(data, position, imageUrl);
@@ -57,8 +56,10 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	}
 	
 	/**
-	 * createGoal create a Point with an int
+	 * createGoal create a Point 
+	 * 
 	 * @param moving
+	 * 				: the moving	
 	 * @return a Point
 	 */
 	public abstract Point createGoal(int moving);
