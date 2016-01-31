@@ -20,16 +20,6 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 
 	protected static final int EXPLOSION_TIME = 1000;
 
-	/**
-	 * Constructor of Flame
-	 * 
-	 * @param data
-	 *            : the GameData
-	 * @param position
-	 *            : the position of the flame
-	 * @param imageUrl
-	 *            : the string representing the path to the flame's image
-	 */
 	public Flame(GameData data, Point position, String imageUrl, int moving) {
 		super(data, position, imageUrl);
 
@@ -43,7 +33,8 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * actionPerformed allows to remove the Flame
+	 * The action performed after the explosion's time : remove the Flame
+	 * @param e
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -56,10 +47,10 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	}
 	
 	/**
-	 * createGoal create a Point 
+	 * createGoal returns a point representing the flame's expansion 
 	 * 
 	 * @param moving
-	 * 				: the moving	
+	 * 				: the expansion level from the explosion	
 	 * @return a Point
 	 */
 	public abstract Point createGoal(int moving);

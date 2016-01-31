@@ -4,27 +4,19 @@ import java.awt.Point;
 import gameframework.game.GameData;
 
 /**
- * the HorizontalFlame class represents the horizontal borders of the explosion 
+ * the HorizontalFlame class represents the horizontal dimension of the explosion 
  */
 public class HorizontalFlame extends Flame {
 
-	/**
-	 * Constructor of HorizontalFlame
-	 * 
-	 * @param data
-	 * 				: the game's data
-	 * @param position
-	 * 				: the position of the entity
-	 */
 	public HorizontalFlame(GameData data, Point position, int moving) {
 		super(data, position, "/images/explosion/FlameHorizontal.png", moving);
 	}
 
 	/**
-	 * createGoal allows to create a Point with an int in parameter
+	 * createGoal returns a point representing the flame's expansion, in this case it will return a point in the same horizontal line 
 	 * 
 	 * @param moving
-	 * 				: the moving
+	 * 				: the expansion level from the explosion	
 	 * @return a Point
 	 */
 	@Override

@@ -9,22 +9,15 @@ import gameframework.game.GameData;
  */
 public class CenterFlame extends Flame {
 
-	/**
-	 * Constructor of CenterFlame
-	 * 
-	 * @param data
-	 * 				: the game's data
-	 * @param position
-	 * 				: the position of the entity
-	 */
 	public CenterFlame(GameData data, Point position) {
 		super(data, position, "/images/explosion/FlameCenter.png", 0);
 	}
 
 	/**
-	 * createGoal allows to create a Point with an int in parameter
+	 * createGoal returns a point representing the flame's expansion, in this case it will return the same point
+	 * The center flame will not be expanded 
 	 * @param moving
-	 * 				: the moving
+	 * 				: the expansion level from the explosion, useless here	
 	 * @return a Point
 	 */
 	@Override

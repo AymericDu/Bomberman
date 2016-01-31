@@ -12,8 +12,8 @@ import bomberman.game.BombermanSound;
 import gameframework.game.GameData;
 
 /**
- * Class representing the object bomb which is a NoMovableEntity.
- * The bomb is dropped by a player and explodes after 2 seconds causing the creation of flames in various directions.
+ * Class representing the object bomb which is an UnmovableEntity.
+ * The bomb,when dropped by a player, explodes after 2 seconds causing the creation of flames in various directions.
  */
 public class Bomb extends NoMovableEntity implements ActionListener {
 
@@ -23,18 +23,6 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 
 	protected static final int COUNTDOWN_TIME = 2000;
 
-	/**
-	 * Constructor of the bomb
-	 * 
-	 * @param data
-	 *            : the game data
-	 * @param position
-	 *            : the position of the bomb
-	 * @param radius
-	 *            : the radius of the bomb
-	 * @param player
-	 *            : the player who have the bomb
-	 */
 	public Bomb(GameData data, Point position, int radius, Player player) {
 		super(data, position, "/images/explosion/Bomb.png");
 		this.radius = radius;
@@ -45,7 +33,8 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	}
 
 	/**
-	 * The action performed when a bomb explode
+	 * The action performed after the countdown : the bomb explodes
+	 * @param e
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -53,8 +42,8 @@ public class Bomb extends NoMovableEntity implements ActionListener {
 	}
 
 	/**
-	 * explode allows to stop the timer and play the song
-	 * it explode the bomb else it shows the flame in the game
+	 * This method launches the explosion's sound and creates flames in every directions (when possible) starting where the bomb was dropped
+	 * It also allows the player to drop a new bomb
 	 */
 	public void explode() {
 		this.timer.stop();
