@@ -17,6 +17,9 @@ import bomberman.game.BombermanMoveStrategy;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 
+/**
+ * Player class represents the players in the game
+ */
 public class Player extends MovableEntity implements ActionListener {
 
 	protected SpriteManagerDefaultImpl spriteManager;
@@ -37,9 +40,9 @@ public class Player extends MovableEntity implements ActionListener {
 	 * Constructor of player, used in method createPlayer of class BombermanLevel
 	 * 
 	 * @param data
-	 * 			the game's data
+	 * 			: the game's data
 	 * @param position
-	 *            initial position of the player
+	 *          : initial position of the player
 	 */
 	public Player(GameData data, Point position, String url) {
 		super(data, position, url);
@@ -61,7 +64,9 @@ public class Player extends MovableEntity implements ActionListener {
 	
 	/**
 	 * draws the player
-	 * @param g the graphics
+	 * 
+	 * @param g 
+	 * 			: the graphics
 	 */
 	@Override
 	public void draw(Graphics g) {
@@ -102,7 +107,9 @@ public class Player extends MovableEntity implements ActionListener {
 
 	/**
 	 * Initialize the move strategy of the player
-	 * @param keyboard the move strategy
+	 * 
+	 * @param keyboard 
+	 * 			: the move strategy
 	 */
 	public void setKeyboard(BombermanMoveStrategy keyboard) {
 		this.keyboard = keyboard;
@@ -112,6 +119,9 @@ public class Player extends MovableEntity implements ActionListener {
 		this.data.getCanvas().addKeyListener(keyboard);
 	}
 
+	/**
+	 * Remove the keyboard for the player
+	 */
 	public void removeKeyboard() {
 		this.data.getCanvas().removeKeyListener(this.keyboard);
 		this.keyboard = null;
@@ -130,7 +140,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Increases by 1 the number of bombs that can be on the board at the same time for the player
+	 * Increases by one the number of bombs that can be on the board at the same time for the player
 	 */
 	public void increaseAuthorizedBomb() {
 		synchronized (this.lockAuthorizedBomb) {
@@ -139,7 +149,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Increases the radius of the player's bombs by 1
+	 * Increases the radius of the player's bombs by one
 	 */
 	public void increaseBombRadius() {
 		this.bombRadius++;
@@ -161,6 +171,7 @@ public class Player extends MovableEntity implements ActionListener {
 
 	/**
 	 * isAlive returns true if our player is alive and false if he's dead
+	 * 
 	 * @return true or false
 	 */
 	public boolean isAlive() {

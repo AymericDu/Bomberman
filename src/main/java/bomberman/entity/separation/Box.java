@@ -6,6 +6,9 @@ import bomberman.entity.NoMovableEntity;
 import gameframework.game.GameData;
 import gameframework.motion.blocking.MoveBlocker;
 
+/**
+ * Box class represents the Box in the game 
+ */
 public class Box extends NoMovableEntity implements MoveBlocker {
 
 	/**

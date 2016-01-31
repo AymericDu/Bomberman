@@ -6,6 +6,9 @@ import bomberman.entity.NoMovableEntity;
 import gameframework.game.GameData;
 import gameframework.motion.blocking.MoveBlocker;
 
+/**
+ * Wall class represents the Wall in the game which are fixed and not destroyed
+ */
 public class Wall extends NoMovableEntity implements MoveBlocker {
 
 	/**
