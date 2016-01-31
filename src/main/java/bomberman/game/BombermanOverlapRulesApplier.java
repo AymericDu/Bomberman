@@ -14,7 +14,7 @@ import bomberman.entity.separation.Box;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
 /**
- * BombermanOverlapRulesApplier is made for know the effect of an overlap
+ * BombermanOverlapRulesApplier is made for knowing the effect of an overlap between two overlappable entities
  */
 public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 
@@ -151,48 +151,48 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	}
 	
 	/**
-	 * rule allows to explode a bomb when a flame is on it 
+	 * This function makes a bomb explode when a flame is on it 
 	 * 
 	 * @param flame
 	 * 				: a Flame created by a bomb
 	 * @param bomb
-	 * 				: a bomb drop by a player
+	 * 				: a bomb dropped by a player
 	 */
 	public void rule(Flame flame, Bomb bomb) {
 		bomb.explode();
 	}
 
 	/**
-	 * overlapRule permit to use the function rule with an HorizontalFlame
+	 * overlapRule calls the function rule when a horizontal flame touches a bomb
 	 * 
 	 * @param flame
 	 * 				: an HorizontalFlame created by a bomb
 	 * @param bomb
-	 * 				: a bomb drop by a player
+	 * 				: a bomb dropped by a player
 	 */
 	public void overlapRule(HorizontalFlame flame, Bomb bomb) {
 		this.rule(flame, bomb);
 	}
 
 	/**
-	 * overlapRule permit to use the function rule with a VerticalFlame
+	 * overlapRule calls the function rule when a vertical flame touches a bomb
 	 * 
 	 * @param flame
 	 * 				: a VerticalFlame created by a bomb
 	 * @param bomb
-	 * 				: a bomb drop by a player
+	 * 				: a bomb dropped by a player
 	 */
 	public void overlapRule(VerticalFlame flame, Bomb bomb) {
 		this.rule(flame, bomb);
 	}
 
 	/**
-	 * overlapRule permit to use the function rule with a CenterFlame
+	 * overlapRule calls the function rule when a center flame touches a bomb
 	 * 
 	 * @param flame
 	 * 				: a CenterFlame created by a bomb
 	 * @param bomb
-	 * 				: a bomb drop by a player
+	 * 				: a bomb dropped by a player
 	 */
 	public void overlapRule(CenterFlame flame, Bomb bomb) {
 		this.rule(flame, bomb);

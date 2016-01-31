@@ -3,20 +3,10 @@ package bomberman.game;
 import gameframework.game.GameConfiguration;
 
 /**
- * This class represents the configuration of the game's tray 
+ * This class represents the configuration of the game's board 
  */
 public class BombermanConfiguration extends GameConfiguration {
 
-	/**
-	 * Constructor of BombermanConfiguration
-	 * 
-	 * @param nbRows 
-	 * 				: the number of rows in the game
-	 * @param nbColumns 
-	 * 				: the number of columns in the game
-	 * @param spriteSize 
-	 * 				: the sprites' size
-	 */
 	public BombermanConfiguration(int nbRows, int nbColumns, int spriteSize) {
 		super(nbRows, nbColumns, spriteSize, 1);
 	}

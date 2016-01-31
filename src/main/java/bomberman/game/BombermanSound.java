@@ -8,7 +8,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import gameframework.assets.Sound;
 
 /**
- * BombermanSound allows to play a song
+ * BombermanSound allows the game to play a song
  */
 public class BombermanSound {
 	
@@ -20,7 +20,7 @@ public class BombermanSound {
 	 * @param path
 	 * 				: the path to the song
 	 * @param isLooping
-	 * 				: choose if the song loop or not
+	 * 				: choose if the song will loop or not
 	 */
 	public static void play(String path, boolean isLooping) {
 		try {
