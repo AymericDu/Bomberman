@@ -18,7 +18,7 @@ import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 
 /**
- * Player class represents the players in the game
+ * Player class represents a player in the game
  */
 public class Player extends MovableEntity implements ActionListener {
 
@@ -36,14 +36,6 @@ public class Player extends MovableEntity implements ActionListener {
 	protected static final int INIT_BOMB_RADIUS = 1;
 	protected static final int AFTER_DEATH_TIME = 2000;
 
-	/**
-	 * Constructor of player, used in method createPlayer of class BombermanLevel
-	 * 
-	 * @param data
-	 * 			: the game's data
-	 * @param position
-	 *          : initial position of the player
-	 */
 	public Player(GameData data, Point position, String url) {
 		super(data, position, url);
 
@@ -120,7 +112,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Remove the keyboard for the player
+	 * Remove the keyboard for the player, the player now cannot move
 	 */
 	public void removeKeyboard() {
 		this.data.getCanvas().removeKeyListener(this.keyboard);
@@ -179,7 +171,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * actionPerformed allows us to access to the end of game
+	 * The action Performed after the player's death : end of the game
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
