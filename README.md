@@ -22,5 +22,4 @@ TO DO
 
 test end ->  POP UP  
 refactor -> noMovable et movable  
-Finir commentaires et supp commentaires inutiles  
 verif + update UML  
