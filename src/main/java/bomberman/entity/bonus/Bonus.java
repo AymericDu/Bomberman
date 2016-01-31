@@ -8,19 +8,10 @@ import gameframework.game.GameData;
 
 
 /**
- * abstract class which define all the bonus.
+ * abstract class which defines all the bonuses.
  */
 public abstract class Bonus extends NoMovableEntity {
 
-	/**
-	 * Constructor of the bonus
-	 * @param data 
-	 * 				: the game's data
-	 * @param position 
-	 * 				: the position of the entity
-	 * @param urlString 
-	 * 				: the string representing the path to the entity's image
-	 */
 	public Bonus(GameData data, Point position, String urlString) {
 		super(data, position, urlString);
 	}
