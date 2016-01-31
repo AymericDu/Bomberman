@@ -9,6 +9,9 @@ import gameframework.game.GameData;
 import gameframework.game.GameDefaultImpl;
 import gameframework.gui.GameWindow;
 
+/**
+ * Bomberman class permits to play at our game Bomberman
+ */
 public class Bomberman extends GameDefaultImpl {
 	
 	protected static final int NB_ROWS = 21;
@@ -18,15 +21,15 @@ public class Bomberman extends GameDefaultImpl {
 	public static int pointsPlayer1 = 0;
 	public static int pointsPlayer2 = 0;
 	
-/**
- * Constructor of our game Bomberman
- * @param data our GameData
- */
+	/**
+	 * Constructor of our game Bomberman
+	 * 
+	 * @param data 
+	 * 				: the GameData
+	 */
 	public Bomberman(GameData data) {
 		super(data);
-		
 		BombermanSound.play("/sounds/GameSound.wav", true);
-
 		for (int i = 0; i < 10; i++) {
 			this.data.addLevel(new BombermanLevel(data));
 		}
@@ -35,6 +38,9 @@ public class Bomberman extends GameDefaultImpl {
 		windows.createGUI();
 	}
 
+	/**
+	 * launch the game Bomberman
+	*/
 	public static void main(String[] args) {
 		GameConfiguration config = new BombermanConfiguration(Bomberman.NB_ROWS, Bomberman.NB_COLUMNS, Bomberman.SPRITE_SIZE);
 		GameData data = new GameData(config);

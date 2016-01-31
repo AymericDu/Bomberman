@@ -13,12 +13,18 @@ import bomberman.entity.player.Player;
 import bomberman.entity.separation.Box;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
+/**
+ * BombermanOverlapRulesApplier is made for know the effect of an overlap
+ */
 public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl {
 
 	/**
 	 * The function rule kills a player when he touches a Flame
+	 * 
 	 * @param player
+	 * 				: a player of the game
 	 * @param flame
+	 * 				: a flame created by a bomb
 	 */
 	public void rule(Player player, Flame flame) {
 		player.kill();
@@ -26,26 +32,35 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	
     /**
      * overlapRule calls the function rule with a HorizontalFlame when a player and a horizontal flame are on the same position
+     *
      * @param player
-     * @param flame a HorizontalFlame
-     */
+	 * 				: a player of the game
+	 * @param flame
+	 * 				: a HorizontalFlame created by a bomb
+	 */ 
 	public void overlapRule(Player player, HorizontalFlame flame) {
 		this.rule(player, flame);
 	}
 
 	/**
 	 * overlapRule calls the function rule with a VerticalFlame when a player and a vertical flame are on the same position
-	 * @param player
-	 * @param flame a VerticalFlame
-	 */
+	 *
+     * @param player
+	 * 				: a player of the game
+	 * @param flame
+	 * 				: a VerticalFlame created by a bomb
+	 */ 
 	public void overlapRule(Player player, VerticalFlame flame) {
 		this.rule(player, flame);
 	}
 	
 	/**
 	 * overlapRule calls the function rule with a centerFlame when a player and a center flame are on the same position
-	 * @param player
-	 * @param flame a CenterFlame
+	 *
+     * @param player
+	 * 				: a player of the game
+	 * @param flame
+	 * 				: a CenterFlame created by a bomb
 	 */
 	public void overlapRule(Player player, CenterFlame flame) {
 		this.rule(player, flame);
@@ -53,8 +68,11 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 
 	/**
 	 * rule allows to destroy a box when a flame is on it
+	 * 
 	 * @param flame
+	 * 				: a flame created by a bomb
 	 * @param box
+	 * 				: a box presents on game's tray 
 	 */
 	public void rule(Flame flame, Box box) {
 		box.destroy();
@@ -62,8 +80,11 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 
 	/**
 	 * overlapRule calls the function rule with an HorizontalFlame when a horizontal flame and a box are on the same position
-	 * @param flame an HorizontalFlame
+	 * 
+	 * @param flame
+	 * 				: an HorizontalFlame created by a bomb
 	 * @param box
+	 * 				: a box presents on game's tray 
 	 */
 	public void overlapRule(HorizontalFlame flame, Box box) {
 		this.rule(flame, box);
@@ -71,8 +92,11 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 
 	/**
 	 * overlapRule calls the function rule with a VerticalFlame when a vertical flame and a box are on the same position
-	 * @param flame a VerticalFlame
+	 * 
+	 * @param flame
+	 * 				: a VerticalFlame created by a bomb
 	 * @param box
+	 * 				: a box presents on game's tray 
 	 */
 	public void overlapRule(VerticalFlame flame, Box box) {
 		this.rule(flame, box);
@@ -80,8 +104,11 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 
 	/**
 	 * rule applies a bonus' effect on a player 
+	 * 
 	 * @param player
+	 * 	 			: a player of the game
 	 * @param bonus
+	 * 				: a bonus presents on game's tray
 	 */
 	public void rule(Player player, Bonus bonus) {
 		bonus.effect(player);
@@ -89,64 +116,85 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 
 	/**
 	 * When a player walks on a bomb bonus, this function calls the function rule with the bomb bonus in parameter
+	 * 
 	 * @param player
-	 * @param bonus a BombBonus
+	 * 	 			: a player of the game
+	 * @param bonus
+	 * 				: a BombBonus presents on game's tray
 	 */
 	public void overlapRule(Player player, BombBonus bonus) {
 		this.rule(player, bonus);
 	}
 
 	/**
-	 * When a player walks on a bomb radius bonus, this function calls the function rule with the bomb radius bonus in parameter
+	 * When a player walks on a bomb radius bonus
+	 * 
 	 * @param player
-	 * @param bonus a BombRadiusBonus
+	 * 	 			: a player of the game
+	 * @param bonus
+	 * 				: a BombRadiusBonus presents on game's tray
 	 */
 	public void overlapRule(Player player, BombRadiusBonus bonus) {
 		this.rule(player, bonus);
 	}
 	
 	/**
-	 * When a player walks on a death bonus, this function calls the function rule with the death bonus in parameter
+	 * When a player walks on a death bonus
+	 * 
 	 * @param player
-	 * @param bonus a DeathBonus
+	 * 	 			: a player of the game
+	 * @param bonus
+	 * 				: a DeathBonus presents on game's tray
 	 */
 	public void overlapRule(Player player, DeathBonus bonus) {
 		this.rule(player, bonus);
 	}
 	
 	/**
-	-	 * rule allows to explode a bomb when a flame is on it 
-	-	 * @param flame
-	-	 * @param bomb
-	-	 */
-		public void rule(Flame flame, Bomb bomb) {
-			bomb.explode();
-		}
-	
-		/**
-		 * overlapRule permit to use the function rule with an HorizontalFlame
-		 * @param flame an HorizontalFlame
-		 * @param bomb
-		 */
-		public void overlapRule(HorizontalFlame flame, Bomb bomb) {
-			this.rule(flame, bomb);
-		}
-	
-		/**
-		 * overlapRule permit to use the function rule with a VerticalFlame
-		 * @param flame a VerticalFlame
-		 * @param bomb
-		 */
-		public void overlapRule(VerticalFlame flame, Bomb bomb) {
-			this.rule(flame, bomb);
-		}
-	
-		/**
-		 * overlapRule permit to use the function rule with a CenterFlame
-		 * @param flame a CenterFlame
-		 * @param bomb
-		 */
-		public void overlapRule(CenterFlame flame, Bomb bomb) {
-			this.rule(flame, bomb);
-		}
+	 * rule allows to explode a bomb when a flame is on it 
+	 * 
+	 * @param flame
+	 * 				: a Flame created by a bomb
+	 * @param bomb
+	 * 				: a bomb drop by a player
+	 */
+	public void rule(Flame flame, Bomb bomb) {
+		bomb.explode();
+	}
+
+	/**
+	 * overlapRule permit to use the function rule with an HorizontalFlame
+	 * 
+	 * @param flame
+	 * 				: an HorizontalFlame created by a bomb
+	 * @param bomb
+	 * 				: a bomb drop by a player
+	 */
+	public void overlapRule(HorizontalFlame flame, Bomb bomb) {
+		this.rule(flame, bomb);
+	}
+
+	/**
+	 * overlapRule permit to use the function rule with a VerticalFlame
+	 * 
+	 * @param flame
+	 * 				: a VerticalFlame created by a bomb
+	 * @param bomb
+	 * 				: a bomb drop by a player
+	 */
+	public void overlapRule(VerticalFlame flame, Bomb bomb) {
+		this.rule(flame, bomb);
+	}
+
+	/**
+	 * overlapRule permit to use the function rule with a CenterFlame
+	 * 
+	 * @param flame
+	 * 				: a CenterFlame created by a bomb
+	 * @param bomb
+	 * 				: a bomb drop by a player
+	 */
+	public void overlapRule(CenterFlame flame, Bomb bomb) {
+		this.rule(flame, bomb);
+	}
 }
