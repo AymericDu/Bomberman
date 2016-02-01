@@ -47,11 +47,11 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	}
 	
 	/**
-	 * createGoal returns a point representing the flame's expansion 
+	 * createGoal returns a point representing the flame's goal, which is shifted by shift from the position of the explosion
 	 * 
-	 * @param moving
-	 * 				: the expansion level from the explosion	
+	 * @param shift
+	 * 				: the shift between the position of the explosion and the flame's goal	
 	 * @return a Point
 	 */
-	protected abstract Point createGoal(int moving);
+	protected abstract Point createGoal(int shift);
 }

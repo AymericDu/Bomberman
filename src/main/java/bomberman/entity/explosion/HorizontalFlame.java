@@ -14,15 +14,15 @@ public class HorizontalFlame extends Flame {
 	}
 
 	/**
-	 * createGoal returns a point representing the flame's expansion, in this case it will return a point in the same horizontal line 
+	 * createGoal will return a point in the same horizontal line 
 	 * 
-	 * @param moving
-	 * 				: the expansion level from the explosion	
+	 * @param shift
+	 * 				: the shift between the position of the explosion and the flame's goal	
 	 * @return a Point
 	 */
 	@Override
-	protected Point createGoal(int moving) {
-		Point goal = new Point(this.position.x + (moving * this.data.getConfiguration().getSpriteSize()),
+	protected Point createGoal(int shift) {
+		Point goal = new Point(this.position.x + (shift * this.data.getConfiguration().getSpriteSize()),
 				this.position.y);
 		return goal;
 	}

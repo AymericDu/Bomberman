@@ -14,14 +14,13 @@ public class CenterFlame extends Flame {
 	}
 
 	/**
-	 * createGoal returns a point representing the flame's expansion, in this case it will return the same point
-	 * The center flame will not be expanded 
-	 * @param moving
-	 * 				: the expansion level from the explosion, useless here	
+	 * createGoal will return the same point because the goal of the centerFlame is the same point
+	 * @param shift
+	 * 				: useless here	
 	 * @return a Point
 	 */
 	@Override
-	protected Point createGoal(int moving) {
+	protected Point createGoal(int shift) {
 		return this.position;
 	}
 }

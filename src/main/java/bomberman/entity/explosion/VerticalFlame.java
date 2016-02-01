@@ -14,10 +14,10 @@ public class VerticalFlame extends Flame {
 	}
 
 	/**
-	 * createGoal returns a point representing the flame's expansion, in this case it will return a point in the same vertical line 
+	 * createGoal will return a point in the same vertical line 
 	 * 
 	 * @param moving
-	 * 				: the expansion level from the explosion	
+	 * 				: the shift between the position of the explosion and the flame's goal	
 	 * @return a Point
 	 */
 	@Override
