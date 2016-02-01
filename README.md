@@ -1,4 +1,4 @@
-# Projet : Bomberman  
+# Project : Bomberman  
 
 ## Equipe 5 :  
 * Aymeric DUCROQUETZ (@AymericDu)  
@@ -8,15 +8,16 @@
 * Charles VANEENOO (@CharlesVaneenoo)  
 * Guillaume HERAS (@DiabloHellfire)  
 
-### Introduction :  
--- Cette application simule le jeu Bomberman.
-### Régles :  
+### Introduction : 
 
-Le jeu se lance avec 2 joueurs.
+-- This application simulates the Bomberman Game
 
-Le joueur 1 : Z-S-Q-D et SPACE pour poser une bombe  
-Le joueur 2 : Fleches et ENTRER pour poser une bombe
+### Rules :  
 
+You can launch the game with 2 players 
+
+Player 1  : Z-S-Q-D and SPACE to drop a bomb   
+Player 2  : Fleches and ENTRER to drop a bomb
 
 TO DO  
 
