@@ -28,6 +28,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 
 	protected Player player1, player2;
 	protected Set<Point> occupiedPoints;
+	protected boolean displayScore;
 	
 	protected final Random random = new Random();
 
@@ -40,6 +41,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	public BombermanLevel(GameData data) {
 		super(data);
 		this.occupiedPoints = new HashSet<Point>();
+		this.displayScore = true;
 	}
 
 	/**
@@ -48,6 +50,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	@Override
 	public synchronized void end() {
 		super.end();
+
 		if (this.player1.isAlive()) {
 			Bomberman.pointsPlayer1++;
 			this.player1.removeKeyboard();
@@ -56,10 +59,14 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 			Bomberman.pointsPlayer2++;
 			this.player2.removeKeyboard();
 		}
-		JOptionPane.showMessageDialog(null,
-				"Player1 " + Bomberman.pointsPlayer1 + " - " + Bomberman.pointsPlayer2 + " Player2", "Score",
-				JOptionPane.INFORMATION_MESSAGE);
+
+		if (displayScore)
+			JOptionPane.showMessageDialog(null,
+					"Player1 " + Bomberman.pointsPlayer1 + " - " + Bomberman.pointsPlayer2 + " Player2", "Score",
+					JOptionPane.INFORMATION_MESSAGE);
+
 		// TODO remove all entities
+
 		BombermanLevel.walls = new MoveBlockerCheckerDefaultImpl();
 		BombermanLevel.levelNumber++;
 	}

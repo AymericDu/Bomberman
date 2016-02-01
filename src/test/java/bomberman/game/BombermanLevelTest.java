@@ -29,6 +29,7 @@ public class BombermanLevelTest {
 
 	@Test
 	public void endTest() {
+		this.level.displayScore = false;
 		this.level.init();
 		assertEquals(0, BombermanLevel.levelNumber);
 		assertEquals(0, Bomberman.pointsPlayer1);
