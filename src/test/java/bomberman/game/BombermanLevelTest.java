@@ -39,8 +39,7 @@ public class BombermanLevelTest {
 		assertEquals(1, BombermanLevel.levelNumber);
 		assertEquals(1, Bomberman.pointsPlayer1);
 		assertEquals(1, Bomberman.pointsPlayer2);
-		// TODO removeAllEntities test
-		// assertFalse(this.data.getUniverse().getGameEntitiesIterator().hasNext());
+		assertFalse(this.data.getUniverse().getGameEntitiesIterator().hasNext());
 	}
 
 	@Test

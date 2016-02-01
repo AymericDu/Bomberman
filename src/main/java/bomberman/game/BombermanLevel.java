@@ -62,11 +62,10 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 
 		if (displayScore)
 			JOptionPane.showMessageDialog(null,
-					"Player1 " + Bomberman.pointsPlayer1 + " - " + Bomberman.pointsPlayer2 + " Player2", "Score",
+					"Player1 : " + Bomberman.pointsPlayer1 + "  -  " + Bomberman.pointsPlayer2 + " : Player2", "Score",
 					JOptionPane.INFORMATION_MESSAGE);
 
-		// TODO remove all entities
-
+		this.data.getUniverse().removeAllGameEntities();
 		BombermanLevel.walls = new MoveBlockerCheckerDefaultImpl();
 		BombermanLevel.levelNumber++;
 	}
