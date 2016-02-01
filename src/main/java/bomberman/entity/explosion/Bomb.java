@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import bomberman.entity.NoMovableEntity;
+import bomberman.entity.UnmovableEntity;
 import bomberman.entity.player.Player;
 import bomberman.game.BombermanSound;
 import gameframework.game.GameData;
@@ -15,7 +15,7 @@ import gameframework.game.GameData;
  * Class representing the object bomb which is an UnmovableEntity.
  * The bomb,when dropped by a player, explodes after 2 seconds causing the creation of flames in various directions.
  */
-public class Bomb extends NoMovableEntity implements ActionListener {
+public class Bomb extends UnmovableEntity implements ActionListener {
 
 	protected Timer timer;
 	protected int radius;

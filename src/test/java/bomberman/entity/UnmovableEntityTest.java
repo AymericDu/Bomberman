@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public abstract class NoMovableEntityTest extends EntityTest {
+public abstract class UnmovableEntityTest extends EntityTest {
 
 	@Override
-	public abstract NoMovableEntity  createEntity();
+	public abstract UnmovableEntity  createEntity();
 	
 	@Test
 	public void isMovableTest() {
-		NoMovableEntity entity = this.createEntity();
+		UnmovableEntity entity = this.createEntity();
 		assertFalse(entity.isMovable());
 	}
 }

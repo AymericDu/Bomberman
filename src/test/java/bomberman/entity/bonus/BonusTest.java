@@ -6,11 +6,11 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-import bomberman.entity.NoMovableEntityTest;
+import bomberman.entity.UnmovableEntityTest;
 import bomberman.entity.player.MockPlayer;
 import bomberman.game.MockUniverse;
 
-public abstract class BonusTest extends NoMovableEntityTest {
+public abstract class BonusTest extends UnmovableEntityTest {
 
 	@Override
 	public abstract Bonus createEntity();

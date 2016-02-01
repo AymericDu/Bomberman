@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import bomberman.entity.NoMovableEntityTest;
+import bomberman.entity.UnmovableEntityTest;
 import bomberman.game.MockUniverse;
 
-public class BoxTest extends NoMovableEntityTest {
+public class BoxTest extends UnmovableEntityTest {
 
 	@Override
 	public Box createEntity() {

@@ -1,8 +1,8 @@
 package bomberman.entity.separation;
 
-import bomberman.entity.NoMovableEntityTest;
+import bomberman.entity.UnmovableEntityTest;
 
-public class WallTest extends NoMovableEntityTest {
+public class WallTest extends UnmovableEntityTest {
 
 	@Override
 	public Wall createEntity() {

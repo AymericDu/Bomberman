@@ -12,7 +12,7 @@ import gameframework.game.GameData;
 /**
  * This class represents all the objects which are not movable
  */
-public class NoMovableEntity implements Entity {
+public class UnmovableEntity implements Entity {
 
 	protected GameData data;
 	protected GameCanvas canvas;
@@ -28,10 +28,10 @@ public class NoMovableEntity implements Entity {
 	 * @param urlString 
 	 * 				: the string representing the path to the entity's image
 	 */
-	public NoMovableEntity(GameData data, Point position, String urlString) {
+	public UnmovableEntity(GameData data, Point position, String urlString) {
 		this.data = data;
 		this.canvas = data.getCanvas();
-		URL url = NoMovableEntity.class.getResource(urlString);
+		URL url = UnmovableEntity.class.getResource(urlString);
 		this.image = new DrawableImage(url, this.canvas);
 		this.position = position;
 		this.data.getUniverse().addGameEntity(this);

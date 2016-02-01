@@ -2,7 +2,7 @@ package bomberman.entity.bonus;
 
 import java.awt.Point;
 
-import bomberman.entity.NoMovableEntity;
+import bomberman.entity.UnmovableEntity;
 import bomberman.entity.player.Player;
 import gameframework.game.GameData;
 
@@ -10,7 +10,7 @@ import gameframework.game.GameData;
 /**
  * abstract class which defines all the bonuses.
  */
-public abstract class Bonus extends NoMovableEntity {
+public abstract class Bonus extends UnmovableEntity {
 
 	public Bonus(GameData data, Point position, String urlString) {
 		super(data, position, urlString);
