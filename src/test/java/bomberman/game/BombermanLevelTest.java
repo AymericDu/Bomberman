@@ -65,7 +65,7 @@ public class BombermanLevelTest {
 			}
 		}
 		Player player = this.level.createPlayer(0, 0, new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT,
-				KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_SPACE), "/images/BombermanSpritePlayer1.png");
+				KeyEvent.VK_DOWN, KeyEvent.VK_LEFT, KeyEvent.VK_SPACE), Player.GREEN_PLAYER);
 		for (int i = -1; i <= 1; i++) {
 			for (int j = -1; j <= 1; j++) {
 				this.level.occupiedPoints.contains(this.level.createPoint(0 + i, 0 + j));
@@ -77,7 +77,7 @@ public class BombermanLevelTest {
 	@Test(expected=IllegalStateException.class)
 	public void createPlayerTestException() throws IllegalStateException {
 		this.level.occupiedPoints.add(new Point(0, 0));
-		this.level.createPlayer(0, 0, null, "/images/BombermanSpritePlayer1.png");
+		this.level.createPlayer(0, 0, null, Player.GREEN_PLAYER);
 	}
 
 	@Test
