@@ -1,6 +1,6 @@
 package bomberman.entity;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -39,6 +39,6 @@ public abstract class EntityTest {
 	@Test
 	public void getPositionTest() {
 		Entity entity = this.createEntity();
-		assertSame(this.position, entity.getPosition());
+		assertEquals(this.position, entity.getPosition());
 	}
 }
