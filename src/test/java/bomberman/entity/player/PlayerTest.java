@@ -18,7 +18,7 @@ public class PlayerTest extends MovableEntityTest {
 
 	@Override
 	public Player createEntity() {
-		return new Player(this.data, this.position, new String("/images/BombermanSpritePlayer1.png"));
+		return new Player(this.data, this.position, Player.GREEN_PLAYER);
 	}
 
 	@Test
@@ -51,16 +51,6 @@ public class PlayerTest extends MovableEntityTest {
 		player.dropBomb();
 		assertEquals(0, player.authorizedBombs);
 	}
-	
-//	@Test TODO dropBombWhenLockTest
-//	public void dropBombWhenLockTest() {
-//		Player player = this.createEntity();
-//		player.lockAuthorizedBomb.lock();
-//		assertEquals(1, player.authorizedBombs);
-//		player.dropBomb();
-//		assertEquals(1, player.authorizedBombs);
-//		player.lockAuthorizedBomb.unlock();
-//	}
 
 	@Test
 	public void addBombTest() {
@@ -69,16 +59,6 @@ public class PlayerTest extends MovableEntityTest {
 		player.increaseAuthorizedBomb();
 		assertEquals(2, player.authorizedBombs);
 	}
-	
-//	@Test TODO addBombWhenLockTest
-//	public void addBombWhenLockTest() {
-//		Player player = this.createEntity();
-//		player.lockAuthorizedBomb.lock();
-//		assertEquals(1, player.authorizedBombs);
-//		player.increaseAuthorizedBomb();
-//		assertEquals(1, player.authorizedBombs);
-//		player.lockAuthorizedBomb.unlock();
-//	}
 
 	@Test
 	public void increaseBombRadiusTest(){

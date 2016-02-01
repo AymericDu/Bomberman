@@ -5,8 +5,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.Timer;
 
@@ -29,11 +27,14 @@ public class Player extends MovableEntity implements ActionListener {
 	protected boolean isAlive;
 	protected Timer timer;
 	
-	protected final Lock lockAuthorizedBomb = new ReentrantLock();
+	protected final Object lockAuthorizedBomb = new Object();
 
 	protected static final int INIT_AUTHORIZED_BOMBS = 1;
 	protected static final int INIT_BOMB_RADIUS = 1;
 	protected static final int AFTER_DEATH_TIME = 2000;
+
+	public static final String GREEN_PLAYER = "/images/player/BombermanSpriteGreenPlayer.png";
+	public static final String PINK_PLAYER = "/images/player/BombermanSpritePinkPlayer.png";
 
 	public Player(GameData data, Point position, String url) {
 		super(data, position, url);
@@ -154,10 +155,6 @@ public class Player extends MovableEntity implements ActionListener {
 		this.removeKeyboard();
 		this.isAlive = false;
 		this.timer.start();
-		try {
-			this.lockAuthorizedBomb.lockInterruptibly();
-		} catch (InterruptedException e) {
-		}
 	}
 
 	/**

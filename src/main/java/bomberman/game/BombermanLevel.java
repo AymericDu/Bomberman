@@ -85,10 +85,10 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		BombermanMoveStrategy keyboard;
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_S, KeyEvent.VK_Q,
 				KeyEvent.VK_SPACE);
-		this.player1 = this.createPlayer(1, 1, keyboard,"/images/BombermanSpritePlayer1.png");
+		this.player1 = this.createPlayer(1, 1, keyboard, Player.PINK_PLAYER);
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT,
 				KeyEvent.VK_ENTER);
-		this.player2 = this.createPlayer(columns - 2, rows - 2, keyboard, "/images/BombermanSpritePlayer2.png");
+		this.player2 = this.createPlayer(columns - 2, rows - 2, keyboard, Player.GREEN_PLAYER);
 		
 		this.createAllWalls();
 		this.spawnBox(BombermanLevel.PROBABILITY_BOX);

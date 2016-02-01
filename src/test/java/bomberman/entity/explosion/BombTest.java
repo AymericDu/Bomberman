@@ -1,6 +1,7 @@
 package bomberman.entity.explosion;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 
@@ -14,7 +15,7 @@ public class BombTest extends UnmovableEntityTest {
 
 	@Override
 	public Bomb createEntity() {
-		Bomb bomb = new Bomb(this.data, this.position, 2, new MockPlayer(this.data, (Point) this.position.clone(), new String("/images/BombermanSpritePlayer1.png"))); 
+		Bomb bomb = new Bomb(this.data, this.position, 2, new MockPlayer(this.data, (Point) this.position.clone()));
 		bomb.timer.stop();
 		return bomb;
 	}

@@ -1,6 +1,7 @@
 package bomberman.entity.bonus;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 
@@ -19,7 +20,7 @@ public abstract class BonusTest extends UnmovableEntityTest {
 	public void shouldRemoveBonus() {
 		Bonus bonus = this.createEntity();
 		assertFalse(MockUniverse.removeBonus);
-		bonus.effect(new MockPlayer(this.data, (Point) this.position.clone(), new String("/images/BombermanSpritePlayer1.png")));
+		bonus.effect(new MockPlayer(this.data, (Point) this.position.clone()));
 		assertTrue(MockUniverse.removeBonus);
 	}
 }

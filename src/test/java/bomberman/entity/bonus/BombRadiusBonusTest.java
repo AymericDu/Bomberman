@@ -1,6 +1,7 @@
 package bomberman.entity.bonus;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 
@@ -19,7 +20,7 @@ public class BombRadiusBonusTest extends BonusTest {
 	@Test
 	public void effectTest() {
 		BombRadiusBonus bonus = this.createEntity();
-		Player player = new MockPlayer(this.data, (Point) this.position.clone(), new String("/images/BombermanSpritePlayer1.png"));
+		Player player = new MockPlayer(this.data, (Point) this.position.clone());
 		assertFalse(MockPlayer.increaseBombRadius);
 		bonus.effect(player);
 		assertTrue(MockPlayer.increaseBombRadius);
