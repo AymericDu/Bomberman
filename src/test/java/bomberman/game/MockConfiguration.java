@@ -1,5 +1,6 @@
 package bomberman.game;
 
+import gameframework.game.GameData;
 import gameframework.game.GameUniverse;
 
 public class MockConfiguration extends BombermanConfiguration {
@@ -9,7 +10,7 @@ public class MockConfiguration extends BombermanConfiguration {
 	}
 	
 	@Override
-	public GameUniverse createUniverse() {
-		return new MockUniverse();
+	public GameUniverse createUniverse(GameData gameData) {
+		return new MockUniverse(gameData);
 	}
 }
