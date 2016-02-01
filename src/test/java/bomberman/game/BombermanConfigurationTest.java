@@ -1,18 +1,14 @@
 package bomberman.game;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import bomberman.game.BombermanConfiguration;
-import gameframework.game.GameData;
 
 public class BombermanConfigurationTest {
 
 	@Test
 	public void createOverlapRulesApplierTest() {
-		BombermanConfiguration conf = new BombermanConfiguration(1, 1, 1);
-		GameData data = new GameData(conf);
-		assertEquals(conf, data.getConfiguration());
+		BombermanConfiguration configuration = new BombermanConfiguration(1, 1, 1);
+		assertEquals(BombermanOverlapRulesApplier.class, configuration.createOverlapRulesApplier().getClass());
 	}
 }
