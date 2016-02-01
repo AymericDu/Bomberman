@@ -21,7 +21,7 @@ public class CenterFlame extends Flame {
 	 * @return a Point
 	 */
 	@Override
-	public Point createGoal(int moving) {
+	protected Point createGoal(int moving) {
 		return this.position;
 	}
 }

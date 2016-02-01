@@ -21,7 +21,7 @@ public class VerticalFlame extends Flame {
 	 * @return a Point
 	 */
 	@Override
-	public Point createGoal(int moving) {
+	protected Point createGoal(int moving) {
 		Point goal = new Point(this.position.x,
 				this.position.y + (moving * this.data.getConfiguration().getSpriteSize()));
 		return goal;

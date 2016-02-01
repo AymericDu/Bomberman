@@ -28,7 +28,6 @@ public class Player extends MovableEntity implements ActionListener {
 	protected int bombRadius;
 	protected boolean isAlive;
 	protected Timer timer;
-	protected String url;
 	
 	protected final Lock lockAuthorizedBomb = new ReentrantLock();
 

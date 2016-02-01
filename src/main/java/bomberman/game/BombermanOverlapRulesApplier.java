@@ -26,7 +26,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	 * @param flame
 	 * 				: a flame created by a bomb
 	 */
-	public void rule(Player player, Flame flame) {
+	protected void rule(Player player, Flame flame) {
 		player.kill();
 	}
 	
@@ -74,7 +74,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	 * @param box
 	 * 				: a box presents on game's tray 
 	 */
-	public void rule(Flame flame, Box box) {
+	protected void rule(Flame flame, Box box) {
 		box.destroy();
 	}
 
@@ -110,7 +110,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	 * @param bonus
 	 * 				: a bonus presents on game's tray
 	 */
-	public void rule(Player player, Bonus bonus) {
+	protected void rule(Player player, Bonus bonus) {
 		bonus.effect(player);
 	}
 
@@ -158,7 +158,7 @@ public class BombermanOverlapRulesApplier extends OverlapRulesApplierDefaultImpl
 	 * @param bomb
 	 * 				: a bomb dropped by a player
 	 */
-	public void rule(Flame flame, Bomb bomb) {
+	protected void rule(Flame flame, Bomb bomb) {
 		bomb.explode();
 	}
 

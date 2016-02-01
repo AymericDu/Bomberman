@@ -53,5 +53,5 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	 * 				: the expansion level from the explosion	
 	 * @return a Point
 	 */
-	public abstract Point createGoal(int moving);
+	protected abstract Point createGoal(int moving);
 }
