@@ -73,7 +73,7 @@ public class PlayerTest extends MovableEntityTest {
 		Player player = this.createEntity();
 		assertTrue(player.isAlive());
 		player.kill();
-		player.timer.stop();
+		player.getTimer().stop();
 		assertFalse(player.isAlive());
 	}
 
@@ -92,7 +92,7 @@ public class PlayerTest extends MovableEntityTest {
 		Player player = this.createEntity();
 		assertTrue(player.isAlive);
 		player.kill();
-		player.timer.stop();
+		player.getTimer().stop();
 		assertFalse(player.isAlive);
 	}
 }

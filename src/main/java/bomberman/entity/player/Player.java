@@ -25,7 +25,7 @@ public class Player extends MovableEntity implements ActionListener {
 	protected BombermanMoveStrategy keyboard;
 	protected int bombRadius;
 	protected boolean isAlive;
-	protected Timer timer;
+	private Timer timer;
 	
 	protected final Object lockAuthorizedBomb = new Object();
 
@@ -51,7 +51,7 @@ public class Player extends MovableEntity implements ActionListener {
 		this.isAlive = true;
 
 		this.timer = new Timer(Player.AFTER_DEATH_TIME, this);
-		this.timer.setRepeats(false);
+		this.getTimer().setRepeats(false);
 	}
 	
 	/**
@@ -154,7 +154,7 @@ public class Player extends MovableEntity implements ActionListener {
 		this.spriteManager.setType("died");
 		this.removeKeyboard();
 		this.isAlive = false;
-		this.timer.start();
+		this.getTimer().start();
 	}
 
 	/**
@@ -172,5 +172,9 @@ public class Player extends MovableEntity implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.data.getLevels().get(BombermanLevel.levelNumber).end();
+	}
+
+	public Timer getTimer() {
+		return timer;
 	}
 }

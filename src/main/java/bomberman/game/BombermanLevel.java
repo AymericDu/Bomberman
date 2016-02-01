@@ -29,6 +29,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	protected Player player1, player2;
 	protected Set<Point> occupiedPoints;
 	protected boolean displayScore;
+	protected boolean isFinished;
 	
 	protected final Random random = new Random();
 
@@ -42,6 +43,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		super(data);
 		this.occupiedPoints = new HashSet<Point>();
 		this.displayScore = true;
+		this.isFinished = false;
 	}
 
 	/**
@@ -51,23 +53,29 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	public synchronized void end() {
 		super.end();
 
-		if (this.player1.isAlive()) {
-			Bomberman.pointsPlayer1++;
-			this.player1.removeKeyboard();
-		}
-		if (this.player2.isAlive()) {
-			Bomberman.pointsPlayer2++;
-			this.player2.removeKeyboard();
-		}
+		if (!this.isFinished) {
+			this.isFinished = true;
+			this.player1.getTimer().stop();
+			this.player2.getTimer().stop();
 
-		if (displayScore)
-			JOptionPane.showMessageDialog(null,
-					"Player1 : " + Bomberman.pointsPlayer1 + "  -  " + Bomberman.pointsPlayer2 + " : Player2", "Score",
-					JOptionPane.INFORMATION_MESSAGE);
+			if (this.player1.isAlive()) {
+				Bomberman.pointsPlayer1++;
+				this.player1.removeKeyboard();
+			}
+			if (this.player2.isAlive()) {
+				Bomberman.pointsPlayer2++;
+				this.player2.removeKeyboard();
+			}
 
-		this.data.getUniverse().removeAllGameEntities();
-		BombermanLevel.walls = new MoveBlockerCheckerDefaultImpl();
-		BombermanLevel.levelNumber++;
+			if (displayScore)
+				JOptionPane.showMessageDialog(null,
+						"Player1 : " + Bomberman.pointsPlayer1 + "  -  " + Bomberman.pointsPlayer2 + " : Player2",
+						"Score", JOptionPane.INFORMATION_MESSAGE);
+
+			this.data.getUniverse().removeAllGameEntities();
+			BombermanLevel.walls = new MoveBlockerCheckerDefaultImpl();
+			BombermanLevel.levelNumber++;
+		}
 	}
 
 	/**
