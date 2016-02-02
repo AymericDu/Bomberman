@@ -18,6 +18,7 @@ public class Bomberman extends GameDefaultImpl {
 	protected static final int NB_ROWS = 21;
 	protected static final int NB_COLUMNS = 21;
 	protected static final int SPRITE_SIZE = 32;
+	protected static final int NB_LEVELS = 3;
 	
 	public static int pointsPlayer1 = 0;
 	public static int pointsPlayer2 = 0;
@@ -25,7 +26,7 @@ public class Bomberman extends GameDefaultImpl {
 	public Bomberman(GameData data) {
 		super(data);
 		BombermanSound.play("/sounds/GameSound.wav", true);
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < NB_LEVELS; i++) {
 			this.data.addLevel(new BombermanLevel(data));
 		}
 		
