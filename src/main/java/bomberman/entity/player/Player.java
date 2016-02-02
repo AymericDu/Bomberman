@@ -28,6 +28,7 @@ public class Player extends MovableEntity implements ActionListener {
 	private Timer timer;
 	
 	protected final Object lockAuthorizedBomb = new Object();
+	protected final int myLevel = BombermanLevel.levelNumber;
 
 	protected static final int INIT_AUTHORIZED_BOMBS = 1;
 	protected static final int INIT_BOMB_RADIUS = 1;
@@ -176,7 +177,7 @@ public class Player extends MovableEntity implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.data.getLevels().get(BombermanLevel.levelNumber).end();
+		this.data.getLevels().get(this.myLevel).end();
 	}
 
 	public Timer getTimer() {

@@ -51,9 +51,9 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	 */
 	@Override
 	public synchronized void end() {
-		super.end();
-
 		if (!this.isFinished) {
+			super.end();
+
 			this.isFinished = true;
 			this.player1.getTimer().stop();
 			this.player2.getTimer().stop();
