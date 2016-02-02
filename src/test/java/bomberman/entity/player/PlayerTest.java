@@ -12,13 +12,14 @@ import java.awt.event.KeyEvent;
 import org.junit.Test;
 
 import bomberman.entity.MovableEntityTest;
+import bomberman.game.BombermanLevel;
 import bomberman.game.BombermanMoveStrategy;
 
 public class PlayerTest extends MovableEntityTest {
 
 	@Override
 	public Player createEntity() {
-		return new Player(this.data, this.position, Player.GREEN_PLAYER);
+		return new Player(this.data, this.position, Player.GREEN_PLAYER, new BombermanLevel(this.data));
 	}
 
 	@Test

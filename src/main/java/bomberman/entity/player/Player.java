@@ -10,10 +10,10 @@ import javax.swing.Timer;
 
 import bomberman.entity.MovableEntity;
 import bomberman.entity.explosion.Bomb;
-import bomberman.game.BombermanLevel;
 import bomberman.game.BombermanMoveStrategy;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
+import gameframework.game.GameLevel;
 
 /**
  * Player class represents a player in the game
@@ -28,7 +28,7 @@ public class Player extends MovableEntity implements ActionListener {
 	private Timer timer;
 	
 	protected final Object lockAuthorizedBomb = new Object();
-	protected final int myLevel = BombermanLevel.levelNumber;
+	protected final GameLevel myLevel;
 
 	protected static final int INIT_AUTHORIZED_BOMBS = 1;
 	protected static final int INIT_BOMB_RADIUS = 1;
@@ -37,7 +37,7 @@ public class Player extends MovableEntity implements ActionListener {
 	public static final String GREEN_PLAYER = "/images/player/BombermanSpriteGreenPlayer.png";
 	public static final String PINK_PLAYER = "/images/player/BombermanSpritePinkPlayer.png";
 
-	public Player(GameData data, Point position, String url) {
+	public Player(GameData data, Point position, String url, GameLevel level) {
 		super(data, position, url);
 
 		this.getDriver().setmoveBlockerChecker(data.getMoveBlockerChecker());
@@ -53,6 +53,8 @@ public class Player extends MovableEntity implements ActionListener {
 
 		this.timer = new Timer(Player.AFTER_DEATH_TIME, this);
 		this.getTimer().setRepeats(false);
+
+		this.myLevel = level;
 	}
 	
 	/**
@@ -118,8 +120,11 @@ public class Player extends MovableEntity implements ActionListener {
 	 * Remove the keyboard for the player, the player now cannot move
 	 */
 	public void removeKeyboard() {
-		this.data.getCanvas().removeKeyListener(this.keyboard);
-		this.keyboard = null;
+		if (this.keyboard != null) {
+			this.keyboard.getSpeedVector().setSpeed(0);
+			this.data.getCanvas().removeKeyListener(this.keyboard);
+			this.keyboard = null;
+		}
 	}
 
 	/**
@@ -157,7 +162,6 @@ public class Player extends MovableEntity implements ActionListener {
 		if (this.isAlive) {
 			this.isAlive = false;
 			this.spriteManager.setType("died");
-			this.keyboard.getSpeedVector().setSpeed(0);
 			this.removeKeyboard();
 			this.getTimer().start();
 		}
@@ -177,7 +181,7 @@ public class Player extends MovableEntity implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.data.getLevels().get(this.myLevel).end();
+		this.myLevel.end();
 	}
 
 	public Timer getTimer() {

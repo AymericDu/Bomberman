@@ -31,12 +31,10 @@ public class BombermanLevelTest {
 	public void endTest() {
 		this.level.displayScore = false;
 		this.level.init();
-		assertEquals(0, BombermanLevel.levelNumber);
 		assertEquals(0, Bomberman.pointsPlayer1);
 		assertEquals(0, Bomberman.pointsPlayer2);
 		assertTrue(this.data.getUniverse().getGameEntitiesIterator().hasNext());
 		this.level.end();
-		assertEquals(1, BombermanLevel.levelNumber);
 		assertEquals(1, Bomberman.pointsPlayer1);
 		assertEquals(1, Bomberman.pointsPlayer2);
 		assertFalse(this.data.getUniverse().getGameEntitiesIterator().hasNext());

@@ -33,7 +33,6 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	
 	protected final Random random = new Random();
 
-	public static int levelNumber = 0;
 	public static MoveBlockerChecker walls = new MoveBlockerCheckerDefaultImpl();
 
 	protected static final int PROBABILITY_BONUS = 20;
@@ -74,7 +73,6 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 
 			this.data.getUniverse().removeAllGameEntities();
 			BombermanLevel.walls = new MoveBlockerCheckerDefaultImpl();
-			BombermanLevel.levelNumber++;
 		}
 	}
 
@@ -134,7 +132,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		Point position = this.createPoint(columnNumber, rowNumber);
 		if (this.occupiedPoints.contains(position))
 			throw new IllegalStateException();
-		Player player = new Player(this.data, position,url);
+		Player player = new Player(this.data, position, url, this);
 		player.setKeyboard(keyboard);
 		this.occupiedPoints.add(position);
 		for (int i = -1; i <= 1; i++) {
