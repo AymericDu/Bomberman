@@ -82,18 +82,20 @@ public class Player extends MovableEntity implements ActionListener {
 	 */
 	@Override
 	public void oneStepMoveAddedBehavior() {
-		Point direction = this.moveDriver.getSpeedVector(this).getDirection();
-		if (direction.equals(new Point(1, 0))) {
-			this.spriteManager.setType("right");
-		} else if (direction.equals(new Point(-1, 0))) {
-			this.spriteManager.setType("left");
-		} else if (direction.equals(new Point(0, -1))) {
-			this.spriteManager.setType("up");
-		} else if (direction.equals(new Point(0, 1))) {
-			this.spriteManager.setType("down");
-		}
-		if (!(direction.equals(new Point(0, 0)))) {
-			this.spriteManager.increment();
+		if (this.isAlive) {
+			Point direction = this.moveDriver.getSpeedVector(this).getDirection();
+			if (direction.equals(new Point(1, 0))) {
+				this.spriteManager.setType("right");
+			} else if (direction.equals(new Point(-1, 0))) {
+				this.spriteManager.setType("left");
+			} else if (direction.equals(new Point(0, -1))) {
+				this.spriteManager.setType("up");
+			} else if (direction.equals(new Point(0, 1))) {
+				this.spriteManager.setType("down");
+			}
+			if (!(direction.equals(new Point(0, 0)))) {
+				this.spriteManager.increment();
+			}
 		}
 	}
 
@@ -150,11 +152,14 @@ public class Player extends MovableEntity implements ActionListener {
 	/**
 	 * This function kills the player.
 	 */
-	public void kill() {
-		this.spriteManager.setType("died");
-		this.removeKeyboard();
-		this.isAlive = false;
-		this.getTimer().start();
+	public synchronized void kill() {
+		if (this.isAlive) {
+			this.isAlive = false;
+			this.spriteManager.setType("died");
+			this.keyboard.getSpeedVector().setSpeed(0);
+			this.removeKeyboard();
+			this.getTimer().start();
+		}
 	}
 
 	/**
