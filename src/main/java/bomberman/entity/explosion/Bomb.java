@@ -24,12 +24,13 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 	protected static final int COUNTDOWN_TIME = 2000;
 
 	public Bomb(GameData data, Point position, int radius, Player player) {
-		super(data, Bomb.calculatePosition(data, position), "/images/explosion/Bomb.png");
+		super(data, position, "/images/explosion/Bomb.png");
 		this.radius = radius;
 		this.timer = new Timer(Bomb.COUNTDOWN_TIME, this);
 		this.timer.setRepeats(false);
 		this.timer.start();
 		this.player = player;
+		this.position = this.calculatePosition();
 	}
 
 	/**
@@ -62,8 +63,8 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 		this.player.increaseAuthorizedBomb();
 	}
 
-	protected static Point calculatePosition(GameData data, Point position) {
-		int spriteSize = data.getConfiguration().getSpriteSize();
-		return new Point(position.x - (position.x % spriteSize), position.y - (position.y % spriteSize));
+	protected Point calculatePosition() {
+		int spriteSize = this.data.getConfiguration().getSpriteSize();
+		return new Point(this.position.x - (this.position.x % spriteSize), this.position.y - (this.position.y % spriteSize));
 	}
 }

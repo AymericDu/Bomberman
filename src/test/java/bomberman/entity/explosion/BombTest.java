@@ -1,6 +1,8 @@
 package bomberman.entity.explosion;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 
@@ -37,7 +39,7 @@ public class BombTest extends UnmovableEntityTest {
 
 	@Test
 	public void calculatePositionTest() {
-		Point position = Bomb.calculatePosition(this.data, new Point(16, 24));
-		assertEquals(new Point(0, 0), position);
+		Bomb bomb = new Bomb(this.data, new Point(16, 24), 0, new MockPlayer(this.data, this.position));
+		assertEquals(new Point(0, 0), bomb.getPosition());
 	}
 }
