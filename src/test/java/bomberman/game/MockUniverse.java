@@ -8,18 +8,18 @@ import gameframework.game.GameEntity;
 import gameframework.game.GameUniverseDefaultImpl;
 
 public class MockUniverse extends GameUniverseDefaultImpl {
-	
+
 	public static boolean removeBonus;
 	public static boolean removeBomb;
 	public static boolean removeBox;
-	
+
 	public MockUniverse(GameData data) {
 		super(data);
 		MockUniverse.removeBonus = false;
 		MockUniverse.removeBomb = false;
 		MockUniverse.removeBox = false;
 	}
-	
+
 	@Override
 	public void removeGameEntity(GameEntity gameEntity) {
 		if (gameEntity instanceof Bonus)

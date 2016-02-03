@@ -16,7 +16,7 @@ public class DeathBonusTest extends BonusTest {
 	public DeathBonus createEntity() {
 		return new DeathBonus(this.data, this.position);
 	}
-	
+
 	@Test
 	public void effectTest() {
 		Bonus bonus = this.createEntity();

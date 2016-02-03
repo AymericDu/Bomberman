@@ -16,7 +16,7 @@ public class BombRadiusBonusTest extends BonusTest {
 	public BombRadiusBonus createEntity() {
 		return new BombRadiusBonus(this.data, this.position);
 	}
-	
+
 	@Test
 	public void effectTest() {
 		BombRadiusBonus bonus = this.createEntity();

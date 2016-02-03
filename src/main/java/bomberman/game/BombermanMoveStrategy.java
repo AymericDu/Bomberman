@@ -6,7 +6,8 @@ import bomberman.entity.player.Player;
 import gameframework.motion.MoveStrategyConfigurableKeyboard;
 
 /**
- * BombermanMoveStrategy initializes how the human will control his player
+ * BombermanMoveStrategy initializes how the user will control his player
+ * (bomberman)
  */
 public class BombermanMoveStrategy extends MoveStrategyConfigurableKeyboard {
 
@@ -22,27 +23,14 @@ public class BombermanMoveStrategy extends MoveStrategyConfigurableKeyboard {
 		this.bombKey = bombKey;
 	}
 
-	/**
-	 * setPlayer changes the current Player of the move strategy to a new player in parameter
-	 * 
-	 * @param player
-	 * 				: the player 
-	 */
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
-	/**
-	 * keyPressed allows the player to drop a bomb if the key code in parameter representing the key pressed is equals
-	 * to the key code of the bomb
-	 * 
-	 * @param keyCode 
-	 * 				: the key code of the keyboard
-	 */
 	@Override
 	protected void keyPressed(int keyCode) {
 		if (keyCode == this.bombKey) {
-			player.dropBomb();
+			this.player.dropBomb();
 		} else {
 			super.keyPressed(keyCode);
 		}

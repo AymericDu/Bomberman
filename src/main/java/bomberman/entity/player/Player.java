@@ -27,7 +27,7 @@ public class Player extends MovableEntity implements ActionListener {
 	protected int bombRadius;
 	protected boolean isAlive;
 	private Timer timer;
-	
+
 	protected final Object lockAuthorizedBomb = new Object();
 	protected final GameLevel myLevel;
 
@@ -106,7 +106,7 @@ public class Player extends MovableEntity implements ActionListener {
 	public void setKeyboard(BombermanMoveStrategy keyboard) {
 		this.keyboard = keyboard;
 		this.keyboard.setPlayer(this);
-		this.keyboard.setSpeed(this.data.getConfiguration().getSpriteSize()/2);
+		this.keyboard.setSpeed(this.data.getConfiguration().getSpriteSize() / 2);
 		this.getDriver().setStrategy(keyboard);
 		this.data.getCanvas().addKeyListener(keyboard);
 	}

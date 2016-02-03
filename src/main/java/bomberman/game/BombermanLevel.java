@@ -22,7 +22,7 @@ import gameframework.motion.blocking.MoveBlockerChecker;
 import gameframework.motion.blocking.MoveBlockerCheckerDefaultImpl;
 
 /**
- * BombermanLevel initializes the game, it creates the map with walls, boxes and bonuses
+ * The level contains the walls, boxes, bonuses and 2 players.
  */
 public class BombermanLevel extends GameLevelDefaultImpl {
 
@@ -30,7 +30,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	protected Set<Point> occupiedPoints;
 	protected boolean displayScore;
 	protected boolean isFinished;
-	
+
 	protected final Random random = new Random();
 
 	public static MoveBlockerChecker walls = new MoveBlockerCheckerDefaultImpl();
@@ -46,7 +46,8 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Ends the current level and clears the board
+	 * Ends the current level, clears the board and calculate the players's
+	 * points
 	 */
 	@Override
 	public synchronized void end() {
@@ -94,21 +95,19 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 		keyboard = new BombermanMoveStrategy(KeyEvent.VK_UP, KeyEvent.VK_RIGHT, KeyEvent.VK_DOWN, KeyEvent.VK_LEFT,
 				KeyEvent.VK_ENTER);
 		this.player2 = this.createPlayer(columns - 2, rows - 2, keyboard, Player.GREEN_PLAYER);
-		
+
 		this.createAllWalls();
 		this.spawnBox(BombermanLevel.PROBABILITY_BOX);
 	}
-	
+
 	/**
-	 * creates a point using the position given in parameter and the sprite's size
+	 * creates a point using the position given in parameter and the sprite's
+	 * size
 	 * 
-	 * @param data
-	 * 				: the game's data
-	 * @param columnNumber 
-	 * 				: the column representing a coordinate of the position
+	 * @param columnNumber
+	 *            the column representing a coordinate of the position
 	 * @param rowNumber
-	 * 				: the row representing a coordinate of the position
-	 * @return a Point
+	 *            the row representing a coordinate of the position
 	 */
 	protected Point createPoint(int columnNumber, int rowNumber) {
 		int spriteSize = this.data.getConfiguration().getSpriteSize();
@@ -116,19 +115,19 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * createPlayer creates a new player at the position in parameter using the movestrategy in parameter
+	 * Create a new player at the position in parameter using the strategy in
+	 * parameter
 	 * 
 	 * @param columnNumber
-	 *           	: the column representing a coordinate of the position
+	 *            the column representing a coordinate of the position
 	 * @param rowNumber
-	 *           	: the row representing a coordinate of the position
+	 *            the row representing a coordinate of the position
 	 * @param keyboard
-	 * 			  	: the move strategy
-	 * @param url 
-	 * 				: the player's sprite path
-	 * @return a new player
+	 *            the move strategy
+	 * @param url
+	 *            the player's sprite path
 	 */
-	protected Player createPlayer(int columnNumber, int rowNumber, BombermanMoveStrategy keyboard,String url) {
+	protected Player createPlayer(int columnNumber, int rowNumber, BombermanMoveStrategy keyboard, String url) {
 		Point position = this.createPoint(columnNumber, rowNumber);
 		if (this.occupiedPoints.contains(position))
 			throw new IllegalStateException();
@@ -144,12 +143,12 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * createWall creates a new Wall in the position give by the parameters
+	 * Create a new Wall in the position give by the parameters
 	 * 
 	 * @param columnNumber
-	 *           	: the column representing a coordinate of the position
+	 *            the column representing a coordinate of the position
 	 * @param rowNumber
-	 *           	: the row representing a coordinate of the position
+	 *            the row representing a coordinate of the position
 	 */
 	protected void createWall(int columnNumber, int rowNumber) {
 		Point point;
@@ -167,7 +166,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * createWallsOnEdges creates the walls on the edges of the board
+	 * Create the walls on the edges of the board
 	 */
 	protected void createWallsOnEdges() {
 		int rows = this.data.getConfiguration().getNbRows();
@@ -183,7 +182,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creation of the on-board walls
+	 * Create the walls on the on-board
 	 */
 	protected void createWallsOnBoard() {
 		int rows = this.data.getConfiguration().getNbRows();
@@ -196,10 +195,11 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creation of boxes in the game (in random places)
+	 * Create the box in the game, depending on the probability
 	 * 
 	 * @param probability
-	 *            : the probability of creating a box on a position (0 < probability < 100)
+	 *            the probability of creating a box on a position (0 <
+	 *            probability < 100)
 	 */
 	protected void spawnBox(int probability) {
 		int rows = this.data.getConfiguration().getNbRows();
@@ -222,11 +222,14 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * This method will have a chance of creating a bonus in the game, at the given position
+	 * Create a bonus in the game, at the given position, depending on the
+	 * probability
+	 * 
 	 * @param position
-	 * 				: the position of the bonus 
+	 *            the position of the bonus
 	 * @param probability
-	 *  			: the probability  of creating a bonus on the position given in parameter (0 < probability < 100)
+	 *            the probability of creating a bonus on this position given (0
+	 *            < probability < 100)
 	 */
 	protected void spawnBonus(Point position, int probability) {
 		int randomInt = this.random.nextInt(100);

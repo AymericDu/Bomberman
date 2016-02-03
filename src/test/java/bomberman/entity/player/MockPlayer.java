@@ -17,17 +17,17 @@ public class MockPlayer extends Player {
 		MockPlayer.increaseBombRadius = false;
 		MockPlayer.killed = false;
 	}
-	
+
 	@Override
 	public void increaseAuthorizedBomb() {
 		MockPlayer.increaseAuthorizedBomb = true;
 	}
-	
+
 	@Override
 	public void increaseBombRadius() {
 		MockPlayer.increaseBombRadius = true;
 	}
-	
+
 	@Override
 	public void kill() {
 		MockPlayer.killed = true;

@@ -15,7 +15,7 @@ public abstract class EntityTest {
 
 	protected GameData data;
 	protected Point position;
-	
+
 	@Before
 	public void init() {
 		this.data = new GameData(new MockConfiguration(21, 21, 32));
@@ -35,7 +35,7 @@ public abstract class EntityTest {
 		assertEquals(32, rectangle.getHeight(), 0);
 		assertEquals(this.position, rectangle.getLocation());
 	}
-	
+
 	@Test
 	public void getPositionTest() {
 		Entity entity = this.createEntity();

@@ -15,7 +15,7 @@ public abstract class BonusTest extends UnmovableEntityTest {
 
 	@Override
 	public abstract Bonus createEntity();
-	
+
 	@Test
 	public void shouldRemoveBonus() {
 		Bonus bonus = this.createEntity();

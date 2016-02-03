@@ -7,14 +7,14 @@ import gameframework.game.GameData;
 public class MockBox extends Box {
 
 	public static boolean destroy;
-	
+
 	public MockBox(GameData data, Point position) {
 		super(data, position);
-		MockBox.destroy=false;
+		MockBox.destroy = false;
 	}
 
 	@Override
 	public void destroy() {
-		MockBox.destroy=true;
+		MockBox.destroy = true;
 	}
 }

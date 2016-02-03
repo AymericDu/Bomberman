@@ -13,7 +13,7 @@ public class BoxTest extends UnmovableEntityTest {
 	public Box createEntity() {
 		return new Box(this.data, this.position);
 	}
-	
+
 	@Test
 	public void destroyTest() {
 		Box box = this.createEntity();

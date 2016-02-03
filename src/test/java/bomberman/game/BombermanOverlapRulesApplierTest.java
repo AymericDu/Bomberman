@@ -23,17 +23,17 @@ import bomberman.entity.separation.MockBox;
 import gameframework.game.GameData;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
-public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefaultImpl{
+public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefaultImpl {
 
 	protected GameData data;
 	protected BombermanOverlapRulesApplier bombermanOverlapRules;
-	
+
 	@Before
-	public void create(){
+	public void create() {
 		this.data = new GameData(new BombermanConfiguration(20, 20, 1));
 		this.bombermanOverlapRules = new BombermanOverlapRulesApplier();
 	}
-	
+
 	@Test
 	public void overlapRuleWithPlayerVsHorizontalFlameTest() {
 		Player player = new MockPlayer(this.data, new Point(0, 0));
@@ -51,7 +51,7 @@ public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefault
 		this.bombermanOverlapRules.overlapRule(player, flame);
 		assertTrue(MockPlayer.killed);
 	}
-	
+
 	@Test
 	public void overlapRuleWithPlayerVsCenterFlameTest() {
 		Player player = new MockPlayer(this.data, new Point(0, 0));
@@ -60,7 +60,7 @@ public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefault
 		this.bombermanOverlapRules.overlapRule(player, flame);
 		assertTrue(MockPlayer.killed);
 	}
-	
+
 	@Test
 	public void overlapRuleWithBoxVsHorizontalFlameTest() {
 		Box box = new MockBox(this.data, new Point(0, 0));
@@ -69,7 +69,7 @@ public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefault
 		this.bombermanOverlapRules.overlapRule(flame, box);
 		assertTrue(MockBox.destroy);
 	}
-	
+
 	@Test
 	public void overlapRuleWithBoxVsVerticalFlameTest() {
 		Box box = new MockBox(this.data, new Point(0, 0));
@@ -78,7 +78,7 @@ public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefault
 		this.bombermanOverlapRules.overlapRule(flame, box);
 		assertTrue(MockBox.destroy);
 	}
-	
+
 	@Test
 	public void overlapRuleWithPlayerVsBombBonusTest() {
 		Player player = new MockPlayer(this.data, new Point(0, 0));
@@ -87,7 +87,7 @@ public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefault
 		this.bombermanOverlapRules.overlapRule(player, bonus);
 		assertTrue(MockPlayer.increaseAuthorizedBomb);
 	}
-	
+
 	@Test
 	public void overlapRuleWithPlayerVsBombRadiusBonusTest() {
 		Player player = new MockPlayer(this.data, new Point(0, 0));
@@ -96,7 +96,7 @@ public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefault
 		this.bombermanOverlapRules.overlapRule(player, bonus);
 		assertTrue(MockPlayer.increaseBombRadius);
 	}
-	
+
 	@Test
 	public void overlapRuleWithPlayerVsDeathBonusTest() {
 		Player player = new MockPlayer(this.data, new Point(0, 0));
@@ -105,7 +105,7 @@ public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefault
 		bombermanOverlapRules.overlapRule(player, bonus);
 		assertTrue(MockPlayer.killed);
 	}
-	
+
 	@Test
 	public void overlapRuleWithHorizontalFlameVsBombTest() {
 		Player player = new MockPlayer(this.data, new Point(0, 0));
@@ -115,7 +115,7 @@ public class BombermanOverlapRulesApplierTest extends OverlapRulesApplierDefault
 		bombermanOverlapRules.overlapRule(flame, bomb);
 		assertTrue(MockBomb.explode);
 	}
-	
+
 	@Test
 	public void overlapRuleWithVerticalFlameVsBombTest() {
 		Player player = new MockPlayer(this.data, new Point(0, 0));

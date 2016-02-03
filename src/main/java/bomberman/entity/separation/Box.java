@@ -7,7 +7,7 @@ import gameframework.game.GameData;
 import gameframework.motion.blocking.MoveBlocker;
 
 /**
- * Box class represents a Box that can be destroyed by bombs/flames in the game 
+ * Box class represents a Box that can be destroyed by bombs/flames in the game
  */
 public class Box extends UnmovableEntity implements MoveBlocker {
 

@@ -11,16 +11,17 @@ import gameframework.assets.Sound;
  * BombermanSound allows the game to play a song
  */
 public class BombermanSound {
-	
-	private BombermanSound() {}
-	
+
+	private BombermanSound() {
+	}
+
 	/**
 	 * Play a song in the game
 	 * 
 	 * @param path
-	 * 				: the path to the song
+	 *            the path to the song
 	 * @param isLooping
-	 * 				: choose if the song will loop or not
+	 *            choose if the song will loop or not
 	 */
 	public static void play(String path, boolean isLooping) {
 		try {
@@ -29,6 +30,6 @@ public class BombermanSound {
 			sound.play();
 		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException | IllegalArgumentException e) {
 			// path wrong or no sound interface
-		}		
+		}
 	}
 }

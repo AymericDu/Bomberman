@@ -71,7 +71,7 @@ public class BombermanLevelTest {
 		assertEquals(this.level.createPoint(0, 0), player.getPosition());
 	}
 
-	@Test(expected=IllegalStateException.class)
+	@Test(expected = IllegalStateException.class)
 	public void createPlayerTestException() throws IllegalStateException {
 		this.level.occupiedPoints.add(new Point(0, 0));
 		this.level.createPlayer(0, 0, null, Player.GREEN_PLAYER);

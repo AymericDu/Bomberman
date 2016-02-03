@@ -50,7 +50,7 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	public void oneStepMoveAddedBehavior() {
 		// nothing to do
 	}
-	
+
 	/**
 	 * Return a point representing the flame's goal, which is shifted by shift
 	 * from the position of the explosion

@@ -20,7 +20,7 @@ public class BombTest extends UnmovableEntityTest {
 		bomb.timer.stop();
 		return bomb;
 	}
-	
+
 	@Test
 	public void explodeTest() {
 		Bomb bomb = this.createEntity();
@@ -28,7 +28,7 @@ public class BombTest extends UnmovableEntityTest {
 		bomb.explode();
 		assertTrue(MockPlayer.increaseAuthorizedBomb);
 	}
-	
+
 	@Test
 	public void shouldRemoveBomb() {
 		Bomb bomb = this.createEntity();

@@ -4,8 +4,10 @@ import java.awt.Point;
 
 import bomberman.entity.player.Player;
 import gameframework.game.GameData;
+
 /**
- * This class represents the bomb's radius bonus which effect is to increase the player's bombs' radius.
+ * This class represents the bomb's radius bonus which effect is to increase the
+ * player's bombs' radius.
  */
 public class BombRadiusBonus extends Bonus {
 

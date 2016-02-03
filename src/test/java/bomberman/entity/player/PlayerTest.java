@@ -62,13 +62,13 @@ public class PlayerTest extends MovableEntityTest {
 	}
 
 	@Test
-	public void increaseBombRadiusTest(){
+	public void increaseBombRadiusTest() {
 		Player player = this.createEntity();
 		assertEquals(1, player.bombRadius);
 		player.increaseBombRadius();
 		assertEquals(2, player.bombRadius);
 	}
-	
+
 	@Test
 	public void killTest() {
 		Player player = this.createEntity();
@@ -87,9 +87,9 @@ public class PlayerTest extends MovableEntityTest {
 		player.setKeyboard(keyboard);
 		assertEquals(16, player.getDriver().getSpeedVector(player).getSpeed());
 	}
-	
+
 	@Test
-	public void isAliveTest(){
+	public void isAliveTest() {
 		Player player = this.createEntity();
 		assertTrue(player.isAlive);
 		player.kill();

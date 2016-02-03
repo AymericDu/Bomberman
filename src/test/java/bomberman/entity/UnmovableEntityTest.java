@@ -7,8 +7,8 @@ import org.junit.Test;
 public abstract class UnmovableEntityTest extends EntityTest {
 
 	@Override
-	public abstract UnmovableEntity  createEntity();
-	
+	public abstract UnmovableEntity createEntity();
+
 	@Test
 	public void isMovableTest() {
 		UnmovableEntity entity = this.createEntity();

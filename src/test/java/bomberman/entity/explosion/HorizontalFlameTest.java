@@ -18,6 +18,6 @@ public class HorizontalFlameTest extends FlameTest {
 	@Test
 	public void createGoalTest() {
 		HorizontalFlame flame = this.createEntity();
-		assertEquals(new Point(64 , 0), flame.createGoal(2));
+		assertEquals(new Point(64, 0), flame.createGoal(2));
 	}
 }

@@ -56,9 +56,9 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 	 */
 	public void explode() {
 		this.timer.stop();
-		
+
 		BombermanSound.play("/sounds/ExplosionSound.wav", false);
-		
+
 		for (int i = -this.radius; i <= this.radius; i++) {
 			if (i != 0) {
 				new HorizontalFlame(this.data, (Point) this.position.clone(), i);
@@ -66,7 +66,7 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 			}
 		}
 		new CenterFlame(this.data, this.position);
-		
+
 		this.data.getUniverse().removeGameEntity(this);
 		this.player.increaseAuthorizedBomb();
 	}
@@ -76,6 +76,7 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 	 */
 	protected Point calculatePosition() {
 		int spriteSize = this.data.getConfiguration().getSpriteSize();
-		return new Point(this.position.x - (this.position.x % spriteSize), this.position.y - (this.position.y % spriteSize));
+		return new Point(this.position.x - (this.position.x % spriteSize),
+				this.position.y - (this.position.y % spriteSize));
 	}
 }
