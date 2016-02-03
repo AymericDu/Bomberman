@@ -1,5 +1,7 @@
 package bomberman.uid;
 
+import javax.swing.JOptionPane;
+
 import bomberman.game.BombermanConfiguration;
 import bomberman.game.BombermanLevel;
 import bomberman.game.BombermanSound;
@@ -32,6 +34,19 @@ public class Bomberman extends GameDefaultImpl {
 
 		GameWindow windows = new GameWindow("Bomberman", data.getCanvas(), data.getConfiguration());
 		windows.createGUI();
+	}
+
+	@Override
+	public void start() {
+		super.start();
+		String message;
+		if (Bomberman.pointsPlayer1 > Bomberman.pointsPlayer2)
+			message = "Player1 wins !";
+		else if (Bomberman.pointsPlayer1 < Bomberman.pointsPlayer2)
+			message = "Player2 wins !";
+		else
+			message = "Draw !";
+		JOptionPane.showMessageDialog(null, message, "Finished !", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	/**
