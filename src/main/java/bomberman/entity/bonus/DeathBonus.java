@@ -15,9 +15,7 @@ public class DeathBonus extends Bonus {
 	}
 	
 	/**
-	 * the bonus' effect is to kill whoever picks it (or steps on it)
-	 * @param player 
-	 * 				: the player which will walk on the death bonus
+	 * The bonus' effect is to kill the player picks it
 	 */
 	@Override
 	public void effect(Player player) {

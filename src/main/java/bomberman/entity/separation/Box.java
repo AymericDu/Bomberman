@@ -16,7 +16,7 @@ public class Box extends UnmovableEntity implements MoveBlocker {
 	}
 
 	/**
-	 * This method removes a box in the Game's universe
+	 * Destroy and remove this box in the Game's universe
 	 */
 	public void destroy() {
 		this.data.getUniverse().removeGameEntity(this);

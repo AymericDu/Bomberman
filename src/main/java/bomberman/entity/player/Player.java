@@ -16,7 +16,8 @@ import gameframework.game.GameData;
 import gameframework.game.GameLevel;
 
 /**
- * Player class represents a player in the game
+ * Player class represents a player (bomberman) to be manipulated with the
+ * keyboard
  */
 public class Player extends MovableEntity implements ActionListener {
 
@@ -37,6 +38,10 @@ public class Player extends MovableEntity implements ActionListener {
 	public static final String GREEN_PLAYER = "/images/player/BombermanSpriteGreenPlayer.png";
 	public static final String PINK_PLAYER = "/images/player/BombermanSpritePinkPlayer.png";
 
+	/**
+	 * @param level
+	 *            the level in which the player moves
+	 */
 	public Player(GameData data, Point position, String url, GameLevel level) {
 		super(data, position, url);
 
@@ -56,22 +61,12 @@ public class Player extends MovableEntity implements ActionListener {
 
 		this.myLevel = level;
 	}
-	
-	/**
-	 * Draws the player
-	 * 
-	 * @param g 
-	 * 			: the graphics
-	 */
+
 	@Override
 	public void draw(Graphics g) {
 		this.spriteManager.draw(g, position);
 	}
 
-	/**
-	 * getBoundingBox returns a rectangle which is the same size as the player's
-	 * @return the rectangle
-	 */
 	@Override
 	public Rectangle getBoundingBox() {
 		int spriteSize = data.getConfiguration().getSpriteSize();
@@ -81,7 +76,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Do one step of a movement
+	 * Each movement is associated an image showing the behavior of the player
 	 */
 	@Override
 	public void oneStepMoveAddedBehavior() {
@@ -105,8 +100,8 @@ public class Player extends MovableEntity implements ActionListener {
 	/**
 	 * Initialize the move strategy of the player
 	 * 
-	 * @param keyboard 
-	 * 			: the move strategy
+	 * @param keyboard
+	 *            the keyboard contains the moving key and the bomb depot
 	 */
 	public void setKeyboard(BombermanMoveStrategy keyboard) {
 		this.keyboard = keyboard;
@@ -117,7 +112,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Remove the keyboard for the player, the player now cannot move
+	 * Remove the keyboard of the player, the player now cannot move
 	 */
 	public void removeKeyboard() {
 		if (this.keyboard != null) {
@@ -140,7 +135,8 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Increases by one the number of bombs that can be on the board at the same time for the player
+	 * Increases by one the number of bombs that can be on the board at the same
+	 * time for this player
 	 */
 	public void increaseAuthorizedBomb() {
 		synchronized (this.lockAuthorizedBomb) {
@@ -156,7 +152,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * This function kills the player.
+	 * Kills the player and start the timer at the end of the level
 	 */
 	public synchronized void kill() {
 		if (this.isAlive) {
@@ -167,28 +163,18 @@ public class Player extends MovableEntity implements ActionListener {
 		}
 	}
 
-	/**
-	 * isAlive returns true if our player is alive and false if he's dead
-	 * 
-	 * @return true or false
-	 */
 	public boolean isAlive() {
 		return this.isAlive;
 	}
 
 	/**
-	 * The action Performed after the player's death : end of the game
+	 * The action performed after the player's death who ends the level
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.myLevel.end();
 	}
 
-	/**
-	 * getTimer returns the timer of our game
-	 * 
-	 * @return the timer
-	 */
 	public Timer getTimer() {
 		return timer;
 	}

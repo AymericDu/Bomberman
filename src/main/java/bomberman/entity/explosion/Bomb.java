@@ -12,8 +12,8 @@ import bomberman.game.BombermanSound;
 import gameframework.game.GameData;
 
 /**
- * Class representing the object bomb which is an UnmovableEntity.
- * The bomb,when dropped by a player, explodes after 2 seconds causing the creation of flames in various directions.
+ * Class representing the bomb. The bomb, when dropped by a player, explodes
+ * after 2 seconds causing the creation of flames in various directions.
  */
 public class Bomb extends UnmovableEntity implements ActionListener {
 
@@ -23,6 +23,14 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 
 	protected static final int COUNTDOWN_TIME = 2000;
 
+	/**
+	 * Immediately, a countdown is started after which the bomb explodes
+	 * 
+	 * @param radius
+	 *            the radius of the explosion (in number of box)
+	 * @param player
+	 *            the player who dropped the bomb
+	 */
 	public Bomb(GameData data, Point position, int radius, Player player) {
 		super(data, position, "/images/explosion/Bomb.png");
 		this.radius = radius;
@@ -35,7 +43,6 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 
 	/**
 	 * The action performed after the countdown : the bomb explodes
-	 * @param e
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -43,8 +50,9 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 	}
 
 	/**
-	 * This method launches the explosion's sound and creates flames in every directions (when possible) starting where the bomb was dropped
-	 * It also allows the player to drop a new bomb
+	 * Launche the explosion's sound and creates flames in every directions
+	 * (when possible) starting where the bomb was dropped ; It also allows the
+	 * player to drop a new bomb
 	 */
 	public void explode() {
 		this.timer.stop();
@@ -63,6 +71,9 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 		this.player.increaseAuthorizedBomb();
 	}
 
+	/**
+	 * Place the bomb on a box
+	 */
 	protected Point calculatePosition() {
 		int spriteSize = this.data.getConfiguration().getSpriteSize();
 		return new Point(this.position.x - (this.position.x % spriteSize), this.position.y - (this.position.y % spriteSize));

@@ -10,9 +10,9 @@ import gameframework.drawing.GameCanvas;
 import gameframework.game.GameData;
 
 /**
- * This class represents all the objects which are not movable
+ * This abstract class represents all the objects which aren't movable
  */
-public class UnmovableEntity implements Entity {
+public abstract class UnmovableEntity implements Entity {
 
 	protected GameData data;
 	protected GameCanvas canvas;
@@ -20,13 +20,14 @@ public class UnmovableEntity implements Entity {
 	protected Point position;
 
 	/**
-	 * Constructor of NoMovableEntity
-	 * @param data 
-	 * 				: the game's data
-	 * @param position 
-	 * 				: the position of this entity
-	 * @param urlString 
-	 * 				: the string representing the path to the entity's image
+	 * Add the entity to the game universe
+	 * 
+	 * @param data
+	 *            the game data that the entity uses
+	 * @param position
+	 *            the position of this entity on the board
+	 * @param urlString
+	 *            the string representing the path to the entity's image
 	 */
 	public UnmovableEntity(GameData data, Point position, String urlString) {
 		this.data = data;
@@ -38,10 +39,7 @@ public class UnmovableEntity implements Entity {
 	}
 
 	/**
-	 * Draw the bomb with the Graphics g, the image and the coordinates of the bomb.
-	 * 
-	 * @param g
-	 *            : Graphics
+	 * Draw the entity with the graphics, the image and the coordinates
 	 */
 	@Override
 	public void draw(Graphics g) {
@@ -49,9 +47,7 @@ public class UnmovableEntity implements Entity {
 	}
 
 	/**
-	 * Give the bounding box of the box
-	 * 
-	 * @return Rectangle : the bounding box
+	 * Give the bounding box of the entity, it's a rectangle
 	 */
 	@Override
 	public Rectangle getBoundingBox() {
@@ -59,22 +55,15 @@ public class UnmovableEntity implements Entity {
 		rectangle.setLocation(this.position);
 		return rectangle;
 	}
-	
+
 	/**
-	 * isMovable returns false because by definition a NoMovableEntity cannot move
-	 * 
-	 * @return false
+	 * Return false because by definition a UnmovableEntity cannot move
 	 */
 	@Override
 	public boolean isMovable() {
 		return false;
 	}
 
-	/**
-	 * getPosition returns the position of the entity
-	 * 
-	 * @return a point representing the position
-	 */
 	@Override
 	public Point getPosition() {
 		return this.position;

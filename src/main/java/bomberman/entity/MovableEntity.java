@@ -20,14 +20,14 @@ public abstract class MovableEntity extends GameMovable implements Entity {
 	protected DrawableImage image;
 
 	/**
-	 * Constructor of NoMovableEntity
+	 * Add the entity to the game universe
 	 * 
 	 * @param data
-	 * 				: the GameData
+	 *            the game data that the entity uses
 	 * @param position
-	 * 				: the position of this entity
+	 *            the position of this entity on the board
 	 * @param urlString
-	 * 				: the string representing the path to the entity's image
+	 *            the string representing the path to the entity's image
 	 */
 	public MovableEntity(GameData data, Point position, String urlString) {
 		this.data = data;
@@ -39,21 +39,15 @@ public abstract class MovableEntity extends GameMovable implements Entity {
 	}
 
 	/**
-	 * Draw the bomb with the Graphics g, the image and the coordinates of the
-	 * bomb.
-	 * 
-	 * @param g
-	 *            : Graphics
+	 * Draw the entity with the graphics, the image and the coordinates
 	 */
 	@Override
-	public void draw(Graphics g) {
-		this.canvas.drawImage(g, this.image.getImage(), this.position.x, this.position.y);
+	public void draw(Graphics graphics) {
+		this.canvas.drawImage(graphics, this.image.getImage(), this.position.x, this.position.y);
 	}
 
 	/**
-	 * Give the bounding box of the box
-	 * 
-	 * @return Rectangle : the bounding box
+	 * Give the bounding box of the entity, it's a rectangle
 	 */
 	@Override
 	public Rectangle getBoundingBox() {

@@ -12,7 +12,8 @@ import gameframework.game.GameData;
 import gameframework.motion.MoveStrategyStraightLine;
 
 /**
- * Abstract class which handles all the different flames.
+ * Abstract class which handles all the different flames. A flame kills the
+ * players and destroys the boxes.
  */
 public abstract class Flame extends MovableEntity implements ActionListener {
 
@@ -20,11 +21,16 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 
 	protected static final int EXPLOSION_TIME = 1000;
 
-	public Flame(GameData data, Point position, String imageUrl, int moving) {
+	/**
+	 * @param shift
+	 *            the shift between the position of the explosion and the
+	 *            flame's goal
+	 */
+	public Flame(GameData data, Point position, String imageUrl, int shift) {
 		super(data, position, imageUrl);
 
 		this.getDriver().setmoveBlockerChecker(BombermanLevel.walls);
-		this.getDriver().setStrategy(new MoveStrategyStraightLine(position, this.createGoal(moving),
+		this.getDriver().setStrategy(new MoveStrategyStraightLine(position, this.createGoal(shift),
 				this.data.getConfiguration().getSpriteSize()));
 
 		this.timer = new Timer(Flame.EXPLOSION_TIME, this);
@@ -34,7 +40,6 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 
 	/**
 	 * The action performed after the explosion's time : remove the Flame
-	 * @param e
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -47,11 +52,12 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	}
 	
 	/**
-	 * createGoal returns a point representing the flame's goal, which is shifted by shift from the position of the explosion
+	 * Return a point representing the flame's goal, which is shifted by shift
+	 * from the position of the explosion
 	 * 
 	 * @param shift
-	 * 				: the shift between the position of the explosion and the flame's goal	
-	 * @return a Point
+	 *            the shift between the position of the explosion and the
+	 *            flame's goal
 	 */
 	protected abstract Point createGoal(int shift);
 }

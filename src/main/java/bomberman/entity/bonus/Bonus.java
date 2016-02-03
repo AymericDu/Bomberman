@@ -6,9 +6,9 @@ import bomberman.entity.UnmovableEntity;
 import bomberman.entity.player.Player;
 import gameframework.game.GameData;
 
-
 /**
- * abstract class which defines all the bonuses.
+ * This abstract class which defines all the bonuses. The bonus is picked up by
+ * the player.
  */
 public abstract class Bonus extends UnmovableEntity {
 
@@ -17,9 +17,10 @@ public abstract class Bonus extends UnmovableEntity {
 	}
 
 	/**
-	 * The bonus effect when picked up (or stepped on)
-	 * @param player 
-	 * 				: the player which will benefit of the bonus
+	 * The bonus effect when this bonus is picked up
+	 * 
+	 * @param player
+	 *            the player which will benefit of the bonus
 	 */
 	public void effect(Player player) {
 		this.data.getUniverse().removeGameEntity(this);
