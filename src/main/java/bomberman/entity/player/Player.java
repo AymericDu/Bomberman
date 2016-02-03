@@ -58,7 +58,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 	
 	/**
-	 * draws the player
+	 * Draws the player
 	 * 
 	 * @param g 
 	 * 			: the graphics
@@ -184,6 +184,11 @@ public class Player extends MovableEntity implements ActionListener {
 		this.myLevel.end();
 	}
 
+	/**
+	 * getTimer returns the timer of our game
+	 * 
+	 * @return the timer
+	 */
 	public Timer getTimer() {
 		return timer;
 	}
