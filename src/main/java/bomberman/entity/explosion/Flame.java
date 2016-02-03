@@ -52,7 +52,7 @@ public abstract class Flame extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Return a point representing the flame's goal, which is shifted by shift
+	 * Returns a point representing the flame's goal, which is shifted by shift
 	 * from the position of the explosion
 	 * 
 	 * @param shift

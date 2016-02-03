@@ -50,7 +50,7 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Launche the explosion's sound and creates flames in every directions
+	 * Launches the explosion's sound and creates flames in every directions
 	 * (when possible) starting where the bomb was dropped ; It also allows the
 	 * player to drop a new bomb
 	 */
@@ -72,7 +72,7 @@ public class Bomb extends UnmovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Place the bomb on a box
+	 * Places the bomb on a box
 	 */
 	protected Point calculatePosition() {
 		int spriteSize = this.data.getConfiguration().getSpriteSize();

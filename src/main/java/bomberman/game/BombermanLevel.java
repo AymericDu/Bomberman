@@ -101,7 +101,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * creates a point using the position given in parameter and the sprite's
+	 * Creates a point using the position given in parameter and the sprite's
 	 * size
 	 * 
 	 * @param columnNumber
@@ -115,7 +115,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Create a new player at the position in parameter using the strategy in
+	 * Creates a new player at the position in parameter using the strategy in
 	 * parameter
 	 * 
 	 * @param columnNumber
@@ -143,7 +143,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Create a new Wall in the position give by the parameters
+	 * Creates a new Wall in the position give by the parameters
 	 * 
 	 * @param columnNumber
 	 *            the column representing a coordinate of the position
@@ -158,7 +158,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creation of all the walls
+	 * Creations of all the walls
 	 */
 	protected void createAllWalls() {
 		this.createWallsOnEdges();
@@ -166,7 +166,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Create the walls on the edges of the board
+	 * Creates the walls on the edges of the board
 	 */
 	protected void createWallsOnEdges() {
 		int rows = this.data.getConfiguration().getNbRows();
@@ -182,7 +182,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Create the walls on the on-board
+	 * Creates the walls on the on-board
 	 */
 	protected void createWallsOnBoard() {
 		int rows = this.data.getConfiguration().getNbRows();
@@ -195,7 +195,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Create the box in the game, depending on the probability
+	 * Creates the box in the game, depending on the probability
 	 * 
 	 * @param probability
 	 *            the probability of creating a box on a position (0 <
@@ -222,7 +222,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Create a bonus in the game, at the given position, depending on the
+	 * Creates a bonus in the game, at the given position, depending on the
 	 * probability
 	 * 
 	 * @param position
