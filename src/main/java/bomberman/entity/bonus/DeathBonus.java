@@ -16,7 +16,7 @@ public class DeathBonus extends Bonus {
 	}
 
 	/**
-	 * The bonus' effect is to kill the player picks it
+	 * The bonus effect is to kill the player picks it
 	 */
 	@Override
 	public void effect(Player player) {

@@ -46,7 +46,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Ends the current level, clears the board and calculate the players's
+	 * End the current level, clears the board and calculate the players's
 	 * points
 	 */
 	@Override
@@ -78,7 +78,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Initializes the level with the players, the walls and the boxes
+	 * Initialize the level with the players, the walls and the boxes
 	 */
 	@Override
 	protected void init() {
@@ -101,7 +101,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creates a point using the position given in parameter and the sprite's
+	 * Create a point using the position given in parameter and the sprite's
 	 * size
 	 * 
 	 * @param columnNumber
@@ -115,7 +115,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creates a new player at the position in parameter using the strategy in
+	 * Create a new player at the position in parameter using the strategy in
 	 * parameter
 	 * 
 	 * @param columnNumber
@@ -143,7 +143,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creates a new Wall in the position give by the parameters
+	 * Create a new Wall in the position give by the parameters
 	 * 
 	 * @param columnNumber
 	 *            the column representing a coordinate of the position
@@ -158,7 +158,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creations of all the walls
+	 * Creation of all the walls
 	 */
 	protected void createAllWalls() {
 		this.createWallsOnEdges();
@@ -166,7 +166,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creates the walls on the edges of the board
+	 * Create the walls on the edges of the board
 	 */
 	protected void createWallsOnEdges() {
 		int rows = this.data.getConfiguration().getNbRows();
@@ -182,7 +182,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creates the walls on the on-board
+	 * Create the walls on the on-board
 	 */
 	protected void createWallsOnBoard() {
 		int rows = this.data.getConfiguration().getNbRows();
@@ -195,7 +195,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creates the box in the game, depending on the probability
+	 * Create the box in the game, depending on the probability
 	 * 
 	 * @param probability
 	 *            the probability of creating a box on a position (0 <
@@ -222,7 +222,7 @@ public class BombermanLevel extends GameLevelDefaultImpl {
 	}
 
 	/**
-	 * Creates a bonus in the game, at the given position, depending on the
+	 * Create a bonus in the game, at the given position, depending on the
 	 * probability
 	 * 
 	 * @param position

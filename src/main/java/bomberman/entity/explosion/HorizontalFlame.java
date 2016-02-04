@@ -15,7 +15,7 @@ public class HorizontalFlame extends Flame {
 	}
 
 	/**
-	 * Returns a point in the same horizontal line
+	 * Return a point in the same horizontal line
 	 */
 	@Override
 	protected Point createGoal(int shift) {

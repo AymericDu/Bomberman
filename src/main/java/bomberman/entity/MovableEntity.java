@@ -20,7 +20,7 @@ public abstract class MovableEntity extends GameMovable implements Entity {
 	protected DrawableImage image;
 
 	/**
-	 * Adds the entity to the game universe
+	 * Add the entity to the game universe
 	 * 
 	 * @param data
 	 *            the game data that the entity uses
@@ -39,7 +39,7 @@ public abstract class MovableEntity extends GameMovable implements Entity {
 	}
 
 	/**
-	 * Draws the entity with the graphics, the image and the coordinates
+	 * Draw the entity with the graphics, the image and the coordinates
 	 */
 	@Override
 	public void draw(Graphics graphics) {
@@ -47,7 +47,7 @@ public abstract class MovableEntity extends GameMovable implements Entity {
 	}
 
 	/**
-	 * Gives the bounding box of the entity, it's a rectangle
+	 * Give the bounding box of the entity, it's a rectangle
 	 */
 	@Override
 	public Rectangle getBoundingBox() {

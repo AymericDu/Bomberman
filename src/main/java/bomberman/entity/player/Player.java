@@ -135,7 +135,7 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Increases by one the number of bombs that can be on the board at the same
+	 * Increase by one the number of bombs that can be on the board at the same
 	 * time for this player
 	 */
 	public void increaseAuthorizedBomb() {
@@ -145,14 +145,14 @@ public class Player extends MovableEntity implements ActionListener {
 	}
 
 	/**
-	 * Increases the radius of the player's bombs by one
+	 * Increase the radius of the player's bombs by one
 	 */
 	public void increaseBombRadius() {
 		this.bombRadius++;
 	}
 
 	/**
-	 * Kills the player and start the timer at the end of the level
+	 * Kill the player and start the timer at the end of the level
 	 */
 	public synchronized void kill() {
 		if (this.isAlive) {

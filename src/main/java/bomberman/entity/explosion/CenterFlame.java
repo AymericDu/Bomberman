@@ -15,7 +15,7 @@ public class CenterFlame extends Flame {
 	}
 
 	/**
-	 * Returns the same point because the goal of the centerFlame is the same
+	 * Return the same point because the goal of the centerFlame is the same
 	 * point
 	 */
 	@Override

@@ -16,7 +16,7 @@ public class BombBonus extends Bonus {
 	}
 
 	/**
-	 * This bonus' effect is to increase by one the number of bomb a player can
+	 * This bonus effect is to increase by one the number of bomb a player can
 	 * drop at the same time
 	 */
 	@Override

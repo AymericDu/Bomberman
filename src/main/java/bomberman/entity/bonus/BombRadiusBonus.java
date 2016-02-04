@@ -7,7 +7,7 @@ import gameframework.game.GameData;
 
 /**
  * This class represents the bomb's radius bonus which effect is to increase the
- * player's bombs' radius.
+ * player's bombs radius.
  */
 public class BombRadiusBonus extends Bonus {
 
